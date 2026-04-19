@@ -3,12 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Schedule | BIO 004 Human Anatomy, Summer 2026</title>
+<title>Human Anatomy | Course Hub</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 <style>
 :root {
+  /* California Surf palette */
   --sand: #F2E8D5;
   --sand-cream: #FEF9EC;
   --sand-warm: #EADFC8;
@@ -39,6 +40,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Skip link, visible on keyboard focus */
 .skip-link {
   position: absolute;
   top: -48px;
@@ -60,6 +62,7 @@ body {
   outline-offset: 3px;
 }
 
+/* Visible focus ring for all keyboard users */
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
@@ -68,15 +71,28 @@ button:focus-visible,
   border-radius: 6px;
 }
 
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 .container {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 48px 32px 64px;
 }
 
 .course-header {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 44px;
   padding-bottom: 36px;
   border-bottom: 1px solid var(--divider);
 }
@@ -101,12 +117,12 @@ button:focus-visible,
 }
 
 .course-title {
-  font-size: clamp(36px, 5.5vw, 54px);
+  font-size: clamp(42px, 6.5vw, 64px);
   font-weight: 700;
   color: var(--ocean-deep);
-  line-height: 1.05;
+  line-height: 1.02;
   letter-spacing: -0.035em;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 
 .course-subtitle {
@@ -116,57 +132,32 @@ button:focus-visible,
   color: var(--ink-soft);
   max-width: 620px;
   margin: 0 auto;
-  line-height: 1.5;
+  line-height: 1.55;
   letter-spacing: -0.005em;
 }
 
-.overview-strip {
-  background: var(--sand-cream);
-  border-radius: 14px;
-  padding: 18px 28px;
-  margin-bottom: 36px;
-  border: 1px solid var(--divider);
-  box-shadow: var(--card-shadow);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px 28px;
-  font-size: 13px;
-  color: var(--ink);
-  text-align: center;
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
 }
 
-.overview-strip strong {
-  color: var(--terra);
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-
-.overview-divider {
-  color: var(--sea-glass);
-  opacity: 0.8;
-}
-
-.schedule-list {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.week-card {
+.module-card {
   background: var(--sand-cream);
   border-radius: 16px;
-  padding: 30px 32px;
+  padding: 30px;
   border: 1px solid var(--divider);
   box-shadow: var(--card-shadow);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
   position: relative;
   overflow: hidden;
 }
 
-.week-card::before {
+.module-card::before {
   content: '';
   position: absolute;
   top: 0;
@@ -174,18 +165,29 @@ button:focus-visible,
   right: 0;
   height: 4px;
   background: var(--ocean-mid);
-  opacity: 0.55;
+  opacity: 0.6;
+  transition: opacity 0.25s ease, background 0.25s ease;
 }
 
-.week-header {
+.module-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--ocean-mid);
+}
+
+.module-card:hover::before {
+  background: var(--ocean-deep);
+  opacity: 1;
+}
+
+.module-header {
   display: flex;
   align-items: flex-start;
-  gap: 20px;
+  gap: 18px;
   margin-bottom: 22px;
-  flex-wrap: wrap;
 }
 
-.week-number {
+.module-number {
   font-size: 40px;
   font-weight: 700;
   color: var(--terra);
@@ -193,185 +195,102 @@ button:focus-visible,
   letter-spacing: -0.04em;
   padding-top: 2px;
   font-variant-numeric: tabular-nums;
-  flex-shrink: 0;
 }
 
-.week-meta {
+.module-meta {
   flex: 1;
-  min-width: 200px;
+  min-width: 0;
 }
 
-.week-dates {
-  font-size: 23px;
+.module-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ocean-mid);
+  margin-bottom: 6px;
+}
+
+.module-title {
+  font-size: 22px;
   font-weight: 600;
   color: var(--ink);
   line-height: 1.2;
   letter-spacing: -0.02em;
-  margin-bottom: 6px;
 }
 
-.week-module {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ocean-mid);
+.module-topics {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+  flex: 1;
 }
 
-.week-event-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  padding-top: 8px;
-}
-
-.event-tag {
-  display: inline-flex;
-  align-items: center;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 6px 12px;
-  border-radius: 100px;
-  white-space: nowrap;
-  background: var(--sea-glass-mist);
-  color: var(--ocean-deep);
-  border: 1px solid var(--divider);
-}
-
-.day-list {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 20px;
-  row-gap: 14px;
-  padding: 18px 0;
-  border-top: 1px solid var(--divider);
-  border-bottom: 1px solid var(--divider);
-  margin-bottom: 20px;
-}
-
-.day-list dt {
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ocean-mid);
-  padding-top: 5px;
-  font-variant-numeric: tabular-nums;
-}
-
-.day-list dd {
-  font-size: 15px;
-  color: var(--ink);
-  line-height: 1.5;
-  font-weight: 500;
-  margin: 0;
-}
-
-.day-list .day-secondary {
-  margin-top: 8px;
-}
-
-/* Pills inside day rows */
-.day-list .pill-tbl {
-  display: inline-block;
-  background: var(--sea-glass);
-  color: var(--ocean-deep);
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: 100px;
-  font-size: 13px;
-  letter-spacing: 0.02em;
-  vertical-align: baseline;
-}
-
-.day-list .pill-exam {
-  display: inline-block;
-  background: var(--ocean-deep);
-  color: var(--sand-cream);
-  font-weight: 700;
-  padding: 3px 12px;
-  border-radius: 100px;
-  font-size: 13px;
-  letter-spacing: 0.04em;
-  vertical-align: baseline;
-}
-
-.day-list .activity-plain {
-  font-weight: 600;
-  color: var(--ink);
-}
-
-.day-list .pre-work {
-  color: var(--ocean-mid);
-  font-style: italic;
-  font-weight: 400;
-  font-size: 14px;
-  letter-spacing: 0.005em;
-}
-
-.day-list .bundle-note {
-  color: var(--terra);
-  font-style: italic;
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.005em;
-}
-
-.week-footer {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 14px;
-}
-
-@media (min-width: 640px) {
-  .week-footer {
-    grid-template-columns: 1fr 1fr;
-    gap: 24px;
-  }
-  .week-footer--single {
-    grid-template-columns: 1fr;
-  }
-}
-
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.field-label {
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--ocean-mid);
-}
-
-.field-value {
+.module-topics li {
   font-size: 14px;
   color: var(--ink-soft);
+  padding: 6px 0 6px 22px;
+  position: relative;
   line-height: 1.5;
   font-weight: 400;
 }
 
-.field-value--placeholder {
-  font-style: italic;
-  color: var(--ocean-mid);
-  opacity: 0.8;
+.module-topics li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 12px;
+  height: 2px;
+  background: var(--sea-glass);
+  border-radius: 1px;
+}
+
+.module-footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.module-action {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.module-card:hover .module-action {
+  gap: 12px;
+  color: var(--terra);
+}
+
+.module-action-arrow {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.module-card:hover .module-action-arrow {
+  transform: translate(2px, -2px);
 }
 
 .course-footer {
-  margin-top: 48px;
+  margin-top: 56px;
   padding-top: 28px;
   border-top: 1px solid var(--divider);
   text-align: center;
   font-size: 14px;
   color: var(--ink-soft);
   line-height: 1.7;
-  max-width: 720px;
+  max-width: 640px;
   margin-left: auto;
   margin-right: auto;
   font-weight: 400;
@@ -385,11 +304,9 @@ button:focus-visible,
 
 @media (max-width: 640px) {
   .container { padding: 32px 20px 48px; }
-  .week-card { padding: 24px; }
-  .week-number { font-size: 34px; }
-  .week-dates { font-size: 20px; }
-  .day-list { column-gap: 14px; }
-  .overview-strip { padding: 16px 20px; font-size: 12px; }
+  .module-card { padding: 24px; }
+  .module-number { font-size: 34px; }
+  .module-title { font-size: 20px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -399,6 +316,8 @@ button:focus-visible,
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+  .module-card:hover { transform: none; }
+  .module-card:hover .module-action-arrow { transform: none; }
 }
 
 @media (prefers-contrast: more) {
@@ -411,191 +330,90 @@ button:focus-visible,
 </style>
 </head>
 <body>
-<a href="#schedule-list" class="skip-link">Skip to schedule</a>
+<a href="#module-grid" class="skip-link">Skip to module list</a>
 
 <div class="container">
   <header class="course-header">
-    <p class="eyebrow">BIO 004 <span class="eyebrow-sep" aria-hidden="true"></span> Summer Session 2026</p>
-    <h1 class="course-title">Course Schedule</h1>
-    <p class="course-subtitle">Eight-week session, June 15 to August 7. Team-based learning Monday through Thursday.</p>
+    <p class="eyebrow">BIO 004 <span class="eyebrow-sep" aria-hidden="true"></span> Summer Session</p>
+    <h1 class="course-title">Human Anatomy</h1>
+    <p class="course-subtitle">A cadaver-based human anatomy course for nursing, respiratory therapy, allied health, pre-PA, pre-medicine, and biology students.</p>
   </header>
 
-  <section class="overview-strip" aria-label="Session overview">
-    <span><strong>5</strong> modules</span>
-    <span class="overview-divider" aria-hidden="true">·</span>
-    <span><strong>8</strong> weeks</span>
-    <span class="overview-divider" aria-hidden="true">·</span>
-    <span><strong>5</strong> lab exams</span>
-    <span class="overview-divider" aria-hidden="true">·</span>
-    <span><strong>8</strong> weekly cases</span>
-  </section>
-
-  <ol id="schedule-list" class="schedule-list" aria-label="Weekly schedule"></ol>
+  <main id="module-grid" class="module-grid" aria-label="Course modules"></main>
 
   <footer class="course-footer">
-    <strong>How the week runs.</strong><br>
-    Each day lists the class activity first, then the pre-work that supports it. Pre-work is completed the night before: Sunday prepares Monday's session, Monday prepares Tuesday's, and so on. Cases run Monday through Thursday: intro Monday, prep Tuesday, run Wednesday, TBL and case presentation Thursday. Lab exams run during the afternoon lab session on the day shown, so morning lecture continues the normal case rhythm. Upper and lower extremity muscles are covered primarily in lab and do not appear as dedicated lecture days. Completed homework bundles are handed in at the start of each lab exam, before students enter.
+    <strong>How this hub works.</strong><br>
+    Each module opens in a new tab so you can keep this page available for reference as you work through the course.
   </footer>
 </div>
 
 <script>
 /*
-  Schedule data.
-  Each day has:
-    day: label
-    activity: main event (Case intro, Case prep, Case run, TBL, Lab Exam N)
-    pill: 'tbl' or 'exam' to style the activity, null for plain
-    prework: topic prepared the night before
-    bundleNote: shown in place of prework on pure exam days (like Wk 8 Thu)
-    additionalPill: optional second line for exam-week Mondays
-      { type, label, note }
+  Replace each url below with the actual Kajabi landing page URL for that module.
+  These open in a new tab so the hub stays available to students in Canvas.
 */
-const weeks = [
+const modules = [
   {
-    number: 1,
-    dates: 'June 15 to 18',
-    moduleLabel: 'Module One',
-    moduleTitle: 'Foundations of Anatomy',
-    days: [
-      { day: 'Mon', activity: 'Case intro', prework: 'Introduction and anatomical terminology' },
-      { day: 'Tue', activity: 'Case prep', prework: 'Cell anatomy and organelles' },
-      { day: 'Wed', activity: 'Case run', prework: 'Tissue types and classification' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Integumentary system' }
-    ],
-    caseOfWeek: 'Unknown Case 1. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: 'Juneteenth weekend, no classes June 19 to 21',
-    events: []
+    id: 1,
+    label: 'Module One',
+    title: 'Foundations of Anatomy',
+    url: 'https://YOUR-KAJABI-URL/module-1-foundations',
+    topics: [
+      'Introduction to anatomy and terminology',
+      'Cell anatomy and organelles',
+      'Tissue types and classification',
+      'Integumentary system'
+    ]
   },
   {
-    number: 2,
-    dates: 'June 22 to 25',
-    moduleLabel: 'Module Two, Part 1',
-    moduleTitle: 'Bone and Axial Skeleton',
-    days: [
-      {
-        day: 'Mon',
-        activity: 'Case intro',
-        prework: 'Cartilage and bone tissue microanatomy',
-        additionalPill: { type: 'exam', label: 'Lab Exam 1', note: 'Completed bundle due at entry' }
-      },
-      { day: 'Tue', activity: 'Case prep', prework: 'Bone macroanatomy and surface markings' },
-      { day: 'Wed', activity: 'Case run', prework: 'Axial skeleton: skull and facial bones' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Axial skeleton: vertebral column and thoracic cage' }
-    ],
-    caseOfWeek: 'Unknown Case 2. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: null,
-    events: []
+    id: 2,
+    label: 'Module Two',
+    title: 'Skeletal System',
+    url: 'https://YOUR-KAJABI-URL/module-2-skeletal',
+    topics: [
+      'Cartilage and bone tissue, micro to macro',
+      'Axial skeleton',
+      'Appendicular skeleton',
+      'Articulations and joints'
+    ]
   },
   {
-    number: 3,
-    dates: 'June 29 to July 2',
-    moduleLabel: 'Module Two, Part 2',
-    moduleTitle: 'Appendicular Skeleton and Joints',
-    days: [
-      { day: 'Mon', activity: 'Case intro', prework: 'Pectoral girdle and upper limb bones' },
-      { day: 'Tue', activity: 'Case prep', prework: 'Pelvic girdle and lower limb bones' },
-      { day: 'Wed', activity: 'Case run', prework: 'Joint classification and structure' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Synovial joints and movements' }
-    ],
-    caseOfWeek: 'Unknown Case 3. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: 'Independence Day observed Friday July 3',
-    events: []
+    id: 3,
+    label: 'Module Three',
+    title: 'Thorax and Upper Limb',
+    url: 'https://YOUR-KAJABI-URL/module-3-thorax-upper-limb',
+    topics: [
+      'Thoracic structures and the heart',
+      'Respiratory system',
+      'Upper extremity muscles: origin, insertion, action',
+      'Lymphatic system',
+      'Blood and hematology'
+    ]
   },
   {
-    number: 4,
-    dates: 'July 6 to 9',
-    moduleLabel: 'Module Three, Part 1',
-    moduleTitle: 'Heart and Respiratory System',
-    days: [
-      {
-        day: 'Mon',
-        activity: 'Case intro',
-        prework: 'Heart anatomy: chambers and valves',
-        additionalPill: { type: 'exam', label: 'Lab Exam 2', note: 'Completed bundle due at entry' }
-      },
-      { day: 'Tue', activity: 'Case prep', prework: 'Heart vasculature and conduction system' },
-      { day: 'Wed', activity: 'Case run', prework: 'Respiratory system: upper respiratory tract' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Respiratory system: lower tract and lungs' }
-    ],
-    caseOfWeek: 'Unknown Case 4. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: null,
-    events: []
+    id: 4,
+    label: 'Module Four',
+    title: 'Visceral Systems and Lower Limb',
+    url: 'https://YOUR-KAJABI-URL/module-4-visceral-lower-limb',
+    topics: [
+      'Endocrine system',
+      'Gastrointestinal system',
+      'Urinary and renal system',
+      'Reproductive system',
+      'Lower extremity muscles: origin, insertion, action'
+    ]
   },
   {
-    number: 5,
-    dates: 'July 13 to 16',
-    moduleLabel: 'Module Three, Part 2',
-    moduleTitle: 'Lymphatic and Blood',
-    days: [
-      { day: 'Mon', activity: 'Case intro', prework: 'Lymphatic vessels and lymph nodes' },
-      { day: 'Tue', activity: 'Case prep', prework: 'Lymphatic organs: thymus, spleen, tonsils' },
-      { day: 'Wed', activity: 'Case run', prework: 'Blood composition and plasma' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Formed elements and hematology' }
-    ],
-    caseOfWeek: 'Unknown Case 5. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: null,
-    events: []
-  },
-  {
-    number: 6,
-    dates: 'July 20 to 23',
-    moduleLabel: 'Module Four, Part 1',
-    moduleTitle: 'Endocrine and Gastrointestinal',
-    days: [
-      {
-        day: 'Mon',
-        activity: 'Case intro',
-        prework: 'Endocrine system',
-        additionalPill: { type: 'exam', label: 'Lab Exam 3', note: 'Completed bundle due at entry' }
-      },
-      { day: 'Tue', activity: 'Case prep', prework: 'GI system: upper tract' },
-      { day: 'Wed', activity: 'Case run', prework: 'GI system: lower tract' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Accessory digestive organs: liver, gallbladder, pancreas' }
-    ],
-    caseOfWeek: 'Unknown Case 6. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: null,
-    events: []
-  },
-  {
-    number: 7,
-    dates: 'July 27 to 30',
-    moduleLabel: 'Module Four, Part 2',
-    moduleTitle: 'Renal and Reproductive',
-    days: [
-      {
-        day: 'Mon',
-        activity: 'Case intro',
-        prework: 'Urinary system: kidney and nephron',
-        additionalPill: { type: 'exam', label: 'Lab Exam 4', note: 'Completed bundle due at entry' }
-      },
-      { day: 'Tue', activity: 'Case prep', prework: 'Ureters, bladder, and urethra' },
-      { day: 'Wed', activity: 'Case run', prework: 'Reproductive system: male' },
-      { day: 'Thu', activity: 'TBL and presentation', pill: 'tbl', prework: 'Reproductive system: female' }
-    ],
-    caseOfWeek: 'Unknown Case 7. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: null,
-    events: []
-  },
-  {
-    number: 8,
-    dates: 'August 3 to 6',
-    moduleLabel: 'Module Five',
-    moduleTitle: 'Nervous System',
-    days: [
-      { day: 'Mon', activity: 'Case intro', prework: 'Nervous tissue and neuron types' },
-      { day: 'Tue', activity: 'Case prep', prework: 'Central nervous system and meninges' },
-      { day: 'Wed', activity: 'Case run', prework: 'Peripheral nervous system' },
-      {
-        day: 'Thu',
-        activity: 'TBL and presentation',
-        pill: 'tbl',
-        prework: 'Major tracts and pathways',
-        additionalPill: { type: 'exam', label: 'Lab Exam 5', note: 'Completed bundle due at entry' }
-      }
-    ],
-    caseOfWeek: 'Unknown Case 8. Work up the differential and present your reasoning in the weekly TBL.',
-    notes: 'Last day of term August 7. Lab Exam 5 covers renal, reproductive, and nervous system material from Weeks 7 and 8.',
-    events: []
+    id: 5,
+    label: 'Module Five',
+    title: 'Nervous System',
+    url: 'https://YOUR-KAJABI-URL/module-5-nervous-system',
+    topics: [
+      'Nervous tissue',
+      'Central nervous system and meninges',
+      'Peripheral nervous system',
+      'Major tracts and pathways'
+    ]
   }
 ];
 
@@ -608,97 +426,46 @@ function escapeHtml(str) {
     .replace(/'/g, '&#039;');
 }
 
-function renderDay(d) {
-  // Primary activity (with pill styling if specified)
-  let primaryHtml;
-  if (d.pill === 'tbl') {
-    primaryHtml = '<span class="pill-tbl">' + escapeHtml(d.activity) + '</span>';
-  } else if (d.pill === 'exam') {
-    primaryHtml = '<span class="pill-exam">' + escapeHtml(d.activity) + '</span>';
-  } else {
-    primaryHtml = '<span class="activity-plain">' + escapeHtml(d.activity) + '</span>';
-  }
+function renderModules() {
+  const grid = document.getElementById('module-grid');
 
-  // Primary subtext (pre-work or bundle note)
-  if (d.prework) {
-    primaryHtml += ' <span class="pre-work"><span aria-hidden="true">· </span>Pre-work: ' + escapeHtml(d.prework) + '</span>';
-  } else if (d.bundleNote) {
-    primaryHtml += ' <span class="bundle-note"><span aria-hidden="true">· </span>' + escapeHtml(d.bundleNote) + '</span>';
-  }
+  modules.forEach(function(mod) {
+    const topicsHtml = mod.topics
+      .map(function(t) { return '<li>' + escapeHtml(t) + '</li>'; })
+      .join('');
 
-  // Secondary stacked line (exam Mondays only)
-  let secondaryHtml = '';
-  if (d.additionalPill) {
-    const ap = d.additionalPill;
-    const pillClass = ap.type === 'exam' ? 'pill-exam' : 'pill-tbl';
-    let secondLine = '<span class="' + pillClass + '">' + escapeHtml(ap.label) + '</span>';
-    if (ap.note) {
-      secondLine += ' <span class="bundle-note"><span aria-hidden="true">· </span>' + escapeHtml(ap.note) + '</span>';
-    }
-    secondaryHtml = '<div class="day-secondary">' + secondLine + '</div>';
-  }
+    const numberLabel = String(mod.id).padStart(2, '0');
+    const cardAriaLabel = mod.label + ': ' + mod.title + '. Opens in a new tab.';
 
-  return '<dt>' + escapeHtml(d.day) + '</dt><dd>' + primaryHtml + secondaryHtml + '</dd>';
-}
-
-function renderSchedule() {
-  const list = document.getElementById('schedule-list');
-
-  weeks.forEach(function(wk) {
-    const numberLabel = String(wk.number).padStart(2, '0');
-
-    const eventTagsHtml = wk.events.length
-      ? '<div class="week-event-tags">' +
-          wk.events.map(function(e) {
-            return '<span class="event-tag">' + escapeHtml(e.label) + '</span>';
-          }).join('') +
-        '</div>'
-      : '';
-
-    const daysHtml = wk.days.map(renderDay).join('');
-
-    const caseValue = wk.caseOfWeek
-      ? '<p class="field-value">' + escapeHtml(wk.caseOfWeek) + '</p>'
-      : '<p class="field-value field-value--placeholder">To be assigned</p>';
-
-    const hasNotes = wk.notes && wk.notes.length > 0;
-    const notesHtml = hasNotes
-      ? '<div class="field">' +
-          '<p class="field-label">Notes</p>' +
-          '<p class="field-value">' + escapeHtml(wk.notes) + '</p>' +
-        '</div>'
-      : '';
-
-    const footerClass = hasNotes ? 'week-footer' : 'week-footer week-footer--single';
-
-    const li = document.createElement('li');
-    li.className = 'week-card';
-    li.setAttribute('aria-label', 'Week ' + wk.number + ', ' + wk.dates + ', ' + wk.moduleLabel + ', ' + wk.moduleTitle);
-    li.innerHTML =
-      '<div class="week-header">' +
-        '<div class="week-number" aria-hidden="true">' + numberLabel + '</div>' +
-        '<div class="week-meta">' +
-          '<h2 class="week-dates">' + escapeHtml(wk.dates) + '</h2>' +
-          '<p class="week-module">' + escapeHtml(wk.moduleLabel) + ' <span aria-hidden="true">·</span> ' + escapeHtml(wk.moduleTitle) + '</p>' +
+    const card = document.createElement('a');
+    card.href = mod.url;
+    card.className = 'module-card';
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.setAttribute('aria-label', cardAriaLabel);
+    card.innerHTML =
+      '<div class="module-header">' +
+        '<div class="module-number" aria-hidden="true">' + numberLabel + '</div>' +
+        '<div class="module-meta">' +
+          '<p class="module-label">' + escapeHtml(mod.label) + '</p>' +
+          '<h2 class="module-title">' + escapeHtml(mod.title) + '</h2>' +
         '</div>' +
-        eventTagsHtml +
       '</div>' +
-      '<dl class="day-list" aria-label="Daily schedule">' + daysHtml + '</dl>' +
-      '<div class="' + footerClass + '">' +
-        '<div class="field">' +
-          '<p class="field-label">Case of the Week</p>' +
-          caseValue +
-        '</div>' +
-        notesHtml +
+      '<ul class="module-topics" aria-label="Topics in this module">' + topicsHtml + '</ul>' +
+      '<div class="module-footer">' +
+        '<span class="module-action" aria-hidden="true">Open' +
+          '<span class="module-action-arrow">\u2197</span>' +
+        '</span>' +
       '</div>';
-    list.appendChild(li);
+    grid.appendChild(card);
   });
 }
 
-renderSchedule();
+renderModules();
 
+// Iframe height sender for Canvas and Kajabi embedding
 (function() {
-  const FRAME_ID = 'anatomy-schedule';
+  const FRAME_ID = 'anatomy-hub';
   function sendHeight() {
     try {
       const height = Math.max(
