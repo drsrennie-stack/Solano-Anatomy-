@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Anatomy | Course Hub</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* California Surf palette */
+  --sand: #F2E8D5;
+  --sand-cream: #FEF9EC;
+  --sand-warm: #EADFC8;
+  --ocean-deep: #1E3D4C;
+  --ocean-mid: #335E6E;
+  --sea-glass: #8FB8BF;
+  --sea-glass-mist: #DCE8EB;
+  --terra: #A0402A;
+  --ink: #15262F;
+  --ink-soft: #3D4F5A;
+  --divider: rgba(30, 61, 76, 0.2);
+  --card-shadow: 0 2px 10px rgba(30, 61, 76, 0.07);
+  --card-shadow-hover: 0 10px 28px rgba(30, 61, 76, 0.15);
+  --focus-ring: #15262F;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--sand); }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Skip link, visible on keyboard focus */
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  background: var(--ink);
+  color: var(--sand-cream);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 3px solid var(--ocean-deep);
+  outline-offset: 3px;
+}
+
+/* Visible focus ring for all keyboard users */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Screen-reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 32px 64px;
+}
+
+.course-header {
+  text-align: center;
+  margin-bottom: 44px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ocean-mid);
+  margin-bottom: 18px;
+}
+
+.eyebrow-sep {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--ocean-mid);
+  margin: 0 12px;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+
+.course-title {
+  font-size: clamp(42px, 6.5vw, 64px);
+  font-weight: 700;
+  color: var(--ocean-deep);
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  margin-bottom: 16px;
+}
+
+.course-subtitle {
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 400;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+}
+
+.module-card {
+  background: var(--sand-cream);
+  border-radius: 16px;
+  padding: 30px;
+  border: 1px solid var(--divider);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, border-color 0.25s ease;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--ocean-mid);
+  opacity: 0.6;
+  transition: opacity 0.25s ease, background 0.25s ease;
+}
+
+.module-card:hover {
+  box-shadow: var(--card-shadow-hover);
+  transform: translateY(-2px);
+  border-color: var(--ocean-mid);
+}
+
+.module-card:hover::before {
+  background: var(--ocean-deep);
+  opacity: 1;
+}
+
+.module-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.module-number {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--terra);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+}
+
+.module-meta {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ocean-mid);
+  margin-bottom: 6px;
+}
+
+.module-title {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.module-topics {
+  list-style: none;
+  margin: 0 0 24px 0;
+  padding: 0;
+  flex: 1;
+}
+
+.module-topics li {
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 6px 0 6px 22px;
+  position: relative;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.module-topics li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 15px;
+  width: 12px;
+  height: 2px;
+  background: var(--sea-glass);
+  border-radius: 1px;
+}
+
+.module-footer {
+  padding-top: 20px;
+  border-top: 1px solid var(--divider);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.module-action {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.25s ease, color 0.25s ease;
+}
+
+.module-card:hover .module-action {
+  gap: 12px;
+  color: var(--terra);
+}
+
+.module-action-arrow {
+  font-size: 16px;
+  line-height: 1;
+  transition: transform 0.25s ease;
+}
+
+.module-card:hover .module-action-arrow {
+  transform: translate(2px, -2px);
+}
+
+.course-footer {
+  margin-top: 56px;
+  padding-top: 28px;
+  border-top: 1px solid var(--divider);
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 400;
+}
+
+.course-footer strong {
+  color: var(--ocean-deep);
+  font-style: italic;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 32px 20px 48px; }
+  .module-card { padding: 24px; }
+  .module-number { font-size: 34px; }
+  .module-title { font-size: 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .module-card:hover { transform: none; }
+  .module-card:hover .module-action-arrow { transform: none; }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --divider: rgba(21, 38, 47, 0.55);
+    --ink-soft: #15262F;
+    --ocean-mid: #1E3D4C;
+  }
+}
+</style>
+</head>
+<body>
+<a href="#module-grid" class="skip-link">Skip to module list</a>
+
+<div class="container">
+  <header class="course-header">
+    <p class="eyebrow">BIO 004 <span class="eyebrow-sep" aria-hidden="true"></span> Summer Session</p>
+    <h1 class="course-title">Human Anatomy</h1>
+    <p class="course-subtitle">Five modules built for the eight-week summer session. From the single cell to the full nervous system.</p>
+  </header>
+
+  <main id="module-grid" class="module-grid" aria-label="Course modules"></main>
+
+  <footer class="course-footer">
+    <strong>How this hub works.</strong><br>
+    Each module opens in a new tab so you can keep this page available for reference as you work through the course.
+  </footer>
+</div>
+
+<script>
+/*
+  Replace each url below with the actual Kajabi landing page URL for that module.
+  These open in a new tab so the hub stays available to students in Canvas.
+*/
+const modules = [
+  {
+    id: 1,
+    label: 'Module One',
+    title: 'Foundations of Anatomy',
+    url: 'https://YOUR-KAJABI-URL/module-1-foundations',
+    topics: [
+      'Introduction to anatomy and terminology',
+      'Cell anatomy and organelles',
+      'Tissue types and classification',
+      'Integumentary system'
+    ]
+  },
+  {
+    id: 2,
+    label: 'Module Two',
+    title: 'Skeletal System',
+    url: 'https://YOUR-KAJABI-URL/module-2-skeletal',
+    topics: [
+      'Cartilage and bone tissue, micro to macro',
+      'Axial skeleton',
+      'Appendicular skeleton',
+      'Articulations and joints'
+    ]
+  },
+  {
+    id: 3,
+    label: 'Module Three',
+    title: 'Thorax and Upper Limb',
+    url: 'https://YOUR-KAJABI-URL/module-3-thorax-upper-limb',
+    topics: [
+      'Thoracic structures and the heart',
+      'Respiratory system',
+      'Upper extremity muscles: origin, insertion, action'
+    ]
+  },
+  {
+    id: 4,
+    label: 'Module Four',
+    title: 'Visceral Systems and Lower Limb',
+    url: 'https://YOUR-KAJABI-URL/module-4-visceral-lower-limb',
+    topics: [
+      'Endocrine system',
+      'Lymphatic system',
+      'Gastrointestinal system',
+      'Lower extremity muscles: origin, insertion, action'
+    ]
+  },
+  {
+    id: 5,
+    label: 'Module Five',
+    title: 'Nervous System',
+    url: 'https://YOUR-KAJABI-URL/module-5-nervous-system',
+    topics: [
+      'Nervous tissue',
+      'Central nervous system and meninges',
+      'Peripheral nervous system',
+      'Major tracts and pathways'
+    ]
+  }
+];
+
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
+function renderModules() {
+  const grid = document.getElementById('module-grid');
+
+  modules.forEach(function(mod) {
+    const topicsHtml = mod.topics
+      .map(function(t) { return '<li>' + escapeHtml(t) + '</li>'; })
+      .join('');
+
+    const numberLabel = String(mod.id).padStart(2, '0');
+    const cardAriaLabel = mod.label + ': ' + mod.title + '. Opens in a new tab.';
+
+    const card = document.createElement('a');
+    card.href = mod.url;
+    card.className = 'module-card';
+    card.target = '_blank';
+    card.rel = 'noopener noreferrer';
+    card.setAttribute('aria-label', cardAriaLabel);
+    card.innerHTML =
+      '<div class="module-header">' +
+        '<div class="module-number" aria-hidden="true">' + numberLabel + '</div>' +
+        '<div class="module-meta">' +
+          '<p class="module-label">' + escapeHtml(mod.label) + '</p>' +
+          '<h2 class="module-title">' + escapeHtml(mod.title) + '</h2>' +
+        '</div>' +
+      '</div>' +
+      '<ul class="module-topics" aria-label="Topics in this module">' + topicsHtml + '</ul>' +
+      '<div class="module-footer">' +
+        '<span class="module-action" aria-hidden="true">Open' +
+          '<span class="module-action-arrow">\u2197</span>' +
+        '</span>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+}
+
+renderModules();
+
+// Iframe height sender for Canvas and Kajabi embedding
+(function() {
+  const FRAME_ID = 'anatomy-hub';
+  function sendHeight() {
+    try {
+      const height = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight,
+        document.body.offsetHeight
+      );
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'setHeight', id: FRAME_ID, height: height }, '*');
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(sendHeight);
+    ro.observe(document.body);
+  }
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+  setTimeout(sendHeight, 1500);
+})();
+</script>
+</body>
+</html>
