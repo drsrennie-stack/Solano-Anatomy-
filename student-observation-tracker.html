@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Observation Tracker | BIO 004</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #15262F;
+  --ink-soft: #555555;
+  --terra: #A0402A;
+  --ocean-deep: #1E3D4C;
+  --ocean-mid: #335E6E;
+  --border: #555555;
+  --border-soft: #999999;
+  --bg: #FFFFFF;
+  --bg-shade: #F4F2EC;
+  --bg-shade-deep: #EBE8DF;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg); }
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  color: var(--ink);
+  font-size: 9.5pt;
+  line-height: 1.4;
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.sheet {
+  max-width: 10.4in;
+  margin: 0 auto;
+  padding: 0.4in 0;
+}
+
+.page {
+  page-break-after: always;
+  padding-bottom: 20px;
+}
+
+.page:last-child { page-break-after: auto; }
+
+.hdr {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--terra);
+  margin-bottom: 10px;
+}
+
+.hdr-left .course {
+  font-size: 8pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  font-weight: 600;
+}
+
+.hdr-left .title {
+  font-size: 16pt;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.05;
+  margin-top: 2px;
+}
+
+.hdr-right {
+  text-align: right;
+  font-size: 8pt;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+.key {
+  background: var(--bg-shade);
+  border: 1px solid var(--border-soft);
+  border-radius: 3px;
+  padding: 7px 11px;
+  margin-bottom: 10px;
+  font-size: 8.5pt;
+  line-height: 1.5;
+  display: flex;
+  gap: 22px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.key-block strong {
+  color: var(--terra);
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.key code {
+  display: inline-block;
+  min-width: 16px;
+  padding: 1px 5px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 9pt;
+  margin-right: 3px;
+  text-align: center;
+}
+
+.roster {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 8.5pt;
+  margin-bottom: 12px;
+}
+
+.roster th {
+  background: var(--bg-shade-deep);
+  padding: 5px 4px;
+  font-weight: 700;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--border);
+  text-align: center;
+  color: var(--ocean-deep);
+}
+
+.roster th.name-col {
+  width: 22%;
+  text-align: left;
+  padding-left: 8px;
+}
+
+.roster th.week-col {
+  width: 6.5%;
+}
+
+.roster th.flag-col {
+  width: 7%;
+}
+
+.roster th.notes-col {
+  width: 16%;
+}
+
+.roster td {
+  padding: 5px 4px;
+  border: 1px solid var(--border-soft);
+  vertical-align: middle;
+  height: 0.34in;
+}
+
+.roster td.name-cell {
+  padding-left: 8px;
+  font-size: 9pt;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.roster td.week-cell,
+.roster td.flag-cell {
+  text-align: center;
+  font-size: 10pt;
+  font-weight: 600;
+}
+
+.roster td.notes-cell {
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent,
+      transparent calc(0.2in - 1px),
+      #D5D2CC calc(0.2in - 1px),
+      #D5D2CC 0.2in
+    );
+}
+
+.team-header {
+  background: var(--ocean-mid);
+  color: #FFFFFF;
+}
+
+.team-header td {
+  padding: 4px 8px;
+  font-size: 9pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--ocean-deep);
+}
+
+.footer-note {
+  font-size: 8pt;
+  color: var(--ink-soft);
+  text-align: center;
+  margin-top: 10px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.summary-block {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.summary-card {
+  background: var(--bg-shade);
+  border: 1px solid var(--border-soft);
+  border-radius: 4px;
+  padding: 10px 14px;
+}
+
+.summary-card h3 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  border-bottom: 1px solid var(--border-soft);
+  padding-bottom: 3px;
+}
+
+.summary-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.summary-card li {
+  font-size: 8.5pt;
+  padding: 3px 0;
+  border-bottom: 1px dotted var(--border-soft);
+  line-height: 1.5;
+}
+
+.summary-card li:last-child { border-bottom: none; }
+
+.summary-card li strong {
+  color: var(--ocean-deep);
+}
+
+@page {
+  size: letter landscape;
+  margin: 0.4in;
+}
+
+@media print {
+  body { padding: 0; }
+  .sheet { max-width: none; padding: 0; }
+  .page { page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+}
+
+@media screen {
+  body { padding: 20px; }
+  .sheet {
+    background: var(--bg);
+    padding: 0.5in 0.6in;
+    margin: 20px auto;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.06);
+    border-radius: 3px;
+  }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+<section class="page">
+  <div class="hdr">
+    <div class="hdr-left">
+      <div class="course">BIO 004 Human Anatomy &middot; Summer 2026</div>
+      <div class="title">Student Observation Tracker</div>
+    </div>
+    <div class="hdr-right">
+      Weekly observations feed Clinical Professionalism rubric<br>
+      Instructor: Dr. Rennie &middot; CRN 60099<br>
+      Midterm rating: end of Week 4 &middot; Final rating: end of Week 8
+    </div>
+  </div>
+
+  <div class="key">
+    <div class="key-block">
+      <strong>Cell notation</strong>
+      <code>P</code> Prepared, engaged, on-time
+      <code>X</code> Missing bundle or app exercise
+      <code>0</code> Absent
+      <code>&starf;</code> Standout contribution
+    </div>
+    <div class="key-block">
+      <strong>Flag column</strong>
+      <code>-</code> No concerns
+      <code>!</code> One concern this week
+      <code>!!</code> Pattern emerging
+      <code>!!!</code> Intervene
+    </div>
+  </div>
+
+  <table class="roster">
+    <thead>
+      <tr>
+        <th class="name-col">Student</th>
+        <th class="week-col">Wk 1</th>
+        <th class="week-col">Wk 2</th>
+        <th class="week-col">Wk 3</th>
+        <th class="week-col">Wk 4</th>
+        <th class="week-col">Wk 5</th>
+        <th class="week-col">Wk 6</th>
+        <th class="week-col">Wk 7</th>
+        <th class="week-col">Wk 8</th>
+        <th class="flag-col">Flag</th>
+        <th class="notes-col">Notes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="team-header"><td colspan="11">Team 1</td></tr>
+      <tr><td class="name-cell">1.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">2.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">3.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">4.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">5.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">6.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+
+      <tr class="team-header"><td colspan="11">Team 2</td></tr>
+      <tr><td class="name-cell">1.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">2.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">3.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">4.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">5.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">6.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+
+      <tr class="team-header"><td colspan="11">Team 3</td></tr>
+      <tr><td class="name-cell">1.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">2.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">3.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">4.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">5.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">6.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+
+      <tr class="team-header"><td colspan="11">Team 4</td></tr>
+      <tr><td class="name-cell">1.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">2.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">3.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">4.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">5.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">6.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+
+      <tr class="team-header"><td colspan="11">Team 5</td></tr>
+      <tr><td class="name-cell">1.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">2.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">3.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">4.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">5.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+      <tr><td class="name-cell">6.</td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="week-cell"></td><td class="flag-cell"></td><td class="notes-cell"></td></tr>
+    </tbody>
+  </table>
+
+  <div class="summary-block">
+    <div class="summary-card">
+      <h3>How this feeds the rubric</h3>
+      <ul>
+        <li><strong>Preparation</strong> = pattern of P's vs. X's in the weekly cells. Consistent P's anchor high ratings; repeated X's lower them.</li>
+        <li><strong>Participation</strong> = starred cells (standout contributions) plus absence of 0's (attendance).</li>
+        <li><strong>Professionalism</strong> = flag column patterns plus notes about device policy, punctuality, respect.</li>
+        <li><strong>Growth</strong> = trajectory across the semester. Early X's followed by P's = growth. Consistent X's = flat.</li>
+      </ul>
+    </div>
+    <div class="summary-card">
+      <h3>Intervention thresholds</h3>
+      <ul>
+        <li>Two flags in a row &rarr; brief conversation with the student</li>
+        <li>Three flags total &rarr; formal check-in meeting</li>
+        <li>Any "!!!" &rarr; same-day outreach</li>
+        <li>Pattern of X's on a whole team &rarr; team-level conversation</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    This sheet is instructor-only. Transfer observations to the Clinical Professionalism Instructor Rubric at Week 4 (midterm) and Week 8 (final). Keep this tracker private &mdash; do not share with students or TAs.
+  </div>
+</section>
+
+</div>
+</body>
+</html>
