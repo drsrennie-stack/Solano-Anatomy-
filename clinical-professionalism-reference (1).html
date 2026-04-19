@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clinical Professionalism: Administration Reference | BIO 004</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #15262F;
+  --ink-soft: #3D4F5A;
+  --ink-muted: #6B7C87;
+  --terra: #A0402A;
+  --terra-soft: #C06845;
+  --ocean-deep: #1E3D4C;
+  --ocean-mid: #335E6E;
+  --sea-glass: #8FB8BF;
+  --sea-glass-mist: #DCE8EB;
+  --sand: #F2E8D5;
+  --sand-cream: #FEF9EC;
+  --border: #C8BFA8;
+  --border-soft: #E2DACC;
+  --bg-page: #F4F2EC;
+  --bg-card: #FFFFFF;
+  --bg-shade: #F8F4EA;
+  --bg-shade-deep: #EBE5D4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg-page); }
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.doc {
+  max-width: 7.3in;
+  margin: 24px auto;
+  background: var(--bg-card);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.page {
+  padding: 0.6in 0.7in;
+}
+
+.page + .page {
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ===== Cover block ===== */
+.cover {
+  text-align: center;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--terra);
+}
+
+.cover .eyebrow {
+  font-size: 9.5pt;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 10px;
+}
+
+.cover .sep {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--terra);
+  margin: 0 10px;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
+.cover h1 {
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-bottom: 8px;
+}
+
+.cover .subtitle {
+  font-size: 12.5pt;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.cover .meta {
+  font-size: 9pt;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cover .meta span {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+.confidential {
+  background: var(--sand-cream);
+  border: 1px solid var(--terra);
+  border-radius: 4px;
+  padding: 10px 16px;
+  margin: 14px 0 20px;
+  font-size: 10pt;
+  color: var(--terra);
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.confidential strong {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 9pt;
+}
+
+/* ===== TOC ===== */
+.toc {
+  background: var(--sea-glass-mist);
+  border-left: 3px solid var(--ocean-mid);
+  border-radius: 2px 4px 4px 2px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+}
+
+.toc h2 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 8px;
+}
+
+.toc ol {
+  columns: 2;
+  column-gap: 24px;
+  list-style: none;
+  padding: 0;
+  counter-reset: toc-counter;
+}
+
+.toc li {
+  padding: 3px 0;
+  font-size: 10pt;
+  color: var(--ink);
+  counter-increment: toc-counter;
+  break-inside: avoid;
+}
+
+.toc li::before {
+  content: counter(toc-counter) ". ";
+  font-weight: 700;
+  color: var(--terra);
+  margin-right: 4px;
+}
+
+.toc li a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.toc li a:hover {
+  color: var(--terra);
+  text-decoration: underline;
+}
+
+/* ===== Section heading ===== */
+.section {
+  margin-top: 28px;
+  page-break-inside: avoid;
+}
+
+.section + .section {
+  margin-top: 34px;
+}
+
+.section-num {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  background: var(--terra);
+  color: var(--sand-cream);
+  border-radius: 50%;
+  text-align: center;
+  line-height: 32px;
+  font-weight: 700;
+  font-size: 13pt;
+  margin-right: 12px;
+  vertical-align: middle;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+h2.section-title {
+  font-size: 17pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: -0.015em;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  line-height: 1.2;
+}
+
+h2.section-title .title-text {
+  vertical-align: middle;
+}
+
+h3 {
+  font-size: 11.5pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: -0.005em;
+  margin: 18px 0 8px;
+}
+
+h4 {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 14px 0 6px;
+}
+
+p {
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+p:last-child { margin-bottom: 0; }
+
+ul, ol {
+  margin: 8px 0 14px 0;
+  padding-left: 22px;
+}
+
+ul li, ol li {
+  margin-bottom: 5px;
+  line-height: 1.55;
+}
+
+ul ul, ol ol, ul ol, ol ul {
+  margin: 4px 0 6px;
+}
+
+strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+em {
+  font-style: italic;
+  color: var(--ink-soft);
+}
+
+code {
+  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  background: var(--bg-shade-deep);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-size: 9.5pt;
+  color: var(--terra);
+  font-weight: 500;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+pre {
+  background: var(--bg-shade-deep);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin: 10px 0;
+  font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+  font-size: 9.5pt;
+  color: var(--ink);
+  line-height: 1.5;
+  overflow-x: auto;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  color: inherit;
+  font-weight: 400;
+}
+
+/* ===== Tables ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 12px 0 16px;
+  font-size: 9.5pt;
+  background: var(--bg-card);
+}
+
+table th {
+  background: var(--ocean-deep);
+  color: var(--sand-cream);
+  padding: 8px 10px;
+  font-weight: 700;
+  text-align: left;
+  font-size: 9pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--ocean-deep);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+table td {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+table tr:nth-child(even) td {
+  background: var(--bg-shade);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ===== Callouts ===== */
+.callout {
+  background: var(--sand-cream);
+  border-left: 4px solid var(--terra);
+  padding: 12px 16px;
+  border-radius: 2px 4px 4px 2px;
+  margin: 14px 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.callout.info {
+  background: var(--sea-glass-mist);
+  border-left-color: var(--ocean-mid);
+}
+
+.callout.warn {
+  background: #FBF4E4;
+  border-left-color: #8A6420;
+}
+
+.callout strong:first-child {
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 9pt;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.callout.info strong:first-child { color: var(--ocean-deep); }
+.callout.warn strong:first-child { color: #8A6420; }
+
+/* ===== Checklist ===== */
+.checklist {
+  list-style: none;
+  padding-left: 0;
+  margin: 10px 0;
+}
+
+.checklist li {
+  padding: 5px 0 5px 28px;
+  position: relative;
+  font-size: 10pt;
+  line-height: 1.55;
+  border-bottom: 1px dotted var(--border-soft);
+}
+
+.checklist li:last-child { border-bottom: none; }
+
+.checklist li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 9px;
+  width: 14px;
+  height: 14px;
+  border: 1.5px solid var(--ocean-mid);
+  border-radius: 2px;
+  background: var(--bg-card);
+}
+
+.checklist.sub-group {
+  margin: 4px 0 4px 20px;
+  padding-left: 8px;
+  border-left: 1px solid var(--border-soft);
+}
+
+/* ===== Example box ===== */
+.example {
+  background: var(--bg-shade);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 12px 16px;
+  margin: 12px 0;
+  font-size: 9.5pt;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.example-label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 6px;
+}
+
+.example ul {
+  margin: 5px 0;
+}
+
+/* ===== Action button ===== */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 24px 0 8px;
+  padding-top: 18px;
+  border-top: 2px solid var(--sea-glass-mist);
+}
+
+.btn {
+  padding: 11px 22px;
+  border: 2px solid var(--ocean-deep);
+  background: var(--ocean-deep);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.btn:hover {
+  background: var(--ocean-mid);
+  border-color: var(--ocean-mid);
+}
+
+/* ===== Footer ===== */
+.foot {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+  font-size: 8.5pt;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ===== Print styles ===== */
+@page {
+  size: letter portrait;
+  margin: 0.55in;
+}
+
+@media print {
+  html, body {
+    background: #FFFFFF !important;
+    font-size: 10.5pt;
+  }
+  .doc {
+    max-width: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #FFFFFF !important;
+  }
+  .page {
+    padding: 0 !important;
+  }
+  .page + .page {
+    border-top: none !important;
+    page-break-before: always;
+  }
+  .actions, .screen-only {
+    display: none !important;
+  }
+  .section {
+    page-break-inside: auto;
+  }
+  h2.section-title, h3 {
+    page-break-after: avoid;
+  }
+  table {
+    page-break-inside: avoid;
+  }
+  .callout, .example {
+    page-break-inside: avoid;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="doc">
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">BIO 004 <span class="sep"></span> Summer 2026</div>
+    <h1>Clinical Professionalism</h1>
+    <div class="subtitle">Administration Reference</div>
+    <div class="meta">Dr. Rennie <span>&middot;</span> Solano Community College <span>&middot;</span> CRN 60099</div>
+  </div>
+
+  <div class="confidential">
+    <strong>Private instructor reference.</strong> Do not distribute to students.
+  </div>
+
+  <nav class="toc" aria-label="Table of contents">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s1">Grade Structure Summary</a></li>
+      <li><a href="#s2">Peer Review: Fillable PDF Workflow</a></li>
+      <li><a href="#s3">Calculation Workflow</a></li>
+      <li><a href="#s4">Spreadsheet Template</a></li>
+      <li><a href="#s5">Weekly Flag Check Protocol</a></li>
+      <li><a href="#s6">Policy Quick Reference</a></li>
+      <li><a href="#s7">Timeline Checklist</a></li>
+      <li><a href="#s8">Common Scenarios</a></li>
+      <li><a href="#s9">Related Documents</a></li>
+    </ol>
+  </nav>
+
+  <!-- =================== SECTION 1 =================== -->
+  <section class="section" id="s1">
+    <h2 class="section-title"><span class="section-num">1</span><span class="title-text">Grade Structure Summary</span></h2>
+
+    <p>The Clinical Professionalism grade is 10% of the course grade. Two inputs combine:</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Input</th>
+          <th>Weight within CP grade</th>
+          <th>Percent of course grade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Instructor evaluation (you)</td>
+          <td>Two thirds</td>
+          <td>6.67%</td>
+        </tr>
+        <tr>
+          <td>Peer evaluation (teammates)</td>
+          <td>One third</td>
+          <td>3.33%</td>
+        </tr>
+        <tr>
+          <td><strong>Total</strong></td>
+          <td><strong>100%</strong></td>
+          <td><strong>10%</strong></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>Evaluation cycles split evenly within the CP grade:</p>
+    <ul>
+      <li>Week 4 midterm cycle: 50% of CP grade (5 points of 10)</li>
+      <li>Week 8 final cycle: 50% of CP grade (5 points of 10)</li>
+    </ul>
+    <p>Each cycle evaluates the preceding four weeks of observation.</p>
+  </section>
+
+  <!-- =================== SECTION 2 =================== -->
+  <section class="section" id="s2">
+    <h2 class="section-title"><span class="section-num">2</span><span class="title-text">Peer Review: Fillable PDF Workflow</span></h2>
+
+    <p>Students use a browser-based fillable form to evaluate each teammate. One form per teammate. Students save the completed form as a PDF and upload to Canvas.</p>
+
+    <h3>File used by students</h3>
+    <p><code>clinical-professionalism-peer-review.html</code></p>
+    <p>Host this file where students can access it: Canvas page embed, GitHub Pages URL, or direct file download. Students open in any modern browser.</p>
+
+    <h3>Student workflow</h3>
+    <p>For each evaluation cycle (Midterm and Final):</p>
+    <ol>
+      <li>Student opens the peer review form in a browser</li>
+      <li>Fills in own name, team, selects Midterm or Final cycle, signs, dates</li>
+      <li>Types first teammate's name in the ocean-deep banner at the top</li>
+      <li>Clicks a rating (4 / 3 / 2 / 1) for each of four dimensions</li>
+      <li>Writes justification if required (all 4s, or any 1)</li>
+      <li>Clicks <strong>Save as PDF</strong> button</li>
+      <li>In browser's print dialog, selects "Save as PDF" as destination</li>
+      <li>Saves PDF with auto-suggested filename <code>PeerEval_[RaterLast]_rates_[TeammateLast]_[Cycle].pdf</code></li>
+      <li>Uploads PDF to Canvas peer evaluation assignment</li>
+      <li>Clicks <strong>Start next teammate</strong> button (keeps own info, clears teammate fields)</li>
+      <li>Repeats steps 3 through 9 for next teammate</li>
+      <li>Continues until all teammates evaluated. Submits N total PDFs where N equals number of teammates</li>
+    </ol>
+
+    <h3>What the form captures per teammate</h3>
+    <ul>
+      <li>Rater's name, team, cycle, date, signature</li>
+      <li>Teammate's name being evaluated</li>
+      <li>Four dimension rubric ratings (Preparation, Participation, Professionalism, Growth), scored 1 to 4 each</li>
+      <li>Auto-calculated raw score (out of 16) and percentage</li>
+      <li>Justification text (required if extreme ratings triggered)</li>
+      <li>Date submitted</li>
+    </ul>
+
+    <h3>Canvas setup</h3>
+    <p>Create two Canvas assignments (one per cycle):</p>
+
+    <div class="callout info">
+      <strong>Assignment: "CP Peer Review, Midterm"</strong>
+      <ul>
+        <li>Due date: Saturday end of day following Week 4 Thursday TBL</li>
+        <li>Points: 0 (non-gradebook. You post the computed CP grade separately)</li>
+        <li>Submission type: File upload</li>
+        <li>Allowed file types: PDF</li>
+        <li>Multiple file uploads: Enabled (students submit one PDF per teammate)</li>
+        <li>Instructions: Link to peer review form, explain one-PDF-per-teammate rule</li>
+      </ul>
+    </div>
+
+    <div class="callout info">
+      <strong>Assignment: "CP Peer Review, Final"</strong>
+      <ul>
+        <li>Same setup as Midterm</li>
+        <li>Due date: Saturday end of day following Week 8 Thursday TBL</li>
+      </ul>
+    </div>
+
+    <h3>What to do with submitted PDFs</h3>
+    <ol>
+      <li>Download all PDFs from Canvas (use bulk download option)</li>
+      <li>Filename convention makes sorting easy: <code>PeerEval_[rater]_rates_[teammate]_[cycle].pdf</code></li>
+      <li>Group by teammate (who is being evaluated) rather than by rater</li>
+      <li>Read each teammate's incoming evaluations. Enter rating data into spreadsheet (see Section 3)</li>
+      <li>Moderate for fairness (see Section 3, Step 3)</li>
+      <li>Archive the PDFs in a secured folder for chain of custody</li>
+    </ol>
+
+    <h3>Instructor's own rubric follows the same workflow</h3>
+    <p>You use <code>clinical-professionalism-rubric-instructor.html</code>, which follows the same form pattern:</p>
+    <ol>
+      <li>Open form in browser</li>
+      <li>Fill student name, team, select cycle</li>
+      <li>Click ratings for each dimension</li>
+      <li>Watch auto-calculated totals update (Raw score, %, Cycle Points out of 5)</li>
+      <li>Fill evidence counts (HW bundles, app exercises, attendance, violations)</li>
+      <li>Add observations and justification</li>
+      <li>Sign</li>
+      <li>Click <strong>Save as PDF</strong>. Filename saves as <code>CP_Rubric_[StudentLast]_[Cycle].pdf</code></li>
+      <li>Optionally upload to Canvas as instructor comment on the student's grade entry</li>
+      <li>Click <strong>Clear form</strong> for the next student</li>
+    </ol>
+    <p>Do this twice per student (midterm and final). Total instructor PDFs per semester: student count multiplied by 2. For 30 students, that is 60 PDFs.</p>
+  </section>
+</div>
+
+<div class="page">
+  <!-- =================== SECTION 3 =================== -->
+  <section class="section" id="s3">
+    <h2 class="section-title"><span class="section-num">3</span><span class="title-text">Calculation Workflow</span></h2>
+
+    <p>Per-student calculation (run once per cycle, per student).</p>
+
+    <h4>Step 1: Instructor raw score</h4>
+    <p>From your Clinical Professionalism Instructor Rubric, total the four dimension ratings (1 to 4 each) to get raw score out of 16. Convert to percentage:</p>
+    <pre><code>Instructor % = (Raw score / 16) &times; 100</code></pre>
+
+    <h4>Step 2: Peer average score</h4>
+    <p>Collect all peer ratings for this student from submitted PDFs. Average across all evaluators. If the student has four teammates, four evaluations contribute. Each evaluation has four ratings (Preparation, Participation, Professionalism, Growth), each out of 4.</p>
+    <pre><code>Per evaluator raw = sum of 4 dimensions, out of 16
+Per evaluator %   = (raw / 16) &times; 100
+Peer average %    = average of all evaluator %s</code></pre>
+
+    <h4>Step 3: Moderate outliers</h4>
+    <p>Before averaging peer scores, spot check for these patterns:</p>
+    <ul>
+      <li><strong>One extreme rating in a pattern of moderate ratings.</strong> If three teammates rate a student "Usually" or "Sometimes" and one rates "Rarely," scrutinize the outlier. Read the justification. If the justification is weak or suggests retaliation or bias, discount the outlier from the peer average.</li>
+      <li><strong>All 4s from one teammate across all peers rated.</strong> Probably a student who rated everyone generously. Not punitive, but flag for caution in interpretation.</li>
+      <li><strong>Clearly retaliatory patterns.</strong> If Student A rated Student B poorly AND Student B rated Student A poorly, check the justifications on both. Discount either, both, or neither based on evidence.</li>
+    </ul>
+    <p>Document any moderation decisions briefly for your records.</p>
+
+    <h4>Step 4: Combine into CP cycle score</h4>
+    <pre><code>CP cycle % = (Instructor % &times; 2/3) + (Peer average % &times; 1/3)</code></pre>
+
+    <h4>Step 5: Convert to cycle points (out of 5)</h4>
+    <pre><code>Cycle points = (CP cycle % / 100) &times; 5</code></pre>
+
+    <h4>Step 6: Calculate final CP grade at end of course</h4>
+    <pre><code>Final CP grade (out of 10) = Midterm cycle points + Final cycle points</code></pre>
+
+    <h3>Worked example</h3>
+    <div class="example">
+      <div class="example-label">Example calculation</div>
+      <p><strong>Midterm instructor ratings:</strong> Preparation 4, Participation 3, Professionalism 4, Growth 3. Raw = 14/16 = 87.5%.</p>
+      <p><strong>Four peer evaluators</strong> gave percentages of 88%, 75%, 90%, 82%. Peer average = 83.75%.</p>
+      <pre><code>Midterm CP % = (87.5 &times; 2/3) + (83.75 &times; 1/3)
+             = 58.33 + 27.92
+             = 86.25%
+
+Midterm cycle points = (86.25 / 100) &times; 5 = 4.31 / 5</code></pre>
+      <p>If this student earns similar scores at final:</p>
+      <pre><code>Final CP grade = 4.31 + 4.31 = 8.62 / 10 (86.2%)</code></pre>
+      <p>That translates to 8.62% of the 100% course grade.</p>
+    </div>
+  </section>
+
+  <!-- =================== SECTION 4 =================== -->
+  <section class="section" id="s4">
+    <h2 class="section-title"><span class="section-num">4</span><span class="title-text">Spreadsheet Template</span></h2>
+
+    <p>Create a Google Sheet with the following columns for each cycle:</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Column</th>
+          <th>Formula or content</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Student</td><td>Name</td></tr>
+        <tr><td>Team</td><td>Team number or name</td></tr>
+        <tr><td>I-Prep, I-Part, I-Prof, I-Growth</td><td>Instructor ratings 1 to 4</td></tr>
+        <tr><td>I-Total /16</td><td><code>=SUM(C2:F2)</code></td></tr>
+        <tr><td>I-%</td><td><code>=G2/16*100</code></td></tr>
+        <tr><td>P1-%, P2-%, P3-%, P4-%</td><td>Per-evaluator peer percentages</td></tr>
+        <tr><td>Peer-avg</td><td><code>=AVERAGE(I2:L2)</code> with IFERROR wrapper for missing values</td></tr>
+        <tr><td>Cycle %</td><td><code>=(H2*2/3)+(M2*1/3)</code></td></tr>
+        <tr><td>Cycle pts /5</td><td><code>=N2/100*5</code></td></tr>
+        <tr><td>Moderation notes</td><td>Free text for outlier decisions</td></tr>
+      </tbody>
+    </table>
+
+    <p>Keep two sheets: one for midterm, one for final. A third "Combined" sheet pulls both cycle points columns into a final CP grade out of 10.</p>
+  </section>
+
+  <!-- =================== SECTION 5 =================== -->
+  <section class="section" id="s5">
+    <h2 class="section-title"><span class="section-num">5</span><span class="title-text">Weekly Flag Check Protocol</span></h2>
+
+    <p>Not graded. Runs every Thursday after TBL. Purpose: early warning for student or team issues before they compound.</p>
+
+    <h3>Simple Google Form (or paper slip)</h3>
+    <p>For each team member except self: "Pulled their weight this week? Green / Yellow / Red."</p>
+
+    <h3>Interpretation</h3>
+    <ul>
+      <li><strong>All green across the team:</strong> Team is healthy. No action.</li>
+      <li><strong>One or two yellows scattered:</strong> Normal variation. No action unless repeated.</li>
+      <li><strong>Two yellows on the same student in consecutive weeks:</strong> Send a brief private email to check in.</li>
+      <li><strong>Three consecutive yellows OR any red:</strong> Schedule a private conversation. Document the date.</li>
+      <li><strong>Full-team red from one student:</strong> Separate issue. Address individually. May indicate reshuffling need.</li>
+    </ul>
+
+    <div class="callout">
+      <strong>Confidentiality</strong>
+      Flag check data is NOT shared with the rated student. It is your early warning system.
+    </div>
+  </section>
+</div>
+
+<div class="page">
+  <!-- =================== SECTION 6 =================== -->
+  <section class="section" id="s6">
+    <h2 class="section-title"><span class="section-num">6</span><span class="title-text">Policy Quick Reference</span></h2>
+
+    <h3>What students see in the syllabus</h3>
+    <ul>
+      <li>10% of grade</li>
+      <li>Split two thirds instructor plus one third peer</li>
+      <li>Rated on four dimensions (Preparation, Participation, Professionalism, Growth)</li>
+      <li>Two evaluation cycles (Week 4 midterm, Week 8 final)</li>
+      <li>Rubric is published. They see the same one you use.</li>
+      <li>Peer evaluations are confidential to Dr. Rennie</li>
+      <li>Weekly flag check is not graded</li>
+    </ul>
+
+    <h3>What students do NOT see</h3>
+    <ul>
+      <li>Your moderation decisions</li>
+      <li>Specific peer ratings of them</li>
+      <li>The observation tracker</li>
+    </ul>
+
+    <h3>Student responsibilities</h3>
+    <ul>
+      <li>Complete homework bundles on schedule</li>
+      <li>Participate in Wednesday application exercises</li>
+      <li>Show up prepared, on time, professional</li>
+      <li>Complete peer review within the 48 hour window at Week 4 and Week 8</li>
+      <li>Justify extreme ratings with specific observations</li>
+    </ul>
+
+    <h3>Appeal process</h3>
+    <p>If a student disputes their CP grade:</p>
+    <ol>
+      <li>Student requests a meeting in writing within 7 days of grade posting</li>
+      <li>Meeting is held to review the rubric ratings and general reasoning without exposing specific peer raters</li>
+      <li>Instructor's ratings, peer average percentage, and moderation notes are the basis for discussion</li>
+      <li>If a clerical error is found, grade is corrected. If not, grade stands.</li>
+      <li>Peer identities remain confidential throughout the process.</li>
+    </ol>
+  </section>
+
+  <!-- =================== SECTION 7 =================== -->
+  <section class="section" id="s7">
+    <h2 class="section-title"><span class="section-num">7</span><span class="title-text">Timeline Checklist</span></h2>
+
+    <h3>Pre-course (before Week 1)</h3>
+    <ul class="checklist">
+      <li>Host the two fillable forms where students and instructor can access them: <code>clinical-professionalism-rubric-instructor.html</code> (instructor only) and <code>clinical-professionalism-peer-review.html</code> (student facing)</li>
+      <li>Option A: Upload HTML files to the Solano-Anatomy- GitHub Pages repo</li>
+      <li>Option B: Embed each in a Canvas page with full-screen iframe</li>
+      <li>Option C: Link to direct file downloads students open in browser</li>
+      <li>Create Canvas assignments for midterm and final peer review (File Upload, multiple PDFs enabled)</li>
+      <li>Create Weekly Flag Check Google Form (this remains a Google Form, simpler for 60 second checks)</li>
+      <li>Set up spreadsheet for score tracking (see Section 4)</li>
+      <li>Load Student Observation Tracker in browser. Type in student names (auto-saves)</li>
+      <li>Confirm CP policy section is current in syllabus (see <code>syllabus.html</code>)</li>
+    </ul>
+
+    <h3>Each Thursday (Weeks 1 to 8)</h3>
+    <ul class="checklist">
+      <li>Activate Weekly Flag Check Google Form after TBL</li>
+      <li>Review flag responses that evening or next morning</li>
+      <li>Note observations on Student Observation Tracker</li>
+      <li>Reach out privately if thresholds triggered</li>
+    </ul>
+
+    <h3>End of Week 4 (midterm cycle)</h3>
+    <ul class="checklist">
+      <li>Open Canvas midterm peer review assignment Thursday after TBL</li>
+      <li>Set submission window (suggest 48 hours, closing Saturday midnight)</li>
+      <li>Remind students: one PDF per teammate, N uploads per student</li>
+      <li>Complete Instructor Rubric PDF for each student (60 PDFs total across semester)</li>
+      <li>Download all peer review PDFs from Canvas (bulk download)</li>
+      <li>Sort PDFs by teammate being evaluated (use filename convention)</li>
+      <li>Enter rating data into spreadsheet</li>
+      <li>Spot check for moderation issues</li>
+      <li>Calculate midterm cycle points</li>
+      <li>Post midterm CP scores to Canvas (optional, you can post only at end of course)</li>
+      <li>Archive submission PDFs in secured folder</li>
+    </ul>
+
+    <h3>End of Week 8 (final cycle)</h3>
+    <ul class="checklist">
+      <li>Open Canvas final peer review assignment Thursday after TBL</li>
+      <li>Set 48 hour submission window</li>
+      <li>Complete Instructor Rubric PDF for each student</li>
+      <li>Download all peer review PDFs, sort, enter data</li>
+      <li>Spot check for moderation issues</li>
+      <li>Calculate final cycle points</li>
+      <li>Sum midterm plus final for total CP grade</li>
+      <li>Post final CP grade to Canvas</li>
+      <li>Archive all PDFs (instructor rubrics plus peer reviews) in a locked folder for academic integrity chain of custody</li>
+    </ul>
+  </section>
+</div>
+
+<div class="page">
+  <!-- =================== SECTION 8 =================== -->
+  <section class="section" id="s8">
+    <h2 class="section-title"><span class="section-num">8</span><span class="title-text">Common Scenarios</span></h2>
+
+    <div class="callout info">
+      <strong>A student misses one peer review window (didn't submit)</strong>
+      They receive a zero on the 1/3 peer contribution they were supposed to submit. Their own CP grade still receives the peer input from teammates who DID rate them. Document the missed submission.
+    </div>
+
+    <div class="callout info">
+      <strong>A student is absent during flag check Thursday</strong>
+      No action needed. Flag check is not graded. If absence patterns emerge, note in observation tracker.
+    </div>
+
+    <div class="callout info">
+      <strong>A student rates everyone identically (all 4s, or all 2s) at peer review</strong>
+      Not automatically invalidated, but treated with caution. Look at whether the ratings make sense with observed team behavior. If the rater is trying to avoid giving honest feedback, moderate accordingly.
+    </div>
+
+    <div class="callout warn">
+      <strong>A teammate writes an angry or retaliatory justification</strong>
+      Document it. Consider discounting that rating from the peer average for that teammate. If the justification suggests a serious interpersonal issue, schedule a private conversation with both students involved.
+    </div>
+
+    <div class="callout info">
+      <strong>A student on a team of 5 has only 3 teammates rate them (one absent, one missed the form)</strong>
+      Peer average is based on the 3 submitted ratings. Still valid. Document the incomplete data.
+    </div>
+
+    <div class="callout warn">
+      <strong>A student requests to see their peer ratings</strong>
+      Decline. Share the aggregated percentage and the rubric, but not individual ratings or rater identities. This is the confidentiality promise you made in the syllabus.
+    </div>
+  </section>
+
+  <!-- =================== SECTION 9 =================== -->
+  <section class="section" id="s9">
+    <h2 class="section-title"><span class="section-num">9</span><span class="title-text">Related Documents</span></h2>
+
+    <h3>Student facing</h3>
+    <ul>
+      <li><strong>Syllabus:</strong> Clinical Professionalism section, <code>syllabus.html</code></li>
+      <li><strong>Peer review fillable form:</strong> <code>clinical-professionalism-peer-review.html</code>. Students open in browser, fill out, save as PDF, upload to Canvas (one PDF per teammate).</li>
+    </ul>
+
+    <h3>Instructor facing</h3>
+    <ul>
+      <li><strong>Instructor rubric fillable form:</strong> <code>clinical-professionalism-rubric-instructor.html</code>. You open in browser, fill out for each student, save as PDF.</li>
+      <li><strong>Student observation tracker:</strong> <code>student-observation-tracker.html</code>. Fillable weekly tracking grid with auto-save.</li>
+      <li><strong>Paper backup rubric (optional):</strong> <code>clinical-professionalism-rubric.html</code>. Original print only version. Use if Canvas or fillable forms unavailable.</li>
+      <li><strong>This reference:</strong> <code>clinical-professionalism-reference.html</code></li>
+    </ul>
+
+    <h3>Also used</h3>
+    <ul>
+      <li>Weekly Flag Check Google Form. Create separately. Link in Canvas each Thursday.</li>
+      <li>Scoring spreadsheet. Google Sheet. Structure described in Section 4.</li>
+    </ul>
+
+    <div class="actions screen-only">
+      <button type="button" class="btn" onclick="saveAsPDF()">Save as PDF</button>
+    </div>
+
+    <div class="foot">
+      Last updated: Summer 2026 course build. Subject to revision based on first run experience.
+    </div>
+  </section>
+</div>
+
+</div>
+
+<script>
+function saveAsPDF() {
+  const savedTitle = document.title;
+  document.title = 'CP_Administration_Reference_BIO004';
+  window.print();
+  setTimeout(() => { document.title = savedTitle; }, 1500);
+}
+</script>
+
+</body>
+</html>

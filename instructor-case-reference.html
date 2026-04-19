@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instructor Case Reference | BIO 004</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #15262F;
+  --ink-soft: #3D4F5A;
+  --ink-muted: #6B7C87;
+  --terra: #A0402A;
+  --terra-soft: #C06845;
+  --ocean-deep: #1E3D4C;
+  --ocean-mid: #335E6E;
+  --sea-glass: #8FB8BF;
+  --sea-glass-mist: #DCE8EB;
+  --sand: #F2E8D5;
+  --sand-cream: #FEF9EC;
+  --border: #C8BFA8;
+  --border-soft: #E2DACC;
+  --bg-page: #F4F2EC;
+  --bg-card: #FFFFFF;
+  --bg-shade: #F8F4EA;
+  --bg-shade-deep: #EBE5D4;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { background: var(--bg-page); }
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--ink);
+  font-size: 10.5pt;
+  line-height: 1.55;
+  background: var(--bg-page);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.doc {
+  max-width: 7.3in;
+  margin: 24px auto;
+  background: var(--bg-card);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.page {
+  padding: 0.6in 0.7in;
+}
+
+.page + .page {
+  border-top: 1px solid var(--border-soft);
+}
+
+/* ===== Cover block ===== */
+.cover {
+  text-align: center;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+  border-bottom: 2px solid var(--terra);
+}
+
+.cover .eyebrow {
+  font-size: 9.5pt;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--terra);
+  margin-bottom: 10px;
+}
+
+.cover .sep {
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--terra);
+  margin: 0 10px;
+  vertical-align: middle;
+  opacity: 0.7;
+}
+
+.cover h1 {
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-bottom: 8px;
+}
+
+.cover .subtitle {
+  font-size: 12.5pt;
+  color: var(--ink-soft);
+  font-style: italic;
+  margin-bottom: 14px;
+}
+
+.cover .meta {
+  font-size: 9pt;
+  color: var(--ink-muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cover .meta span {
+  margin: 0 6px;
+  opacity: 0.5;
+}
+
+.confidential {
+  background: var(--sand-cream);
+  border: 1.5px solid var(--terra);
+  border-radius: 4px;
+  padding: 12px 18px;
+  margin: 14px 0 24px;
+  font-size: 10pt;
+  color: var(--terra);
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.confidential strong {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-size: 9pt;
+  display: block;
+  margin-bottom: 3px;
+}
+
+/* ===== Intro paragraph ===== */
+.intro {
+  background: var(--sea-glass-mist);
+  border-left: 3px solid var(--ocean-mid);
+  border-radius: 2px 4px 4px 2px;
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  font-size: 10pt;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.intro em {
+  font-style: italic;
+  color: var(--ocean-deep);
+  font-weight: 500;
+}
+
+/* ===== Case summary table ===== */
+.summary-table {
+  margin-bottom: 28px;
+}
+
+.summary-table h2 {
+  font-size: 11pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+
+table.overview {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 9.5pt;
+}
+
+table.overview th {
+  background: var(--ocean-deep);
+  color: var(--sand-cream);
+  padding: 8px 10px;
+  font-weight: 700;
+  text-align: left;
+  font-size: 9pt;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid var(--ocean-deep);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+table.overview td {
+  padding: 7px 10px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.5;
+}
+
+table.overview td:first-child {
+  font-weight: 700;
+  color: var(--terra);
+  white-space: nowrap;
+  width: 10%;
+}
+
+table.overview td:nth-child(2) {
+  width: 18%;
+  color: var(--ink-soft);
+  font-size: 9pt;
+}
+
+table.overview tr:nth-child(even) td {
+  background: var(--bg-shade);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ===== Case card ===== */
+.case {
+  margin-bottom: 28px;
+  padding: 20px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  position: relative;
+  page-break-inside: avoid;
+}
+
+.case::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--terra);
+  border-radius: 6px 6px 0 0;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+  border-bottom: 1px solid var(--border-soft);
+  flex-wrap: wrap;
+}
+
+.case-label {
+  font-size: 10pt;
+  font-weight: 700;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.case-label .num {
+  font-size: 14pt;
+  font-weight: 700;
+  letter-spacing: 0;
+  color: var(--ocean-deep);
+  margin-right: 4px;
+}
+
+.case-dates {
+  font-size: 9pt;
+  color: var(--ink-muted);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.case-diagnosis {
+  margin: 10px 0 14px;
+}
+
+.case-diagnosis-label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 3px;
+}
+
+.case-diagnosis-value {
+  font-size: 14pt;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: -0.005em;
+  line-height: 1.2;
+}
+
+.module-tag {
+  display: inline-block;
+  background: var(--sea-glass-mist);
+  color: var(--ocean-deep);
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 8.5pt;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 14px;
+  border: 1px solid var(--sea-glass);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.case-section {
+  margin-top: 14px;
+}
+
+.case-section h4 {
+  font-size: 9.5pt;
+  font-weight: 700;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+  padding-left: 10px;
+  border-left: 3px solid var(--terra);
+  line-height: 1.3;
+}
+
+.case-section ul {
+  padding-left: 24px;
+  margin: 6px 0;
+}
+
+.case-section ul li {
+  margin-bottom: 4px;
+  line-height: 1.55;
+  font-size: 10pt;
+}
+
+.teaching-note {
+  background: var(--bg-shade);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 10px 14px;
+  margin-top: 12px;
+  font-size: 9.5pt;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.teaching-note-label {
+  font-size: 8.5pt;
+  font-weight: 700;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.teaching-note strong { color: var(--ocean-deep); }
+
+/* ===== Closing notes ===== */
+.closing {
+  margin-top: 30px;
+  padding: 16px 20px;
+  background: var(--sand-cream);
+  border-left: 3px solid var(--terra);
+  border-radius: 2px 4px 4px 2px;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+.closing h2 {
+  font-size: 10.5pt;
+  font-weight: 700;
+  color: var(--terra);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.closing ul {
+  padding-left: 22px;
+  margin: 6px 0 0;
+}
+
+.closing ul li {
+  margin-bottom: 4px;
+  font-size: 10pt;
+  line-height: 1.55;
+}
+
+strong { font-weight: 700; color: var(--ink); }
+
+/* ===== Action button ===== */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 24px 0 8px;
+  padding-top: 18px;
+  border-top: 2px solid var(--sea-glass-mist);
+}
+
+.btn {
+  padding: 11px 22px;
+  border: 2px solid var(--ocean-deep);
+  background: var(--ocean-deep);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s;
+}
+
+.btn:hover {
+  background: var(--ocean-mid);
+  border-color: var(--ocean-mid);
+}
+
+/* ===== Footer ===== */
+.foot {
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border-soft);
+  font-size: 8.5pt;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* ===== Print styles ===== */
+@page {
+  size: letter portrait;
+  margin: 0.55in;
+}
+
+@media print {
+  html, body {
+    background: #FFFFFF !important;
+    font-size: 10.5pt;
+  }
+  .doc {
+    max-width: none !important;
+    margin: 0 !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    background: #FFFFFF !important;
+  }
+  .page { padding: 0 !important; }
+  .page + .page {
+    border-top: none !important;
+    page-break-before: always;
+  }
+  .actions, .screen-only { display: none !important; }
+  .case { page-break-inside: avoid; }
+  a { color: inherit; text-decoration: none; }
+}
+</style>
+</head>
+<body>
+
+<div class="doc">
+<div class="page">
+
+  <div class="cover">
+    <div class="eyebrow">BIO 004 <span class="sep"></span> Summer 2026</div>
+    <h1>Instructor Case Reference</h1>
+    <div class="subtitle">Unknown Case Diagnoses and Teaching Points</div>
+    <div class="meta">Dr. Rennie <span>&middot;</span> Solano Community College <span>&middot;</span> CRN 60099</div>
+  </div>
+
+  <div class="confidential">
+    <strong>Private instructor reference</strong>
+    Do NOT share with students. The public schedule displays these as "Unknown Case N" to preserve the diagnostic reasoning challenge across semesters.
+  </div>
+
+  <div class="intro">
+    <p>This document maps each week's <em>Unknown Case</em> on the public schedule to its actual diagnosis, structural teaching points, and the differential students should build. The cases on the student facing schedule display only as "Unknown Case N" so the page can be reused across semesters with different underlying diagnoses.</p>
+  </div>
+
+  <div class="summary-table">
+    <h2>Course overview, all 8 cases</h2>
+    <table class="overview">
+      <thead>
+        <tr>
+          <th>Case</th>
+          <th>Week and dates</th>
+          <th>Diagnosis</th>
+          <th>Module alignment</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Case 1</td>
+          <td>Wk 1 <br>Jun 15 to 18</td>
+          <td>Burn injury</td>
+          <td>Module 1: introduction, cell, tissues, integumentary</td>
+        </tr>
+        <tr>
+          <td>Case 2</td>
+          <td>Wk 2 <br>Jun 22 to 25</td>
+          <td>Osteogenesis imperfecta with fractures</td>
+          <td>Module 2 Part 1: cartilage, bone, axial skeleton</td>
+        </tr>
+        <tr>
+          <td>Case 3</td>
+          <td>Wk 3 <br>Jun 29 to Jul 2</td>
+          <td>Marfan syndrome</td>
+          <td>Module 2 Part 2: axial column, appendicular, joints</td>
+        </tr>
+        <tr>
+          <td>Case 4</td>
+          <td>Wk 4 <br>Jul 6 to 9</td>
+          <td>Tetralogy of Fallot</td>
+          <td>Module 3 Part 1: heart, respiratory</td>
+        </tr>
+        <tr>
+          <td>Case 5</td>
+          <td>Wk 5 <br>Jul 13 to 16</td>
+          <td>Sickle cell disease</td>
+          <td>Module 3 Part 2: lymphatic, blood</td>
+        </tr>
+        <tr>
+          <td>Case 6</td>
+          <td>Wk 6 <br>Jul 20 to 23</td>
+          <td>Hirschsprung disease</td>
+          <td>Module 4 Part 1: endocrine, GI</td>
+        </tr>
+        <tr>
+          <td>Case 7</td>
+          <td>Wk 7 <br>Jul 27 to 30</td>
+          <td>Polycystic kidney disease</td>
+          <td>Module 4 Part 2: renal, reproductive</td>
+        </tr>
+        <tr>
+          <td>Case 8</td>
+          <td>Wk 8 <br>Aug 3 to 6</td>
+          <td>Normal pressure hydrocephalus</td>
+          <td>Module 5: nervous system</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="page">
+  <!-- CASE 1 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">01</span>Unknown Case 1</div>
+      <div class="case-dates">Week 1 &middot; June 15 to 18</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Burn injury</div>
+    </div>
+    <span class="module-tag">Module 1 &middot; Introduction, terminology, cell, tissues, integumentary</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>Skin layers: epidermis, dermis, hypodermis</li>
+        <li>Burn depth classification (superficial, partial thickness, full thickness) mapped to tissue layers</li>
+        <li>Rule of Nines for body surface area using anatomical regions and terminology</li>
+        <li>Parkland formula for fluid resuscitation</li>
+        <li>Cellular response to thermal injury</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials for students to explore</h4>
+      <ul>
+        <li>Contact dermatitis or allergic reaction</li>
+        <li>Cellulitis or necrotizing fasciitis</li>
+        <li>Scald injury vs flame burn vs chemical burn</li>
+        <li>Non accidental injury consideration in pediatric or dependent adult cases</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CASE 2 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">02</span>Unknown Case 2</div>
+      <div class="case-dates">Week 2 &middot; June 22 to 25</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Osteogenesis imperfecta with fractures</div>
+    </div>
+    <span class="module-tag">Module 2 Part 1 &middot; Cartilage, bone tissue, axial skeleton</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>Type I collagen defect (COL1A1 or COL1A2)</li>
+        <li>Bone tissue microanatomy: osteon, lamellae, osteocytes</li>
+        <li>Fracture patterns and healing differences in abnormal bone matrix</li>
+        <li>Axial skeleton involvement (blue sclera, dentinogenesis imperfecta, skull fragility)</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials</h4>
+      <ul>
+        <li>Non accidental trauma (must be seriously considered in pediatric fractures)</li>
+        <li>Nutritional rickets or vitamin D deficiency</li>
+        <li>Juvenile idiopathic osteoporosis</li>
+        <li>Other genetic bone dysplasias</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CASE 3 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">03</span>Unknown Case 3</div>
+      <div class="case-dates">Week 3 &middot; June 29 to July 2</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Marfan syndrome</div>
+    </div>
+    <span class="module-tag">Module 2 Part 2 &middot; Axial column, appendicular, joints</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>Fibrillin-1 gene defect (FBN1)</li>
+        <li>Connective tissue structural weakness throughout the skeleton</li>
+        <li>Axial: scoliosis, pectus excavatum or carinatum</li>
+        <li>Appendicular: long limbs, arachnodactyly, positive wrist and thumb signs</li>
+        <li>Joints: hypermobility, recurrent dislocations</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials</h4>
+      <ul>
+        <li>Homocystinuria (similar skeletal findings, different genetics)</li>
+        <li>Ehlers-Danlos syndrome</li>
+        <li>MASS phenotype</li>
+        <li>Familial tall stature without pathology</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <!-- CASE 4 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">04</span>Unknown Case 4</div>
+      <div class="case-dates">Week 4 &middot; July 6 to 9</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Tetralogy of Fallot</div>
+    </div>
+    <span class="module-tag">Module 3 Part 1 &middot; Heart, respiratory</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>Single embryological conotruncal septation defect</li>
+        <li>Four structural abnormalities: ventricular septal defect, overriding aorta, pulmonary stenosis, right ventricular hypertrophy</li>
+        <li>Right to left shunt producing cyanosis</li>
+        <li>Respiratory consequences and hypoxic spells</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials</h4>
+      <ul>
+        <li>Other cyanotic congenital heart disease: transposition of the great arteries, truncus arteriosus, total anomalous pulmonary venous return, tricuspid atresia</li>
+        <li>Respiratory causes of cyanosis in an infant</li>
+        <li>Methemoglobinemia</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CASE 5 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">05</span>Unknown Case 5</div>
+      <div class="case-dates">Week 5 &middot; July 13 to 16</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Sickle cell disease with splenic and lymphoid complications</div>
+    </div>
+    <span class="module-tag">Module 3 Part 2 &middot; Lymphatic, blood</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>Hemoglobin beta chain gene defect producing HbS</li>
+        <li>Sickled red blood cell structural abnormality</li>
+        <li>Vaso occlusion and microinfarction across multiple organs</li>
+        <li>Splenic sequestration, infarction, and autosplenectomy over time</li>
+        <li>Reactive lymphadenopathy from increased infection susceptibility after functional asplenia</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials</h4>
+      <ul>
+        <li>Other hemoglobinopathies: thalassemia, HbC disease</li>
+        <li>Autoimmune hemolytic anemia</li>
+        <li>Lymphoma (lymphadenopathy can mislead)</li>
+        <li>Hereditary spherocytosis</li>
+        <li>Acute chest syndrome vs pneumonia in an exacerbation</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- CASE 6 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">06</span>Unknown Case 6</div>
+      <div class="case-dates">Week 6 &middot; July 20 to 23</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Hirschsprung disease</div>
+    </div>
+    <span class="module-tag">Module 4 Part 1 &middot; Endocrine, gastrointestinal</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>Failure of neural crest cell migration during embryological development</li>
+        <li>Absent enteric ganglion cells (Meissner and Auerbach plexuses) in the distal colon</li>
+        <li>Structural bowel wall differences between affected and proximal dilated segments</li>
+        <li>Transition zone on imaging</li>
+        <li>Connection between GI wall anatomy and enteric nervous system development</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials</h4>
+      <ul>
+        <li>Meconium ileus (cystic fibrosis association)</li>
+        <li>Anorectal malformations</li>
+        <li>Functional constipation</li>
+        <li>Intestinal atresia or stenosis</li>
+        <li>Neonatal sepsis with ileus</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+  <!-- CASE 7 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">07</span>Unknown Case 7</div>
+      <div class="case-dates">Week 7 &middot; July 27 to 30</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Polycystic kidney disease (ADPKD)</div>
+    </div>
+    <span class="module-tag">Module 4 Part 2 &middot; Renal, reproductive</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>PKD1 or PKD2 gene mutations</li>
+        <li>Multiple renal cortical and medullary cysts, progressive kidney enlargement</li>
+        <li>Extra renal manifestations: liver cysts, seminal vesicle cysts in males, epididymal cysts</li>
+        <li>Intracranial aneurysm association</li>
+        <li>Structural changes that can present with pelvic pain and palpable masses</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials to rule out</h4>
+      <ul>
+        <li>Simple renal cysts (benign, single or few)</li>
+        <li>Ovarian cysts (can dominate the initial presentation in a female patient with pelvic pain)</li>
+        <li>Uterine fibroids</li>
+        <li>Polycystic ovary syndrome (PCOS, the reproductive only version)</li>
+        <li>Primary seminal vesicle cyst unrelated to PKD</li>
+        <li>Renal cell carcinoma</li>
+        <li>Acquired cystic kidney disease (in patients on dialysis)</li>
+      </ul>
+    </div>
+
+    <div class="teaching-note">
+      <span class="teaching-note-label">Teaching note on reproductive distractors</span>
+      Female patients with PKD may initially present with pelvic pain or palpable abdominal mass that gets worked up as gynecologic pathology (ovarian cyst, fibroid) before imaging reveals the renal cysts. Male patients may present with infertility or scrotal discomfort from seminal vesicle or epididymal involvement. This demonstrates how a primarily renal disease can masquerade as reproductive pathology and reinforces the shared <strong>intermediate mesoderm embryological origin</strong> of the two systems.
+    </div>
+  </div>
+
+  <!-- CASE 8 -->
+  <div class="case">
+    <div class="case-header">
+      <div class="case-label"><span class="num">08</span>Unknown Case 8</div>
+      <div class="case-dates">Week 8 &middot; August 3 to 6</div>
+    </div>
+    <div class="case-diagnosis">
+      <div class="case-diagnosis-label">Actual diagnosis</div>
+      <div class="case-diagnosis-value">Normal pressure hydrocephalus</div>
+    </div>
+    <span class="module-tag">Module 5 &middot; Nervous system</span>
+
+    <div class="case-section">
+      <h4>Structural teaching points</h4>
+      <ul>
+        <li>CSF circulation pathway: lateral ventricles, third ventricle, cerebral aqueduct, fourth ventricle, subarachnoid space</li>
+        <li>Impaired CSF absorption through arachnoid granulations</li>
+        <li>Progressive ventricular dilation despite normal opening pressure</li>
+        <li>Periventricular white matter tracts compressed by ventricular expansion</li>
+        <li>Meninges and CSF spaces</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Clinical triad</h4>
+      <ul>
+        <li>Gait disturbance (magnetic gait)</li>
+        <li>Cognitive impairment</li>
+        <li>Urinary incontinence</li>
+      </ul>
+    </div>
+
+    <div class="case-section">
+      <h4>Expected differentials</h4>
+      <ul>
+        <li>Obstructive (non communicating) hydrocephalus</li>
+        <li>Cerebral atrophy (Alzheimer disease, vascular dementia)</li>
+        <li>Parkinson disease (gait similar)</li>
+        <li>Brain tumor with mass effect</li>
+        <li>Chronic subdural hematoma</li>
+        <li>Cervical spinal stenosis (gait)</li>
+      </ul>
+    </div>
+
+    <div class="teaching-note">
+      <span class="teaching-note-label">Reversibility note</span>
+      <strong>NPH is one of the few reversible causes of dementia.</strong> Ventriculoperitoneal shunt placement can improve symptoms. Worth noting for student presentations and for the broader clinical reasoning lesson that not every dementia presentation is irreversible.
+    </div>
+  </div>
+
+  <!-- ===== Closing ===== -->
+  <div class="closing">
+    <h2>Case rotation notes</h2>
+    <ul>
+      <li>When reusing this schedule in a future semester, swap the diagnoses in this document without changing the public schedule file.</li>
+      <li>Each case should still hit the structural, genetic, or embryological frame so the pedagogical goal is consistent.</li>
+      <li>Keep the backend diagnosis choice aligned with the week's anatomy content to preserve the spiral review structure.</li>
+    </ul>
+  </div>
+
+  <div class="actions screen-only">
+    <button type="button" class="btn" onclick="saveAsPDF()">Save as PDF</button>
+  </div>
+
+  <div class="foot">
+    Private instructor reference. Keep out of the public repo. Archive securely with the course materials.
+  </div>
+</div>
+
+</div>
+
+<script>
+function saveAsPDF() {
+  const savedTitle = document.title;
+  document.title = 'Instructor_Case_Reference_BIO004_Summer2026';
+  window.print();
+  setTimeout(() => { document.title = savedTitle; }, 1500);
+}
+</script>
+
+</body>
+</html>
