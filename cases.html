@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Cases | BIO 004 Human Anatomy, Summer 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Shifted palette: white body with California Surf accents */
+  --bg: #FFFFFF;
+  --card-bg: #FAFAF5;
+  --card-border: #E8E5DC;
+  --sand-cream: #FEF9EC;
+  --ocean-deep: #1E3D4C;
+  --ocean-mid: #335E6E;
+  --sea-glass: #8FB8BF;
+  --sea-glass-mist: #DCE8EB;
+  --terra: #A0402A;
+  --ink: #15262F;
+  --ink-soft: #3D4F5A;
+  --divider: rgba(30, 61, 76, 0.15);
+  --card-shadow: 0 1px 4px rgba(30, 61, 76, 0.04), 0 0 0 1px rgba(30, 61, 76, 0.04);
+  --focus-ring: #15262F;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body { background: var(--bg); }
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  color: var(--ink);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.skip-link {
+  position: absolute;
+  top: -48px;
+  left: 16px;
+  background: var(--ink);
+  color: var(--sand-cream);
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  z-index: 1000;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 16px;
+  outline: 3px solid var(--ocean-deep);
+  outline-offset: 3px;
+}
+
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 32px 72px;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 44px;
+  padding-bottom: 36px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ocean-mid);
+  margin-bottom: 18px;
+}
+
+.eyebrow-sep {
+  display: inline-block;
+  width: 20px;
+  height: 1px;
+  background: var(--ocean-mid);
+  margin: 0 12px;
+  vertical-align: middle;
+  opacity: 0.5;
+}
+
+.page-title {
+  font-size: clamp(36px, 5.5vw, 52px);
+  font-weight: 700;
+  color: var(--ocean-deep);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  margin-bottom: 14px;
+}
+
+.page-subtitle {
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 18px);
+  font-weight: 400;
+  color: var(--ink-soft);
+  max-width: 640px;
+  margin: 0 auto;
+  line-height: 1.55;
+  letter-spacing: -0.005em;
+}
+
+section {
+  margin-bottom: 48px;
+}
+
+section > h2 {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--ocean-deep);
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+section > p {
+  font-size: 16px;
+  color: var(--ink);
+  margin-bottom: 14px;
+  line-height: 1.65;
+}
+
+section > p:last-child {
+  margin-bottom: 0;
+}
+
+/* Framework template: the four-day structure */
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0 0;
+}
+
+.day-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 22px 22px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.day-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--ocean-mid);
+  opacity: 0.55;
+  border-radius: 12px 12px 0 0;
+}
+
+.day-card[data-type='tbl']::before {
+  background: var(--sea-glass);
+  opacity: 1;
+}
+
+.day-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ocean-mid);
+  margin-bottom: 2px;
+}
+
+.day-badge-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--terra);
+  color: var(--bg);
+  font-size: 11px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.day-activity {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.day-description {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.day-phases {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.day-phases li {
+  font-size: 13px;
+  color: var(--ink);
+  line-height: 1.5;
+  padding-left: 14px;
+  position: relative;
+}
+
+.day-phases li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 2px;
+  background: var(--terra);
+  opacity: 0.7;
+}
+
+/* Pedagogy callout */
+.callout {
+  background: var(--sand-cream);
+  border-left: 4px solid var(--terra);
+  padding: 20px 24px;
+  border-radius: 4px 12px 12px 4px;
+  margin: 20px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.callout strong {
+  color: var(--terra);
+  font-weight: 700;
+}
+
+/* Week cards */
+.weeks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.week-card {
+  background: var(--bg);
+  border: 1px solid var(--divider);
+  border-radius: 16px;
+  padding: 28px 30px;
+  box-shadow: var(--card-shadow);
+}
+
+.week-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.week-number {
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--terra);
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  padding-top: 2px;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.week-meta {
+  flex: 1;
+  min-width: 200px;
+}
+
+.week-dates {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+
+.week-module {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ocean-mid);
+  margin-bottom: 10px;
+}
+
+.week-case-label {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ocean-deep);
+  color: var(--sand-cream);
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.anatomy-focus {
+  background: var(--sea-glass-mist);
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--ocean-deep);
+  line-height: 1.5;
+}
+
+.anatomy-focus strong {
+  color: var(--ocean-deep);
+  font-weight: 700;
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.week-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.placeholder {
+  color: var(--ink-soft);
+  font-style: italic;
+  opacity: 0.7;
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.page-footer {
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--divider);
+  text-align: center;
+  font-size: 13px;
+  color: var(--ocean-mid);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 640px) {
+  .container { padding: 32px 20px 56px; }
+  .week-card { padding: 22px; }
+  .week-number { font-size: 34px; }
+  .week-dates { font-size: 19px; }
+  .framework-grid { grid-template-columns: 1fr; }
+  .week-days { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --divider: rgba(21, 38, 47, 0.5);
+    --card-border: rgba(21, 38, 47, 0.45);
+    --ink-soft: #15262F;
+    --ocean-mid: #1E3D4C;
+  }
+}
+</style>
+</head>
+<body>
+<a href="#framework" class="skip-link">Skip to framework</a>
+
+<div class="container">
+  <header class="page-header">
+    <p class="eyebrow">BIO 004 <span class="eyebrow-sep" aria-hidden="true"></span> Weekly Cases</p>
+    <h1 class="page-title">Case Framework</h1>
+    <p class="page-subtitle">Eight unknown cases. Four days of structured anatomical reasoning per week. Built on the principle that clinical data is given, and the thinking is what students bring.</p>
+  </header>
+
+  <section id="framework">
+    <h2>How Each Week Runs</h2>
+    <p>Every week follows the same four-day arc. Students receive clinical data progressively. Their job is not to research what each finding means from scratch but to annotate each piece of information with the anatomical and light-physiological reasoning that explains it.</p>
+
+    <div class="callout">
+      <strong>Given, not Googled.</strong> Labs, imaging, physical exam findings, and vital signs arrive pre-populated with values and normal ranges. Students annotate in the margins: what anatomy is involved, what function is disrupted, and how the two connect. Study time goes toward anatomical reasoning, not encyclopedic research.
+    </div>
+
+    <div class="framework-grid">
+      <div class="day-card" data-type="intro">
+        <div class="day-badge"><span class="day-badge-number">1</span>Mon</div>
+        <div class="day-activity">Case Intro</div>
+        <div class="day-description">Meet the patient. Team forms an initial differential.</div>
+        <ul class="day-phases">
+          <li>Demographics and chief complaint</li>
+          <li>History of present illness</li>
+          <li>Vital signs and initial physical exam</li>
+          <li>Week's anatomical focus identified</li>
+          <li>Team generates 3 to 5 initial differentials</li>
+        </ul>
+      </div>
+
+      <div class="day-card" data-type="prep">
+        <div class="day-badge"><span class="day-badge-number">2</span>Tue</div>
+        <div class="day-activity">Case Prep</div>
+        <div class="day-description">Labs released. Team annotates and refines.</div>
+        <ul class="day-phases">
+          <li>Additional history: family, social, medications</li>
+          <li>Lab results with normal ranges, pre-populated</li>
+          <li>Students annotate each lab with anatomy it points to</li>
+          <li>Differential narrows or expands based on data</li>
+          <li>Gaps in reasoning identified for Wednesday</li>
+        </ul>
+      </div>
+
+      <div class="day-card" data-type="run">
+        <div class="day-badge"><span class="day-badge-number">3</span>Wed</div>
+        <div class="day-activity">Case Run</div>
+        <div class="day-description">Imaging released. Team works the application questions.</div>
+        <ul class="day-phases">
+          <li>Radiology and imaging findings released</li>
+          <li>Students annotate each finding with structures involved</li>
+          <li>Application questions worked through in teams</li>
+          <li>Differential narrowed to top 2 or 3</li>
+          <li>Presentation reasoning prepared for Thursday</li>
+        </ul>
+      </div>
+
+      <div class="day-card" data-type="tbl">
+        <div class="day-badge"><span class="day-badge-number">4</span>Thu</div>
+        <div class="day-activity">TBL and Case Presentation</div>
+        <div class="day-description">IRAT, TRAT, presentations, class discussion, reveal.</div>
+        <ul class="day-phases">
+          <li>IRAT, 10 to 15 questions, individual, weighted 3x</li>
+          <li>TRAT, same quiz, team, weighted 1x</li>
+          <li>Teams present their differentials and reasoning</li>
+          <li>Class discussion facilitated by Dr. Rennie</li>
+          <li>Actual diagnosis revealed, anatomy debriefed</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The Case Note Sheet</h2>
+    <p>Each case comes with a handwritten case note sheet students fill in during the week. The sheet contains pre-populated clinical data with space to annotate. Structure of each sheet:</p>
+
+    <div class="framework-grid">
+      <div class="day-card">
+        <div class="day-activity">Patient Information</div>
+        <div class="day-description">Demographics, chief complaint, HPI, pertinent history. Pre-populated on release.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-activity">Clinical Data</div>
+        <div class="day-description">Vital signs, physical exam findings, labs with normal ranges, imaging results. Given values; students annotate.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-activity">Anatomy Annotation Column</div>
+        <div class="day-description">For each finding: which structure is involved, what function is disrupted, how anatomy explains the presentation.</div>
+      </div>
+      <div class="day-card">
+        <div class="day-activity">Differential and Reasoning</div>
+        <div class="day-description">Space for 3 to 5 differentials with justification tied to anatomy. Top 2 to 3 by Wednesday. Final reasoning by Thursday.</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Weekly Cases</h2>
+    <p>Each week's specific case content will live below. Students see only the presenting details; underlying diagnoses live in the instructor reference.</p>
+
+    <ol class="weeks-list">
+      <li class="week-card" aria-label="Week 1, June 15 to 18, Module One">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">01</div>
+          <div class="week-meta">
+            <h3 class="week-dates">June 15 to 18</h3>
+            <p class="week-module">Module One <span aria-hidden="true">·</span> Foundations of Anatomy</p>
+            <span class="week-case-label">Unknown Case 1</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Intro, terminology, cell, tissues, integumentary system
+        </div>
+        <div class="placeholder">Case content to be developed: patient presentation, labs, imaging, anatomy annotations.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 2, June 22 to 25, Module Two Part 1">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">02</div>
+          <div class="week-meta">
+            <h3 class="week-dates">June 22 to 25</h3>
+            <p class="week-module">Module Two, Part 1 <span aria-hidden="true">·</span> Bone and Axial Skeleton</p>
+            <span class="week-case-label">Unknown Case 2</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Cartilage, bone tissue micro and macro, axial skeleton (skull, face, vertebral column, thoracic cage)
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 3, June 29 to July 2, Module Two Part 2">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">03</div>
+          <div class="week-meta">
+            <h3 class="week-dates">June 29 to July 2</h3>
+            <p class="week-module">Module Two, Part 2 <span aria-hidden="true">·</span> Appendicular and Joints</p>
+            <span class="week-case-label">Unknown Case 3</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Pectoral girdle, pelvic girdle, upper and lower limb bones, joint classification, synovial joints and movements
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 4, July 6 to 9, Module Three Part 1">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">04</div>
+          <div class="week-meta">
+            <h3 class="week-dates">July 6 to 9</h3>
+            <p class="week-module">Module Three, Part 1 <span aria-hidden="true">·</span> Heart and Respiratory</p>
+            <span class="week-case-label">Unknown Case 4</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Heart chambers, valves, vasculature, conduction system, respiratory upper and lower tract, lungs
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 5, July 13 to 16, Module Three Part 2">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">05</div>
+          <div class="week-meta">
+            <h3 class="week-dates">July 13 to 16</h3>
+            <p class="week-module">Module Three, Part 2 <span aria-hidden="true">·</span> Lymphatic and Blood</p>
+            <span class="week-case-label">Unknown Case 5</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Lymphatic vessels, lymph nodes, thymus, spleen, tonsils, blood composition, plasma, formed elements
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 6, July 20 to 23, Module Four Part 1">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">06</div>
+          <div class="week-meta">
+            <h3 class="week-dates">July 20 to 23</h3>
+            <p class="week-module">Module Four, Part 1 <span aria-hidden="true">·</span> Endocrine and GI</p>
+            <span class="week-case-label">Unknown Case 6</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Endocrine glands, GI upper and lower tract, accessory digestive organs
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 7, July 27 to 30, Module Four Part 2">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">07</div>
+          <div class="week-meta">
+            <h3 class="week-dates">July 27 to 30</h3>
+            <p class="week-module">Module Four, Part 2 <span aria-hidden="true">·</span> Renal and Reproductive</p>
+            <span class="week-case-label">Unknown Case 7</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Kidney, nephron, ureters, bladder, urethra, male and female reproductive systems
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+
+      <li class="week-card" aria-label="Week 8, August 3 to 6, Module Five">
+        <div class="week-header">
+          <div class="week-number" aria-hidden="true">08</div>
+          <div class="week-meta">
+            <h3 class="week-dates">August 3 to 6</h3>
+            <p class="week-module">Module Five <span aria-hidden="true">·</span> Nervous System</p>
+            <span class="week-case-label">Unknown Case 8</span>
+          </div>
+        </div>
+        <div class="anatomy-focus">
+          <strong>Anatomy focus</strong>
+          Nervous tissue, neuron types, central nervous system, meninges, peripheral nervous system, major tracts
+        </div>
+        <div class="placeholder">Case content to be developed.</div>
+      </li>
+    </ol>
+  </section>
+
+  <footer class="page-footer">
+    BIO 004 Human Anatomy &middot; Summer Session 2026 &middot; Case Framework
+  </footer>
+</div>
+
+<script>
+// Iframe height sender for Canvas and Kajabi embedding
+(function() {
+  const FRAME_ID = 'anatomy-cases';
+  function sendHeight() {
+    try {
+      const height = Math.max(
+        document.documentElement.scrollHeight,
+        document.body.scrollHeight,
+        document.documentElement.offsetHeight,
+        document.body.offsetHeight
+      );
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({ type: 'setHeight', id: FRAME_ID, height: height }, '*');
+      }
+    } catch (e) {}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  if (typeof ResizeObserver !== 'undefined') {
+    const ro = new ResizeObserver(sendHeight);
+    ro.observe(document.body);
+  }
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+  setTimeout(sendHeight, 1500);
+})();
+</script>
+</body>
+</html>
