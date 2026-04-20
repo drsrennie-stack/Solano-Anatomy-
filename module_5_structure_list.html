@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light">
+<title>Module 5 Structure List | Human Anatomy</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FAF8F4;
+    --cream-dark: #F0EDE6;
+    --navy: #1C2E4A;
+    --navy-mid: #2D4A6B;
+    --sage: #6B8F71;
+    --sage-light: #E8F0E9;
+    --terra: #B5673A;
+    --terra-light: #FAF0EA;
+    --gold: #C49A3C;
+    --gold-light: #FBF5E6;
+    --teal: #3A7D7B;
+    --teal-light: #E6F4F3;
+    --rose: #9B4E52;
+    --rose-light: #FAEAEB;
+    --slate: #5A6B7A;
+    --slate-light: #EBF0F4;
+    --border: #DDD8CE;
+    --text: #2A2A2A;
+    --text-light: #5A5A5A;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: transparent; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text); line-height: 1.5; font-size: 15px; }
+
+  header.top {
+    background: white; color: var(--navy);
+    border-bottom: 1.5px solid var(--border);
+    padding: 22px 40px 18px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap;
+  }
+  .header-left h1 { font-family: 'Lora', serif; font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 3px; color: var(--navy); }
+  .header-left p { font-size: 0.76rem; color: var(--slate); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; }
+  .header-badge { background: var(--terra); color: white; font-size: 0.73rem; font-weight: 700; padding: 4px 13px; border-radius: 20px; letter-spacing: 0.04em; white-space: nowrap; }
+
+  .tab-bar { background: var(--navy-mid); display: flex; align-items: stretch; padding: 0 40px; overflow-x: auto; }
+  .tab-btn {
+    padding: 13px 22px 11px;
+    font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.05em; text-transform: uppercase;
+    color: #7A9BB5; background: none; border: none; border-bottom: 3px solid transparent;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .tab-btn:hover { color: #C8DAEA; }
+  .tab-btn.active-urinary { color: white; border-bottom-color: var(--gold); }
+  .tab-btn.active-repro { color: white; border-bottom-color: var(--sage); }
+  .tab-btn.active-spinal { color: white; border-bottom-color: var(--terra); }
+  .tab-btn.active-brain { color: white; border-bottom-color: var(--teal); }
+  .tab-btn.active-readfirst { color: white; border-bottom-color: var(--slate); }
+
+  .progress-bar-wrap {
+    background: var(--cream-dark); border-bottom: 1px solid var(--border);
+    padding: 11px 40px; display: flex; align-items: center; gap: 14px;
+  }
+  .progress-label { color: var(--slate); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; min-width: 170px; }
+  .progress-track { flex: 1; height: 7px; background: var(--border); border-radius: 4px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 4px; transition: width 0.4s ease; width: 0%; }
+  .progress-fill.urinary-fill { background: linear-gradient(90deg, var(--gold) 0%, #B5673A 100%); }
+  .progress-fill.repro-fill { background: linear-gradient(90deg, var(--sage) 0%, #4A9E6E 100%); }
+  .progress-fill.spinal-fill { background: linear-gradient(90deg, var(--terra) 0%, #8F4E2A 100%); }
+  .progress-fill.brain-fill { background: linear-gradient(90deg, var(--teal) 0%, #2A9D9B 100%); }
+  .progress-count { color: var(--navy); font-size: 0.8rem; font-weight: 700; min-width: 62px; text-align: right; }
+
+  .abbrev-bar { background: white; border-bottom: 1.5px solid var(--border); }
+  .abbrev-head { padding: 8px 40px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; transition: background 0.15s; }
+  .abbrev-head:hover { background: var(--cream); }
+  .abbrev-head-left { display: flex; align-items: center; gap: 8px; }
+  .abbrev-icon { font-size: 0.92rem; }
+  .abbrev-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.73rem; font-weight: 700; color: var(--navy); letter-spacing: 0.06em; text-transform: uppercase; }
+  .abbrev-toggle { font-size: 0.7rem; color: var(--slate); font-weight: 600; }
+  .abbrev-body { display: none; padding: 0 40px 14px; border-top: 1px solid var(--border); background: var(--cream); }
+  .abbrev-body.open { display: block; }
+  .abbrev-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px 14px; padding: 10px 0 4px; }
+  .abbrev-item { font-size: 0.76rem; color: var(--text); line-height: 1.45; }
+  .abbrev-item strong { color: var(--navy); font-weight: 700; letter-spacing: 0.02em; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .abbrev-section-title { font-size: 0.68rem; font-weight: 700; color: var(--slate); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 10px; padding-bottom: 4px; border-bottom: 1px dashed var(--border); }
+  .abbrev-section-title:first-child { margin-top: 0; }
+
+  .main { max-width: 960px; margin: 0 auto; padding: 22px 22px 60px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  .panel-intro { border-radius: 6px; padding: 16px 20px; margin-bottom: 20px; border-left: 4px solid; }
+  .panel-intro.urinary-intro { background: var(--gold-light); border-left-color: var(--gold); }
+  .panel-intro.repro-intro { background: var(--sage-light); border-left-color: var(--sage); }
+  .panel-intro.spinal-intro { background: var(--terra-light); border-left-color: var(--terra); }
+  .panel-intro.brain-intro { background: var(--teal-light); border-left-color: var(--teal); }
+  .panel-intro.readfirst-intro { background: var(--slate-light); border-left-color: var(--slate); }
+  .panel-intro h3 { font-family: 'Lora', serif; font-size: 1rem; color: var(--navy); margin-bottom: 6px; font-weight: 700; }
+  .panel-intro p { font-size: 0.86rem; line-height: 1.55; color: var(--text); }
+  .panel-intro p + p { margin-top: 6px; }
+
+  .study-section { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 16px 20px; margin-bottom: 12px; }
+  .study-section h4 { font-family: 'Lora', serif; font-size: 1.02rem; color: var(--navy); margin-bottom: 8px; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 8px; }
+  .study-section h4 .sect-icon { font-size: 1.1rem; }
+  .study-section p { font-size: 0.88rem; line-height: 1.6; color: var(--text); }
+  .study-section p + p { margin-top: 6px; }
+  .study-section ul, .study-section ol { margin: 8px 0 4px 20px; }
+  .study-section li { font-size: 0.87rem; line-height: 1.55; margin-bottom: 5px; color: var(--text); }
+  .study-section li strong { color: var(--navy); }
+  .study-section .sub-label { font-size: 0.7rem; font-weight: 700; color: var(--terra); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 10px; margin-bottom: 4px; }
+
+  .round-list { list-style: none !important; margin-left: 0 !important; counter-reset: rn; padding: 0; }
+  .round-list li { counter-increment: rn; position: relative; padding-left: 38px; margin-bottom: 9px; font-size: 0.87rem; line-height: 1.55; }
+  .round-list li::before { content: "R" counter(rn); position: absolute; left: 0; top: 1px; background: var(--terra); color: white; font-size: 0.65rem; font-weight: 700; padding: 3px 6px; border-radius: 3px; letter-spacing: 0.04em; font-family: 'Plus Jakarta Sans', sans-serif; }
+  .round-list li strong { color: var(--navy); }
+
+  .callout-box { background: var(--gold-light); border-left: 4px solid var(--gold); padding: 12px 16px; border-radius: 6px; margin-top: 6px; }
+  .callout-box p { font-size: 0.87rem; line-height: 1.55; color: var(--text); }
+  .callout-box strong { color: var(--navy); }
+
+  .instr-wrap { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 18px; overflow: hidden; }
+  .instr-header { padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none; background: var(--cream-dark); transition: background 0.15s; }
+  .instr-header:hover { background: var(--cream); }
+  .instr-header-left { display: flex; align-items: center; gap: 9px; }
+  .instr-icon { font-size: 1rem; }
+  .instr-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.82rem; font-weight: 700; color: var(--navy); letter-spacing: 0.02em; }
+  .instr-toggle { font-size: 0.72rem; color: var(--slate); font-weight: 600; }
+  .instr-body { padding: 16px 20px 18px; display: block; }
+  .instr-body.collapsed { display: none; }
+  .instr-body p { font-size: 0.86rem; line-height: 1.55; margin-bottom: 8px; color: var(--text); }
+  .instr-body ul { margin: 6px 0 4px 20px; }
+  .instr-body li { font-size: 0.85rem; line-height: 1.5; margin-bottom: 4px; }
+
+  .region-group { background: white; border: 1px solid var(--border); border-radius: 8px; margin-bottom: 11px; overflow: hidden; }
+  .region-header { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px; cursor: pointer; user-select: none; background: white; border-bottom: 1px solid transparent; transition: all 0.2s; gap: 14px; }
+  .region-header:hover { background: var(--cream); }
+  .region-header.open { background: var(--navy); color: white; border-bottom-color: var(--navy); }
+  .region-header.open .region-name { color: white; }
+  .region-header.open .region-tag-line { color: #C8DAEA; }
+  .region-header.open .region-progress-text { color: #A8BAC8; }
+  .region-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0; }
+  .region-icon { font-size: 1.3rem; flex-shrink: 0; }
+  .region-name { font-family: 'Lora', serif; font-size: 1.05rem; font-weight: 700; color: var(--navy); line-height: 1.2; margin-bottom: 2px; }
+  .region-tag-line { font-size: 0.76rem; color: var(--text-light); line-height: 1.3; }
+  .region-right { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .region-mini-bar { width: 70px; height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+  .region-mini-fill { height: 100%; border-radius: 3px; width: 0%; transition: width 0.3s; }
+  .region-mini-fill.urinary-mini { background: var(--gold); }
+  .region-mini-fill.repro-mini { background: var(--sage); }
+  .region-mini-fill.spinal-mini { background: var(--terra); }
+  .region-mini-fill.brain-mini { background: var(--teal); }
+  .region-header.open .region-mini-fill { opacity: 0.8; }
+  .region-progress-text { font-size: 0.7rem; font-weight: 600; color: var(--text-light); text-align: right; min-width: 32px; }
+  .toggle-icon { font-size: 0.75rem; color: var(--slate); transition: transform 0.2s; }
+  .region-header.open .toggle-icon { transform: rotate(180deg); color: #A8BAC8; }
+
+  .region-body { display: none; padding: 4px 18px 16px; background: var(--cream); border-top: 1px solid var(--border); }
+  .region-body.open { display: block; }
+
+  .cat-block { padding: 10px 0 6px; }
+  .cat-block + .cat-block { border-top: 1px dashed var(--border); }
+  .cat-title { margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
+  .tag { display: inline-flex; align-items: center; gap: 4px; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+  .tag-id { background: var(--slate-light); color: var(--slate); }
+  .tag-histo { background: var(--teal-light); color: var(--teal); }
+  .tag-trace { background: var(--terra-light); color: var(--terra); }
+  .tag-question { background: var(--gold-light); color: #7A5E1A; }
+  .tag-function { background: var(--sage-light); color: #3A6645; }
+
+  .check-list { list-style: none; }
+  .check-item { display: flex; align-items: flex-start; gap: 9px; padding: 6px 9px; border-radius: 6px; cursor: pointer; transition: background 0.15s; }
+  .check-item:hover { background: white; }
+  .check-item.checked-urinary { background: var(--gold-light); }
+  .check-item.checked-urinary .check-text { color: #6B4E1A; }
+  .check-item.checked-urinary .check-note { color: #8A6828; }
+  .check-item.checked-repro { background: var(--sage-light); }
+  .check-item.checked-repro .check-text { color: #2E6040; }
+  .check-item.checked-repro .check-note { color: #4A7A58; }
+  .check-item.checked-spinal { background: var(--terra-light); }
+  .check-item.checked-spinal .check-text { color: #7A3E1E; }
+  .check-item.checked-spinal .check-note { color: #9A4E2E; }
+  .check-item.checked-brain { background: var(--teal-light); }
+  .check-item.checked-brain .check-text { color: #1A4F5A; }
+  .check-item.checked-brain .check-note { color: #2A6E78; }
+  .check-box { flex-shrink: 0; width: 18px; height: 18px; border: 2px solid var(--border); border-radius: 4px; background: white; display: flex; align-items: center; justify-content: center; transition: all 0.2s; font-size: 0.82rem; color: white; font-weight: 700; margin-top: 1px; }
+  .check-item .check-box { color: transparent; }
+  .check-item.checked-urinary .check-box { background: var(--gold); border-color: var(--gold); color: white; }
+  .check-item.checked-repro .check-box { background: var(--sage); border-color: var(--sage); color: white; }
+  .check-item.checked-spinal .check-box { background: var(--terra); border-color: var(--terra); color: white; }
+  .check-item.checked-brain .check-box { background: var(--teal); border-color: var(--teal); color: white; }
+  .check-text-wrap { flex: 1; min-width: 0; }
+  .check-text { font-size: 0.9rem; line-height: 1.4; color: var(--text); }
+  .check-note { font-size: 0.78rem; line-height: 1.4; color: var(--text-light); margin-top: 2px; font-style: italic; }
+
+  /* Question items: gold tinted, Q badge */
+  .check-item.q-item { background: #FEFAED; border-left: 3px solid var(--gold); padding-left: 9px; }
+  .check-item.q-item:hover { background: #FCF3D8; }
+  .check-item.q-item .check-text { font-weight: 600; color: var(--navy); }
+  .check-item.q-item .check-text::before { content: "Q "; font-family: 'Lora', serif; font-weight: 700; color: var(--gold); font-size: 0.95rem; margin-right: 2px; }
+  .check-item.q-item.checked-urinary,
+  .check-item.q-item.checked-repro,
+  .check-item.q-item.checked-spinal,
+  .check-item.q-item.checked-brain { border-left-width: 4px; }
+
+  .flow-trace-box { background: white; border: 2px solid var(--navy-mid); border-radius: 8px; padding: 14px 18px; margin-top: 12px; }
+  .flow-trace-box .flow-title { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.78rem; font-weight: 700; color: var(--navy); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+  .flow-trace-box .flow-text { font-size: 0.82rem; line-height: 1.55; color: var(--text); }
+  .flow-trace-box .flow-text strong { color: var(--terra); }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; align-items: center; }
+  .legend-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-light); margin-right: 4px; }
+
+  @media (max-width: 720px) {
+    header.top, .tab-bar, .progress-bar-wrap, .abbrev-head, .abbrev-body { padding-left: 16px; padding-right: 16px; }
+    .header-left h1 { font-size: 1.28rem; }
+    .tab-btn { padding: 11px 13px 9px; font-size: 0.7rem; }
+    .main { padding: 18px 14px 50px; }
+    .region-header { padding: 11px 13px; gap: 9px; }
+    .region-name { font-size: 0.94rem; }
+    .region-tag-line { font-size: 0.72rem; }
+    .region-mini-bar { width: 44px; }
+    .region-right { gap: 9px; }
+    .region-body { padding: 2px 13px 12px; }
+    .check-text { font-size: 0.88rem; }
+    .progress-label { min-width: 130px; font-size: 0.7rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="header-left">
+    <h1>Module 5 Structure List</h1>
+    <p>Human Anatomy | BIO 004</p>
+  </div>
+  <div class="header-badge">Lab Exam 5 Prep</div>
+</header>
+
+<div class="tab-bar">
+  <button class="tab-btn" id="tabReadfirst" onclick="switchTab('readfirst')">&#128214; Read First</button>
+  <button class="tab-btn active-urinary" id="tabUrinary" onclick="switchTab('urinary')">&#128167; Urinary</button>
+  <button class="tab-btn" id="tabRepro" onclick="switchTab('repro')">&#9792; &#9794; Reproductive + Pelvis</button>
+  <button class="tab-btn" id="tabSpinal" onclick="switchTab('spinal')">&#129504; Spinal Cord + PNS</button>
+  <button class="tab-btn" id="tabBrain" onclick="switchTab('brain')">&#129504; Brain + CSF</button>
+</div>
+
+<div class="progress-bar-wrap">
+  <div class="progress-label" id="progressLabel">Urinary Progress</div>
+  <div class="progress-track"><div class="progress-fill urinary-fill" id="globalFill"></div></div>
+  <div class="progress-count" id="globalCount">0 / 0</div>
+</div>
+
+<div class="abbrev-bar">
+  <div class="abbrev-head" onclick="toggleAbbrev()">
+    <div class="abbrev-head-left"><span class="abbrev-icon">&#128218;</span><span class="abbrev-title">Abbreviations Key</span></div>
+    <span class="abbrev-toggle" id="abbrevToggle">&#9660; Expand</span>
+  </div>
+  <div class="abbrev-body" id="abbrevBody">
+
+    <div class="abbrev-section-title">Urinary</div>
+    <div class="abbrev-grid">
+      <div class="abbrev-item"><strong>L/R</strong> = Left / Right</div>
+      <div class="abbrev-item"><strong>PCT</strong> = Proximal Convoluted Tubule</div>
+      <div class="abbrev-item"><strong>DCT</strong> = Distal Convoluted Tubule</div>
+      <div class="abbrev-item"><strong>CD</strong> = Collecting Duct</div>
+      <div class="abbrev-item"><strong>LoH</strong> = Loop of Henle</div>
+      <div class="abbrev-item"><strong>JGA</strong> = Juxtaglomerular Apparatus</div>
+      <div class="abbrev-item"><strong>IVC</strong> = Inferior Vena Cava</div>
+      <div class="abbrev-item"><strong>UTI</strong> = Urinary Tract Infection</div>
+    </div>
+
+    <div class="abbrev-section-title">Reproductive + Pelvis</div>
+    <div class="abbrev-grid">
+      <div class="abbrev-item"><strong>ASIS / AIIS</strong> = Anterior Superior/Inferior Iliac Spine</div>
+      <div class="abbrev-item"><strong>PSIS / PIIS</strong> = Posterior Superior/Inferior Iliac Spine</div>
+      <div class="abbrev-item"><strong>a. / v.</strong> = artery / vein</div>
+    </div>
+
+    <div class="abbrev-section-title">Nervous System</div>
+    <div class="abbrev-grid">
+      <div class="abbrev-item"><strong>CNS</strong> = Central Nervous System</div>
+      <div class="abbrev-item"><strong>PNS</strong> = Peripheral Nervous System</div>
+      <div class="abbrev-item"><strong>CSF</strong> = Cerebrospinal Fluid</div>
+      <div class="abbrev-item"><strong>CN I -- XII</strong> = Cranial Nerves 1 through 12</div>
+      <div class="abbrev-item"><strong>DRG</strong> = Dorsal Root Ganglion</div>
+      <div class="abbrev-item"><strong>SA / IVF</strong> = Subarachnoid / Interventricular Foramen</div>
+      <div class="abbrev-item"><strong>3V / 4V</strong> = Third / Fourth Ventricle</div>
+      <div class="abbrev-item"><strong>ACA / MCA / PCA</strong> = Anterior / Middle / Posterior Cerebral Artery</div>
+      <div class="abbrev-item"><strong>PICA</strong> = Posterior Inferior Cerebellar Artery</div>
+      <div class="abbrev-item"><strong>AICA</strong> = Anterior Inferior Cerebellar Artery</div>
+      <div class="abbrev-item"><strong>SCA</strong> = Superior Cerebellar Artery</div>
+    </div>
+
+  </div>
+</div>
+
+<main class="main">
+
+<!-- ============================= READ FIRST PANEL ============================= -->
+<div class="panel" id="panel-readfirst">
+
+  <div class="panel-intro readfirst-intro">
+    <h3>&#128214; Welcome -- Read This First</h3>
+    <p>This is your clickable Module 5 study tool. Four content tabs (Urinary, Reproductive + Pelvis, Spinal Cord + PNS, Brain + CSF) mirror your structure list handout, with each structure as a checkable item.</p>
+    <p>Skim this tab once, then spend your study time in the content tabs.</p>
+  </div>
+
+  <div class="study-section">
+    <h4><span class="sect-icon">&#128204;</span>How to Use This Tool</h4>
+    <ul>
+      <li>Tap a region header to expand or collapse that section.</li>
+      <li>Click any structure to check it off. The progress bar at the top tracks the active tab.</li>
+      <li>Gold-bordered <strong>Q</strong> cards are conceptual questions from the handout. Try to answer from memory before peeking at the note below.</li>
+      <li>Path tracings (blood, urine, sperm, CSF, Circle of Willis) appear in framed "one-liner" boxes at the end of their sections -- these are the exact strings you want to have memorized.</li>
+      <li>Expand the <strong>Abbreviations Key</strong> bar at the top of any content tab if you need a quick reminder of what CN, DRG, ACA, PICA, etc. stand for.</li>
+    </ul>
+  </div>
+
+  <div class="study-section">
+    <h4><span class="sect-icon">&#127919;</span>Study Strategy That Actually Works</h4>
+    <p><strong>Active retrieval beats re-reading.</strong> Reading the structure list while nodding along is NOT studying. Retrieving it from memory -- saying it, pointing to it, spelling it -- IS studying.</p>
+    <p>Only check an item off after you have retrieved the answer from your brain without looking, not after you have read it. The checkbox is a self-honesty tool.</p>
+    <div class="sub-label">Separate what you know from what you don't</div>
+    <p>Space your retrieval over multiple days rather than cramming. Items you miss get more reps; items you know stay parked until closer to the exam. That is the whole trick.</p>
+    <div class="sub-label">Practice modalities -- use several</div>
+    <ul>
+      <li><strong>Lab Testing Book:</strong> Unlabeled images in page protectors + thin dry-erase markers. Label, check, wipe, repeat.</li>
+      <li><strong>Digital practice:</strong> PowerPoint of blank + answer-key images, exported to PDF, loaded into GoodNotes on an iPad with Apple Pencil.</li>
+      <li><strong>Cadaver, models, microscope slides:</strong> Still the gold standard -- this tool does not replace lab time.</li>
+    </ul>
+  </div>
+
+  <div class="study-section">
+    <h4><span class="sect-icon">&#128101;</span>Round Table Format (For Lab Table Study Groups)</h4>
+    <p>Use this during class at your lab table or in study groups. Every student participates -- no opting out. Mistakes are expected and required.</p>
+    <ol class="round-list">
+      <li><strong>ID out loud.</strong> One person identifies all structures out loud for the group. Start with 5 to 8 structures, then add more each round until you hit 15 to 20.</li>
+      <li><strong>Read + point.</strong> One person reads structures off the list randomly; the student being tested points to each. Rotate so everyone reads and everyone is tested.</li>
+      <li><strong>Reverse it -- and spell.</strong> Tester points to a structure. The student being tested says it aloud AND spells it if spelling is shaky.</li>
+      <li><strong>Full run.</strong> Each person takes a turn pointing to every structure on the model in one continuous pass, naming each from memory.</li>
+      <li><strong>Add context.</strong> Now add functions, composition, and distinguishing characteristics as you name each structure. Example: "Point to and name the structure that passes through the optic canal." This connects lecture to lab so it stops feeling like two separate courses.</li>
+    </ol>
+    <p style="margin-top: 8px;">You may be tested on this in class. Be prepared, not stressed. Diligent work on meaningful tasks is what makes the grade.</p>
+  </div>
+
+  <div class="study-section">
+    <h4><span class="sect-icon">&#9940;</span>What This Tool Is NOT</h4>
+    <ul>
+      <li>Not a replacement for hands-on cadaver, model, microscope, or imaging practice.</li>
+      <li>Not a substitute for active retrieval with classmates.</li>
+      <li>Not a lecture reference -- this is the lab structure list, keyed to the lab portion of the exam.</li>
+    </ul>
+  </div>
+
+  <div class="callout-box">
+    <p><strong>Bottom line:</strong> Active learning feels slower than re-reading notes. It is. It also works -- the feeling of slowness is the feeling of building durable memory. Retrieve, mess up, learn, retrieve again. That is the job.</p>
+  </div>
+
+</div><!-- end panel-readfirst -->
+
+<!-- ============================= URINARY PANEL ============================= -->
+<div class="panel active" id="panel-urinary">
+
+  <div class="panel-intro urinary-intro">
+    <h3>&#128167; Urinary System -- Lab Structures</h3>
+    <p>Identification list for the urinary system: gross kidney anatomy, vasculature, renal corpuscle, renal tubule, and the two tracing questions (filtrate path + blood path). Matches the handout exactly.</p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Category:</span>
+    <span class="tag tag-id">Identify</span>
+    <span class="tag tag-histo">Histo / Micro</span>
+    <span class="tag tag-trace">Trace Flow</span>
+    <span class="tag tag-question">Question</span>
+  </div>
+
+  <!-- 1. GROSS ANATOMY -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#129704;</div><div><div class="region-name">1. Urinary System Gross Anatomy</div><div class="region-tag-line">Kidney regions, adrenal gland, collecting system, bladder, urethra</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill urinary-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Identify</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Left kidney + Right kidney (retroperitoneal; R sits lower due to liver)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Suprarenal (adrenal) gland, superior pole of each kidney</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal capsule</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal cortex</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal medulla</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal column (cortical tissue between pyramids)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal pyramid (8 to 18 per kidney; apex = papilla)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal sinus (hollow fat-filled cavity housing calyces, pelvis, vessels)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Minor calyx</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Major calyx (2 to 3 minor calyces merge)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal pelvis (continuous with ureter)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ureter (~25 to 30 cm, retroperitoneal)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Urinary bladder (trigone, detrusor muscle, rugae)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Urethra (female ~4 cm; male ~20 cm: prostatic, membranous, spongy)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 2. VASCULATURE -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128166;</div><div><div class="region-name">2. Kidney Vasculature</div><div class="region-tag-line">Arteries, veins, microvasculature of the nephron</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill urinary-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Arteries</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal artery (enters at hilum)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Arcuate artery (base of each pyramid, cortex/medulla junction)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cortical radiate (interlobular) artery (ascends into cortex)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Afferent arteriole (delivers blood to glomerulus)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Efferent arteriole (exits glomerulus, unique portal-like system)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-histo">Capillary Beds</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Peritubular capillaries (wrap PCT and DCT, cortical nephrons)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Vasa recta (parallel the Loop of Henle, juxtamedullary nephrons)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Veins</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cortical radiate (interlobular) vein</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Arcuate vein</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Renal vein (exits hilum, drains to IVC)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 3. RENAL CORPUSCLE -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#9898;</div><div><div class="region-name">3. Renal Corpuscle Structures</div><div class="region-tag-line">Glomerulus + glomerular capsule, both layers</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill urinary-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Identify</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Glomerulus (fenestrated capillary tuft)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Glomerular capsule (Bowman's capsule)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Parietal layer of glomerular capsule (simple squamous)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Visceral layer of glomerular capsule (podocytes)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 4. RENAL TUBULE -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#127777;</div><div><div class="region-name">4. Renal Tubule Structures</div><div class="region-tag-line">PCT, LoH, DCT, CD, papillary duct, JGA</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill urinary-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Tubule Segments</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Proximal convoluted tubule (PCT)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Loop of Henle (descending + ascending limbs)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Distal convoluted tubule (DCT)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Collecting duct</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Papillary duct (distal portion of CD, opens at papilla)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">JGA</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Juxtaglomerular apparatus (JGA), where DCT meets afferent arteriole</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Macula densa cells (modified DCT cells; sense NaCl)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Granular (juxtaglomerular) cells (secrete renin)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 5. TRACE URINE PATH -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128167;</div><div><div class="region-name">5. Trace Path of Filtrate / Urine</div><div class="region-tag-line">From PCT to outside the body</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill urinary-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-trace">Trace</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">PCT &#8594; Loop of Henle &#8594; DCT</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Collecting duct &#8594; papillary duct</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Minor calyx &#8594; major calyx &#8594; renal pelvis</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ureter &#8594; bladder &#8594; urethra &#8594; outside</div></div></li>
+    </ul></div>
+    <div class="flow-trace-box">
+      <div class="flow-title">One-liner</div>
+      <div class="flow-text"><strong>PCT</strong> &#8594; <strong>LoH</strong> &#8594; <strong>DCT</strong> &#8594; <strong>CD</strong> &#8594; papillary duct &#8594; minor calyx &#8594; major calyx &#8594; <strong>renal pelvis</strong> &#8594; <strong>ureter</strong> &#8594; <strong>bladder</strong> &#8594; <strong>urethra</strong> &#8594; outside</div>
+    </div>
+  </div></div>
+
+  <!-- 6. TRACE BLOOD PATH -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#10084;</div><div><div class="region-name">6. Trace Path of Blood Through Kidney</div><div class="region-tag-line">Aorta to IVC, including the glomerulus loop</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill urinary-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-trace">Trace</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Abdominal aorta &#8594; renal artery &#8594; segmental &#8594; interlobar</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Arcuate a. &#8594; cortical radiate a. &#8594; afferent arteriole</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Glomerulus &#8594; efferent arteriole</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Peritubular capillaries OR vasa recta</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'urinary')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cortical radiate v. &#8594; arcuate v. &#8594; interlobar &#8594; renal v. &#8594; IVC</div></div></li>
+    </ul></div>
+    <div class="flow-trace-box">
+      <div class="flow-title">One-liner</div>
+      <div class="flow-text">Aorta &#8594; <strong>renal a.</strong> &#8594; segmental &#8594; interlobar &#8594; <strong>arcuate</strong> &#8594; cortical radiate &#8594; <strong>afferent arteriole</strong> &#8594; glomerulus &#8594; <strong>efferent arteriole</strong> &#8594; peritubular / vasa recta &#8594; cortical radiate v. &#8594; <strong>arcuate v.</strong> &#8594; interlobar &#8594; <strong>renal v.</strong> &#8594; IVC</div>
+    </div>
+  </div></div>
+
+</div><!-- end panel-urinary -->
+
+<!-- ============================= REPRODUCTIVE + PELVIS PANEL ============================= -->
+<div class="panel" id="panel-repro">
+
+  <div class="panel-intro repro-intro">
+    <h3>&#9792; &#9794; Reproductive System + Pelvis</h3>
+    <p>Male and female reproductive gross anatomy, shared pelvic circulation, and path-of-sperm tracing question. Fetal remnant question from the handout is included as a Q card.</p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Category:</span>
+    <span class="tag tag-id">Identify</span>
+    <span class="tag tag-trace">Trace Flow</span>
+    <span class="tag tag-question">Question</span>
+  </div>
+
+  <!-- MALE REPRODUCTIVE -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#9794;</div><div><div class="region-name">Male Reproductive System</div><div class="region-tag-line">Scrotum, testes, duct system, accessory glands, penis</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill repro-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">External + Scrotal</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Scrotum</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Testes (singular: testis)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cremaster muscle (elevates testes toward body wall)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Inguinal canal (passageway through abdominal wall)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Spermatic Cord Contents</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Spermatic cord</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Vas deferens (ductus deferens)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Testicular artery</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Testicular vein</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Pampiniform plexus (venous network cooling testicular artery)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Duct System + Accessory Glands</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ejaculatory duct (where vas deferens joins seminal vesicle duct)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Seminal vesicles (posterior to bladder)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Prostate gland (surrounds prostatic urethra)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Bulbourethral glands (Cowper's glands)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Penis + Urethra</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Penis (body/shaft)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Corpus spongiosum (surrounds urethra, forms glans)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Corpora cavernosa (paired dorsal erectile bodies)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Glans penis</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Prepuce (foreskin)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Prostatic urethra</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Membranous urethra (through urogenital diaphragm)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Spongy (penile) urethra</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- TRACE SPERM PATH -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128273;</div><div><div class="region-name">Trace Path of Sperm</div><div class="region-tag-line">From seminiferous tubules to outside the body</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill repro-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-trace">Trace</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Seminiferous tubules (in testis)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Rete testis &#8594; efferent ductules</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Epididymis (maturation, storage)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Vas deferens (ductus deferens), up through inguinal canal</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ejaculatory duct (vas deferens + seminal vesicle duct merge)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Prostatic urethra &#8594; membranous urethra &#8594; spongy urethra</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">External urethral orifice</div></div></li>
+    </ul></div>
+    <div class="flow-trace-box">
+      <div class="flow-title">One-liner (memory: "SEVEN UP")</div>
+      <div class="flow-text"><strong>S</strong>eminiferous tubules &#8594; rete testis &#8594; <strong>E</strong>fferent ductules &#8594; <strong>E</strong>pididymis &#8594; <strong>V</strong>as deferens &#8594; <strong>E</strong>jaculatory duct &#8594; (<strong>N</strong>othing) &#8594; <strong>U</strong>rethra (prostatic &#8594; membranous &#8594; spongy) &#8594; <strong>P</strong>enis (outside)</div>
+    </div>
+  </div></div>
+
+  <!-- FEMALE REPRODUCTIVE -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#9792;</div><div><div class="region-name">Female Reproductive System</div><div class="region-tag-line">Ovaries, uterine tubes, uterus, vagina, external genitalia</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill repro-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Ovaries + Ligaments</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ovary</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ovarian ligament (ovary to uterus)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ovarian artery</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ovarian vein</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Broad ligament of the uterus (serous membrane sheet)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Suspensory ligament (holds ovarian vessels)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Round ligament of the uterus (from uterus through inguinal canal)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Fallopian (Uterine) Tubes</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Fimbriae (finger-like projections, catch ovum)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Infundibulum (funnel-shaped distal end)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ampulla (widest section; common site of fertilization)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Isthmus (narrow section before uterus)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Uterus</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Fundus (dome-shaped superior portion)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Body of uterus</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cervix (opens to vagina)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Endometrium (inner mucosal layer)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Myometrium (smooth muscle middle layer)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Perimetrium (outer serous layer)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Vagina + External Genitalia (Vulva)</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Vagina</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Vaginal orifice</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Fornix (recess around cervix)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Mons pubis</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Labia majora</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Labia minora</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Clitoris</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Urethral orifice</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- PELVIC CIRCULATION -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128166;</div><div><div class="region-name">Pelvic Circulation (Shared M/F)</div><div class="region-tag-line">Iliac vessels + fetal remnant</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill repro-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Arteries</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Internal iliac artery (supplies pelvic organs)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">External iliac artery (continues as femoral below inguinal ligament)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Medial umbilical ligaments (on anterior pelvic wall)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Veins</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Internal iliac vein</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">External iliac vein</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-question">Questions</span></div><ul class="check-list">
+      <li class="check-item q-item" onclick="toggleCheck(this,'repro')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">The medial umbilical ligaments are remnants of what fetal structure?</div><div class="check-note">Answer: umbilical arteries (paired; carried deoxygenated blood from fetus to placenta)</div></div></li>
+    </ul></div>
+  </div></div>
+
+</div><!-- end panel-repro -->
+
+<!-- ============================= SPINAL CORD + PNS PANEL ============================= -->
+<div class="panel" id="panel-spinal">
+
+  <div class="panel-intro spinal-intro">
+    <h3>&#129504; Spinal Cord + Spinal Nerves</h3>
+    <p>Gross anatomy of the spinal cord, cross-sectional landmarks, spinal nerve components in the PNS, and the four major plexuses. Includes the handout's recurring question about what type of information each structure carries.</p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Category:</span>
+    <span class="tag tag-id">Identify</span>
+    <span class="tag tag-function">Function</span>
+    <span class="tag tag-question">Question</span>
+  </div>
+
+  <!-- SPINAL CORD GROSS -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#129504;</div><div><div class="region-name">1. Spinal Cord Gross Anatomy</div><div class="region-tag-line">Meninges, enlargements, caudal landmarks</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill spinal-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Meninges (superficial to deep)</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Dura mater (tough outer layer)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Arachnoid mater (spider-web layer)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Pia mater (delicate layer directly on cord)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Enlargements + Caudal Landmarks</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cervical enlargement (innervates upper limbs)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Lumbar enlargement (innervates lower limbs)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Conus medullaris (tapered end of cord, ~L1/L2 in adults)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cauda equina (horse's tail; lumbar + sacral nerve roots)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Filum terminale (anchors cord to coccyx)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- CROSS-SECTION -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128259;</div><div><div class="region-name">2. Spinal Cord Cross-Section</div><div class="region-tag-line">Horns, matter, commissure, central canal</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill spinal-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Gray Matter</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ventral (anterior) horn</div><div class="check-note">Contains somatic motor neuron cell bodies</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Lateral horn (T1 to L2 only)</div><div class="check-note">Contains sympathetic preganglionic neuron cell bodies</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Dorsal (posterior) horn</div><div class="check-note">Contains sensory interneuron cell bodies receiving input</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Gray commissure (connects L and R gray matter)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Central canal (runs through gray commissure; contains CSF)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Matter</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Gray matter (butterfly / H-shaped, cell bodies)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">White matter (surrounds gray, myelinated axon tracts)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- PNS STRUCTURES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#127919;</div><div><div class="region-name">3. Spinal Nerve Components (PNS)</div><div class="region-tag-line">Roots, rami, ganglia</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill spinal-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Roots + Nerve</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ventral root</div><div class="check-note">Motor axons exiting cord</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Dorsal root</div><div class="check-note">Sensory axons entering cord</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Dorsal root ganglion (DRG)</div><div class="check-note">Contains sensory neuron cell bodies</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Spinal nerve (formed when ventral + dorsal roots merge)</div><div class="check-note">Mixed (sensory + motor)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Rami</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Ventral ramus (supplies anterolateral body + limbs; forms plexuses)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Dorsal ramus (supplies deep back muscles + skin of back)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Gray ramus communicans</div><div class="check-note">Unmyelinated postganglionic sympathetic fibers rejoining spinal nerve</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">White ramus communicans (T1 to L2 only)</div><div class="check-note">Myelinated preganglionic sympathetic fibers leaving spinal nerve</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Sympathetic chain ganglion (paravertebral ganglion)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-question">Questions</span></div><ul class="check-list">
+      <li class="check-item q-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">What type of information is in the ventral root?</div><div class="check-note">Motor axons only (efferent)</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">What type of information is in the dorsal root?</div><div class="check-note">Sensory axons only (afferent)</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">What is found in the dorsal root ganglion?</div><div class="check-note">Cell bodies of sensory (pseudounipolar) neurons</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">What type of information is in the spinal nerve proper?</div><div class="check-note">Mixed: both sensory and motor axons (after roots have joined)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- PLEXUSES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#127760;</div><div><div class="region-name">4. Nerve Plexuses</div><div class="region-tag-line">Major ventral ramus networks</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill spinal-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Plexuses</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cervical plexus (C1 to C4)</div><div class="check-note">Supplies neck muscles + phrenic nerve to diaphragm</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Brachial plexus (C5 to T1)</div><div class="check-note">Supplies upper limb (median, ulnar, radial, musculocutaneous, axillary nerves)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Lumbar plexus (L1 to L4)</div><div class="check-note">Supplies anterior + medial thigh (femoral, obturator nerves)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'spinal')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Sacral plexus (L4 to S4)</div><div class="check-note">Supplies posterior thigh + leg + foot (sciatic nerve)</div></div></li>
+    </ul></div>
+  </div></div>
+
+</div><!-- end panel-spinal -->
+
+<!-- ============================= BRAIN + CSF PANEL ============================= -->
+<div class="panel" id="panel-brain">
+
+  <div class="panel-intro brain-intro">
+    <h3>&#129504; Brain, Meninges + CSF</h3>
+    <p>Brain gross anatomy, brainstem, cranial nerves, eye muscles, CSF ventricular system + pathway, functional cortical areas, dural extensions + venous sinuses, and cerebral vasculature including the Circle of Willis.</p>
+  </div>
+
+  <div class="legend">
+    <span class="legend-label">Category:</span>
+    <span class="tag tag-id">Identify</span>
+    <span class="tag tag-trace">Trace Flow</span>
+    <span class="tag tag-function">Function</span>
+    <span class="tag tag-question">Question</span>
+  </div>
+
+  <!-- 1. CEREBRAL HEMISPHERES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#129504;</div><div><div class="region-name">1. Cerebral Hemispheres</div><div class="region-tag-line">Gyri, sulci, lobes, fissures</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">General Surface Features</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Gyrus / gyri (ridges)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Sulcus / sulci (grooves)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Longitudinal fissure (separates L and R hemispheres)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Transverse fissure (separates cerebrum from cerebellum)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Key Gyri + Sulci</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Pre-central gyrus + pre-central sulcus</div><div class="check-note">Pre-central gyrus = primary motor cortex</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Central sulcus (separates frontal from parietal)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Post-central gyrus + post-central sulcus</div><div class="check-note">Post-central gyrus = primary sensory cortex</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Lateral sulcus (Sylvian fissure), separates frontal/parietal from temporal</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cingulate gyrus + cingulate sulcus (medial, above corpus callosum)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Sulcus of the corpus callosum</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Lobes</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Frontal lobe (unpaired as a concept; one per hemisphere)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Occipital lobe</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Parietal lobe (paired)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Temporal lobe (paired)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Insula (deep to lateral sulcus)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 2. DEEP + MIDLINE STRUCTURES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#9898;</div><div><div class="region-name">2. Deep + Midline Structures</div><div class="region-tag-line">Corpus callosum, diencephalon, limbic landmarks</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">White Matter + Septum</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Corpus callosum (largest commissure between hemispheres)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Septum pellucidum (thin membrane between lateral ventricles)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Fornix (arched white matter tract of the limbic system)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Crus cerebri (ventral midbrain motor tracts)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Limbic Landmarks</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Uncus (medial temporal lobe; near hippocampus)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Mammillary bodies (paired; on floor of hypothalamus)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Parahippocampal gyrus</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Diencephalon</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Thalamus (sensory relay to cortex)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Massa intermedia (interthalamic adhesion)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Hypothalamus (autonomic + endocrine control)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Infundibulum (pituitary stalk)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Pineal gland (posterior to thalamus)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Optic chiasm (where CN II fibers cross)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Cerebellum</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cerebellum (posterior, inferior to occipital lobe)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 3. BRAINSTEM -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#127795;</div><div><div class="region-name">3. Brainstem</div><div class="region-tag-line">Midbrain, pons, medulla</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Identify</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Midbrain (most superior brainstem segment)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Basilar pons (bulging anterior surface of pons)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Medulla oblongata (inferior segment; continuous with cord)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Pontomedullary junction</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Decussation of pyramids (motor fibers cross; at medulla/cord junction)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Medullary olive (oval bulge lateral to pyramid)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 4. CRANIAL NERVES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128247;</div><div><div class="region-name">4. Cranial Nerves I -- XII</div><div class="region-tag-line">Each note lists category (Sensory / Motor / Both) + specific functions</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Identify (memory: "On Old Olympus Towering Tops A Finn And German Viewed Some Hops")</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN I -- Olfactory</div><div class="check-note"><strong>Sensory.</strong> Smell (olfaction)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN II -- Optic</div><div class="check-note"><strong>Sensory.</strong> Vision</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN III -- Oculomotor</div><div class="check-note"><strong>Motor.</strong> Innervates medial, superior, and inferior rectus; inferior oblique; levator palpebrae superioris. Parasympathetic fibers control pupil constriction and lens accommodation</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN IV -- Trochlear</div><div class="check-note"><strong>Motor.</strong> Innervates superior oblique (depresses, abducts, and intorts the eye)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN V -- Trigeminal (V1, V2, V3)</div><div class="check-note"><strong>Both.</strong> Sensation from face, scalp, cornea, and nasal/oral cavities via V1, V2, V3. Motor to muscles of mastication (V3 only): masseter, temporalis, medial and lateral pterygoids</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN VI -- Abducens</div><div class="check-note"><strong>Motor.</strong> Innervates lateral rectus (abducts the eye)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN VII -- Facial</div><div class="check-note"><strong>Both.</strong> Motor to muscles of facial expression, stapedius, and posterior belly of digastric. Parasympathetic to lacrimal, submandibular, and sublingual glands. Sensory: taste from anterior 2/3 of tongue</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN VIII -- Vestibulocochlear</div><div class="check-note"><strong>Sensory.</strong> Hearing (cochlear branch) and balance / equilibrium (vestibular branch)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN IX -- Glossopharyngeal</div><div class="check-note"><strong>Both.</strong> Motor to stylopharyngeus; parasympathetic to parotid gland. Sensory: taste and general sensation from posterior 1/3 of tongue, pharyngeal sensation, carotid body and sinus input</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN X -- Vagus</div><div class="check-note"><strong>Both.</strong> Parasympathetic to thoracic and abdominal viscera (through splenic flexure); motor to muscles of pharynx and larynx (speech, swallowing). Sensory from those same viscera; taste from epiglottis</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN XI -- Spinal Accessory</div><div class="check-note"><strong>Motor.</strong> Innervates sternocleidomastoid (SCM) and trapezius</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">CN XII -- Hypoglossal</div><div class="check-note"><strong>Motor.</strong> Innervates all intrinsic and most extrinsic tongue muscles (tongue movement for speech and swallowing)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Associated Structures</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Olfactory bulb + olfactory tract</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Olfactory foramina in the cribriform plate (CN I passes through)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Optic nerve, optic tract, optic chiasm</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Optic canal (foramen) -- CN II passes through</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Superior orbital fissure (CN III, IV, V1, VI pass through)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Internal acoustic meatus (CN VII + CN VIII pass through)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-question">Questions</span></div><ul class="check-list">
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Which CNs are purely sensory?</div><div class="check-note">CN I (olfactory), CN II (optic), CN VIII (vestibulocochlear). Memory: "Some Say Some"</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Which CNs are purely motor?</div><div class="check-note">CN III, IV, VI, XI, XII. Memory: oculomotor, trochlear, abducens, accessory, hypoglossal</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Which CNs are both (mixed)?</div><div class="check-note">CN V, VII, IX, X. Memory: trigeminal, facial, glossopharyngeal, vagus</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Point to and name the structure that passes through the optic canal.</div><div class="check-note">CN II (optic nerve) + ophthalmic artery</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 5. EYE MUSCLES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128065;</div><div><div class="region-name">5. Extrinsic Eye Muscles</div><div class="region-tag-line">Innervated by cranial nerves</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Muscles</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Lateral rectus</div><div class="check-note">CN VI (abducens); abducts eye</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Medial rectus</div><div class="check-note">CN III; adducts eye</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Superior rectus</div><div class="check-note">CN III; elevates eye (with some medial movement)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Inferior rectus</div><div class="check-note">CN III; depresses eye</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Superior oblique</div><div class="check-note">CN IV (trochlear); depresses + abducts + intorts eye</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Inferior oblique</div><div class="check-note">CN III; elevates + abducts + extorts eye</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Levator palpebrae superioris</div><div class="check-note">CN III; elevates upper eyelid</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 6. CSF + VENTRICULAR SYSTEM -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128167;</div><div><div class="region-name">6. CSF + Ventricular System</div><div class="region-tag-line">Ventricles, foramina, pathway tracing</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">CSF Structures</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Choroid plexus (with ependymal cells; produces CSF)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Lateral ventricle (paired, one per hemisphere)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Interventricular foramen of Monroe (connects lateral to 3rd)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Third ventricle (between thalami)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Cerebral aqueduct (of Sylvius; connects 3rd to 4th)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Fourth ventricle (between brainstem + cerebellum)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Medial aperture (of Magendie) + lateral apertures (of Luschka)</div><div class="check-note">Not always seen; CSF exits 4th ventricle into subarachnoid space</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Central canal (continuous with 4th ventricle into cord)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Arachnoid granulations (reabsorb CSF into venous blood)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-trace">Trace CSF Flow</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Step 1: Choroid plexus produces CSF in lateral ventricles</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Step 2: Through interventricular foramen of Monroe into 3rd ventricle</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Step 3: Through cerebral aqueduct into 4th ventricle</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Step 4: Out through medial + lateral apertures into subarachnoid space</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Step 5: CSF bathes brain + cord; some drops into central canal</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Step 6: Reabsorbed by arachnoid granulations into superior sagittal sinus</div></div></li>
+    </ul></div>
+    <div class="flow-trace-box">
+      <div class="flow-title">CSF one-liner</div>
+      <div class="flow-text">Choroid plexus &#8594; <strong>lateral ventricles</strong> &#8594; foramen of Monroe &#8594; <strong>3rd ventricle</strong> &#8594; cerebral aqueduct &#8594; <strong>4th ventricle</strong> &#8594; medial + lateral apertures &#8594; subarachnoid space &#8594; <strong>arachnoid granulations</strong> &#8594; superior sagittal sinus &#8594; venous blood</div>
+    </div>
+  </div></div>
+
+  <!-- 7. FUNCTIONAL STRUCTURES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128293;</div><div><div class="region-name">7. Functional Cortical Areas</div><div class="region-tag-line">Language, sensory, motor, relay</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-function">Function + Location</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Wernicke's area (language comprehension; posterior left temporal)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Broca's area (speech production; inferior left frontal)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Primary sensory cortex (post-central gyrus; parietal lobe)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Primary motor cortex (pre-central gyrus; frontal lobe)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Thalamus (relay station for ascending sensory info)</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 8. DURAL EXTENSIONS + VENOUS SINUSES -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128206;</div><div><div class="region-name">8. Dural Extensions + Venous Sinuses</div><div class="region-tag-line">Falx, tentorium, dural sinus drainage</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Dural Extensions</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Falx cerebri</div><div class="check-note">Separates L + R cerebral hemispheres (in longitudinal fissure)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Tentorium cerebelli</div><div class="check-note">Separates cerebrum from cerebellum (in transverse fissure)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Falx cerebelli</div><div class="check-note">Separates L + R cerebellar hemispheres</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Dural Venous Sinuses</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Superior sagittal sinus (along top of falx cerebri)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Inferior sagittal sinus (along free edge of falx cerebri)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Straight sinus (at junction of falx cerebri + tentorium)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Sigmoid sinus (S-shaped; drains to internal jugular)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Confluence of sinuses (where major sinuses meet at occipital pole)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-question">Questions</span></div><ul class="check-list">
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Where is the tentorium cerebelli found, and what does it separate?</div><div class="check-note">In the transverse fissure; separates the cerebrum from the cerebellum</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Where is the falx cerebri found, and what does it separate?</div><div class="check-note">In the longitudinal fissure; separates L and R cerebral hemispheres</div></div></li>
+      <li class="check-item q-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Where is the falx cerebelli found, and what does it separate?</div><div class="check-note">Between the cerebellar hemispheres; separates L and R cerebellum</div></div></li>
+    </ul></div>
+  </div></div>
+
+  <!-- 9. CEREBRAL VASCULATURE / CIRCLE OF WILLIS -->
+  <div class="region-group"><div class="region-header" onclick="toggleRegion(this)"><div class="region-left"><div class="region-icon">&#128166;</div><div><div class="region-name">9. Cerebral Vasculature + Circle of Willis</div><div class="region-tag-line">Anterior + posterior circulation</div></div></div><div class="region-right"><div class="region-mini-bar"><div class="region-mini-fill brain-mini"></div></div><div class="region-progress-text">0%</div><div class="toggle-icon">&#9660;</div></div></div>
+  <div class="region-body">
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Anterior Circulation (from internal carotid)</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Internal carotid artery (ascends through carotid canal)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Anterior cerebral artery (ACA) -- medial hemispheres</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Middle cerebral artery (MCA) -- lateral hemispheres</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Anterior communicating artery (joins the two ACAs)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Posterior Circulation (from vertebral)</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Vertebral arteries (paired; through transverse foramina)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Basilar artery (formed by merged vertebrals, runs on basilar pons)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Pontine arteries (small branches from basilar to pons)</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Anterior inferior cerebellar artery (AICA) -- from basilar</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Posterior inferior cerebellar artery (PICA) -- from vertebrals</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Superior cerebellar artery (SCA) -- top branch of basilar</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Posterior cerebral artery (PCA) -- terminal branch of basilar</div></div></li>
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Posterior communicating artery (joins ICA to PCA; closes circle)</div></div></li>
+    </ul></div>
+    <div class="cat-block"><div class="cat-title"><span class="tag tag-id">Spinal Cord Supply</span></div><ul class="check-list">
+      <li class="check-item" onclick="toggleCheck(this,'brain')"><div class="check-box">&#10003;</div><div class="check-text-wrap"><div class="check-text">Anterior spinal artery (formed by branches from both vertebrals)</div></div></li>
+    </ul></div>
+    <div class="flow-trace-box">
+      <div class="flow-title">Circle of Willis closure</div>
+      <div class="flow-text">Anterior circulation (ICA &#8594; ACA / MCA) + posterior circulation (vertebrals &#8594; basilar &#8594; PCA) join via the <strong>anterior communicating a.</strong> (front) and the paired <strong>posterior communicating a.</strong> (sides) to form a complete ring at the base of the brain.</div>
+    </div>
+  </div></div>
+
+</div><!-- end panel-brain -->
+
+</main>
+
+<script>
+  function toggleAbbrev() {
+    var body = document.getElementById('abbrevBody');
+    var toggle = document.getElementById('abbrevToggle');
+    var open = body.classList.toggle('open');
+    toggle.innerHTML = open ? '&#9650; Collapse' : '&#9660; Expand';
+    setTimeout(sendHeight, 50);
+  }
+
+  var currentTab = 'urinary';
+  var TAB_META = {
+    readfirst: { label: '', fill: '', btn: 'active-readfirst', hideChrome: true },
+    urinary:   { label: 'Urinary Progress', fill: 'urinary-fill', btn: 'active-urinary' },
+    repro:     { label: 'Reproductive Progress', fill: 'repro-fill', btn: 'active-repro' },
+    spinal:    { label: 'Spinal Cord + PNS Progress', fill: 'spinal-fill', btn: 'active-spinal' },
+    brain:     { label: 'Brain + CSF Progress', fill: 'brain-fill', btn: 'active-brain' }
+  };
+  var ALL_TABS = ['readfirst','urinary','repro','spinal','brain'];
+
+  function switchTab(tab) {
+    currentTab = tab;
+    ALL_TABS.forEach(function(t){
+      document.getElementById('panel-' + t).classList.toggle('active', tab === t);
+      var btn = document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1));
+      if (btn) btn.className = 'tab-btn' + (tab === t ? ' ' + TAB_META[t].btn : '');
+    });
+
+    var progressWrap = document.querySelector('.progress-bar-wrap');
+    var abbrevBar = document.querySelector('.abbrev-bar');
+    var hide = !!TAB_META[tab].hideChrome;
+    if (progressWrap) progressWrap.style.display = hide ? 'none' : '';
+    if (abbrevBar) abbrevBar.style.display = hide ? 'none' : '';
+
+    if (!hide) {
+      var fill = document.getElementById('globalFill');
+      fill.className = 'progress-fill ' + TAB_META[tab].fill;
+      document.getElementById('progressLabel').textContent = TAB_META[tab].label;
+    }
+
+    updateProgress();
+    sendHeight();
+  }
+
+  function toggleRegion(header) {
+    var isOpen = header.classList.contains('open');
+    header.classList.toggle('open', !isOpen);
+    header.nextElementSibling.classList.toggle('open', !isOpen);
+    setTimeout(sendHeight, 50);
+  }
+
+  function toggleCheck(item, mode) {
+    item.classList.toggle('checked-' + mode);
+    updateProgress();
+  }
+
+  function updateProgress() {
+    if (currentTab === 'readfirst') return;
+    var panel = document.getElementById('panel-' + currentTab);
+    if (!panel) return;
+    var allItems = panel.querySelectorAll('.check-item');
+    var checkedItems = panel.querySelectorAll('.checked-' + currentTab);
+    var total = allItems.length;
+    var checked = checkedItems.length;
+    var pct = total ? Math.round((checked / total) * 100) : 0;
+    document.getElementById('globalFill').style.width = pct + '%';
+    document.getElementById('globalCount').textContent = checked + ' / ' + total;
+
+    panel.querySelectorAll('.region-group').forEach(function(group) {
+      var rItems = group.querySelectorAll('.check-item');
+      var rChecked = group.querySelectorAll('.checked-' + currentTab);
+      var rPct = rItems.length ? Math.round((rChecked.length / rItems.length) * 100) : 0;
+      var fill = group.querySelector('.region-mini-fill');
+      var label = group.querySelector('.region-progress-text');
+      if (fill) fill.style.width = rPct + '%';
+      if (label) label.textContent = rPct + '%';
+    });
+  }
+
+  updateProgress();
+
+  /* ---------- IFRAME HEIGHT SENDER FOR KAJABI ---------- */
+  (function() {
+    var FRAME_ID = 'module-5-structure-list';
+
+    function sendHeight() {
+      var height = Math.max(
+        document.body.scrollHeight,
+        document.body.offsetHeight,
+        document.documentElement.clientHeight,
+        document.documentElement.scrollHeight,
+        document.documentElement.offsetHeight
+      );
+      try {
+        window.parent.postMessage({
+          type: 'resize',
+          id: FRAME_ID,
+          height: height
+        }, '*');
+      } catch (e) {}
+    }
+
+    window.sendHeight = sendHeight;
+
+    window.addEventListener('load', sendHeight);
+    window.addEventListener('resize', sendHeight);
+    window.addEventListener('click', function() { setTimeout(sendHeight, 60); });
+
+    if (window.ResizeObserver) {
+      try {
+        var ro = new ResizeObserver(function() { sendHeight(); });
+        ro.observe(document.body);
+      } catch (e) {}
+    }
+
+    setTimeout(sendHeight, 100);
+    setTimeout(sendHeight, 400);
+    setTimeout(sendHeight, 1000);
+  })();
+</script>
+</body>
+</html>
