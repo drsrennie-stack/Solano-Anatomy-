@@ -1,0 +1,1623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Module 5 Structure List</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --navy-light: #3D4D6F;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #2E2E2E;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+
+  --identify-bg: #E3EBF2;
+  --identify-fg: #2A4A6B;
+  --trace-bg: #F4E8D8;
+  --trace-fg: #8B5A2B;
+
+  --check-checked: #5C8E6F;
+  --correct-bg: #EAF3EC;
+  --correct-fg: #3D7A4F;
+  --incorrect-bg: #FCE9E7;
+  --incorrect-fg: #B53626;
+
+  --shadow: 0 4px 18px rgba(27, 40, 69, 0.08);
+  --shadow-lg: 0 8px 28px rgba(27, 40, 69, 0.12);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  padding: 24px 16px 48px;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--navy);
+  color: white;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  z-index: 9999;
+  border-radius: 0 0 6px 0;
+  font-weight: 700;
+}
+.skip-link:focus { top: 0; }
+
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  border-radius: 16px 16px 0 0;
+  padding: 30px 36px 26px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
+}
+.page-header .course-tag {
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  color: var(--tan-soft);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+  position: relative;
+}
+.page-header h1 {
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  position: relative;
+}
+
+.tab-nav {
+  background: var(--navy);
+  display: flex;
+  overflow-x: auto;
+  padding: 0 12px;
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: var(--tan) var(--navy-soft);
+}
+.tab-nav::-webkit-scrollbar { height: 4px; }
+.tab-nav::-webkit-scrollbar-track { background: var(--navy-soft); }
+.tab-nav::-webkit-scrollbar-thumb { background: var(--tan); border-radius: 2px; }
+
+.tab-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.7);
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 18px 18px;
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+}
+.tab-btn:hover { color: white; background: rgba(255,255,255,0.04); }
+.tab-btn:focus-visible { outline: 2px solid var(--tan); outline-offset: -2px; }
+.tab-btn.active { color: white; border-bottom-color: var(--tan); }
+.tab-btn .emoji { font-size: 1.1rem; line-height: 1; }
+
+.tab-progress {
+  background: var(--cream-pale);
+  padding: 14px 26px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  border-bottom: 1px solid var(--border);
+  border-left: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+.tab-progress .label {
+  font-size: 0.78rem;
+  color: var(--tan-deep);
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+.tab-progress .bar {
+  flex: 1;
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.tab-progress .bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tan), var(--tan-deep));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+.tab-progress .pct {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--navy);
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  min-width: 44px;
+  text-align: right;
+}
+
+.tab-panel-wrapper {
+  background: white;
+  border: 1px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 16px 16px;
+  padding: 26px;
+}
+
+.tab-description {
+  background: var(--cream-pale);
+  border-left: 4px solid var(--tan);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 22px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.tab-description strong { color: var(--navy); }
+
+.filter-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.filter-row .filter-label {
+  font-size: 0.74rem;
+  color: var(--text-muted);
+  letter-spacing: 0.08em;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-right: 4px;
+}
+.filter-chip {
+  background: white;
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 8px 14px;
+  border-radius: 999px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+.filter-chip:hover { background: var(--cream-pale); }
+.filter-chip:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+.filter-chip.active { background: var(--navy); color: white; border-color: var(--navy); }
+.filter-chip.active.identify { background: var(--identify-fg); border-color: var(--identify-fg); color: white; }
+.filter-chip.active.trace { background: var(--trace-fg); border-color: var(--trace-fg); color: white; }
+
+.section-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.section-card:hover { box-shadow: var(--shadow); }
+.section-card.complete { border-color: var(--check-checked); }
+
+.section-header {
+  width: 100%;
+  background: white;
+  border: none;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+  font-family: inherit;
+  text-align: left;
+  transition: background 0.2s ease;
+  min-height: 64px;
+}
+.section-header:hover { background: var(--cream-pale); }
+.section-header:focus-visible { outline: 2px solid var(--tan); outline-offset: -2px; }
+
+.section-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 38px;
+  text-align: center;
+}
+
+.section-info { flex: 1; min-width: 0; }
+.section-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 3px;
+}
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+}
+.section-title .num { color: var(--tan-deep); margin-right: 2px; }
+.section-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+.cat-badge {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.cat-badge.identify { background: var(--identify-bg); color: var(--identify-fg); }
+.cat-badge.trace { background: var(--trace-bg); color: var(--trace-fg); }
+
+.section-progress {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  flex-shrink: 0;
+}
+.section-progress .mini-bar {
+  width: 80px;
+  height: 5px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.section-progress .mini-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--tan), var(--tan-deep));
+  border-radius: 999px;
+  transition: width 0.3s ease;
+  width: 0%;
+}
+.section-card.complete .mini-fill { background: var(--check-checked); }
+.section-progress .pct {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.section-toggle {
+  font-size: 0.85rem;
+  color: var(--tan-deep);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+  width: 20px;
+  text-align: center;
+}
+.section-card[aria-expanded="true"] .section-toggle { transform: rotate(180deg); }
+
+.section-body {
+  border-top: 1px solid var(--border-soft);
+  padding: 16px 22px 20px;
+  display: none;
+  background: var(--cream-pale);
+}
+.section-card[aria-expanded="true"] .section-body { display: block; }
+
+.struct-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 4px 14px;
+}
+.struct-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  user-select: none;
+  min-height: 44px;
+}
+.struct-item:hover { background: rgba(184,148,107,0.12); }
+.struct-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--check-checked);
+  margin: 0;
+}
+.struct-item .text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.4;
+  flex: 1;
+}
+.struct-item.checked .text {
+  color: var(--text-muted);
+  text-decoration: line-through;
+  text-decoration-color: var(--check-checked);
+  text-decoration-thickness: 2px;
+}
+
+/* === Trace quiz items === */
+.trace-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.trace-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: white;
+  border: 1px solid var(--border-soft);
+  transition: background 0.15s, border-color 0.15s;
+}
+.trace-item:hover { background: rgba(184,148,107,0.05); }
+.trace-item.correct { background: var(--correct-bg); border-color: var(--correct-fg); }
+.trace-item.incorrect { background: var(--incorrect-bg); border-color: var(--incorrect-fg); }
+.trace-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  cursor: pointer;
+  accent-color: var(--check-checked);
+  margin: 0;
+}
+.trace-item .text {
+  font-size: 0.95rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+.trace-item.studied .text { color: var(--text-muted); }
+.trace-order {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 8px 12px;
+  border: 2px solid var(--border);
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-weight: 700;
+  min-width: 72px;
+  min-height: 42px;
+  color: var(--navy);
+}
+.trace-order:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+.trace-order.has-value { border-color: var(--tan); background: var(--cream-pale); }
+.trace-feedback {
+  font-size: 1.05rem;
+  font-weight: 800;
+  text-align: center;
+  min-width: 36px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.trace-feedback.correct { color: var(--correct-fg); }
+.trace-feedback.incorrect { color: var(--incorrect-fg); font-size: 0.92rem; }
+
+.trace-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.trace-btn {
+  font-family: inherit;
+  font-size: 0.82rem;
+  font-weight: 700;
+  padding: 11px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  min-height: 42px;
+  transition: all 0.2s;
+}
+.trace-btn:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+.trace-btn-check {
+  background: var(--navy);
+  color: white;
+  border: none;
+}
+.trace-btn-check:hover { background: var(--navy-soft); }
+.trace-btn-shuffle {
+  background: white;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.trace-btn-shuffle:hover { background: var(--cream-pale); border-color: var(--tan); }
+.trace-score {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--navy);
+  padding: 9px 16px;
+  background: var(--cream);
+  border-radius: 8px;
+  border: 1px solid var(--tan-soft);
+}
+.trace-score.perfect {
+  background: var(--correct-bg);
+  border-color: var(--correct-fg);
+  color: var(--correct-fg);
+}
+
+.struct-note {
+  background: white;
+  border-left: 3px solid var(--tan);
+  border-radius: 6px;
+  padding: 12px 16px;
+  font-size: 0.92rem;
+  font-style: italic;
+  color: var(--text);
+  margin-top: 14px;
+  font-family: 'Lora', Georgia, serif;
+  line-height: 1.6;
+}
+
+.read-block {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.read-block h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.read-block h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-top: 18px;
+  margin-bottom: 8px;
+}
+.read-block p { margin-bottom: 12px; line-height: 1.65; }
+.read-block ol, .read-block ul { padding-left: 26px; margin-bottom: 14px; }
+.read-block li { margin-bottom: 8px; line-height: 1.6; }
+.read-block strong { color: var(--navy); }
+
+.abbrev-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 10px;
+}
+.abbrev-item {
+  background: var(--cream-pale);
+  border-radius: 8px;
+  padding: 12px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.abbrev-item .key {
+  font-weight: 800;
+  color: var(--tan-deep);
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.abbrev-item .val { font-size: 0.92rem; color: var(--text); }
+
+.reset-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+.reset-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 9px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  min-height: 36px;
+}
+.reset-btn:hover { background: var(--cream-pale); color: var(--text); border-color: var(--tan); }
+.reset-btn:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+
+.footer-note {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 700px) {
+  body { padding: 18px 12px 40px; font-size: 16px; }
+  .page-header { padding: 24px 22px 20px; }
+  .page-header h1 { font-size: 1.45rem; }
+  .tab-nav { padding: 0 6px; }
+  .tab-btn { padding: 14px 12px; font-size: 0.74rem; }
+  .tab-progress { padding: 12px 16px; gap: 10px; }
+  .tab-panel-wrapper { padding: 18px; }
+  .section-header { padding: 14px 14px; }
+  .section-progress .mini-bar { width: 56px; }
+  .struct-list { grid-template-columns: 1fr; }
+  .read-block { padding: 18px 20px; }
+  .trace-item {
+    grid-template-columns: auto 1fr auto;
+    grid-template-areas:
+      "check name feedback"
+      "order order order";
+    gap: 8px 12px;
+  }
+  .trace-item input[type="checkbox"] { grid-area: check; }
+  .trace-item .text { grid-area: name; }
+  .trace-item .trace-feedback { grid-area: feedback; }
+  .trace-item .trace-order { grid-area: order; justify-self: stretch; width: 100%; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container">
+
+<header class="page-header">
+  <div class="course-tag">Human Anatomy &middot; BIO 431</div>
+  <h1>Module 5 Structure List</h1>
+</header>
+
+<nav class="tab-nav" id="tab-nav" role="tablist" aria-label="Module sections"></nav>
+
+<div class="tab-progress" aria-live="polite">
+  <span class="label">Progress</span>
+  <div class="bar"><div class="bar-fill" id="overall-fill"></div></div>
+  <span class="pct" id="overall-pct">0%</span>
+</div>
+
+<div class="tab-panel-wrapper" id="main-content">
+  <div id="panel-content" role="tabpanel"></div>
+</div>
+
+<div class="footer-note">Dr. Sharilyn Rennie</div>
+
+</div>
+
+<script>
+const DATA = {
+  tabs: [
+    {
+      id: 'read-first',
+      label: 'Read First',
+      emoji: '📖',
+      type: 'info'
+    },
+    {
+      id: 'urinary',
+      label: 'Urinary',
+      emoji: '💧',
+      type: 'structures',
+      description: 'Identification list for the urinary system: gross kidney anatomy, vasculature, renal corpuscle, renal tubule, and the two tracing questions (filtrate path and blood path).',
+      sections: [
+        {
+          id: 'u-gross', num: 1, icon: '🫘',
+          title: 'Urinary System Gross Anatomy',
+          desc: 'Kidney regions, adrenal gland, collecting system, bladder, urethra',
+          category: 'identify',
+          items: [
+            'Left kidney', 'Right kidney',
+            'Suprarenal (adrenal) gland',
+            'Renal capsule', 'Renal cortex', 'Renal medulla',
+            'Renal column', 'Renal pyramid',
+            'Minor calyx', 'Major calyx',
+            'Renal pelvis', 'Renal sinus',
+            'Ureter', 'Urinary bladder', 'Urethra'
+          ]
+        },
+        {
+          id: 'u-vasc', num: 2, icon: '🩸',
+          title: 'Kidney Vasculature',
+          desc: 'Arteries, veins, microvasculature of the nephron',
+          category: 'identify',
+          items: [
+            'Renal artery', 'Arcuate artery', 'Cortical radiate artery',
+            'Renal vein', 'Arcuate vein', 'Cortical radiate vein',
+            'Afferent arteriole', 'Efferent arteriole',
+            'Peritubular capillaries', 'Vasa recta'
+          ]
+        },
+        {
+          id: 'u-corp', num: 3, icon: '⚪',
+          title: 'Renal Corpuscle Structures',
+          desc: 'Glomerulus and glomerular capsule, both layers',
+          category: 'identify',
+          items: [
+            'Glomerulus',
+            'Glomerular capsule (Bowman\u2019s capsule)',
+            'Parietal layer of glomerular capsule',
+            'Visceral layer of glomerular capsule'
+          ]
+        },
+        {
+          id: 'u-tub', num: 4, icon: '🧪',
+          title: 'Renal Tubule Structures',
+          desc: 'PCT, LoH, DCT, CD, papillary duct, JGA',
+          category: 'identify',
+          items: [
+            'Proximal convoluted tubule (PCT)',
+            'Loop of Henle (LoH)',
+            'Distal convoluted tubule (DCT)',
+            'Collecting duct (CD)',
+            'Papillary duct (distal collecting duct)',
+            'Juxtaglomerular apparatus (JGA)',
+            'Macula densa cells',
+            'Granular cells'
+          ]
+        },
+        {
+          id: 'u-trace-filt', num: 5, icon: '🌊',
+          title: 'Trace Filtrate Path',
+          desc: 'PCT to outside of body',
+          category: 'trace',
+          note: 'Pick the correct position for each structure (1 = first, last number = last). When you\u2019re ready, click Check Answers.',
+          items: [
+            'Proximal convoluted tubule (PCT)',
+            'Loop of Henle, descending limb',
+            'Loop of Henle, ascending limb',
+            'Distal convoluted tubule (DCT)',
+            'Collecting duct',
+            'Papillary duct',
+            'Minor calyx',
+            'Major calyx',
+            'Renal pelvis',
+            'Ureter',
+            'Urinary bladder',
+            'Urethra'
+          ]
+        },
+        {
+          id: 'u-trace-blood', num: 6, icon: '🌊',
+          title: 'Trace Blood Flow Through the Kidney',
+          desc: 'Renal artery to renal vein',
+          category: 'trace',
+          note: 'Pick the correct position for each vessel in the path of blood through the kidney.',
+          items: [
+            'Renal artery',
+            'Segmental arteries',
+            'Interlobar arteries',
+            'Arcuate arteries',
+            'Cortical radiate (interlobular) arteries',
+            'Afferent arteriole',
+            'Glomerulus',
+            'Efferent arteriole',
+            'Peritubular capillaries / vasa recta',
+            'Cortical radiate (interlobular) veins',
+            'Arcuate veins',
+            'Interlobar veins',
+            'Renal vein'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'reproductive',
+      label: 'Reproductive + Pelvis',
+      emoji: '⚧',
+      type: 'structures',
+      description: 'Identification list for male and female reproductive anatomy plus the pelvic vasculature shared between both.',
+      sections: [
+        {
+          id: 'r-male', num: 1, icon: '♂',
+          title: 'Male Reproductive Gross Anatomy',
+          desc: 'External genitalia, internal ducts, accessory glands',
+          category: 'identify',
+          items: [
+            'Scrotum', 'Testis',
+            'Spermatic cord', 'Vas deferens (ductus deferens)',
+            'Testicular artery', 'Testicular vein',
+            'Cremaster muscle', 'Pampiniform plexus',
+            'Inguinal canal', 'Ejaculatory duct',
+            'Seminal vesicles', 'Prostate gland', 'Bulbourethral glands',
+            'Penis', 'Corpus spongiosum',
+            'Corpora cavernosa', 'Glans penis', 'Prepuce',
+            'Prostatic urethra', 'Membranous urethra', 'Spongy (penile) urethra'
+          ]
+        },
+        {
+          id: 'r-female', num: 2, icon: '♀',
+          title: 'Female Reproductive Gross Anatomy',
+          desc: 'Ovary, uterus, vagina, vulva, supporting ligaments',
+          category: 'identify',
+          items: [
+            'Ovary', 'Ovarian ligament',
+            'Ovarian artery', 'Ovarian vein',
+            'Broad ligament of the uterus', 'Suspensory ligament',
+            'Fallopian (uterine) tube',
+            'Fimbriae', 'Infundibulum', 'Ampulla', 'Isthmus',
+            'Round ligament of the uterus',
+            'Uterus, fundus', 'Uterus, body', 'Cervix',
+            'Endometrium', 'Myometrium', 'Perimetrium',
+            'Vagina', 'Vaginal orifice', 'Fornix',
+            'Mons pubis', 'Labia majora', 'Labia minora',
+            'Clitoris', 'Urethral orifice'
+          ]
+        },
+        {
+          id: 'r-pelvic-vasc', num: 3, icon: '🩸',
+          title: 'Pelvic Circulatory Structures',
+          desc: 'Iliac arteries and veins, plus the medial umbilical ligament remnant',
+          category: 'identify',
+          note: 'The medial umbilical ligaments are the remnant of which fetal structure? (Fill in for yourself.)',
+          items: [
+            'Internal iliac artery',
+            'External iliac artery',
+            'Medial umbilical ligaments',
+            'Internal iliac vein',
+            'External iliac vein'
+          ]
+        },
+        {
+          id: 'r-trace-sperm', num: 4, icon: '🌊',
+          title: 'Trace Path of Sperm',
+          desc: 'Seminiferous tubules to outside of body',
+          category: 'trace',
+          note: 'Pick the correct position for each structure in the path sperm takes from the seminiferous tubules to the outside of the body. Click Check Answers when you\u2019re done.',
+          items: [
+            'Seminiferous tubules',
+            'Rete testis',
+            'Efferent ductules',
+            'Epididymis',
+            'Vas deferens (ductus deferens)',
+            'Ejaculatory duct',
+            'Prostatic urethra',
+            'Membranous urethra',
+            'Spongy (penile) urethra',
+            'External urethral orifice'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'spinal',
+      label: 'Spinal Cord + Nerves',
+      emoji: '🦴',
+      type: 'structures',
+      description: 'Spinal cord gross anatomy, cross-sectional view, spinal nerves and their roots and rami, and the four major plexuses.',
+      sections: [
+        {
+          id: 's-gross', num: 1, icon: '🦴',
+          title: 'Spinal Cord Gross Anatomy',
+          desc: 'Meninges, enlargements, terminal structures',
+          category: 'identify',
+          items: [
+            'Dura mater', 'Arachnoid mater', 'Pia mater',
+            'Cervical enlargement', 'Lumbar enlargement',
+            'Conus medullaris', 'Cauda equina', 'Filum terminale'
+          ]
+        },
+        {
+          id: 's-cross', num: 2, icon: '⊕',
+          title: 'Spinal Cord Cross-Section',
+          desc: 'Horns, gray and white matter, central canal',
+          category: 'identify',
+          items: [
+            'Ventral horn', 'Lateral horn', 'Dorsal horn',
+            'Gray matter', 'White matter',
+            'Gray commissure', 'Central canal'
+          ]
+        },
+        {
+          id: 's-pns', num: 3, icon: '⚡',
+          title: 'Spinal Nerves (PNS)',
+          desc: 'Roots, ganglia, rami, sympathetic chain',
+          category: 'identify',
+          note: 'For each structure, know what type of information it carries: sensory axons, motor axons, mixed, sensory cell bodies, etc.',
+          items: [
+            'Ventral root', 'Dorsal root', 'Dorsal root ganglion',
+            'Spinal nerve',
+            'Ventral ramus', 'Dorsal ramus',
+            'Gray ramus communicans', 'White ramus communicans',
+            'Sympathetic chain ganglion'
+          ]
+        },
+        {
+          id: 's-plex', num: 4, icon: '🕸',
+          title: 'Plexuses',
+          desc: 'Four major nerve plexuses',
+          category: 'identify',
+          items: [
+            'Cervical plexus',
+            'Brachial plexus',
+            'Lumbar plexus',
+            'Sacral plexus'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'brain',
+      label: 'Brain + CSF',
+      emoji: '🧠',
+      type: 'structures',
+      description: 'Brain gross anatomy, brainstem, ventricular system and CSF flow, dural extensions and venous sinuses, and the Circle of Willis.',
+      sections: [
+        {
+          id: 'b-gross', num: 1, icon: '🧠',
+          title: 'Brain Gross Anatomy',
+          desc: 'Lobes, gyri, sulci, deep structures',
+          category: 'identify',
+          items: [
+            'Gyrus', 'Sulcus', 'Longitudinal fissure',
+            'Pre-central gyrus', 'Pre-central sulcus',
+            'Central sulcus',
+            'Post-central gyrus', 'Post-central sulcus',
+            'Lateral sulcus (Sylvian fissure)',
+            'Frontal lobe', 'Occipital lobe',
+            'Parietal lobe', 'Temporal lobe',
+            'Insula',
+            'Corpus callosum', 'Sulcus of the corpus callosum',
+            'Cingulate gyrus', 'Cingulate sulcus',
+            'Dura mater', 'Arachnoid mater', 'Pia mater',
+            'Uncus', 'Septum pellucidum', 'Fornix',
+            'Mammillary bodies',
+            'Crus cerebri', 'Parahippocampal gyrus',
+            'Thalamus', 'Massa intermedia (interthalamic adhesion)',
+            'Hypothalamus', 'Infundibulum',
+            'Pineal gland', 'Optic chiasm',
+            'Cerebellum', 'Transverse fissure'
+          ]
+        },
+        {
+          id: 'b-stem', num: 2, icon: '🌿',
+          title: 'Brainstem',
+          desc: 'Pontomedullary junction, midbrain, pons, medulla',
+          category: 'identify',
+          items: [
+            'Pontomedullary junction',
+            'Decussation of the pyramids',
+            'Medullary olive',
+            'Midbrain',
+            'Basilar pons',
+            'Medulla oblongata'
+          ]
+        },
+        {
+          id: 'b-csf', num: 3, icon: '💧',
+          title: 'Ventricular System & CSF',
+          desc: 'Choroid plexus, ventricles, aqueducts',
+          category: 'identify',
+          items: [
+            'Choroid plexus (with ependymal cells)',
+            'Lateral ventricle',
+            'Interventricular foramen of Monro',
+            'Third ventricle',
+            'Cerebral aqueduct',
+            'Fourth ventricle'
+          ]
+        },
+        {
+          id: 'b-csf-trace', num: 4, icon: '🌊',
+          title: 'Trace CSF Flow',
+          desc: 'Lateral ventricles to reabsorption',
+          category: 'trace',
+          note: 'Some structures here are not visible on the model but show up in the path: medial and lateral apertures, central canal, arachnoid granulations.',
+          items: [
+            'Lateral ventricles',
+            'Interventricular foramen of Monro',
+            'Third ventricle',
+            'Cerebral aqueduct',
+            'Fourth ventricle',
+            'Medial aperture',
+            'Lateral apertures',
+            'Subarachnoid space',
+            'Arachnoid granulations',
+            'Superior sagittal sinus (reabsorption)'
+          ]
+        },
+        {
+          id: 'b-func', num: 5, icon: '🎯',
+          title: 'Functional Areas',
+          desc: 'Speech, sensory, motor regions',
+          category: 'identify',
+          items: [
+            'Wernicke\u2019s area',
+            'Broca\u2019s area',
+            'Primary sensory cortex',
+            'Primary motor cortex',
+            'Thalamus'
+          ]
+        },
+        {
+          id: 'b-dura', num: 6, icon: '🛡',
+          title: 'Dural Extensions',
+          desc: 'Tentorium and falces',
+          category: 'identify',
+          note: 'For each, know where it is found and what structures it separates.',
+          items: [
+            'Tentorium cerebelli',
+            'Falx cerebri',
+            'Falx cerebelli'
+          ]
+        },
+        {
+          id: 'b-sinus', num: 7, icon: '〰',
+          title: 'Dural Venous Sinuses',
+          desc: 'Major venous drainage of the brain',
+          category: 'identify',
+          items: [
+            'Superior sagittal sinus',
+            'Inferior sagittal sinus',
+            'Straight sinus',
+            'Sigmoid sinus',
+            'Confluence of sinuses'
+          ]
+        },
+        {
+          id: 'b-cow', num: 8, icon: '⭕',
+          title: 'Circle of Willis & Brain Vessels',
+          desc: 'Cerebral, communicating, and posterior circulation',
+          category: 'identify',
+          items: [
+            'Anterior communicating artery',
+            'Posterior communicating artery',
+            'Anterior cerebral artery',
+            'Middle cerebral artery',
+            'Posterior cerebral artery',
+            'Internal carotid artery',
+            'Superior cerebellar artery',
+            'Basilar artery',
+            'Pontine arteries',
+            'Vertebral artery',
+            'Anterior inferior cerebellar artery',
+            'Posterior inferior cerebellar artery',
+            'Anterior spinal artery'
+          ]
+        }
+      ]
+    },
+    {
+      id: 'cranial',
+      label: 'Cranial Nerves',
+      emoji: '👁',
+      type: 'structures',
+      description: 'Cranial nerves I through XII, their associated structures and foramina, sensory or motor classification, functions, and the extraocular muscles.',
+      sections: [
+        {
+          id: 'c-list', num: 1, icon: '🔢',
+          title: 'Cranial Nerves I to XII',
+          desc: 'Identify each cranial nerve by number and name',
+          category: 'identify',
+          items: [
+            'CN I, Olfactory',
+            'CN II, Optic',
+            'CN III, Oculomotor',
+            'CN IV, Trochlear',
+            'CN V, Trigeminal',
+            'CN VI, Abducens',
+            'CN VII, Facial',
+            'CN VIII, Vestibulocochlear',
+            'CN IX, Glossopharyngeal',
+            'CN X, Vagus',
+            'CN XI, Accessory',
+            'CN XII, Hypoglossal'
+          ]
+        },
+        {
+          id: 'c-assoc', num: 2, icon: '📍',
+          title: 'Associated Structures & Foramina',
+          desc: 'Landmarks and openings related to cranial nerves',
+          category: 'identify',
+          items: [
+            'Pontomedullary junction',
+            'Internal acoustic meatus',
+            'Olfactory bulb',
+            'Olfactory tract',
+            'Olfactory foramina (cribriform plate)',
+            'Optic nerve',
+            'Optic tract',
+            'Optic chiasm',
+            'Superior orbital fissure',
+            'Optic canal (foramen)'
+          ]
+        },
+        {
+          id: 'c-class', num: 3, icon: '🏷',
+          title: 'Classify Each Cranial Nerve',
+          desc: 'Sensory, motor, or both',
+          category: 'identify',
+          note: 'For each cranial nerve I through XII, classify it as sensory, motor, or both.',
+          items: [
+            'CN I, Olfactory (sensory)',
+            'CN II, Optic (sensory)',
+            'CN III, Oculomotor (motor)',
+            'CN IV, Trochlear (motor)',
+            'CN V, Trigeminal (both)',
+            'CN VI, Abducens (motor)',
+            'CN VII, Facial (both)',
+            'CN VIII, Vestibulocochlear (sensory)',
+            'CN IX, Glossopharyngeal (both)',
+            'CN X, Vagus (both)',
+            'CN XI, Accessory (motor)',
+            'CN XII, Hypoglossal (motor)'
+          ]
+        },
+        {
+          id: 'c-func', num: 4, icon: '⚙',
+          title: 'Functions of Each Cranial Nerve',
+          desc: 'Know the primary function of each',
+          category: 'identify',
+          note: 'Be able to state the primary function of each cranial nerve.',
+          items: [
+            'CN I, Smell',
+            'CN II, Vision',
+            'CN III, Eye movement, pupil constriction, lens accommodation',
+            'CN IV, Eye movement (superior oblique)',
+            'CN V, Facial sensation, mastication',
+            'CN VI, Eye movement (lateral rectus)',
+            'CN VII, Facial expression, taste (anterior 2/3 tongue), salivation, lacrimation',
+            'CN VIII, Hearing, balance',
+            'CN IX, Taste (posterior 1/3), swallowing, salivation',
+            'CN X, Parasympathetic to viscera, swallowing, voice',
+            'CN XI, Sternocleidomastoid and trapezius movement',
+            'CN XII, Tongue movement'
+          ]
+        },
+        {
+          id: 'c-eye', num: 5, icon: '👁',
+          title: 'Extraocular Muscles',
+          desc: 'Muscles that move the eyeball, all innervated by cranial nerves',
+          category: 'identify',
+          items: [
+            'Lateral rectus',
+            'Medial rectus',
+            'Superior rectus',
+            'Inferior rectus',
+            'Superior oblique',
+            'Inferior oblique',
+            'Levator palpebrae superioris'
+          ]
+        }
+      ]
+    }
+  ]
+};
+
+const KEY_PREFIX = 'm4struct_';
+const STATE_KEY = 'm4struct__active_tab';
+
+let activeTab = localStorage.getItem(STATE_KEY) || 'read-first';
+let activeFilter = 'all';
+let expandedSections = new Set();
+
+// Trace quiz state (session-only, not persisted)
+let traceOrders = {};       // sectionId -> array of original indices in display order
+let traceAnswers = {};      // sectionId -> { displayIdx: pickedNumberString }
+let traceCheckedState = {}; // sectionId -> bool
+
+function loadChecked() {
+  const set = new Set();
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(KEY_PREFIX) && k !== STATE_KEY && localStorage.getItem(k) === '1') {
+        set.add(k.slice(KEY_PREFIX.length));
+      }
+    }
+  } catch(e) {}
+  return set;
+}
+
+function saveChecked(id, checked) {
+  try {
+    if (checked) localStorage.setItem(KEY_PREFIX + id, '1');
+    else localStorage.removeItem(KEY_PREFIX + id);
+  } catch(e) {}
+}
+
+function isChecked(id) { return checkedSet.has(id); }
+let checkedSet = loadChecked();
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function getTraceOrder(sec) {
+  if (!traceOrders[sec.id]) {
+    traceOrders[sec.id] = shuffleArray(sec.items.map((_, i) => i));
+  }
+  return traceOrders[sec.id];
+}
+
+function getTab(id) { return DATA.tabs.find(t => t.id === id); }
+
+function tabStats(tabId) {
+  const tab = getTab(tabId);
+  if (!tab || !tab.sections) return { total: 0, done: 0 };
+  let total = 0, done = 0;
+  tab.sections.forEach(sec => {
+    sec.items.forEach((item, i) => {
+      total++;
+      if (isChecked(tabId + ':' + sec.id + ':' + i)) done++;
+    });
+  });
+  return { total, done };
+}
+
+function sectionStats(tabId, sec) {
+  let total = sec.items.length, done = 0;
+  sec.items.forEach((item, i) => {
+    if (isChecked(tabId + ':' + sec.id + ':' + i)) done++;
+  });
+  return { total, done };
+}
+
+function renderTabs() {
+  const nav = document.getElementById('tab-nav');
+  nav.innerHTML = DATA.tabs.map(t => {
+    const isActive = t.id === activeTab;
+    return `<button class="tab-btn${isActive ? ' active' : ''}" role="tab" aria-selected="${isActive}" aria-controls="panel-content" data-tab="${t.id}" id="tab-${t.id}">
+      <span class="emoji" aria-hidden="true">${t.emoji}</span>
+      <span>${escapeHtml(t.label)}</span>
+    </button>`;
+  }).join('');
+  nav.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
+    btn.addEventListener('keydown', handleTabKeyNav);
+  });
+}
+
+function handleTabKeyNav(e) {
+  const tabs = Array.from(document.querySelectorAll('.tab-btn'));
+  const idx = tabs.indexOf(e.currentTarget);
+  let next = -1;
+  if (e.key === 'ArrowRight') next = (idx + 1) % tabs.length;
+  if (e.key === 'ArrowLeft') next = (idx - 1 + tabs.length) % tabs.length;
+  if (e.key === 'Home') next = 0;
+  if (e.key === 'End') next = tabs.length - 1;
+  if (next >= 0) {
+    e.preventDefault();
+    tabs[next].focus();
+    switchTab(tabs[next].dataset.tab);
+  }
+}
+
+function switchTab(id) {
+  activeTab = id;
+  activeFilter = 'all';
+  expandedSections = new Set();
+  traceOrders = {};
+  traceAnswers = {};
+  traceCheckedState = {};
+  try { localStorage.setItem(STATE_KEY, id); } catch(e) {}
+  renderTabs();
+  renderPanel();
+  updateOverallProgress();
+}
+
+function renderPanel() {
+  const panel = document.getElementById('panel-content');
+  panel.setAttribute('aria-labelledby', 'tab-' + activeTab);
+  const tab = getTab(activeTab);
+  if (tab.type === 'info') {
+    panel.innerHTML = renderReadFirst();
+    return;
+  }
+  let html = '';
+  if (tab.description) {
+    html += `<div class="tab-description">${escapeHtml(tab.description)}</div>`;
+  }
+  html += `<div class="filter-row">
+    <span class="filter-label">Category</span>
+    <button class="filter-chip${activeFilter==='all'?' active':''}" data-filter="all">All</button>
+    <button class="filter-chip identify${activeFilter==='identify'?' active':''}" data-filter="identify">Identify</button>
+    <button class="filter-chip trace${activeFilter==='trace'?' active':''}" data-filter="trace">Trace Flow</button>
+  </div>`;
+  const sections = tab.sections.filter(s => activeFilter === 'all' || s.category === activeFilter);
+  if (sections.length === 0) {
+    html += `<div class="tab-description">No sections in this category.</div>`;
+  } else {
+    sections.forEach(sec => { html += renderSection(tab.id, sec); });
+  }
+  html += `<div class="reset-row"><button class="reset-btn" id="reset-tab" type="button">Reset Studied Marks for This Tab</button></div>`;
+  panel.innerHTML = html;
+  attachPanelListeners();
+}
+
+function renderSection(tabId, sec) {
+  const stats = sectionStats(tabId, sec);
+  const pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+  const expanded = expandedSections.has(sec.id);
+  const complete = pct === 100;
+  const itemsHtml = sec.category === 'trace'
+    ? renderTraceItems(tabId, sec)
+    : renderIdentifyItems(tabId, sec);
+  return `<div class="section-card${complete ? ' complete' : ''}" aria-expanded="${expanded}" data-section="${sec.id}">
+    <button class="section-header" aria-controls="body-${sec.id}" aria-expanded="${expanded}" type="button">
+      <span class="section-icon" aria-hidden="true">${sec.icon}</span>
+      <div class="section-info">
+        <div class="section-title-row">
+          <span class="section-title"><span class="num">${sec.num}.</span> ${escapeHtml(sec.title)}</span>
+          <span class="cat-badge ${sec.category}">${sec.category === 'trace' ? 'Trace Flow' : 'Identify'}</span>
+        </div>
+        <div class="section-desc">${escapeHtml(sec.desc)}</div>
+      </div>
+      <div class="section-progress">
+        <div class="mini-bar"><div class="mini-fill" style="width:${pct}%"></div></div>
+        <span class="pct">${stats.done}/${stats.total}</span>
+      </div>
+      <span class="section-toggle" aria-hidden="true">▼</span>
+    </button>
+    <div class="section-body" id="body-${sec.id}">
+      ${itemsHtml}
+      ${sec.note ? `<div class="struct-note">${escapeHtml(sec.note)}</div>` : ''}
+    </div>
+  </div>`;
+}
+
+function renderIdentifyItems(tabId, sec) {
+  return `<ul class="struct-list">
+    ${sec.items.map((item, i) => {
+      const id = tabId + ':' + sec.id + ':' + i;
+      const checked = isChecked(id);
+      return `<li><label class="struct-item${checked ? ' checked' : ''}" data-id="${escapeHtml(id)}">
+        <input type="checkbox" ${checked ? 'checked' : ''} data-id="${escapeHtml(id)}" aria-label="${escapeHtml(item)}">
+        <span class="text">${escapeHtml(item)}</span>
+      </label></li>`;
+    }).join('')}
+  </ul>`;
+}
+
+function renderTraceItems(tabId, sec) {
+  const order = getTraceOrder(sec);
+  const N = sec.items.length;
+  const sectionAnswers = traceAnswers[sec.id] || {};
+  const isCheckedQuiz = !!traceCheckedState[sec.id];
+  let correctCount = 0;
+
+  const itemsHtml = order.map((origIdx, displayIdx) => {
+    const item = sec.items[origIdx];
+    const id = tabId + ':' + sec.id + ':' + origIdx;
+    const studied = isChecked(id);
+    const picked = sectionAnswers[displayIdx] || '';
+    const correctNum = origIdx + 1;
+    const pickedNum = parseInt(picked, 10);
+
+    let feedbackHtml = '<span class="trace-feedback" aria-hidden="true"></span>';
+    let itemClass = '';
+    if (isCheckedQuiz) {
+      if (pickedNum === correctNum) {
+        feedbackHtml = `<span class="trace-feedback correct" aria-label="Correct">✓</span>`;
+        itemClass = ' correct';
+        correctCount++;
+      } else if (picked) {
+        feedbackHtml = `<span class="trace-feedback incorrect" aria-label="Incorrect, correct answer is ${correctNum}">✗ <strong>${correctNum}</strong></span>`;
+        itemClass = ' incorrect';
+      } else {
+        feedbackHtml = `<span class="trace-feedback incorrect" aria-label="Not answered, correct answer is ${correctNum}"><strong>${correctNum}</strong></span>`;
+        itemClass = ' incorrect';
+      }
+    }
+    if (studied) itemClass += ' studied';
+
+    let optionsHtml = `<option value="">?</option>`;
+    for (let n = 1; n <= N; n++) {
+      optionsHtml += `<option value="${n}"${String(picked) === String(n) ? ' selected' : ''}>${n}</option>`;
+    }
+
+    return `<li class="trace-item${itemClass}" data-display-idx="${displayIdx}" data-orig-idx="${origIdx}">
+      <input type="checkbox" data-id="${escapeHtml(id)}" ${studied ? 'checked' : ''} aria-label="Studied: ${escapeHtml(item)}" title="Mark as studied">
+      <span class="text">${escapeHtml(item)}</span>
+      <select class="trace-order${picked ? ' has-value' : ''}" data-section="${sec.id}" data-display-idx="${displayIdx}" aria-label="Position for ${escapeHtml(item)}">
+        ${optionsHtml}
+      </select>
+      ${feedbackHtml}
+    </li>`;
+  }).join('');
+
+  let scoreHtml = '';
+  if (isCheckedQuiz) {
+    const perfect = correctCount === N;
+    scoreHtml = `<div class="trace-score${perfect ? ' perfect' : ''}" role="status">Score: ${correctCount} of ${N}${perfect ? '. Perfect.' : ''}</div>`;
+  }
+
+  return `<ul class="trace-list">${itemsHtml}</ul>
+    <div class="trace-actions">
+      <button class="trace-btn trace-btn-check" data-action="check" data-section="${sec.id}" type="button">${isCheckedQuiz ? 'Check Again' : 'Check Answers'}</button>
+      <button class="trace-btn trace-btn-shuffle" data-action="shuffle" data-section="${sec.id}" type="button">Shuffle &amp; Reset</button>
+      ${scoreHtml}
+    </div>`;
+}
+
+function attachPanelListeners() {
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      activeFilter = chip.dataset.filter;
+      renderPanel();
+    });
+  });
+
+  document.querySelectorAll('.section-header').forEach(h => {
+    h.addEventListener('click', () => {
+      const card = h.closest('.section-card');
+      const sid = card.dataset.section;
+      if (expandedSections.has(sid)) expandedSections.delete(sid);
+      else expandedSections.add(sid);
+      const expanded = expandedSections.has(sid);
+      card.setAttribute('aria-expanded', expanded);
+      h.setAttribute('aria-expanded', expanded);
+    });
+  });
+
+  document.querySelectorAll('.struct-item input[type="checkbox"], .trace-item input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', e => {
+      e.stopPropagation();
+      const id = cb.dataset.id;
+      const checked = cb.checked;
+      if (checked) checkedSet.add(id); else checkedSet.delete(id);
+      saveChecked(id, checked);
+      const wrap = cb.closest('.struct-item, .trace-item');
+      if (wrap) wrap.classList.toggle(wrap.classList.contains('trace-item') ? 'studied' : 'checked', checked);
+      updateSectionProgress(cb.closest('.section-card'));
+      updateOverallProgress();
+    });
+  });
+
+  document.querySelectorAll('.trace-order').forEach(sel => {
+    sel.addEventListener('change', () => {
+      const sid = sel.dataset.section;
+      const displayIdx = sel.dataset.displayIdx;
+      if (!traceAnswers[sid]) traceAnswers[sid] = {};
+      if (sel.value) {
+        traceAnswers[sid][displayIdx] = sel.value;
+        sel.classList.add('has-value');
+      } else {
+        delete traceAnswers[sid][displayIdx];
+        sel.classList.remove('has-value');
+      }
+    });
+  });
+
+  document.querySelectorAll('.trace-btn-check').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sid = btn.dataset.section;
+      traceCheckedState[sid] = true;
+      expandedSections.add(sid);
+      renderPanel();
+      const card = document.querySelector(`.section-card[data-section="${sid}"]`);
+      if (card && card.scrollIntoView) card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  });
+
+  document.querySelectorAll('.trace-btn-shuffle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const sid = btn.dataset.section;
+      const tab = getTab(activeTab);
+      const sec = tab.sections.find(s => s.id === sid);
+      if (sec) {
+        traceOrders[sid] = shuffleArray(sec.items.map((_, i) => i));
+        traceAnswers[sid] = {};
+        traceCheckedState[sid] = false;
+        expandedSections.add(sid);
+        renderPanel();
+      }
+    });
+  });
+
+  const reset = document.getElementById('reset-tab');
+  if (reset) {
+    reset.addEventListener('click', () => {
+      const tab = getTab(activeTab);
+      if (!tab.sections) return;
+      if (!confirm('Clear all studied checkmarks for the ' + tab.label + ' tab? (Your quiz answers are not affected.)')) return;
+      tab.sections.forEach(sec => {
+        sec.items.forEach((item, i) => {
+          const id = activeTab + ':' + sec.id + ':' + i;
+          checkedSet.delete(id);
+          saveChecked(id, false);
+        });
+      });
+      renderPanel();
+      updateOverallProgress();
+    });
+  }
+}
+
+function updateSectionProgress(card) {
+  if (!card) return;
+  const sid = card.dataset.section;
+  const tab = getTab(activeTab);
+  const sec = tab.sections && tab.sections.find(s => s.id === sid);
+  if (!sec) return;
+  const stats = sectionStats(activeTab, sec);
+  const pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+  card.querySelector('.mini-fill').style.width = pct + '%';
+  card.querySelector('.section-progress .pct').textContent = stats.done + '/' + stats.total;
+  card.classList.toggle('complete', pct === 100);
+}
+
+function updateOverallProgress() {
+  const tab = getTab(activeTab);
+  const fill = document.getElementById('overall-fill');
+  const pctEl = document.getElementById('overall-pct');
+  if (!tab.sections) {
+    fill.style.width = '0%';
+    pctEl.textContent = '\u2014';
+    return;
+  }
+  const stats = tabStats(activeTab);
+  const pct = stats.total ? Math.round((stats.done / stats.total) * 100) : 0;
+  fill.style.width = pct + '%';
+  pctEl.textContent = pct + '%';
+}
+
+function renderReadFirst() {
+  return `
+    <div class="tab-description">
+      <strong>Welcome.</strong> This is your full Module 5 lab structure list. Use the tabs above to step through each system. Check structures off as you study them, and your progress saves to this device automatically. The Trace Flow sections include a self-quiz: pick the position number for each structure, then click Check Answers.
+    </div>
+
+    <div class="read-block">
+      <h2><span aria-hidden="true">🔤</span> Abbreviations Key</h2>
+      <p>Common shorthand you will see throughout the structure lists.</p>
+      <div class="abbrev-grid">
+        <div class="abbrev-item"><span class="key">PCT</span><span class="val">Proximal convoluted tubule</span></div>
+        <div class="abbrev-item"><span class="key">LoH</span><span class="val">Loop of Henle</span></div>
+        <div class="abbrev-item"><span class="key">DCT</span><span class="val">Distal convoluted tubule</span></div>
+        <div class="abbrev-item"><span class="key">CD</span><span class="val">Collecting duct</span></div>
+        <div class="abbrev-item"><span class="key">JGA</span><span class="val">Juxtaglomerular apparatus</span></div>
+        <div class="abbrev-item"><span class="key">CSF</span><span class="val">Cerebrospinal fluid</span></div>
+        <div class="abbrev-item"><span class="key">COW</span><span class="val">Circle of Willis</span></div>
+        <div class="abbrev-item"><span class="key">CNS</span><span class="val">Central nervous system</span></div>
+        <div class="abbrev-item"><span class="key">PNS</span><span class="val">Peripheral nervous system</span></div>
+        <div class="abbrev-item"><span class="key">CN I-XII</span><span class="val">Cranial nerves 1 through 12</span></div>
+      </div>
+    </div>
+
+    <div class="read-block">
+      <h2><span aria-hidden="true">🎯</span> Tips for Studying Lab Structures</h2>
+      <ol>
+        <li><strong>Create a Lab Testing Book.</strong> A binder with the images you need to learn. Have a blank sheet with leaders or arrows pointing to the structures you need to know, and on the back side, have the key. This is optimal so you can test yourself. Put the sheets in page protectors and use thin whiteboard markers. Wipe and repeat.</li>
+        <li><strong>Create a digital checklist.</strong> Build one in Google Sheets to track how often you practice each structure, how well you do, and when you are due to practice it again.</li>
+        <li><strong>Practice digitally if you prefer.</strong> Build a PowerPoint with all of the images (blank and answer key) you wish to study. Find them on the manufacturer site, online, or in your lab manual. Take pictures before you write in the manual and upload to PowerPoint. Convert to PDF if needed. If you have an iPad and Apple Pencil, upload to GoodNotes and practice each PowerPoint.</li>
+        <li><strong>Test, test, and more testing.</strong> Retrieval will make the biggest impact in your scores. If you are doing repetitive behaviors to learn, make sure it is repetitive retrieval.</li>
+        <li><strong>Separate what you know from what you don\u2019t know.</strong> Space out the retrieval.</li>
+        <li><strong>Use the Round Table format.</strong> See below for the protocol. Use this in your study groups or at your lab tables during class.</li>
+      </ol>
+    </div>
+
+    <div class="read-block">
+      <h2><span aria-hidden="true">🔁</span> Round Table Method</h2>
+      <p>A structured group quizzing protocol for studying structures with classmates.</p>
+      <h3>Round 1, Modeling</h3>
+      <p>Choose one person to ID all structures out loud for the study group. Start with 5 to 8 structures. Each round, add a few more, including the previously learned structures, until you reach 15 to 20.</p>
+      <h3>Round 2, Read and Point</h3>
+      <p>One person reads structures off the list (randomly). The student being tested points to the structure that has been read. Rotate readers and testers until everyone has had a turn at both roles.</p>
+      <h3>Round 3, Reverse and Spell</h3>
+      <p>Reverse it. The tester points to a structure. The student being tested says the structure name aloud and spells it if they are having trouble with the spelling.</p>
+      <h3>Round 4, Solo Recall</h3>
+      <p>Each person takes a turn pointing to every structure on the model in the same turn and naming each of them from memory.</p>
+      <h3>Round 5, Add Function and Context</h3>
+      <p>Add information about each structure as you go: functions, composition, distinguishing characteristics. This integrates lecture with lab so it does not feel like two separate courses. Example: point to and name the structure that passes through the optic canal.</p>
+      <h3>Ground Rules</h3>
+      <ul>
+        <li>Every student participates. No opting out. You will all make mistakes and not know things. That is expected and part of active learning.</li>
+        <li>Active learning is slower and feels like you are not making progress, but it is what makes the grades.</li>
+        <li>Showing up and watching is not enough. You must retrieve information from your brain to remember it.</li>
+        <li>I may test you on this in class to make sure everyone is participating. Don\u2019t stress, be prepared. You can shine at this when you are putting your effort into meaningful work.</li>
+      </ul>
+    </div>
+  `;
+}
+
+function init() {
+  renderTabs();
+  renderPanel();
+  updateOverallProgress();
+}
+init();
+</script>
+
+<!-- Iframe height sender for Kajabi or Canvas embedding -->
+<script>
+(function() {
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight
+    );
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) {
+    try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+
+</body>
+</html>
