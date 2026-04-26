@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Updated Semester Schedule</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #2E2E2E;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --row-alt: #F8F6F1;
+  --next: #FDF8E8;
+  --next-border: #E0B23F;
+  --exam-bg: #5A1F1B;
+  --exam-bg-2: #7A2A26;
+  --exam-accent: #C4A574;
+  --exam-row-bg: #F4E8E5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  padding: 24px 16px 48px;
+  -webkit-font-smoothing: antialiased;
+}
+.container { max-width: 1140px; margin: 0 auto; }
+
+.update-banner {
+  background: var(--cream-pale);
+  border-left: 5px solid var(--tan);
+  border-radius: 8px;
+  padding: 18px 22px;
+  margin-bottom: 24px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.update-banner .icon {
+  background: var(--tan);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+  font-size: 1.05rem;
+}
+.update-banner h1 {
+  font-size: 1.05rem;
+  color: var(--navy);
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.update-banner p {
+  font-size: 0.92rem;
+  color: var(--text);
+}
+.update-banner strong { color: var(--navy); }
+
+.exam-callout {
+  background: linear-gradient(135deg, var(--exam-bg) 0%, var(--exam-bg-2) 100%);
+  color: white;
+  border-radius: 14px;
+  margin-bottom: 28px;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(90, 31, 27, 0.25);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: stretch;
+}
+.exam-callout .exam-tag {
+  background: var(--exam-accent);
+  color: var(--exam-bg);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 24px 22px;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+.exam-callout .exam-body { padding: 22px 26px; }
+.exam-callout .next-pill {
+  display: inline-block;
+  background: rgba(255,255,255,0.18);
+  color: var(--exam-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+.exam-callout h2 {
+  font-size: 1.45rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.exam-callout p { font-size: 0.92rem; opacity: 0.9; }
+.exam-callout .exam-when {
+  background: rgba(0,0,0,0.22);
+  padding: 22px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  text-align: right;
+  min-width: 180px;
+}
+.exam-callout .exam-when .day-label {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.85;
+  margin-bottom: 4px;
+}
+.exam-callout .exam-when .date {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+.unit-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(27, 40, 69, 0.08);
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+}
+.unit-header {
+  background: var(--navy);
+  color: white;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: stretch;
+}
+.unit-tab {
+  background: var(--tan);
+  color: var(--navy);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+}
+.unit-title {
+  padding: 18px 22px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+.unit-dates {
+  padding: 18px 22px;
+  font-size: 0.85rem;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+table.schedule { width: 100%; border-collapse: collapse; }
+table.schedule thead th {
+  background: #F1EDE3;
+  color: var(--tan);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 12px 18px;
+  font-weight: 800;
+}
+table.schedule tbody tr {
+  border-top: 1px solid var(--border);
+  transition: background 0.2s;
+}
+table.schedule tbody tr:nth-child(even) { background: var(--row-alt); }
+table.schedule tbody tr.next-class {
+  background: var(--next) !important;
+  box-shadow: inset 4px 0 0 var(--next-border);
+}
+table.schedule tbody tr.exam-row {
+  background: var(--exam-row-bg) !important;
+  box-shadow: inset 4px 0 0 var(--exam-bg);
+}
+table.schedule tbody tr.exam-row.next-class {
+  background: var(--exam-row-bg) !important;
+  box-shadow: inset 4px 0 0 var(--exam-bg);
+}
+table.schedule td {
+  padding: 16px 18px;
+  vertical-align: top;
+  font-size: 0.92rem;
+  line-height: 1.45;
+}
+td.date-cell { width: 110px; }
+td.date-cell .day {
+  display: block;
+  color: var(--tan);
+  font-size: 0.74rem;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+td.date-cell .date {
+  display: block;
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 1rem;
+}
+.next-class td.date-cell .day { color: #9C7A0E; }
+.exam-row td.date-cell .day { color: var(--exam-bg); }
+.exam-row td.date-cell .date { color: var(--exam-bg); }
+.next-pill-inline {
+  display: inline-block;
+  background: var(--next-border);
+  color: white;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.08em;
+  margin-top: 6px;
+}
+.exam-merged {
+  font-weight: 700;
+  color: var(--navy);
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.exam-row-label {
+  background: var(--exam-bg);
+  color: var(--exam-accent);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  font-size: 0.74rem;
+  display: inline-block;
+}
+.exam-merged-text { color: var(--exam-bg); }
+
+.finals-banner {
+  background: var(--navy);
+  color: white;
+  border-radius: 14px;
+  padding: 24px 28px;
+  margin-top: 8px;
+  position: relative;
+  overflow: hidden;
+}
+.finals-banner::before {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 70%);
+  pointer-events: none;
+}
+.finals-banner .label {
+  color: var(--tan);
+  font-size: 0.74rem;
+  letter-spacing: 0.1em;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.finals-banner .date-line {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.finals-banner .details {
+  font-size: 0.95rem;
+  opacity: 0.92;
+  line-height: 1.65;
+}
+.finals-banner .details strong { color: var(--exam-accent); font-weight: 700; }
+.finals-banner .room-tag {
+  display: inline-block;
+  background: rgba(196,165,116,0.2);
+  border: 1px solid var(--exam-accent);
+  color: var(--exam-accent);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-top: 10px;
+}
+
+.footer-note {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+@media (max-width: 760px) {
+  .exam-callout { grid-template-columns: 1fr; }
+  .exam-callout .exam-tag { padding: 14px 22px; }
+  .exam-callout .exam-when {
+    align-items: flex-start;
+    text-align: left;
+    padding: 16px 22px;
+  }
+  .unit-header { grid-template-columns: 1fr; }
+  .unit-tab { padding: 12px 22px; }
+  .unit-title { padding: 12px 22px; font-size: 1rem; }
+  .unit-dates { padding: 0 22px 14px; }
+  table.schedule, table.schedule thead, table.schedule tbody, table.schedule tr, table.schedule td {
+    display: block;
+  }
+  table.schedule thead { display: none; }
+  table.schedule tr { padding: 12px 0; }
+  table.schedule td { padding: 4px 18px; }
+  table.schedule td.date-cell { padding: 10px 18px 6px; width: auto; }
+  table.schedule td:not(.date-cell):not(.exam-merged)::before {
+    content: attr(data-label);
+    display: block;
+    font-size: 0.66rem;
+    color: var(--tan);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 800;
+    margin: 8px 0 2px;
+  }
+  table.schedule tbody tr.next-class { box-shadow: inset 0 4px 0 var(--next-border); }
+  table.schedule tbody tr.exam-row { box-shadow: inset 0 4px 0 var(--exam-bg); }
+  .exam-merged { padding: 10px 18px 14px !important; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="update-banner">
+  <div class="icon">!</div>
+  <div>
+    <h1>Schedule Update for the Final Weeks</h1>
+    <p>Lecture Exam 4 has moved to <strong>Tuesday, April 28</strong>. The remaining schedule covers <strong>renal and reproductive systems</strong> alongside the nervous system. <strong>Lab Practical 5 and Lecture Exam 5</strong> are on Thursday, May 14. <strong>Cumulative Final</strong> is Tuesday, May 19 at 5:30 PM in the lecture room.</p>
+  </div>
+</div>
+
+<div class="exam-callout" id="exam4">
+  <div class="exam-tag">EXAM 4</div>
+  <div class="exam-body">
+    <span class="next-pill" id="exam4-next" style="display:none;">NEXT UP</span>
+    <h2>Lab Practical 4 &amp; Lecture Exam 4</h2>
+    <p>Lab practical first, lecture exam immediately following. Plan to stay for the full block.</p>
+  </div>
+  <div class="exam-when">
+    <div class="day-label">Tuesday</div>
+    <div class="date">April 28, 2026</div>
+  </div>
+</div>
+
+<div class="unit-card">
+  <div class="unit-header">
+    <div class="unit-tab">EXAM 5</div>
+    <div class="unit-title">Renal &middot; Reproductive &middot; Nervous System</div>
+    <div class="unit-dates">Apr 30 to May 14</div>
+  </div>
+  <table class="schedule">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Lecture</th>
+        <th>Lab</th>
+        <th>TBL / Active Learning</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-date="2026-04-30">
+        <td class="date-cell"><span class="day">THU</span><span class="date">Apr 30</span></td>
+        <td data-label="Lecture">Renal</td>
+        <td data-label="Lab">Pelvic Anatomy I &amp; II: Renal, Male &amp; Female Reproduction</td>
+        <td data-label="TBL / Active Learning">Exam 4 Rebuttals</td>
+      </tr>
+      <tr data-date="2026-05-05">
+        <td class="date-cell"><span class="day">TUE</span><span class="date">May 5</span></td>
+        <td data-label="Lecture">Male &amp; Female Reproduction</td>
+        <td data-label="Lab">CNS: Brain, Meninges &amp; Spinal Cord</td>
+        <td data-label="TBL / Active Learning">TBL: Renal Anatomy</td>
+      </tr>
+      <tr data-date="2026-05-07">
+        <td class="date-cell"><span class="day">THU</span><span class="date">May 7</span></td>
+        <td data-label="Lecture">CNS: Meninges, CSF &amp; Circle of Willis</td>
+        <td data-label="Lab">PNS: Cranial Nerves &amp; Circle of Willis</td>
+        <td data-label="TBL / Active Learning">DITKI: Circle of Willis &amp; Flow of CSF</td>
+      </tr>
+      <tr data-date="2026-05-12">
+        <td class="date-cell"><span class="day">TUE</span><span class="date">May 12</span></td>
+        <td data-label="Lecture">PNS &amp; Cranial Nerves, ANS</td>
+        <td data-label="Lab">Cranial Nerves (PNS)</td>
+        <td data-label="TBL / Active Learning">TBL: CNS (Brain), Meninges &amp; CSF</td>
+      </tr>
+      <tr data-date="2026-05-14" class="exam-row">
+        <td class="date-cell"><span class="day">THU</span><span class="date">May 14</span></td>
+        <td colspan="3" class="exam-merged">
+          <span class="exam-row-label">EXAM 5</span>
+          <span class="exam-merged-text">Lab Practical 5, then Lecture Exam 5</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="finals-banner" id="finals">
+  <div class="label">Finals Week</div>
+  <div class="date-line">Tuesday, May 19, 2026</div>
+  <div class="details"><strong>Cumulative Lab Exam</strong> begins at 5:30 PM. <strong>Cumulative Lecture Exam</strong> follows immediately.</div>
+  <div class="room-tag">REPORT TO THE LECTURE ROOM</div>
+</div>
+
+<div class="footer-note">Dr. Sharilyn Rennie &middot; Updated April 26, 2026</div>
+
+</div>
+
+<script>
+// Highlight the next upcoming class or exam
+(function() {
+  var today = new Date();
+  today.setHours(0,0,0,0);
+
+  var events = [
+    { date: '2026-04-28', el: document.getElementById('exam4'), pill: document.getElementById('exam4-next') }
+  ];
+  var rows = document.querySelectorAll('tr[data-date]');
+  rows.forEach(function(r) {
+    events.push({ date: r.getAttribute('data-date'), el: r, pill: null });
+  });
+  events.push({ date: '2026-05-19', el: document.getElementById('finals'), pill: null });
+
+  var nextEvent = null;
+  for (var i = 0; i < events.length; i++) {
+    var d = new Date(events[i].date + 'T00:00:00');
+    if (d >= today) { nextEvent = events[i]; break; }
+  }
+  if (nextEvent) {
+    if (nextEvent.el && nextEvent.el.tagName === 'TR') {
+      nextEvent.el.classList.add('next-class');
+      var dateCell = nextEvent.el.querySelector('.date-cell');
+      if (dateCell) {
+        var pill = document.createElement('div');
+        pill.className = 'next-pill-inline';
+        pill.textContent = 'NEXT';
+        dateCell.appendChild(pill);
+      }
+    } else if (nextEvent.pill) {
+      nextEvent.pill.style.display = 'inline-block';
+    }
+  }
+})();
+</script>
+
+<!-- Iframe height sender for Kajabi embedding -->
+<script>
+(function() {
+  function sendHeight() {
+    var height = Math.max(
+      document.body.scrollHeight,
+      document.documentElement.scrollHeight,
+      document.body.offsetHeight,
+      document.documentElement.offsetHeight
+    );
+    var id = '';
+    try {
+      id = window.frameElement && window.frameElement.id ? window.frameElement.id : '';
+    } catch(e) {}
+    try {
+      window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*');
+    } catch(e) {}
+  }
+  if ('ResizeObserver' in window) {
+    try {
+      var ro = new ResizeObserver(sendHeight);
+      ro.observe(document.body);
+    } catch(e) {}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+</body>
+</html>
