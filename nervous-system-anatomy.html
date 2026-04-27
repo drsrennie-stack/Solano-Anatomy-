@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Nervous System Anatomy Hub</title>
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nervous System Anatomy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
 <style>
 :root {
   --navy: #1B2845;
@@ -17,603 +17,453 @@
   --cream: #F4EDDC;
   --cream-pale: #FAF6EC;
   --bg: #FFFFFF;
-  --text: #1B2845;
-  --text-soft: #3D4D6F;
+  --text: #2E2E2E;
   --text-muted: #6B6B6B;
   --border: #E5E0D5;
   --border-soft: #EFEBE0;
-  --clinical: #8B4A3A;
-  --clinical-bg: #FBF4F2;
-  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
-  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+  --pri-rec: var(--navy);
+  --pri-lab: #8B4A3A;
+  --pri-add: var(--tan-deep);
+  --shadow: 0 4px 18px rgba(27, 40, 69, 0.08);
+  --shadow-lg: 0 8px 28px rgba(27, 40, 69, 0.12);
 }
-* { box-sizing: border-box; }
-html, body { margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   color: var(--text);
   background: var(--bg);
-  line-height: 1.55;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  padding: 28px 16px 48px;
 }
+.container { max-width: 1200px; margin: 0 auto; }
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--navy); color: white; padding: 8px 16px; text-decoration: none; font-size: 0.85rem; z-index: 9999; border-radius: 0 0 6px 0; }
+.skip-link:focus { top: 0; }
+
 .page-header {
   background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
-  color: #fff;
-  padding: 28px 28px 32px;
+  color: white;
+  border-radius: 16px;
+  padding: 36px 36px 32px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
 }
-.breadcrumb {
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--tan-soft);
-  margin-bottom: 12px;
-  font-weight: 600;
+.page-header::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
 }
-.page-header h1 {
-  font-family: Georgia, 'Times New Roman', serif;
-  margin: 0 0 8px;
-  font-size: 32px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.page-header p.subtitle {
-  margin: 0;
-  font-size: 15px;
-  color: rgba(255,255,255,0.78);
-  max-width: 720px;
-  font-weight: 400;
-}
-.tabs-wrap {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  box-shadow: 0 2px 8px rgba(27, 40, 69, 0.04);
-}
-[role="tablist"] {
+.breadcrumb { font-size: 0.78rem; letter-spacing: 0.08em; color: var(--tan-soft); font-weight: 700; text-transform: uppercase; margin-bottom: 12px; position: relative; }
+.page-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; position: relative; line-height: 1.1; }
+.page-header .subtitle { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 720px; position: relative; line-height: 1.55; }
+
+.priority-legend {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 22px;
+  margin-bottom: 28px;
   display: flex;
   flex-wrap: wrap;
-  gap: 0;
-  padding: 0 18px;
-  max-width: 1280px;
-  margin: 0 auto;
+  align-items: center;
+  gap: 18px 22px;
+  font-size: 0.85rem;
 }
+.priority-legend .label { color: var(--tan-deep); font-weight: 800; letter-spacing: 0.08em; font-size: 0.74rem; text-transform: uppercase; }
+.priority-legend .item { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-size: 0.85rem; }
+.tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; padding: 4px 11px; border-radius: 999px; color: white; text-transform: uppercase; white-space: nowrap; }
+.tag-rec { background: var(--pri-rec); }
+.tag-lab { background: var(--pri-lab); }
+.tag-add { background: var(--pri-add); }
+
+.section-label { display: flex; align-items: center; gap: 14px; margin: 28px 0 16px; }
+.section-label .pill { display: inline-block; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.1em; padding: 7px 16px; border-radius: 999px; color: white; text-transform: uppercase; }
+.section-label .line { flex: 1; height: 1px; background: var(--border); }
+
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start; }
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow);
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.card.priority-rec { border-top: 4px solid var(--pri-rec); }
+.card.priority-lab { border-top: 4px solid var(--pri-lab); }
+.card.priority-add { border-top: 4px solid var(--pri-add); }
+
+.card-header { padding: 20px 22px 14px; display: flex; align-items: flex-start; gap: 14px; }
+.card-num {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: white; font-weight: 800; font-size: 1.05rem;
+}
+.priority-rec .card-num { background: var(--pri-rec); }
+.priority-lab .card-num { background: var(--pri-lab); }
+.priority-add .card-num { background: var(--pri-add); }
+
+.card-title-block { flex: 1; padding-top: 2px; }
+.card-eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 3px; }
+.priority-rec .card-eyebrow { color: var(--pri-rec); }
+.priority-lab .card-eyebrow { color: var(--pri-lab); }
+.priority-add .card-eyebrow { color: var(--pri-add); }
+.card-title { font-size: 1.12rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
+
+.card-body { padding: 0 22px 4px; font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+.card-body p { margin-bottom: 12px; }
+.card-body strong { color: var(--navy); font-weight: 700; }
+
+.tip-box { background: var(--cream-pale); border-left: 3px solid var(--tan); border-radius: 6px; padding: 10px 14px; font-size: 0.82rem; color: var(--text); font-family: 'Lora', Georgia, serif; font-style: italic; line-height: 1.55; margin: 6px 0 14px; }
+
+.resource-list { list-style: none; margin: 0; padding: 4px 22px 18px; }
+.resource-list .group-label {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800;
+  color: var(--tan-deep); padding: 14px 0 4px;
+  border-top: 1px solid var(--border-soft); margin-top: 2px;
+}
+.resource-list li.group-label:first-child { border-top: none; padding-top: 4px; margin-top: 0; }
+.resource-list .item { border-top: 1px solid var(--border-soft); padding: 10px 0; }
+.resource-list a, .resource-list .static-item {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 0.88rem; color: var(--navy); text-decoration: none; line-height: 1.45;
+}
+.resource-list a:hover { color: var(--tan-deep); }
+.resource-list .static-item { color: var(--text-muted); }
+.resource-list .arrow { flex-shrink: 0; color: var(--tan); font-weight: 800; font-size: 0.95rem; line-height: 1.4; }
+.priority-lab .resource-list .arrow { color: var(--pri-lab); }
+.priority-add .resource-list .arrow { color: var(--pri-add); }
+.resource-list .item-note { margin: 5px 0 0 19px; font-size: 0.78rem; color: var(--text-muted); font-style: italic; line-height: 1.5; }
+.coming-pill {
+  display: inline-block; background: var(--cream); color: var(--tan-deep);
+  font-size: 0.66rem; font-weight: 800; letter-spacing: 0.08em;
+  padding: 2px 8px; border-radius: 999px; margin-left: 6px;
+  vertical-align: middle; text-transform: uppercase;
+}
+
+.footer-note { margin-top: 26px; text-align: center; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+
+/* Tab navigation for priority tiers */
+.tabs-wrap {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 22px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
 [role="tab"] {
+  flex: 1 1 auto;
   background: transparent;
-  border: none;
-  padding: 14px 20px;
+  border: 1px solid transparent;
+  color: var(--text);
   font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--text-soft);
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 11px 16px;
+  border-radius: 8px;
   cursor: pointer;
-  border-bottom: 3px solid transparent;
-  transition: color 0.18s ease, border-color 0.18s ease;
-  letter-spacing: 0.01em;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
 }
-[role="tab"]:hover { color: var(--navy); }
-[role="tab"][data-tier="rec"][aria-selected="true"] {
-  color: var(--navy);
-  border-bottom-color: var(--navy);
-}
-[role="tab"][data-tier="lab"][aria-selected="true"] {
-  color: var(--clinical);
-  border-bottom-color: var(--clinical);
-}
-[role="tab"][data-tier="add"][aria-selected="true"] {
-  color: var(--tan-deep);
-  border-bottom-color: var(--tan-deep);
-}
-[role="tab"]:focus-visible {
-  outline: 2px solid var(--tan);
-  outline-offset: -2px;
-  border-radius: 4px;
-}
-.panels {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 24px 18px 40px;
-}
-[role="tabpanel"] { outline: none; }
-[role="tabpanel"]:focus-visible {
-  box-shadow: 0 0 0 2px var(--tan);
-  border-radius: 6px;
-}
+[role="tab"]:hover { background: white; color: var(--navy); }
+[role="tab"]#tab-rec[aria-selected="true"] { background: var(--pri-rec); color: white; box-shadow: var(--shadow); }
+[role="tab"]#tab-lab[aria-selected="true"] { background: var(--pri-lab); color: white; box-shadow: var(--shadow); }
+[role="tab"]#tab-add[aria-selected="true"] { background: var(--pri-add); color: white; box-shadow: var(--shadow); }
+[role="tab"]:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+[role="tabpanel"] { padding: 0; }
+[role="tabpanel"]:focus { outline: none; }
+[role="tabpanel"]:focus-visible { outline: 3px solid var(--tan); outline-offset: 4px; border-radius: 8px; }
+[role="tabpanel"][hidden] { display: none; }
 .section-intro {
   background: var(--cream-pale);
-  border-left: 3px solid var(--tan);
-  padding: 14px 18px;
-  border-radius: 4px;
-  margin: 4px 0 20px;
-}
-.section-intro p {
-  margin: 0;
-  font-family: 'Lora', Georgia, serif;
-  font-style: italic;
-  color: var(--text-soft);
-  font-size: 15px;
-  line-height: 1.6;
-}
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-  gap: 16px;
-}
-.topic-card {
-  background: var(--bg);
   border: 1px solid var(--border);
+  border-left: 4px solid var(--tan);
   border-radius: 10px;
-  padding: 20px 22px;
-  box-shadow: var(--shadow);
-  transition: box-shadow 0.18s ease, transform 0.18s ease;
-  display: flex;
-  flex-direction: column;
+  padding: 16px 22px;
+  margin-bottom: 20px;
 }
-.topic-card:hover { box-shadow: var(--shadow-lg); }
-.topic-card .card-eyebrow {
-  font-size: 11px;
-  letter-spacing: 0.14em;
+.section-intro.priority-rec { border-left-color: var(--pri-rec); }
+.section-intro.priority-lab { border-left-color: var(--pri-lab); }
+.section-intro.priority-add { border-left-color: var(--pri-add); }
+.section-intro h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--tan-deep);
-  font-weight: 700;
+  font-weight: 800;
+  color: var(--navy);
   margin-bottom: 6px;
 }
-.topic-card h3 {
-  font-family: Georgia, 'Times New Roman', serif;
-  color: var(--navy);
-  margin: 0 0 10px;
-  font-size: 19px;
-  font-weight: 600;
-  line-height: 1.3;
-}
-.topic-card p.summary {
-  margin: 0 0 14px;
-  color: var(--text-soft);
-  font-size: 14px;
-}
-.resource-list {
-  list-style: none;
-  padding: 0;
-  margin: auto 0 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.resource-list a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 6px;
-  text-decoration: none;
-  color: var(--text);
-  background: var(--cream-pale);
-  border: 1px solid var(--border-soft);
-  font-size: 14px;
-  font-weight: 600;
-  transition: background 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
-}
-.resource-list a:hover {
-  background: var(--cream);
-  border-color: var(--tan-soft);
-}
-.resource-list a:focus-visible {
-  outline: 2px solid var(--tan);
-  outline-offset: 2px;
-}
-.resource-list a .label {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.resource-list a .icon {
-  font-size: 14px;
-  color: var(--tan-deep);
-}
-.resource-list a .arrow {
-  color: var(--text-muted);
-  font-weight: 400;
-  font-size: 16px;
-}
-.resource-list a.placeholder {
-  color: var(--text-muted);
-  background: var(--bg);
-  border-style: dashed;
-  cursor: not-allowed;
-  opacity: 0.65;
-}
-.resource-list a.placeholder:hover {
-  background: var(--bg);
-  border-color: var(--border-soft);
-}
-.signature-footer {
-  text-align: center;
-  padding: 24px 18px 32px;
-  border-top: 1px solid var(--border-soft);
-  margin-top: 18px;
-  color: var(--text-muted);
-  font-size: 13px;
-}
-.signature-footer .name {
-  font-family: Georgia, serif;
+.section-intro p {
+  font-family: 'Lora', Georgia, serif;
   font-style: italic;
-  color: var(--navy);
-  font-size: 16px;
-  margin-bottom: 4px;
+  font-size: 0.94rem;
+  color: var(--text);
+  line-height: 1.55;
 }
-@media (max-width: 700px) {
-  .card-grid { grid-template-columns: 1fr; }
-  .page-header { padding: 22px 18px 24px; }
-  .page-header h1 { font-size: 24px; }
-  [role="tab"] { padding: 12px 14px; font-size: 13px; }
-}
+
 @media (prefers-reduced-motion: reduce) {
-  * {
+  *, *::before, *::after {
     animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
+}
+
+@media (max-width: 700px) {
+  body { padding: 18px 12px 40px; }
+  .page-header { padding: 28px 22px 26px; }
+  .page-header h1 { font-size: 1.7rem; }
+  .resource-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container" id="main-content">
 
 <header class="page-header">
-  <div class="breadcrumb">BIO 431 &middot; Solano &middot; Anatomy Unit Hub</div>
-  <h1>Nervous System</h1>
-  <p class="subtitle">Lecture videos, interactive note sheets, cognitive trainers, and review activities for nervous tissue, the central nervous system, the peripheral nervous system, cranial nerves, and the autonomic and enteric divisions.</p>
+  <div class="breadcrumb">Anatomy &middot; Nervous System Unit Resources</div>
+  <h1>Nervous System Anatomy</h1>
+  <p class="subtitle">Complete learning resources for nervous system anatomy, including nervous tissue, central nervous system, peripheral nervous system, cranial nerves, and the autonomic and enteric divisions, plus lab work and assessment preparation.</p>
 </header>
 
 <div class="tabs-wrap">
-  <div role="tablist" aria-label="Nervous system resource categories">
-    <button role="tab" id="tab-rec" data-tier="rec" aria-selected="true" aria-controls="panel-rec" tabindex="0">Highly Recommended</button>
-    <button role="tab" id="tab-lab" data-tier="lab" aria-selected="false" aria-controls="panel-lab" tabindex="-1">Lab</button>
-    <button role="tab" id="tab-add" data-tier="add" aria-selected="false" aria-controls="panel-add" tabindex="-1">Additional</button>
+  <div role="tablist" aria-label="Resource priority levels">
+    <button role="tab" id="tab-rec" aria-selected="true" aria-controls="panel-rec">Highly Recommended</button>
+    <button role="tab" id="tab-lab" aria-selected="false" aria-controls="panel-lab" tabindex="-1">Lab Resources</button>
+    <button role="tab" id="tab-add" aria-selected="false" aria-controls="panel-add" tabindex="-1">Additional</button>
   </div>
 </div>
 
-<main class="panels">
-
-<!-- ============== TAB 1: HIGHLY RECOMMENDED ============== -->
-<section role="tabpanel" id="panel-rec" aria-labelledby="tab-rec" tabindex="0">
-  <div class="section-intro">
-    <p>The core path through the nervous system. Each topic card bundles its lecture video, interactive notes, cognitive trainer, and DOK questions in a single place. Work through them in the order shown.</p>
+<!-- HIGHLY RECOMMENDED -->
+<div role="tabpanel" id="panel-rec" aria-labelledby="tab-rec" tabindex="0">
+  <div class="section-intro priority-rec">
+    <h2>Start Here</h2>
+    <p>Core materials. Work through these first to build your foundation.</p>
   </div>
+  <div class="resource-grid">
 
-  <div class="card-grid">
-
-    <!-- Card 1: Nervous Tissue -->
-    <article class="topic-card">
-      <div class="card-eyebrow">Foundations</div>
-      <h3>Nervous Tissue</h3>
-      <p class="summary">Neuron and neuroglia structure, classification, action potential basics, and synaptic transmission. The cellular foundation for everything that follows.</p>
+    <!-- Card 1: Lecture Videos -->
+    <article class="card priority-rec">
+      <div class="card-header">
+        <div class="card-num">1</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Video Lectures</div>
+          <div class="card-title">Lecture Videos</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Work through each video <strong>before</strong> attempting the cognitive trainers. Use the notes alongside each video.</p>
+      </div>
       <ul class="resource-list">
-        <li>
-          <a href="https://drive.google.com/file/d/1STrgRqq80i0s7ntLzMjWj4gg-MzwaU7o/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9654;</span>Lecture Video</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a href="nervous-tissue-notes.html" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9783;</span>Interactive Notes</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://drive.google.com/file/d/15qVtOMERwrRdR3vxWRgpTuOl3-Mncwgg/view?usp=drive_link" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9881;</span>Cognitive Trainer</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://drive.google.com/file/d/1eINYGoggMsq_O_kn52zRBncVDjZLrcz4/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#10067;</span>DOK Questions</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+        <li class="group-label">Nervous Tissue</li>
+        <li class="item"><a href="https://drive.google.com/file/d/1STrgRqq80i0s7ntLzMjWj4gg-MzwaU7o/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Nervous Tissue</span></a></li>
+
+        <li class="group-label">Central Nervous System</li>
+        <li class="item"><a href="https://drive.google.com/file/d/15EZFnUINtd6U6vFxX7KCndoD7DjXbsuc/view?usp=drive_link" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Brain, Meninges &amp; CSF</span></a></li>
+        <li class="item"><a href="https://drive.google.com/file/d/1vkBN0cqvVyonnoJrIonFp6Okdnr7psXX/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Spine, Spinal Cord &amp; Spinal Nerves</span></a></li>
+
+        <li class="group-label">Peripheral Nervous System</li>
+        <li class="item"><a href="https://drive.google.com/file/d/1AV5M6WGgDcT7nmj0gRc800-TfcQycEWO/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Cranial Nerves</span></a></li>
+
+        <li class="group-label">Autonomic Division</li>
+        <li class="item"><a href="https://drive.google.com/file/d/1uA5jGF6UB9HDir4IchUI9LQ48yhn2Tsu/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Autonomic &amp; Enteric Nervous System</span></a></li>
       </ul>
     </article>
 
-    <!-- Card 2: Brain, Meninges, CSF -->
-    <article class="topic-card">
-      <div class="card-eyebrow">Central Nervous System</div>
-      <h3>Brain, Meninges &amp; CSF</h3>
-      <p class="summary">Brain regions and lobes, the three meningeal layers, ventricles and CSF flow, and the blood-brain barrier.</p>
+    <!-- Card 2: Cognitive Trainers -->
+    <article class="card priority-rec">
+      <div class="card-header">
+        <div class="card-num">2</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Active Recall</div>
+          <div class="card-title">Cognitive Trainers</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Retrieval, drawing, and predict-and-apply questions. <strong>Handwrite your answers</strong>, don't type. Complete after watching the corresponding videos.</p>
+      </div>
       <ul class="resource-list">
-        <li>
-          <a href="cns-brain-meninges-csf-notes.html" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9783;</span>Interactive Notes</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9654;</span>Lecture Video <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9881;</span>Cognitive Trainer <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+        <li class="item"><a href="https://drive.google.com/file/d/15qVtOMERwrRdR3vxWRgpTuOl3-Mncwgg/view?usp=drive_link" target="_blank" rel="noopener"><span class="arrow">›</span><span>Cognitive Trainer: Nervous Tissue</span></a></li>
+        <li class="item"><a href="https://drive.google.com/file/d/1pV1hOqM2IV5q0OHqbzIh9q53VcA_e_4g/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">›</span><span>Cognitive Trainer: CNS, ANS &amp; PNS</span></a></li>
+        <li class="item"><a href="https://drive.google.com/file/d/1ZKDyu5S99vJFybvQqCwoYgeyFnsT8V-g/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">›</span><span>How to Use the Cognitive Trainer</span></a></li>
       </ul>
     </article>
 
-    <!-- Card 3: Spinal Cord -->
-    <article class="topic-card">
-      <div class="card-eyebrow">Central Nervous System</div>
-      <h3>Spinal Cord</h3>
-      <p class="summary">Protective coverings, internal architecture, ascending sensory tracts and descending motor tracts, lumbar puncture, and clinical injury patterns.</p>
+    <!-- Card 3: Notes -->
+    <article class="card priority-rec">
+      <div class="card-header">
+        <div class="card-num">3</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Reference Materials</div>
+          <div class="card-title">Notes</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Interactive study notes for each subsystem. Six tabs per file with full ARIA accessibility, clinical callouts, and pattern-recognition tables. Use alongside the videos and cognitive trainers.</p>
+      </div>
       <ul class="resource-list">
-        <li>
-          <a href="https://drive.google.com/file/d/1vkBN0cqvVyonnoJrIonFp6Okdnr7psXX/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9654;</span>Lecture Video</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a href="cns-spine-notes.html" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9783;</span>Interactive Notes</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9881;</span>Cognitive Trainer <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <!-- Card 4: Spinal Nerves & PNS -->
-    <article class="topic-card">
-      <div class="card-eyebrow">Peripheral Nervous System</div>
-      <h3>Spinal Nerves &amp; PNS</h3>
-      <p class="summary">Spinal nerve architecture, the four major plexuses (cervical, brachial, lumbar, sacral), peripheral nerve injuries, and dermatomes.</p>
-      <ul class="resource-list">
-        <li>
-          <a href="https://drive.google.com/file/d/1vkBN0cqvVyonnoJrIonFp6Okdnr7psXX/view?usp=sharing" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9654;</span>Lecture Video</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a href="pns-spinal-nerves-notes.html" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9783;</span>Interactive Notes</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9881;</span>Cognitive Trainer <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <!-- Card 5: Cranial Nerves -->
-    <article class="topic-card">
-      <div class="card-eyebrow">Peripheral Nervous System</div>
-      <h3>Cranial Nerves</h3>
-      <p class="summary">All 12 cranial nerves with their functional categories, foramina of exit, individual roles, bedside testing, and classic pathologies.</p>
-      <ul class="resource-list">
-        <li>
-          <a href="cranial-nerves-notes.html" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9783;</span>Interactive Notes</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9654;</span>Lecture Video <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9881;</span>Cognitive Trainer <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <!-- Card 6: ANS & Enteric -->
-    <article class="topic-card">
-      <div class="card-eyebrow">Autonomic Division</div>
-      <h3>Autonomic &amp; Enteric NS</h3>
-      <p class="summary">Two-neuron motor pathways, sympathetic and parasympathetic divisions, autonomic ganglia and plexuses, neurotransmitters and receptors, and the gut's own nervous system.</p>
-      <ul class="resource-list">
-        <li>
-          <a href="ans-enteric-notes.html" target="_blank" rel="noopener">
-            <span class="label"><span class="icon" aria-hidden="true">&#9783;</span>Interactive Notes</span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9654;</span>Lecture Video <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#9881;</span>Cognitive Trainer <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+        <li class="item"><a href="https://drsrennie-stack.github.io/Solano-Anatomy-/nervous-tissue-notes.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Notes: Nervous Tissue</span></a></li>
+        <li class="item"><a href="https://drsrennie-stack.github.io/Solano-Anatomy-/cns-brain-meninges-csf-notes.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Notes: CNS Brain, Meninges &amp; CSF</span></a></li>
+        <li class="item"><a href="https://drsrennie-stack.github.io/Solano-Anatomy-/cns-spine-notes.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Notes: CNS Spinal Cord</span></a></li>
+        <li class="item"><a href="https://drsrennie-stack.github.io/Solano-Anatomy-/pns-spinal-nerves-notes.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Notes: PNS Spinal Nerves &amp; Peripheral NS</span></a></li>
+        <li class="item"><a href="https://drsrennie-stack.github.io/Solano-Anatomy-/cranial-nerves-notes.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Notes: Cranial Nerves</span></a></li>
+        <li class="item"><a href="https://drsrennie-stack.github.io/Solano-Anatomy-/ans-enteric-notes.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Notes: Autonomic &amp; Enteric Nervous System</span></a></li>
       </ul>
     </article>
 
   </div>
-</section>
+</div>
 
-<!-- ============== TAB 2: LAB ============== -->
-<section role="tabpanel" id="panel-lab" aria-labelledby="tab-lab" tabindex="0" hidden>
-  <div class="section-intro">
-    <p>Hands-on lab work for the nervous system. Models, slides, dissection, and bedside-style practical exercises that bring the anatomy off the page.</p>
+<!-- LAB RESOURCES -->
+<div role="tabpanel" id="panel-lab" aria-labelledby="tab-lab" tabindex="0" hidden>
+  <div class="section-intro priority-lab">
+    <h2>Lab Resources</h2>
+    <p>Lab activities, structure identification, and visual references for the practical exam.</p>
   </div>
+  <div class="resource-grid">
 
-  <div class="card-grid">
-
-    <article class="topic-card">
-      <div class="card-eyebrow">Practical</div>
-      <h3>Brain Models &amp; Dissection</h3>
-      <p class="summary">Identification of cerebral lobes, meningeal layers, ventricles, brain stem regions, and major arteries on models and preserved specimens.</p>
+    <!-- Card 4: Nervous System Lab -->
+    <article class="card priority-lab">
+      <div class="card-header">
+        <div class="card-num">4</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Lab: Anatomy</div>
+          <div class="card-title">Nervous System Anatomy Lab</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Lab exercises and identification activities for nervous system structures: brain models, spinal cord cross sections, cranial nerve practical, and reflex testing.</p>
+      </div>
       <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128203;</span>Lab Handout <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128221;</span>Structure List <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <article class="topic-card">
-      <div class="card-eyebrow">Practical</div>
-      <h3>Spinal Cord Cross Sections</h3>
-      <p class="summary">Identification of gray matter horns, white matter columns, central canal, and meningeal layers on histology slides and models. Regional differences across cervical, thoracic, and lumbar levels.</p>
-      <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128203;</span>Lab Handout <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
+        <li class="item">
+          <a href="https://drsrennie-stack.github.io/Solano-Anatomy-/module-5-Structurelist.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Module 5 Structure List</span></a>
+          <p class="item-note">Use the structure list to identify nervous system structures for the lab practical.</p>
         </li>
       </ul>
     </article>
 
-    <article class="topic-card">
-      <div class="card-eyebrow">Practical</div>
-      <h3>Cranial Nerve Practical</h3>
-      <p class="summary">Bedside-style exam practice for all 12 cranial nerves: H-pattern eye movement, gag reflex, facial expression symmetry, hypoglossal protrusion, and the rest.</p>
+    <!-- Card 5: Digital Atlas -->
+    <article class="card priority-lab">
+      <div class="card-header">
+        <div class="card-num">5</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Lab: Visual Reference</div>
+          <div class="card-title">Digital Atlas</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Labeled images and 3D models of nervous system structures.</p>
+      </div>
       <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128203;</span>Exam Checklist <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
+        <li class="item"><a href="https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02" target="_blank" rel="noopener"><span class="arrow">›</span><span>Digital Atlas: Nervous System</span></a></li>
       </ul>
     </article>
 
-    <article class="topic-card">
-      <div class="card-eyebrow">Practical</div>
-      <h3>Reflex Testing</h3>
-      <p class="summary">Deep tendon reflexes (patellar, Achilles, biceps, triceps) and cutaneous reflexes (plantar). Mapping reflex level to spinal cord segment.</p>
+  </div>
+</div>
+
+<!-- ADDITIONAL RESOURCES -->
+<div role="tabpanel" id="panel-add" aria-labelledby="tab-add" tabindex="0" hidden>
+  <div class="section-intro priority-add">
+    <h2>Additional Resources</h2>
+    <p>Practice tools and enrichment for assessment preparation.</p>
+  </div>
+  <div class="resource-grid">
+
+    <!-- Card 6: Kahoot -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">6</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Interactive Quiz Games</div>
+          <div class="card-title">Kahoot Review</div>
+        </div>
+      </div>
       <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128203;</span>Lab Handout <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
+        <li class="item"><a href="https://create.kahoot.it/share/nervous-tissue-cycle-1/3aa70dc4-b83f-4b5c-9276-6d802866d930" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Nervous Tissue (Cycle 1)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/nervous-tissue-cycle-2/8bdcffe3-ed89-4100-a99e-d98afd856561" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Nervous Tissue (Cycle 2)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/cns-anatomy-brain-meninges-cycle-1/4fac26f9-7cf2-445d-9c34-6773a2f6c2b6" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: CNS Brain, Meninges &amp; CSF (Cycle 1)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/cns-anatomy-brain-meninges-cycle-2/c5427e5c-d685-4e36-93d3-49d4c226b08e" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: CNS Brain, Meninges &amp; CSF (Cycle 2)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/neuro-spine-and-spinal-cord-anatomy-cycle-2/3b1a92cd-b092-4a42-bf76-0e487eff1203" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Spine &amp; Spinal Cord (Cycle 2)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/cranial-nerves-cycle-1-dok-1/19d7b4ed-c41c-4b64-8923-87519a02d830" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Cranial Nerves (Cycle 1, DOK 1)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/cranial-nerves-cycle-2-dok-2-3/d0032052-c00b-461b-be40-a763aec97cf1" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Cranial Nerves (Cycle 2, DOK 2-3)</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/ans-cycle-1/73925096-7ee9-4bd3-aea8-e1a9f71d0c80" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Autonomic Nervous System (Cycle 1)</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 7: DOK -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">7</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Depth of Knowledge Practice</div>
+          <div class="card-title">DOK Questions</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>For Cranial Nerves and Autonomic Nervous System DOKs, use the AI Question Generator below to create your own.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://drive.google.com/file/d/1eINYGoggMsq_O_kn52zRBncVDjZLrcz4/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">›</span><span>DOK: Nervous Tissue</span></a></li>
+        <li class="item"><a href="https://drive.google.com/file/d/1IN2V-Mp4eBk-vCPS07DzFZw4pkaGRCj1/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">›</span><span>DOK: CNS (Brain &amp; Spinal Cord)</span></a></li>
+        <li class="item"><a href="https://www.medmasterscollaborative.com/student-dok-question-generator" target="_blank" rel="noopener"><span class="arrow">›</span><span>DOK AI Question Generator</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 8: Practice Exam -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">8</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Exam-Style Practice</div>
+          <div class="card-title">Practice Exam Generator</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>AI-generated exam-style practice questions calibrated to course content.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://docs.google.com/presentation/d/12Gf_KHbR_qCPir28PSeUCqw9oj8F1tMg/edit?usp=drive_link&amp;ouid=112796161807712266702&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener"><span class="arrow">›</span><span>Practice Exam: Nervous System</span></a></li>
+        <li class="item"><a href="https://www.medmasterscollaborative.com/student-interactive-ai-exam-generator" target="_blank" rel="noopener"><span class="arrow">›</span><span>Interactive Practice Exam Generator</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 9: Textbook -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">9</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Free Open-Access Reading</div>
+          <div class="card-title">Textbook</div>
+        </div>
+      </div>
+      <ul class="resource-list">
+        <li class="item">
+          <a href="https://openstax.org/details/books/anatomy-and-physiology-2e" target="_blank" rel="noopener"><span class="arrow">›</span><span>OpenStax A&amp;P 2e (Free)</span></a>
+          <p class="item-note">Chapters 12 to 15 cover the nervous system: nervous tissue, anatomy of the nervous system, the somatic nervous system, and the autonomic nervous system.</p>
         </li>
       </ul>
     </article>
 
   </div>
-</section>
+</div>
 
-<!-- ============== TAB 3: ADDITIONAL ============== -->
-<section role="tabpanel" id="panel-add" aria-labelledby="tab-add" tabindex="0" hidden>
-  <div class="section-intro">
-    <p>Extra resources for deeper review: practice exams, structure lists, map assignments, atlases, and clinical cases. Use these to reinforce after working through the recommended materials.</p>
-  </div>
+<div class="footer-note">Dr. Sharilyn Rennie</div>
 
-  <div class="card-grid">
-
-    <article class="topic-card">
-      <div class="card-eyebrow">Self-Assessment</div>
-      <h3>Practice Exams</h3>
-      <p class="summary">Multiple-choice and short-answer practice covering nervous tissue, CNS, PNS, cranial nerves, and ANS.</p>
-      <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#10067;</span>Nervous System Practice Exam <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <article class="topic-card">
-      <div class="card-eyebrow">Reference</div>
-      <h3>Structure Lists</h3>
-      <p class="summary">Comprehensive lists of structures students are responsible for identifying on lab practicals. Organized by region.</p>
-      <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128221;</span>Brain Structure List <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128221;</span>Spinal Cord Structure List <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <article class="topic-card">
-      <div class="card-eyebrow">Application</div>
-      <h3>Map Assignments</h3>
-      <p class="summary">Drag-and-label exercises and pathway tracing assignments that build spatial fluency.</p>
-      <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128506;</span>Brain Map Assignment <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128506;</span>Spinal Cord Map Assignment <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-    <article class="topic-card">
-      <div class="card-eyebrow">Reference</div>
-      <h3>Digital Atlas</h3>
-      <p class="summary">Interactive 3D visualization of nervous system structures.</p>
-      <ul class="resource-list">
-        <li>
-          <a class="placeholder" aria-disabled="true">
-            <span class="label"><span class="icon" aria-hidden="true">&#128218;</span>Atlas Link <em style="font-weight:400;font-size:12px;color:var(--text-muted)">(URL pending)</em></span>
-            <span class="arrow" aria-hidden="true">&rsaquo;</span>
-          </a>
-        </li>
-      </ul>
-    </article>
-
-  </div>
-</section>
-
-</main>
-
-<footer class="signature-footer">
-  <div class="name">Dr. Sharilyn Rennie</div>
-  <div>BIO 431 &middot; Anatomy &amp; Physiology &middot; Nervous System Hub</div>
-</footer>
+</div>
 
 <script>
 (function() {
@@ -636,7 +486,10 @@ body {
       }
     });
     if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
-    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+    // Trigger height resend after tab change
+    setTimeout(function() {
+      window.dispatchEvent(new Event('resize'));
+    }, 50);
   }
   tabs.forEach(function(tab, idx) {
     tab.addEventListener('click', function() { selectTab(tab, true); });
@@ -650,32 +503,25 @@ body {
       if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
     });
   });
-  // Disable placeholder links
-  document.querySelectorAll('a.placeholder').forEach(function(a) {
-    a.addEventListener('click', function(e) { e.preventDefault(); });
-  });
 })();
 </script>
 
 <script>
-function sendHeight() {
-  var height = Math.max(
-    document.body.scrollHeight,
-    document.documentElement.scrollHeight,
-    document.body.offsetHeight,
-    document.documentElement.offsetHeight
-  );
-  var id = '';
-  try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
-  try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
-}
-if ('ResizeObserver' in window) {
-  try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
-}
-window.addEventListener('load', sendHeight);
-window.addEventListener('resize', sendHeight);
-setTimeout(sendHeight, 100);
-setTimeout(sendHeight, 500);
+(function() {
+  function sendHeight() {
+    var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) {
+    try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
 </script>
 
 </body>
