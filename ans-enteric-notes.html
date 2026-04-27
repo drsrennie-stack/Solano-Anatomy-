@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Autonomic & Enteric Nervous System Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: #fff;
+  padding: 28px 28px 32px;
+}
+.breadcrumb {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tan-soft);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.page-header h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.page-header p.subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  max-width: 720px;
+  font-weight: 400;
+}
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(27, 40, 69, 0.04);
+}
+[role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+[role="tab"] {
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+  letter-spacing: 0.01em;
+}
+[role="tab"]:hover { color: var(--navy); }
+[role="tab"][aria-selected="true"] {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--tan);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+.panels {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+[role="tabpanel"] { outline: none; }
+[role="tabpanel"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--tan);
+  border-radius: 6px;
+}
+.section-intro {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin: 4px 0 20px;
+}
+.section-intro p {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+.card.span-2 { grid-column: 1 / -1; }
+.card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--navy);
+  margin: 0 0 12px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 14px 0 6px;
+}
+.card h4:first-of-type { margin-top: 4px; }
+.card p { margin: 0 0 10px; color: var(--text-soft); font-size: 15px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 20px; color: var(--text-soft); font-size: 15px; }
+.card li { margin-bottom: 5px; }
+.card strong { color: var(--navy); font-weight: 700; }
+.card em { font-family: 'Lora', Georgia, serif; }
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 4px;
+  font-size: 14px;
+}
+.compact-table th, .compact-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+.compact-table th {
+  background: var(--cream-pale);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.compact-table tr:last-child td { border-bottom: none; }
+.flow {
+  background: var(--cream-pale);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.9;
+}
+.arrow {
+  color: var(--tan-deep);
+  margin: 0 6px;
+  font-weight: 700;
+}
+.callout-clinical {
+  background: var(--clinical-bg);
+  border-left: 4px solid var(--clinical);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.callout-clinical .callout-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clinical);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.callout-clinical p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text);
+}
+.callout-clinical p:last-child { margin-bottom: 0; }
+.callout-clinical strong { color: var(--clinical); }
+.callout-tip {
+  background: var(--cream-pale);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-tip strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  color: var(--navy);
+}
+.signature-footer {
+  text-align: center;
+  padding: 28px 18px 36px;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.signature-footer .name {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 22px 18px 24px; }
+  .page-header h1 { font-size: 24px; }
+  [role="tab"] { padding: 12px 12px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="breadcrumb">BIO 431 &middot; Nervous System &middot; Anatomy Notes</div>
+  <h1>Autonomic &amp; Enteric Nervous System</h1>
+  <p class="subtitle">Two-neuron motor pathways, sympathetic vs parasympathetic architecture, the ganglia and plexuses that organize visceral output, neurotransmitter signaling, and the gut's own nervous system.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Autonomic and enteric nervous system notes sections">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" tabindex="0">Somatic vs ANS</button>
+    <button role="tab" id="tab-pathway" aria-selected="false" aria-controls="panel-pathway" tabindex="-1">Pathway Architecture</button>
+    <button role="tab" id="tab-divisions" aria-selected="false" aria-controls="panel-divisions" tabindex="-1">Sympathetic vs Parasympathetic</button>
+    <button role="tab" id="tab-ganglia" aria-selected="false" aria-controls="panel-ganglia" tabindex="-1">Ganglia &amp; Plexuses</button>
+    <button role="tab" id="tab-nt" aria-selected="false" aria-controls="panel-nt" tabindex="-1">Neurotransmitters</button>
+    <button role="tab" id="tab-effects" aria-selected="false" aria-controls="panel-effects" tabindex="-1">Effects &amp; Enteric NS</button>
+  </div>
+</div>
+
+<main class="panels">
+
+<!-- ============== TAB 1: SOMATIC VS ANS ============== -->
+<section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <p>Two motor systems leave the CNS. The somatic system commands skeletal muscle and is mostly under conscious control. The autonomic system commands smooth muscle, cardiac muscle, and glands and works largely beneath awareness. Different effectors, different wiring, different rules.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Somatic Nervous System</div>
+      <h3>Voluntary Pathway to Skeletal Muscle</h3>
+      <h4>Sensory Input</h4>
+      <ul>
+        <li><strong>Somatic senses:</strong> tactile, pain, temperature, proprioception</li>
+        <li><strong>Special senses:</strong> sight, hearing, taste, smell, equilibrium</li>
+        <li>Normally <strong>consciously perceived</strong></li>
+      </ul>
+      <h4>Motor Output</h4>
+      <ul>
+        <li>Innervates <strong>skeletal muscle</strong> only</li>
+        <li>Produces both reflexive and voluntary movement</li>
+        <li>Effect on skeletal muscle is <strong>always excitatory</strong>: when the motor neuron fires, the muscle contracts</li>
+        <li>When the somatic motor neuron stops firing, the muscle becomes paralyzed (limp)</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Somatic exception note">
+        <strong>Note on involuntary skeletal muscle:</strong> a few skeletal muscles operate reflexively rather than voluntarily, including the respiratory muscles and the muscles of the middle ear.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Autonomic Nervous System</div>
+      <h3>Involuntary Pathway to Viscera</h3>
+      <h4>Sensory Input (with interneurons)</h4>
+      <ul>
+        <li><strong>Receptor locations:</strong> blood vessels, visceral organs, muscles, and the nervous system itself</li>
+        <li>Receptors monitor the <strong>internal environment</strong></li>
+        <li>Examples: <strong>chemoreceptors</strong> (monitor blood CO<sub>2</sub>), <strong>mechanoreceptors</strong> (detect stretch in walls of organs and vessels)</li>
+        <li>Most autonomic input is <strong>not consciously perceived</strong></li>
+      </ul>
+      <h4>Motor Output</h4>
+      <ul>
+        <li>Regulates visceral activity by <strong>increasing</strong> (exciting) or <strong>decreasing</strong> (inhibiting) ongoing function in effector tissues: <strong>cardiac muscle, smooth muscle, and glands</strong></li>
+        <li>Examples: pupil diameter, blood vessel diameter, heart rate and force, glandular secretion</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Perceived Visceral Sensations</div>
+      <h3>The Few Sensations You Do Notice</h3>
+      <p>Although most autonomic input is unconscious, two situations break through to conscious awareness:</p>
+      <ol>
+        <li><strong>Pain from damaged viscera</strong></li>
+        <li><strong>Angina pectoris:</strong> chest pain from inadequate blood flow to the heart</li>
+      </ol>
+      <p>Autonomic activity also influences sensations carried by somatic and special senses. For example, pain produces dramatic changes in autonomic activity such as increased blood pressure and heart rate.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Autonomy of the ANS</div>
+      <h3>Why the Word "Autonomic" Fits</h3>
+      <p>Autonomic effectors can often function to some extent even after losing nerve supply.</p>
+      <ul>
+        <li>The heart continues to beat after it is removed for transplantation</li>
+        <li>Smooth muscle in the GI tract contracts rhythmically on its own</li>
+        <li>Glands produce some secretions in the absence of ANS input</li>
+      </ul>
+      <p>Most autonomic functions cannot be consciously altered, which is the principle behind the polygraph (lie detector) test.</p>
+      <div class="callout-tip" role="note" aria-label="Biofeedback note">
+        <strong>Biofeedback:</strong> monitoring devices that display real-time information about a body function (such as heart rate or blood pressure) can help a person learn to influence functions that are otherwise outside conscious control.
+      </div>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Side by Side Comparison</div>
+      <h3>Somatic vs Autonomic at a Glance</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Feature</th><th>Somatic</th><th>Autonomic</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sensory input</strong></td>
+            <td>Somatic and special senses</td>
+            <td>Mainly interoceptors; some somatic and special senses</td>
+          </tr>
+          <tr>
+            <td><strong>Control of motor output</strong></td>
+            <td>Voluntary (cerebral cortex with input from basal ganglia, cerebellum, brain stem, cord)</td>
+            <td>Involuntary (hypothalamus, limbic system, brain stem, cord); limited cortical control</td>
+          </tr>
+          <tr>
+            <td><strong>Motor pathway</strong></td>
+            <td>One-neuron: motor neuron extends from CNS directly to effector</td>
+            <td>Two-neuron: preganglionic neuron synapses with postganglionic neuron in an autonomic ganglion</td>
+          </tr>
+          <tr>
+            <td><strong>Neurotransmitter at effector</strong></td>
+            <td>Always acetylcholine (ACh)</td>
+            <td>ACh or norepinephrine, depending on division and target</td>
+          </tr>
+          <tr>
+            <td><strong>Effectors</strong></td>
+            <td>Skeletal muscle</td>
+            <td>Smooth muscle, cardiac muscle, glands</td>
+          </tr>
+          <tr>
+            <td><strong>Effect</strong></td>
+            <td>Contraction (always excitatory)</td>
+            <td>Excitation or inhibition, depending on transmitter and receptor</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 2: PATHWAY ARCHITECTURE ============== -->
+<section role="tabpanel" id="panel-pathway" aria-labelledby="tab-pathway" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>The hallmark of the autonomic motor pathway is the two-neuron chain. A preganglionic neuron leaves the CNS, synapses on a postganglionic neuron in an autonomic ganglion, and only then reaches the effector. This architecture allows divergence, convergence, and fine-grained control.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Two-Neuron Chain</div>
+      <h3>The Standard Autonomic Pathway</h3>
+      <div class="flow" aria-label="Autonomic motor pathway">
+        Preganglionic neuron <span class="arrow">&rarr;</span> Autonomic ganglion <span class="arrow">&rarr;</span> Postganglionic neuron <span class="arrow">&rarr;</span> Effector tissue (cardiac, smooth muscle, gland)
+      </div>
+      <p>This is the universal autonomic motor architecture. Compare with the somatic system, where a single motor neuron travels from the CNS directly to skeletal muscle.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">First Neuron</div>
+      <h3>Preganglionic Neuron</h3>
+      <ul>
+        <li><strong>Cell body:</strong> located in the brain or spinal cord</li>
+        <li><strong>Axon exit:</strong> leaves the CNS as part of either a cranial or a spinal nerve</li>
+        <li><strong>Axon type:</strong> small diameter, <strong>myelinated, type B fiber</strong></li>
+        <li><strong>Termination:</strong> extends to an autonomic ganglion, where it synapses with the postganglionic neuron</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Second Neuron</div>
+      <h3>Postganglionic Neuron</h3>
+      <ul>
+        <li><strong>Entire neuron:</strong> located outside the CNS (peripheral)</li>
+        <li><strong>Cell body and dendrites:</strong> housed in an autonomic ganglion</li>
+        <li>Synapses with one or more preganglionic neurons in that ganglion</li>
+        <li><strong>Axon type:</strong> small diameter, <strong>unmyelinated, type C fiber</strong></li>
+        <li><strong>Termination:</strong> ends at a visceral effector (smooth muscle, cardiac muscle, gland)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Where Cell Bodies Live</div>
+      <h3>Preganglionic Origins by Division</h3>
+      <h4>Sympathetic (Thoracolumbar)</h4>
+      <ul>
+        <li><strong>Cell bodies:</strong> in the lateral gray horns of the <strong>12 thoracic and upper 2 lumbar segments</strong> (T1 to L2)</li>
+        <li><strong>Outflow name:</strong> thoracolumbar outflow</li>
+      </ul>
+      <h4>Parasympathetic (Craniosacral)</h4>
+      <ul>
+        <li><strong>Cell bodies:</strong> in the nuclei of <strong>4 cranial nerves</strong> in the brain stem (oculomotor III, facial VII, glossopharyngeal IX, vagus X) and in the lateral gray matter of <strong>S2 to S4</strong></li>
+        <li><strong>Outflow name:</strong> craniosacral outflow</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Cranial nerve mnemonic">
+        <strong>Cranial nerves with parasympathetic fibers:</strong> 3, 7, 9, 10. The vagus nerve (X) alone supplies the majority of the parasympathetic output to the body, reaching the heart, lungs, and most of the digestive tract.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Divergence</div>
+      <h3>One Preganglionic, Many Postganglionic</h3>
+      <p>A single sympathetic preganglionic fiber, through axon collaterals, may synapse with <strong>20 or more postganglionic neurons</strong>. This explains why several body areas can respond simultaneously to sympathetic stimulation: a single preganglionic input fans out widely.</p>
+      <p>In contrast, parasympathetic preganglionic fibers reach a terminal ganglion and synapse with only <strong>4 or 5 postganglionic neurons</strong> serving a single effector. This allows parasympathetic responses to be <strong>localized</strong>.</p>
+      <div class="callout-tip" role="note" aria-label="Branching ratio summary">
+        <strong>Why this matters:</strong> the divergence ratio determines the spread of a response. Sympathetic activation is broad and body-wide. Parasympathetic activation is targeted and discrete.
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 3: SYMPATHETIC VS PARASYMPATHETIC ============== -->
+<section role="tabpanel" id="panel-divisions" aria-labelledby="tab-divisions" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Both autonomic divisions serve the same effectors but produce opposite effects, allowing precise tuning by tipping the balance one way or the other. The differences in CNS origin, ganglion location, and fiber length create the two distinct functional personalities of the ANS.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">CNS Origin</div>
+      <h3>Where Each Division Starts</h3>
+      <h4>Sympathetic: Thoracolumbar</h4>
+      <ul>
+        <li>Preganglionic cell bodies in the <strong>lateral gray horns of T1 to L2</strong></li>
+      </ul>
+      <h4>Parasympathetic: Craniosacral</h4>
+      <ul>
+        <li>Preganglionic cell bodies in the <strong>brain stem nuclei of CN III, VII, IX, X</strong></li>
+        <li>Plus the <strong>lateral gray matter of S2 to S4</strong></li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Origin mnemonic">
+        <strong>Sympathetic = thoracolumbar.</strong> Parasympathetic = craniosacral. The sympathetic origin sits between the two parasympathetic origins, like meat in a sandwich.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Ganglion Location</div>
+      <h3>Where the Synapse Happens</h3>
+      <h4>Sympathetic Ganglia</h4>
+      <ul>
+        <li><strong>Close to the cord</strong>, far from the effector</li>
+        <li>This means a <strong>short preganglionic fiber</strong> and a <strong>long postganglionic fiber</strong></li>
+      </ul>
+      <h4>Parasympathetic Ganglia</h4>
+      <ul>
+        <li><strong>Close to or within the wall of the effector organ</strong></li>
+        <li>This means a <strong>long preganglionic fiber</strong> and a <strong>short postganglionic fiber</strong></li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Fiber length mnemonic">
+        <strong>Memory cue:</strong> sympathetic = "short pre, long post." Parasympathetic = "long pre, short post." The ganglion location dictates the lengths.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Branching Ratios</div>
+      <h3>Spread vs Specificity</h3>
+      <h4>Sympathetic</h4>
+      <ul>
+        <li>One preganglionic fiber synapses with many postganglionic neurons (often 20+)</li>
+        <li>Produces <strong>broad, body-wide responses</strong></li>
+        <li>Fits the "fight-or-flight" need to mobilize multiple systems at once</li>
+      </ul>
+      <h4>Parasympathetic</h4>
+      <ul>
+        <li>One preganglionic fiber synapses with only 4 to 5 postganglionic neurons</li>
+        <li>Produces <strong>targeted, organ-specific responses</strong></li>
+        <li>Fits the "rest-and-digest" need to selectively adjust one system at a time</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Key Similarities</div>
+      <h3>Where the Divisions Agree</h3>
+      <ul>
+        <li>Both are <strong>involuntary</strong></li>
+        <li>Both use a <strong>two-neuron pathway</strong></li>
+        <li>Both serve the same effectors: smooth muscle, cardiac muscle, glands</li>
+        <li>Both bring about effects by either exciting or inhibiting the effector</li>
+        <li>The two divisions typically <strong>oppose each other</strong> at the same effector, providing fine balance</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Master Comparison</div>
+      <h3>Sympathetic vs Parasympathetic Reference Table</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Feature</th><th>Sympathetic</th><th>Parasympathetic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>CNS origin</strong></td><td>T1 to L2 (thoracolumbar)</td><td>CN III, VII, IX, X and S2 to S4 (craniosacral)</td></tr>
+          <tr><td><strong>Ganglion location</strong></td><td>Near the cord (sympathetic trunk and prevertebral)</td><td>Near or in the effector wall (terminal)</td></tr>
+          <tr><td><strong>Preganglionic fiber length</strong></td><td>Short</td><td>Long</td></tr>
+          <tr><td><strong>Postganglionic fiber length</strong></td><td>Long</td><td>Short</td></tr>
+          <tr><td><strong>Branching ratio</strong></td><td>One pre to ~20 post (broad)</td><td>One pre to ~4 to 5 post (targeted)</td></tr>
+          <tr><td><strong>Postganglionic transmitter</strong></td><td>Norepinephrine (most). ACh at sweat glands.</td><td>Acetylcholine</td></tr>
+          <tr><td><strong>Functional role</strong></td><td>Fight-or-flight (E division)</td><td>Rest-and-digest (D division)</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 4: GANGLIA & PLEXUSES ============== -->
+<section role="tabpanel" id="panel-ganglia" aria-labelledby="tab-ganglia" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Autonomic ganglia come in three flavors: sympathetic trunk ganglia running alongside the vertebral column, prevertebral ganglia clustered near the abdominal arteries, and parasympathetic terminal ganglia tucked into or beside the target organ. The autonomic plexuses are the meeting points where these systems intermingle.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Two Major Groups</div>
+      <h3>Autonomic Ganglia Overview</h3>
+      <ol>
+        <li><strong>Sympathetic ganglia</strong> (two subtypes)
+          <ul>
+            <li>Sympathetic trunk (paravertebral) ganglia</li>
+            <li>Prevertebral (collateral) ganglia</li>
+          </ul>
+        </li>
+        <li><strong>Parasympathetic ganglia</strong>
+          <ul>
+            <li>Terminal ganglia, located near or within the wall of visceral organs</li>
+          </ul>
+        </li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Sympathetic, Type 1</div>
+      <h3>Sympathetic Trunk (Paravertebral) Ganglia</h3>
+      <ul>
+        <li>Lie in a <strong>vertical row on either side of the vertebral column</strong></li>
+        <li>Extend from the <strong>base of the skull to the coccyx</strong></li>
+        <li>Postganglionic axons innervate organs <strong>above the diaphragm</strong> (head, neck, shoulders, heart, lungs)</li>
+      </ul>
+      <h4>Named Cervical Ganglia</h4>
+      <ul>
+        <li>Superior cervical ganglion</li>
+        <li>Middle cervical ganglion</li>
+        <li>Inferior cervical ganglion</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Sympathetic, Type 2</div>
+      <h3>Prevertebral (Collateral) Ganglia</h3>
+      <ul>
+        <li><strong>Anterior to the vertebral column</strong>, close to the major abdominal arteries</li>
+        <li>Postganglionic axons generally innervate organs <strong>below the diaphragm</strong></li>
+      </ul>
+      <h4>Five Major Prevertebral Ganglia</h4>
+      <ul>
+        <li><strong>Celiac ganglion:</strong> just inferior to the diaphragm, near the celiac artery</li>
+        <li><strong>Superior mesenteric ganglion:</strong> near the superior mesenteric artery</li>
+        <li><strong>Inferior mesenteric ganglion:</strong> near the inferior mesenteric artery, mid-abdomen</li>
+        <li><strong>Aorticorenal ganglion</strong></li>
+        <li><strong>Renal ganglion:</strong> near the renal artery, adjacent to each kidney</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Sympathetic Synapse Options</div>
+      <h3>Four Routes a Preganglionic Axon Can Take</h3>
+      <p>Once a sympathetic preganglionic axon enters the sympathetic trunk, it has four options:</p>
+      <ol>
+        <li><strong>Synapse</strong> with a postganglionic neuron in the trunk ganglion at the level it entered</li>
+        <li><strong>Ascend or descend</strong> to a higher or lower trunk ganglion before synapsing (these vertical fibers form the "sympathetic chains")</li>
+        <li><strong>Pass through</strong> the trunk ganglion without synapsing and synapse instead at a prevertebral ganglion</li>
+        <li><strong>Pass through</strong> the trunk ganglion without synapsing, bypass prevertebral ganglia entirely, and synapse on <strong>chromaffin cells in the adrenal medulla</strong> (which behave like postganglionic neurons and release epinephrine and norepinephrine into the bloodstream)</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Parasympathetic Ganglia</div>
+      <h3>Terminal Ganglia</h3>
+      <p>Parasympathetic preganglionic axons synapse with postganglionic neurons in <strong>terminal ganglia</strong>, located near or actually within the wall of the target visceral organ.</p>
+      <h4>Four Named Parasympathetic Ganglia</h4>
+      <ul>
+        <li><strong>Ciliary ganglion:</strong> in the orbit; serves the smooth muscle of the eye</li>
+        <li><strong>Pterygopalatine ganglion:</strong> serves lacrimal gland and nasal mucosa</li>
+        <li><strong>Submandibular ganglion:</strong> serves the submandibular and sublingual salivary glands</li>
+        <li><strong>Otic ganglion:</strong> serves the parotid salivary gland</li>
+      </ul>
+      <p>For organs supplied by the vagus nerve and pelvic splanchnic nerves, the terminal ganglia are typically embedded in the wall of the organ itself (intramural ganglia).</p>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Autonomic Plexuses</div>
+      <h3>Where Sympathetic and Parasympathetic Mingle</h3>
+      <p>Autonomic plexuses contain both <strong>sympathetic and parasympathetic ganglia and axons</strong>. They are found in the thorax, abdomen, and pelvis, and they distribute autonomic fibers to local viscera.</p>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Region</th><th>Plexus</th><th>Distribution</th></tr>
+        </thead>
+        <tbody>
+          <tr><td rowspan="2"><strong>Thorax</strong></td><td>Cardiac plexus</td><td>Heart</td></tr>
+          <tr><td>Pulmonary plexus</td><td>Bronchial tree</td></tr>
+          <tr><td rowspan="5"><strong>Abdomen &amp; Pelvis</strong></td><td>Celiac (solar) plexus</td><td>Largest. Surrounds the celiac trunk. Contains 2 celiac ganglia and 2 aorticorenal ganglia. Distributes to stomach, spleen, pancreas, liver, gallbladder, kidneys, adrenal medulla, testes, ovaries.</td></tr>
+          <tr><td>Superior mesenteric plexus</td><td>Small and large intestine (proximal)</td></tr>
+          <tr><td>Inferior mesenteric plexus</td><td>Large intestine (distal)</td></tr>
+          <tr><td>Hypogastric plexus</td><td>Anterior to L5; pelvic viscera</td></tr>
+          <tr><td>Renal plexus</td><td>Renal arteries, kidneys, ureters</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 5: NEUROTRANSMITTERS ============== -->
+<section role="tabpanel" id="panel-nt" aria-labelledby="tab-nt" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Two transmitters do most of the autonomic work: acetylcholine and norepinephrine. The trick is matching the right transmitter to the right receptor in the right place. Once you have the four-square map, drug effects become predictable rather than mysterious.</p>
+  </div>
+
+  <div class="callout-clinical" role="note" aria-label="Exam Scope: Anatomy versus physiology">
+    <p class="callout-label">Exam Scope: Anatomy vs. Physiology</p>
+    <p>This tab leans into physiology: receptor subtypes, transmitter binding, and pharmacology. For pure anatomy purposes, focus on <strong>which transmitter is released where</strong> and <strong>which receptor type is at which target</strong>. Receptor signaling cascades (G-proteins, second messengers) belong to the physiology unit.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Vocabulary</div>
+      <h3>Agonist vs Antagonist</h3>
+      <ul>
+        <li><strong>Agonist:</strong> a substance that binds to and <em>activates</em> a receptor, mimicking the effect of the natural transmitter or hormone</li>
+        <li><strong>Antagonist:</strong> a substance that binds to and <em>blocks</em> a receptor, preventing the natural transmitter or hormone from exerting its effect</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Drug class hint">
+        <strong>Drug naming hint:</strong> "beta blocker" is a beta antagonist. A "muscarinic agonist" mimics parasympathetic activation at muscarinic targets. The vocabulary maps directly to the receptor and the action.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Cholinergic Neurons</div>
+      <h3>Where Acetylcholine Is Released</h3>
+      <p>Cholinergic neurons release the neurotransmitter <strong>acetylcholine (ACh)</strong>. Three categories of autonomic neurons are cholinergic:</p>
+      <ol>
+        <li><strong>All sympathetic preganglionic neurons</strong></li>
+        <li><strong>All parasympathetic preganglionic neurons</strong></li>
+        <li><strong>All parasympathetic postganglionic neurons</strong></li>
+        <li><strong>Sympathetic postganglionic neurons that innervate most sweat glands</strong> (one of the few sympathetic exceptions)</li>
+      </ol>
+      <p>ACh is stored in synaptic vesicles, released across the synaptic cleft via exocytosis, and binds to receptors on the postsynaptic membrane.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Cholinergic Receptors</div>
+      <h3>Two Types of ACh Receptors</h3>
+      <p>The same molecule (ACh) produces different effects depending on which receptor it binds.</p>
+      <h4>Nicotinic Receptors</h4>
+      <ul>
+        <li>Plasma membrane of <strong>all dendrites and cell bodies</strong> of both sympathetic and parasympathetic <strong>postganglionic neurons</strong></li>
+        <li>Plasma membrane of <strong>chromaffin cells</strong> in the adrenal medulla</li>
+        <li><strong>Motor end plate</strong> at the neuromuscular junction (somatic system)</li>
+      </ul>
+      <h4>Muscarinic Receptors</h4>
+      <ul>
+        <li>Plasma membrane of <strong>all effector tissues innervated by parasympathetic postganglionic neurons</strong></li>
+        <li>Plasma membrane of <strong>most sweat glands</strong> (the sympathetic cholinergic exception)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">ACh Inactivation</div>
+      <h3>Why Cholinergic Effects Are Brief</h3>
+      <p>The enzyme <strong>acetylcholinesterase (AChE)</strong> breaks down ACh in the synaptic cleft almost immediately after it is released. Because of this, ACh effects are short-lived.</p>
+      <div class="callout-tip" role="note" aria-label="AChE clinical relevance">
+        <strong>Clinical relevance:</strong> AChE inhibitors (such as those used in myasthenia gravis or to reverse muscle relaxants) prolong ACh action. Organophosphate poisoning works the same way at toxic doses.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Adrenergic Neurons</div>
+      <h3>Where Norepinephrine Is Released</h3>
+      <ul>
+        <li>Adrenergic neurons release <strong>norepinephrine (NE, noradrenaline)</strong></li>
+        <li>The category includes <strong>most sympathetic postganglionic neurons</strong> (the major exception is sweat gland innervation, which is cholinergic)</li>
+        <li>NE is stored in vesicles and released across the synaptic cleft by exocytosis, the same general process as ACh release</li>
+        <li>Effect depends on the receptor it encounters</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Adrenergic Receptors</div>
+      <h3>Alpha and Beta Subtypes</h3>
+      <p>Adrenergic receptors bind both <strong>norepinephrine and epinephrine</strong>. There are two major families with subtypes.</p>
+      <h4>Alpha Receptors</h4>
+      <ul>
+        <li><strong>Alpha-1:</strong> generally <em>excitatory</em> (vasoconstriction, pupil dilation)</li>
+        <li><strong>Alpha-2:</strong> generally <em>inhibitory</em></li>
+      </ul>
+      <h4>Beta Receptors</h4>
+      <ul>
+        <li><strong>Beta-1:</strong> generally <em>excitatory</em> (cardiac stimulation: increased heart rate and force)</li>
+        <li><strong>Beta-2:</strong> generally <em>inhibitory</em> (smooth muscle relaxation in airways and some blood vessels)</li>
+        <li><strong>Beta-3:</strong> located only in <strong>brown adipose tissue</strong>, responsible for <strong>thermogenesis</strong> (heat production)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">NE Inactivation</div>
+      <h3>Two Enzymes End the Adrenergic Signal</h3>
+      <ul>
+        <li><strong>MAO (monoamine oxidase)</strong></li>
+        <li><strong>COMT (catechol-O-methyltransferase)</strong></li>
+      </ul>
+      <p>Norepinephrine activity persists longer than acetylcholine activity because the inactivation enzymes work more slowly than acetylcholinesterase.</p>
+      <div class="callout-tip" role="note" aria-label="Why sympathetic effects linger">
+        <strong>Functional consequence:</strong> sympathetic effects (the racing heart after a scare) outlast their initiating stimulus. The slower NE clearance, plus circulating epinephrine from the adrenal medulla, prolongs the response.
+      </div>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Master Map</div>
+      <h3>Transmitter and Receptor Reference</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Site</th><th>Transmitter</th><th>Receptor</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Sympathetic preganglionic to postganglionic neuron</td><td>ACh</td><td>Nicotinic</td></tr>
+          <tr><td>Parasympathetic preganglionic to postganglionic neuron</td><td>ACh</td><td>Nicotinic</td></tr>
+          <tr><td>Sympathetic preganglionic to adrenal medulla</td><td>ACh</td><td>Nicotinic</td></tr>
+          <tr><td>Sympathetic postganglionic to most effectors</td><td>NE</td><td>Alpha or Beta</td></tr>
+          <tr><td>Sympathetic postganglionic to most sweat glands</td><td>ACh</td><td>Muscarinic</td></tr>
+          <tr><td>Parasympathetic postganglionic to all effectors</td><td>ACh</td><td>Muscarinic</td></tr>
+          <tr><td>Somatic motor neuron to skeletal muscle</td><td>ACh</td><td>Nicotinic (motor end plate)</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 6: EFFECTS & ENTERIC NS ============== -->
+<section role="tabpanel" id="panel-effects" aria-labelledby="tab-effects" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>The two divisions get nicknames for a reason. Sympathetic mobilizes you to fight or run; parasympathetic preserves resources during quiet times. The enteric system, sometimes called the "second brain," runs the gut largely on its own with about as many neurons as the spinal cord.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Parasympathetic Division</div>
+      <h3>"Rest and Digest" (D Division)</h3>
+      <h4>Overall Role</h4>
+      <ul>
+        <li>Conserves and stores energy</li>
+        <li>Maintains daily housekeeping functions</li>
+        <li>Active when the body is at ease</li>
+      </ul>
+      <h4>"D" Functions</h4>
+      <ul>
+        <li><strong>D</strong>igestion</li>
+        <li><strong>D</strong>efecation</li>
+        <li><strong>D</strong>iuresis (urine production)</li>
+      </ul>
+      <h4>Physiological Effects</h4>
+      <ul>
+        <li>Constricts pupils</li>
+        <li>Stimulates digestive activity (increased salivation, increased peristalsis, increased secretions)</li>
+        <li>Stimulates urinary organs (increased urine production, bladder contraction)</li>
+        <li>Inhibits cardiovascular system (slows heart rate)</li>
+        <li>Inhibits respiratory system (constricts airways, slows respiration)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Sympathetic Division</div>
+      <h3>"Fight or Flight" (E Division)</h3>
+      <h4>Overall Role</h4>
+      <ul>
+        <li>Responds to unusual or threatening stimuli</li>
+        <li>Mobilizes energy and elevates activity</li>
+      </ul>
+      <h4>"E" Functions</h4>
+      <ul>
+        <li><strong>E</strong>xercise</li>
+        <li><strong>E</strong>xcitement</li>
+        <li><strong>E</strong>mergency</li>
+        <li><strong>E</strong>mbarrassment</li>
+      </ul>
+      <h4>Physiological Effects</h4>
+      <ul>
+        <li>Pupils dilate</li>
+        <li>Stimulates respiratory organs (increased breathing rate, open airways)</li>
+        <li>Stimulates cardiovascular system (increased heart rate and force, redirected blood flow)</li>
+        <li>Stimulates adrenal glands (release of epinephrine and norepinephrine into the blood)</li>
+        <li>Stimulates the liver (glycogen converted to glucose, released into the blood)</li>
+        <li>Inhibits digestive system (decreased salivation: dry mouth)</li>
+        <li>Inhibits urinary system</li>
+        <li>Increases glucose use, generates heat, increases sweating, produces flushing</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Effector by Effector</div>
+      <h3>Side by Side Effects</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Effector</th><th>Sympathetic</th><th>Parasympathetic</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Pupil</strong></td><td>Dilates</td><td>Constricts</td></tr>
+          <tr><td><strong>Heart rate</strong></td><td>Increases</td><td>Decreases</td></tr>
+          <tr><td><strong>Heart contraction force</strong></td><td>Increases</td><td>Decreases</td></tr>
+          <tr><td><strong>Bronchioles</strong></td><td>Dilate</td><td>Constrict</td></tr>
+          <tr><td><strong>Respiratory rate</strong></td><td>Increases</td><td>Decreases</td></tr>
+          <tr><td><strong>GI motility &amp; secretion</strong></td><td>Decreases</td><td>Increases</td></tr>
+          <tr><td><strong>Salivary glands</strong></td><td>Thick, scant secretion (dry mouth)</td><td>Watery, abundant secretion</td></tr>
+          <tr><td><strong>Bladder</strong></td><td>Relaxes (urine retained)</td><td>Contracts (voiding)</td></tr>
+          <tr><td><strong>Liver glycogen</strong></td><td>Glycogenolysis (glucose release)</td><td>Glycogen synthesis</td></tr>
+          <tr><td><strong>Adrenal medulla</strong></td><td>Releases epinephrine and NE</td><td>No direct effect</td></tr>
+          <tr><td><strong>Sweat glands</strong></td><td>Activated (cholinergic exception)</td><td>No effect</td></tr>
+          <tr><td><strong>Skeletal muscle blood vessels</strong></td><td>Dilate</td><td>No effect</td></tr>
+          <tr><td><strong>Skin and gut blood vessels</strong></td><td>Constrict</td><td>No effect</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Enteric Nervous System</div>
+      <h3>The Gut's Own Nervous System</h3>
+      <p>The enteric division is a complex, integrated neural network within the wall of the GI tract, pancreas, and gallbladder. It has approximately <strong>100 million neurons</strong>, roughly the same number as the spinal cord, and can run many GI functions independently.</p>
+      <h4>Functions</h4>
+      <ol>
+        <li>Monitor stretch and tension in the intestinal wall</li>
+        <li>Signal motor output to smooth muscle and glands to control <strong>secretion</strong> and <strong>motility</strong> (movement of food through the gut)</li>
+      </ol>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Two Enteric Plexuses</div>
+      <h3>Where the Enteric Neurons Live</h3>
+      <h4>Myenteric Plexus (Auerbach's)</h4>
+      <ul>
+        <li><strong>Location:</strong> between the outer longitudinal and the circular muscle layers</li>
+        <li><strong>Range:</strong> esophagus to anus</li>
+        <li><strong>Primary role:</strong> control of GI motility</li>
+      </ul>
+      <h4>Submucosal Plexus (Meissner's)</h4>
+      <ul>
+        <li><strong>Location:</strong> between the circular muscle layer and the muscularis mucosae</li>
+        <li><strong>Range:</strong> stomach to anus</li>
+        <li><strong>Primary role:</strong> control of GI secretion and local blood flow</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Study Anchors</div>
+      <h3>If You Remember Nothing Else</h3>
+      <ul>
+        <li>The autonomic motor pathway is a <strong>two-neuron chain</strong>: preganglionic to autonomic ganglion to postganglionic to effector.</li>
+        <li>Sympathetic origin is <strong>thoracolumbar (T1 to L2)</strong>; parasympathetic origin is <strong>craniosacral (CN III, VII, IX, X and S2 to S4)</strong>.</li>
+        <li>Sympathetic ganglia sit close to the cord. Parasympathetic ganglia sit close to the effector.</li>
+        <li>Sympathetic = "short pre, long post." Parasympathetic = "long pre, short post."</li>
+        <li>All preganglionic neurons release <strong>ACh onto nicotinic receptors</strong>.</li>
+        <li>Most sympathetic postganglionic neurons release <strong>NE onto alpha or beta receptors</strong>. Sweat glands are the cholinergic exception.</li>
+        <li>All parasympathetic postganglionic neurons release <strong>ACh onto muscarinic receptors</strong>.</li>
+        <li>Sympathetic = <strong>fight or flight</strong> (E division). Parasympathetic = <strong>rest and digest</strong> (D division).</li>
+        <li>The enteric system has ~100 million neurons in two plexuses (<strong>myenteric</strong> for motility, <strong>submucosal</strong> for secretion) and runs the gut largely on its own.</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="signature-footer">
+  <div class="name">Dr. Sharilyn Rennie</div>
+  <div>BIO 431 &middot; Anatomy &amp; Physiology &middot; Autonomic &amp; Enteric NS Notes</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+})();
+</script>
+
+<script>
+function sendHeight() {
+  var height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight
+  );
+  var id = '';
+  try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+  try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+}
+if ('ResizeObserver' in window) {
+  try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+setTimeout(sendHeight, 100);
+setTimeout(sendHeight, 500);
+</script>
+
+</body>
+</html>
