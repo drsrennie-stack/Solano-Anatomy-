@@ -440,6 +440,78 @@ body {
   font-style: italic;
 }
 
+
+/* Tab navigation for priority tiers */
+.tabs-wrap {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 22px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+[role="tab"] {
+  flex: 1 1 auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 11px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+[role="tab"]:hover { background: white; color: var(--navy); }
+[role="tab"]#tab-rec[aria-selected="true"] { background: var(--pri-rec); color: white; box-shadow: var(--shadow); }
+[role="tab"]#tab-lab[aria-selected="true"] { background: var(--pri-lab); color: white; box-shadow: var(--shadow); }
+[role="tab"]#tab-add[aria-selected="true"] { background: var(--pri-add); color: white; box-shadow: var(--shadow); }
+[role="tab"]:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+[role="tabpanel"] { padding: 0; }
+[role="tabpanel"]:focus { outline: none; }
+[role="tabpanel"]:focus-visible { outline: 3px solid var(--tan); outline-offset: 4px; border-radius: 8px; }
+[role="tabpanel"][hidden] { display: none; }
+.section-intro {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--tan);
+  border-radius: 10px;
+  padding: 16px 22px;
+  margin-bottom: 20px;
+}
+.section-intro.priority-rec { border-left-color: var(--pri-rec); }
+.section-intro.priority-lab { border-left-color: var(--pri-lab); }
+.section-intro.priority-add { border-left-color: var(--pri-add); }
+.section-intro h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.section-intro p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.94rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 @media (max-width: 700px) {
   body { padding: 18px 12px 40px; }
   .page-header { padding: 28px 22px 26px; }
@@ -463,20 +535,20 @@ body {
   <p class="subtitle">Learning resources for the kidney, nephron, and urinary tract structures, with assessment preparation.</p>
 </header>
 
-<div class="priority-legend">
-  <span class="label">Priority Guide:</span>
-  <span class="item"><span class="tag tag-rec">Highly Recommended</span> Core materials, do these first</span>
-  <span class="item"><span class="tag tag-lab">Lab</span> Anatomy lab work</span>
-  <span class="item"><span class="tag tag-add">Additional</span> Enrichment &amp; assessment prep</span>
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Resource priority levels">
+    <button role="tab" id="tab-rec" aria-selected="true" aria-controls="panel-rec">Highly Recommended</button>
+    <button role="tab" id="tab-lab" aria-selected="false" aria-controls="panel-lab" tabindex="-1">Lab Resources</button>
+    <button role="tab" id="tab-add" aria-selected="false" aria-controls="panel-add" tabindex="-1">Additional</button>
+  </div>
 </div>
 
 <!-- ============== HIGHLY RECOMMENDED ============== -->
-<section>
-  <div class="section-label">
-    <span class="pill tag-rec">Highly Recommended &middot; Start Here</span>
-    <div class="line"></div>
+<div role="tabpanel" id="panel-rec" aria-labelledby="tab-rec" tabindex="0">
+  <div class="section-intro priority-rec">
+    <h2>Start Here</h2>
+    <p>Core materials. Work through these first to build your foundation.</p>
   </div>
-
   <div class="resource-grid">
 
     <!-- Card 1: Lecture Videos -->
@@ -532,15 +604,14 @@ body {
     </article>
 
   </div>
-</section>
+</div>
 
 <!-- ============== LAB RESOURCES ============== -->
-<section>
-  <div class="section-label">
-    <span class="pill tag-lab">Lab Resources</span>
-    <div class="line"></div>
+<div role="tabpanel" id="panel-lab" aria-labelledby="tab-lab" tabindex="0" hidden>
+  <div class="section-intro priority-lab">
+    <h2>Lab Resources</h2>
+    <p>Lab activities, structure identification, and visual references for the practical exam.</p>
   </div>
-
   <div class="resource-grid">
 
     <!-- Card 4: Renal Anatomy Lab -->
@@ -581,15 +652,14 @@ body {
     </article>
 
   </div>
-</section>
+</div>
 
 <!-- ============== ADDITIONAL RESOURCES ============== -->
-<section>
-  <div class="section-label">
-    <span class="pill tag-add">Additional Resources</span>
-    <div class="line"></div>
+<div role="tabpanel" id="panel-add" aria-labelledby="tab-add" tabindex="0" hidden>
+  <div class="section-intro priority-add">
+    <h2>Additional Resources</h2>
+    <p>Practice tools and enrichment for assessment preparation.</p>
   </div>
-
   <div class="resource-grid">
 
     <!-- Kahoot -->
@@ -659,7 +729,7 @@ body {
     </article>
 
   </div>
-</section>
+</div>
 
 <!-- ============== ASSIGNMENT BANNER ============== -->
 <section class="assignments-banner" aria-label="Major assignment">
@@ -692,6 +762,47 @@ body {
 <div class="footer-note">Dr. Sharilyn Rennie</div>
 
 </div>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    // Trigger height resend after tab change
+    setTimeout(function() {
+      window.dispatchEvent(new Event('resize'));
+    }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+})();
+</script>
 
 <!-- Iframe height sender for Kajabi embedding -->
 <script>
