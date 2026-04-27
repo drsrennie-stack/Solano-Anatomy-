@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nervous Tissue Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  padding: 24px 14px 56px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+a { color: var(--tan-deep); }
+strong { color: var(--navy); font-weight: 700; }
+em { font-style: italic; }
+
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--navy); color: white; padding: 8px 16px; text-decoration: none; font-size: 0.85rem; z-index: 9999; }
+.skip-link:focus { top: 0; }
+
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 30px 34px 28px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
+}
+.breadcrumb { font-size: 0.74rem; letter-spacing: 0.1em; color: var(--tan-soft); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; position: relative; }
+.page-header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.15; position: relative; font-family: Georgia, serif; }
+.page-header .subtitle { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.86); max-width: 700px; line-height: 1.55; position: relative; }
+
+.tabs-wrap {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+[role="tab"] {
+  flex: 1 1 auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+[role="tab"]:hover { background: white; color: var(--navy); }
+[role="tab"][aria-selected="true"] { background: var(--navy); color: white; box-shadow: var(--shadow); }
+[role="tab"]:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+[role="tabpanel"] { padding: 8px 0 0; }
+[role="tabpanel"]:focus { outline: none; }
+[role="tabpanel"]:focus-visible { outline: 3px solid var(--tan); outline-offset: 4px; border-radius: 8px; }
+[role="tabpanel"][hidden] { display: none; }
+
+.section-intro {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--tan);
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+}
+.section-intro h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.section-intro p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.96rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.note-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.note-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.note-card.span-2 { grid-column: span 2; }
+@media (max-width: 800px) {
+  .note-card.span-2 { grid-column: span 1; }
+}
+
+.card-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--tan-deep);
+  margin-bottom: 4px;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+}
+.card-body { font-size: 0.94rem; color: var(--text-soft); line-height: 1.6; }
+.card-body p { margin-bottom: 10px; }
+.card-body p:last-child { margin-bottom: 0; }
+.card-body ul, .card-body ol { margin: 6px 0 12px 22px; padding: 0; }
+.card-body li { margin-bottom: 5px; line-height: 1.55; }
+.card-body strong { color: var(--navy); }
+.card-body h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 800;
+  margin: 14px 0 6px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 10px;
+}
+.card-body h4:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+.callout {
+  background: var(--clinical-bg);
+  border-left: 3px solid var(--clinical);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+}
+.callout .callout-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--clinical);
+  margin-bottom: 4px;
+}
+.callout p { color: var(--text); font-size: 0.9rem; line-height: 1.55; }
+.callout p:last-child { margin-bottom: 0; }
+
+.tip-callout {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.term { color: var(--navy); font-weight: 700; font-style: normal; }
+.alt-name { color: var(--text-muted); font-style: italic; font-size: 0.88rem; }
+
+.flow {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.flow .arrow { color: var(--tan-deep); font-weight: 800; padding: 0 4px; }
+
+table.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 12px;
+  font-size: 0.88rem;
+}
+table.compact-table th {
+  background: var(--cream-pale);
+  color: var(--navy);
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
+}
+table.compact-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+table.compact-table tr:last-child td { border-bottom: none; }
+
+.footer-note { margin-top: 30px; text-align: center; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body { padding: 18px 10px 40px; }
+  .page-header { padding: 24px 22px 22px; }
+  .page-header h1 { font-size: 1.55rem; }
+  [role="tab"] { font-size: 0.78rem; padding: 8px 10px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .note-card { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container" id="main-content">
+
+<header class="page-header">
+  <div class="breadcrumb">Anatomy &amp; Physiology Notes</div>
+  <h1>Nervous Tissue</h1>
+  <p class="subtitle">Comprehensive teaching notes on the cells and organization of nervous tissue, including neurons, neuroglia, myelination, and synapses.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Nervous tissue topics">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview">Overview</button>
+    <button role="tab" id="tab-neuron" aria-selected="false" aria-controls="panel-neuron" tabindex="-1">Neuron Anatomy</button>
+    <button role="tab" id="tab-class" aria-selected="false" aria-controls="panel-class" tabindex="-1">Classifications</button>
+    <button role="tab" id="tab-glia" aria-selected="false" aria-controls="panel-glia" tabindex="-1">Neuroglia</button>
+    <button role="tab" id="tab-myelin" aria-selected="false" aria-controls="panel-myelin" tabindex="-1">Myelination &amp; Organization</button>
+    <button role="tab" id="tab-synapse" aria-selected="false" aria-controls="panel-synapse" tabindex="-1">Synapses &amp; Signaling</button>
+  </div>
+</div>
+
+<!-- ============== OVERVIEW ============== -->
+<div role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <h2>Big Picture</h2>
+    <p>The nervous system has two major divisions and three core jobs. Everything you'll learn about nervous tissue, individual cells, pathways, and complex behaviors fits into this framework. Start here.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Foundation</p>
+      <h3 class="card-title">Two Major Divisions of the Nervous System</h3>
+      <div class="card-body">
+        <h4>I. Central Nervous System (CNS)</h4>
+        <ul>
+          <li><strong>Brain</strong> (~85 billion neurons)</li>
+          <li><strong>Spinal Cord</strong> (~100 billion neurons)</li>
+        </ul>
+        <p><strong>CNS Functions:</strong></p>
+        <ol>
+          <li>Processes incoming sensory information</li>
+          <li>Source of thoughts, emotions, memories</li>
+          <li>Stimulates muscle contraction and glandular secretion</li>
+        </ol>
+
+        <h4>II. Peripheral Nervous System (PNS)</h4>
+        <p>"All nervous tissue outside the CNS." Four components:</p>
+        <ol>
+          <li><strong>Nerves:</strong> bundles of hundreds to thousands of axons. 12 pairs of cranial nerves emerge from the brain, 31 pairs of spinal nerves from the cord. Each follows a defined path and serves a specific region.</li>
+          <li><strong>Ganglia:</strong> small masses of nervous tissue, primarily nerve cell bodies. Located outside the brain and cord, closely associated with cranial and spinal nerves.</li>
+          <li><strong>Enteric plexuses:</strong> extensive networks of neurons in the walls of GI tract organs that regulate digestion.</li>
+          <li><strong>Sensory receptors:</strong> structures that monitor changes in the internal/external environment (touch receptors in skin, photoreceptors in eye, olfactory receptors in nose).</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">PNS Subdivisions</p>
+      <h3 class="card-title">Three Divisions of the PNS</h3>
+      <div class="card-body">
+        <h4>1. Somatic Nervous System</h4>
+        <ul>
+          <li>Sensory neurons: somatic receptors (head, body wall, limbs, special senses) &rarr; CNS</li>
+          <li>Motor neurons: CNS &rarr; skeletal muscle only (<strong>voluntary</strong>)</li>
+        </ul>
+
+        <h4>2. Autonomic Nervous System (ANS)</h4>
+        <ul>
+          <li>Sensory: visceral organ receptors (stomach, lungs) &rarr; CNS</li>
+          <li>Motor: CNS &rarr; smooth muscle, cardiac muscle, glands (<strong>involuntary</strong>)</li>
+          <li>Two divisions: <strong>Sympathetic</strong> ("fight or flight") and <strong>Parasympathetic</strong> ("rest and digest")</li>
+        </ul>
+
+        <h4>3. Enteric Nervous System</h4>
+        <ul>
+          <li>"Brain of the gut." Over 1 million neurons in enteric plexuses extending throughout the GI tract.</li>
+          <li>Functions largely independently of the ANS and CNS, but communicates with the CNS via sympathetic/parasympathetic neurons.</li>
+          <li>Governs GI motility, secretions, and hormone release.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Three Core Jobs</p>
+      <h3 class="card-title">Functions of the Nervous System</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Sensory Function.</strong> Detect internal stimuli (changes in BP) and external stimuli (rain on your skin). Sensory info travels via cranial and spinal nerves to the brain and cord.</li>
+          <li><strong>Integrative Function.</strong> Process information by analyzing it and making decisions about appropriate responses.</li>
+          <li><strong>Motor Function.</strong> Once sensory info is integrated, the NS may elicit a motor response by activating effectors (muscles or glands) through cranial or spinal nerves.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Sensory in. Integrate in the middle. Motor out. Every NS interaction follows this loop.</div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== NEURON ANATOMY ============== -->
+<div role="tabpanel" id="panel-neuron" aria-labelledby="tab-neuron" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Neuron Anatomy</h2>
+    <p>Neurons are the message carriers of the nervous system. Highly specialized, capable of stretching long distances, and unable to undergo cell division. Every neuron has the same basic three parts, plus a set of specialized components for sending and receiving signals.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">Two Cell Types</p>
+      <h3 class="card-title">Cells of Nervous Tissue</h3>
+      <div class="card-body">
+        <h4>1. Neurons</h4>
+        <ul>
+          <li>Form the complex processing network within the brain and spinal cord.</li>
+          <li>Connect all regions of the body to the brain and spinal cord.</li>
+          <li>Highly specialized: sensing, thinking, remembering, controlling muscle activity, regulating glandular secretions.</li>
+          <li>Can reach great lengths.</li>
+          <li><strong>Cannot undergo cell division (mitosis).</strong></li>
+        </ul>
+
+        <h4>2. Neuroglia</h4>
+        <ul>
+          <li>Smaller than neurons, but greatly outnumber them.</li>
+          <li>Support, nourish, protect, and maintain the interstitial fluid that bathes neurons.</li>
+          <li><strong>Can continue to divide throughout the lifetime.</strong></li>
+        </ul>
+        <div class="tip-callout" role="note" aria-label="Tip">The fact that neurons can't divide but neuroglia can is why most brain tumors are gliomas (from neuroglia) rather than from neurons themselves.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">The Defining Trait</p>
+      <h3 class="card-title">Neuron Characteristics</h3>
+      <div class="card-body">
+        <h4>Excitability</h4>
+        <p>The ability to respond to a stimulus and convert it to an <strong>action potential</strong>.</p>
+        <ul>
+          <li><strong>Stimulus:</strong> any change in the environment strong enough to initiate an action potential.</li>
+          <li><strong>Action potential:</strong> an electrical signal that propagates along the surface of the membrane of a neuron. Once initiated, it travels at constant strength.</li>
+          <li><strong>Speed:</strong> 1 to 290 mi/hr depending on the fiber type.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Three Main Parts</p>
+      <h3 class="card-title">Anatomy of a Neuron</h3>
+      <div class="card-body">
+
+        <h4>1. Cell Body (perikaryon or soma)</h4>
+        <ul>
+          <li>Contains a nucleus and cytoplasm with typical organelles.</li>
+          <li>Contains <strong>Nissl bodies</strong>: clusters of free ribosomes and rough ER. They give gray matter its color.</li>
+          <li><strong>Neurofibrils:</strong> bundles of intermediate filaments that provide cell shape and support.</li>
+          <li><strong>Microtubules:</strong> assist in moving materials between cell body and axon.</li>
+          <li><strong>Lipofuscin:</strong> yellowish-brown pigment clumps found in aging neurons. A product of neuronal lysosomes that accumulates with age. Doesn't harm the neuron.</li>
+        </ul>
+
+        <h4>2. Dendrites (Input)</h4>
+        <ul>
+          <li>The receiving portions of a neuron.</li>
+          <li>Plasma membrane contains <strong>receptors</strong> for binding chemical messengers from other cells.</li>
+          <li>Typically tree-shaped: short, tapering, highly branched.</li>
+        </ul>
+
+        <h4>3. Axon (Output)</h4>
+        <ul>
+          <li>Propagates nerve impulses <em>toward</em> another neuron, muscle fiber, or gland cell.</li>
+          <li><strong>Axon hillock:</strong> cone-shaped elevation where the cell body joins the axon.</li>
+          <li><strong>Axoplasm:</strong> cytoplasm of the axon.</li>
+          <li><strong>Axolemma:</strong> plasma membrane of the axon.</li>
+          <li><strong>Axon terminals:</strong> branching of the axon at the distal end into fine processes.</li>
+        </ul>
+        <p class="alt-name">Nerve fiber: general term for any neuronal process (extension) that emerges from the cell body.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Where Communication Happens</p>
+      <h3 class="card-title">Synaptic End Bulbs &amp; Synapse</h3>
+      <div class="card-body">
+        <ul>
+          <li><strong>Synapse:</strong> the site of communication between two neurons or between a neuron and an effector cell.</li>
+          <li><strong>Synaptic end bulbs:</strong> swellings at the tips of axon terminals.</li>
+          <li><strong>Synaptic vesicles:</strong> tiny membrane-enclosed sacs inside the end bulbs that store chemicals.</li>
+          <li><strong>Neurotransmitters:</strong> chemicals released from synaptic vesicles that excite or inhibit another neuron, muscle fiber, or gland cell.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Cellular Logistics</p>
+      <h3 class="card-title">Axonal Transport Systems</h3>
+      <div class="card-body">
+        <p>Materials made or recycled in the cell body are needed at the axon terminals (and vice versa). Two transport systems handle this.</p>
+
+        <h4>Slow Axonal Transport</h4>
+        <ul>
+          <li><strong>Rate:</strong> 1 to 5 mm/day</li>
+          <li><strong>Direction:</strong> one direction only, cell body &rarr; axon terminals</li>
+          <li>Supplies new axoplasm to developing or regenerating axons. Replenishes axoplasm in growing or maturing neurons.</li>
+        </ul>
+
+        <h4>Fast Axonal Transport</h4>
+        <ul>
+          <li><strong>Rate:</strong> 200 to 400 mm/day</li>
+          <li><strong>Direction:</strong> both directions
+            <ul>
+              <li><strong>Anterograde</strong> (forward): cell body &rarr; axon terminals. Moves organelles and synaptic vesicles.</li>
+              <li><strong>Retrograde</strong> (backward): axon terminals &rarr; cell body. Moves membrane vesicles and other cellular materials.</li>
+            </ul>
+          </li>
+          <li>Uses motor proteins traveling along microtubules.</li>
+        </ul>
+        <div class="callout" role="note" aria-label="Clinical correlation: Retrograde transport and disease">
+          <p class="callout-label">Clinical Correlation: Retrograde Transport &amp; Disease</p>
+          <p>Retrograde transport carries trophic chemicals (like nerve growth factor) but can also carry harmful agents back to the cell body, including <strong>tetanus toxin</strong> and viruses that cause <strong>rabies, herpes simplex, and polio</strong>.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== CLASSIFICATIONS ============== -->
+<div role="tabpanel" id="panel-class" aria-labelledby="tab-class" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Neuron Classifications</h2>
+    <p>Neurons are classified two ways: by structure (how many processes come off the cell body) and by function (which direction they send signals relative to the CNS). Both classifications matter clinically and on the exam.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Based on Shape</p>
+      <h3 class="card-title">Structural Classification</h3>
+      <div class="card-body">
+        <h4>1. Multipolar Neurons</h4>
+        <ul>
+          <li>Several dendrites and one axon.</li>
+          <li><strong>Location:</strong> mostly in the brain and cord.</li>
+          <li>All motor neurons are multipolar.</li>
+        </ul>
+
+        <h4>2. Bipolar Neurons</h4>
+        <ul>
+          <li>One main dendrite and one axon.</li>
+          <li><strong>Location:</strong> retina of the eye, inner ear, olfactory area of the brain.</li>
+        </ul>
+
+        <h4>3. Unipolar Neurons (Pseudounipolar)</h4>
+        <ul>
+          <li>Dendrites and one axon are fused together to form a continuous process emerging from the cell body.</li>
+          <li>Begin as bipolar neurons in the embryo. During development, the dendrites and axon fuse into a single process.</li>
+          <li>Most act as <strong>sensory receptors</strong> that detect stimuli.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Famously Named Cells</p>
+      <h3 class="card-title">Special Multipolar Neurons</h3>
+      <div class="card-body">
+        <ul>
+          <li><strong>Purkinje cells:</strong> found in the cerebellum. Highly branched dendritic trees.</li>
+          <li><strong>Pyramidal cells:</strong> found in the cerebral cortex. Pyramid-shaped cell bodies.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Based on Direction of Signal</p>
+      <h3 class="card-title">Functional Classification</h3>
+      <div class="card-body">
+        <p>Classified by the direction in which the action potential is conveyed relative to the CNS.</p>
+
+        <h4>1. Sensory (Afferent) Neurons</h4>
+        <ul>
+          <li>Sensory receptors at distal ends, or located just after sensory receptors that are separate cells.</li>
+          <li>Convey impulses <em>toward</em> the CNS.</li>
+          <li>Most are unipolar.</li>
+        </ul>
+
+        <h4>2. Motor (Efferent) Neurons</h4>
+        <ul>
+          <li>Convey APs <em>away from</em> the CNS to effectors (muscles and glands) in the periphery, through cranial or spinal nerves.</li>
+          <li>Multipolar.</li>
+        </ul>
+
+        <h4>3. Interneurons (Association Neurons)</h4>
+        <ul>
+          <li>Mainly located <em>within</em> the CNS, between sensory and motor neurons.</li>
+          <li><strong>Function:</strong> process incoming sensory input and elicit a motor response by activating the appropriate motor neurons.</li>
+          <li>Most are multipolar.</li>
+        </ul>
+        <div class="tip-callout" role="note" aria-label="Tip">Memory cue: <em>afferent</em> = arriving (at CNS). <em>Efferent</em> = exiting (CNS).</div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== NEUROGLIA ============== -->
+<div role="tabpanel" id="panel-glia" aria-labelledby="tab-glia" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Neuroglia</h2>
+    <p>Neuroglia ("nerve glue") make up half the volume of the CNS. Six types: four in the CNS and two in the PNS. They support, protect, and feed neurons, and most can multiply throughout life. Knowing where each one lives and what each one does is foundational anatomy.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">General Characteristics</p>
+      <h3 class="card-title">Neuroglia Overview</h3>
+      <div class="card-body">
+        <ul>
+          <li>Make up about half the volume of the CNS.</li>
+          <li>Smaller than neurons but 2 to 25 times more numerous.</li>
+          <li>Do <em>not</em> generate or propagate action potentials.</li>
+          <li>Can multiply and divide in the mature nervous system.</li>
+        </ul>
+        <h4>Six Types</h4>
+        <table class="compact-table" aria-label="Six types of neuroglia organized by location">
+          <thead><tr><th>CNS (4)</th><th>PNS (2)</th></tr></thead>
+          <tbody>
+            <tr><td>Astrocytes</td><td>Schwann cells</td></tr>
+            <tr><td>Oligodendrocytes</td><td>Satellite cells</td></tr>
+            <tr><td>Microglia</td><td></td></tr>
+            <tr><td>Ependymal cells</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Gliomas">
+        <p class="callout-label">Clinical Correlation: Gliomas</p>
+        <p>Brain tumors derived from neuroglia. Highly malignant and grow rapidly. Because neurons can't divide but neuroglia can, almost all primary brain tumors are gliomas.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">CNS Glia (1 of 4)</p>
+      <h3 class="card-title">Astrocytes</h3>
+      <div class="card-body">
+        <p>Star-shaped cells with many processes.</p>
+
+        <h4>Two Types</h4>
+        <ul>
+          <li><strong>Protoplasmic astrocytes:</strong> many short, branching processes. Found in <em>gray matter</em>.</li>
+          <li><strong>Fibrous astrocytes:</strong> long, unbranched processes. Found in <em>white matter</em>.</li>
+        </ul>
+
+        <h4>Functions</h4>
+        <ol>
+          <li>Supporting cells for neurons.</li>
+          <li>Create the <strong>blood-brain barrier</strong> by restricting movement of substances between blood and interstitial fluid.</li>
+          <li>Secrete chemicals in the embryo to regulate growth, migration, and interconnection of neurons.</li>
+          <li>Maintain the appropriate chemical environment for nerve impulse generation.</li>
+          <li>Influence learning and memory by affecting the formation of neural synapses.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">CNS Glia (2 of 4)</p>
+      <h3 class="card-title">Oligodendrocytes</h3>
+      <div class="card-body">
+        <p>Resemble astrocytes but smaller, with fewer processes.</p>
+        <h4>Function</h4>
+        <p>Form and maintain the <strong>myelin sheath</strong> around CNS axons.</p>
+        <p class="alt-name">Myelin sheath: a multilayered lipid and protein covering around some axons. It insulates them and increases the speed of nerve impulse conduction.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">CNS Glia (3 of 4)</p>
+      <h3 class="card-title">Microglia</h3>
+      <div class="card-body">
+        <p>Small cells with slender processes that give off spine-like projections.</p>
+        <h4>Function: Phagocytes</h4>
+        <ol>
+          <li>Remove cellular debris formed during normal development of the nervous system.</li>
+          <li>Phagocytize microbes and damaged nervous tissue.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Microglia are the immune cells of the CNS. They're macrophages of the brain.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">CNS Glia (4 of 4)</p>
+      <h3 class="card-title">Ependymal Cells</h3>
+      <div class="card-body">
+        <p>Cuboidal to columnar cells arranged in a single layer, with microvilli and cilia.</p>
+        <h4>Location</h4>
+        <p>Line the ventricles of the brain and the central canal of the spinal cord.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>Produce, monitor, and assist in the circulation of <strong>cerebrospinal fluid</strong>.</li>
+          <li>Form the <strong>blood-CSF barrier</strong>.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">PNS Glia (1 of 2)</p>
+      <h3 class="card-title">Schwann Cells</h3>
+      <div class="card-body">
+        <p>Encircle PNS axons.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>Form the myelin sheath around PNS axons. <em>One single Schwann cell can enclose as many as 20 unmyelinated axons, or wrap a single axon.</em></li>
+          <li>Participate in axon regeneration. Regeneration is more easily accomplished in the PNS than the CNS, largely because of Schwann cells.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">PNS Glia (2 of 2)</p>
+      <h3 class="card-title">Satellite Cells</h3>
+      <div class="card-body">
+        <p>Surround the cell bodies of neurons in PNS ganglia.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>Provide structural support.</li>
+          <li>Regulate the exchange of materials between neuronal cell bodies and interstitial fluid.</li>
+        </ol>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== MYELINATION & ORGANIZATION ============== -->
+<div role="tabpanel" id="panel-myelin" aria-labelledby="tab-myelin" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Myelination &amp; Tissue Organization</h2>
+    <p>Myelin is what makes fast nerve conduction possible. Where neuronal cell bodies cluster and where axons bundle determines whether you call something a ganglion, nucleus, nerve, or tract. The same cells, just organized differently.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Insulation for Speed</p>
+      <h3 class="card-title">Myelination Overview</h3>
+      <div class="card-body">
+        <p><strong>Myelin:</strong> a multi-layered protein and lipid covering.</p>
+        <ul>
+          <li><strong>Myelinated neurons:</strong> axons with a myelin sheath.</li>
+          <li><strong>Unmyelinated neurons:</strong> axons lacking a myelin sheath.</li>
+        </ul>
+        <h4>Function</h4>
+        <p>Electrically <strong>insulates</strong> the axon to increase the speed of nerve impulse conduction.</p>
+
+        <h4>Nodes of Ranvier</h4>
+        <p>Gaps in the myelin sheath that appear at regular intervals along the axon. Action potentials "jump" from node to node (saltatory conduction), which is why myelinated axons conduct so much faster.</p>
+
+        <h4>Two Types of Glia Make Myelin</h4>
+        <ol>
+          <li><strong>Schwann cells</strong> (PNS)</li>
+          <li><strong>Oligodendrocytes</strong> (CNS)</li>
+        </ol>
+
+        <div class="tip-callout" role="note" aria-label="Tip">Amount of myelin increases from birth to maturity. An infant can't coordinate movements as quickly because they have less myelin and slower nerve conduction.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">PNS Myelination</p>
+      <h3 class="card-title">Schwann Cell Myelination</h3>
+      <div class="card-body">
+        <p>Each Schwann cell wraps <em>one axon segment</em> between two nodes of Ranvier.</p>
+        <h4>Two Layers</h4>
+        <ul>
+          <li><strong>Inner layer (myelin sheath):</strong> approximately 100 layers of Schwann cell membrane.</li>
+          <li><strong>Outer layer (neurolemma):</strong> encloses the myelin sheath. <em>Only found around PNS axons</em> (not in the CNS).</li>
+        </ul>
+        <h4>Why Neurolemma Matters</h4>
+        <p>When a PNS axon is injured, the neurolemma aids regeneration by forming a <strong>regeneration tube</strong> that guides and stimulates the regrowth of the axon. This is the main reason PNS injuries can heal but CNS injuries usually can't.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">CNS Myelination</p>
+      <h3 class="card-title">Oligodendrocyte Myelination</h3>
+      <div class="card-body">
+        <p>One oligodendrocyte myelinates <em>parts of several axons</em>. A single oligodendrocyte sends out about 15 broad, flat processes that spiral around CNS axons.</p>
+        <ul>
+          <li><strong>No neurolemma</strong>, because the oligodendrocyte cell body and nucleus do not envelop the axon.</li>
+          <li><strong>Nodes of Ranvier</strong> are present but less numerous than in the PNS.</li>
+          <li><strong>Little to no regrowth after injury</strong>, likely because of the lack of a neurolemma.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Multiple Sclerosis">
+        <p class="callout-label">Clinical Correlation: Multiple Sclerosis (MS)</p>
+        <p><strong>Cause:</strong> autoimmune disease leading to progressive destruction of myelin sheaths in the CNS. The myelin deteriorates into hardened scars or plaques (scleroses).</p>
+        <p><strong>Who:</strong> females 2 to 1, whites ages 20 to 40.</p>
+        <p><strong>Diagnosis:</strong> MRI shows numerous plaques in white matter of the brain and spinal cord.</p>
+        <p><strong>Most common form:</strong> relapsing-remitting. Attacks followed by periods of remission. Typical attack every year or two.</p>
+        <p><strong>Symptoms:</strong> heaviness or weakness in muscles, abnormal sensations, double vision.</p>
+        <p><strong>Treatment:</strong> beta-interferon (lengthens time between relapses, decreases severity).</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Guillain-Barré Syndrome">
+        <p class="callout-label">Clinical Correlation: Guillain-Barre Syndrome (GBS)</p>
+        <p><strong>Definition:</strong> An acute demyelinating disorder in which macrophages strip myelin from axons in the <em>peripheral</em> nervous system.</p>
+        <p><strong>Manifestations:</strong> ascending paralysis. The most common cause of acute paralysis.</p>
+        <p><strong>Cause:</strong> likely the result of the immune system's response to a bacterial infection.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Naming the Same Cells in Different Places</p>
+      <h3 class="card-title">Collections of Nervous Tissue</h3>
+      <div class="card-body">
+        <p>The same kinds of cells get different names depending on where they're found.</p>
+
+        <h4>Clusters of Cell Bodies</h4>
+        <table class="compact-table" aria-label="Cell body cluster terms by location">
+          <thead><tr><th>Location</th><th>Term</th></tr></thead>
+          <tbody>
+            <tr><td>PNS</td><td><strong>Ganglion</strong> (cluster of cell bodies, associated with spinal/cranial nerves)</td></tr>
+            <tr><td>CNS</td><td><strong>Nucleus</strong> (cluster of cell bodies)</td></tr>
+          </tbody>
+        </table>
+
+        <h4>Bundles of Axons</h4>
+        <table class="compact-table" aria-label="Axon bundle terms by location">
+          <thead><tr><th>Location</th><th>Term</th></tr></thead>
+          <tbody>
+            <tr><td>PNS</td><td><strong>Nerve</strong> (cranial nerves connect brain to periphery; spinal nerves connect cord to periphery)</td></tr>
+            <tr><td>CNS</td><td><strong>Tract</strong> (interconnections between brain and spinal cord)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Color-Coded by Anatomy</p>
+      <h3 class="card-title">Gray Matter vs. White Matter</h3>
+      <div class="card-body">
+
+        <h4>White Matter</h4>
+        <ul>
+          <li>Primarily <strong>myelinated axons</strong>.</li>
+          <li>White appearance comes from the lipid in the myelin.</li>
+        </ul>
+
+        <h4>Gray Matter</h4>
+        <ul>
+          <li>Primarily <strong>cell bodies</strong>, dendrites, unmyelinated axons, axon terminals, and neuroglia.</li>
+          <li>Appears gray because of the Nissl bodies (grayish color) and the lack of myelin.</li>
+        </ul>
+
+        <p>Both gray and white matter contain blood vessels.</p>
+
+        <h4>Organizational Difference: Cord vs. Brain</h4>
+        <ul>
+          <li><strong>Spinal cord:</strong> white matter <em>outside</em>, gray matter <em>inside</em>.</li>
+          <li><strong>Brain:</strong> gray matter <em>outside</em> (cortex), white matter <em>inside</em>.</li>
+        </ul>
+        <div class="tip-callout" role="note" aria-label="Tip">The brain wears its gray matter on the outside, the cord hides it on the inside. Same tissue types, opposite arrangement.</div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== SYNAPSES & SIGNALING ============== -->
+<div role="tabpanel" id="panel-synapse" aria-labelledby="tab-synapse" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Synapses &amp; Signaling</h2>
+    <p>The synapse is where one neuron talks to another, or to a muscle or gland. Two ways this happens: directly (electrical) or via a chemical messenger (chemical). Most synapses are chemical.</p>
+  </div>
+
+  <div class="callout" role="note" aria-label="Exam scope: anatomy versus physiology">
+    <p class="callout-label">Exam Scope: Anatomy vs. Physiology</p>
+    <p>For this anatomy exam, focus on the <strong>structures</strong> involved in synaptic communication: presynaptic and postsynaptic neurons, the synaptic cleft, synaptic end bulbs, vesicles, and the structural difference between electrical (gap junctions) and chemical synapses.</p>
+    <p>The detailed mechanisms of action potentials, graded potentials, EPSPs/IPSPs, ion channels, summation, and neurotransmitter pharmacology are <strong>physiology content</strong> and are not testable on the anatomy exam. They are included here for context and will be covered in detail in physiology.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Anatomy of the Synapse</p>
+      <h3 class="card-title">Synapse Definition &amp; Components</h3>
+      <div class="card-body">
+        <p><strong>Synapse:</strong> a region where communication occurs between two neurons or between a neuron and an effector cell (muscle or gland cell).</p>
+
+        <h4>Key Terms</h4>
+        <ul>
+          <li><strong>Presynaptic neuron:</strong> nerve cell that carries the impulse <em>toward</em> the synapse.</li>
+          <li><strong>Postsynaptic neuron:</strong> nerve cell that carries the impulse <em>away from</em> the synapse.</li>
+          <li><strong>Postsynaptic cell:</strong> cell that receives the signal.</li>
+          <li><strong>Effector cell:</strong> cell that responds to an impulse at the synapse.</li>
+        </ul>
+
+        <h4>Structural Types Based on Location</h4>
+        <ul>
+          <li><strong>Axodendritic:</strong> synapse between axon and dendrite (most common).</li>
+          <li><strong>Axosomatic:</strong> synapse between axon and cell body.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Communication Type 1</p>
+      <h3 class="card-title">Electrical Synapses</h3>
+      <div class="card-body">
+        <p>Action potentials are conducted <em>directly</em> between plasma membranes of adjacent neurons via <strong>gap junctions</strong>.</p>
+        <ul>
+          <li>Each gap junction contains 100+ <strong>connexons</strong> (tubes that connect the cytosol of two cells). Ions flow between cells.</li>
+          <li>Common in: visceral smooth muscle, cardiac muscle, developing embryo, parts of the brain.</li>
+        </ul>
+        <h4>Two Advantages</h4>
+        <ol>
+          <li><strong>Faster</strong> than chemical synapses.</li>
+          <li><strong>Synchronization</strong>: coordinates the activity of a group of neurons or muscle cells (coordinated contraction of the heart, propelling food through the GI tract).</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Communication Type 2</p>
+      <h3 class="card-title">Chemical Synapses</h3>
+      <div class="card-body">
+        <p>Plasma membranes of pre- and post-synaptic neurons do <em>not</em> touch. Communication is indirect through diffusion of a neurotransmitter across a small gap (the synaptic cleft).</p>
+        <ul>
+          <li>The chemical signal is converted into an electrical signal in the postsynaptic cell.</li>
+          <li>There is a delay (synaptic delay) of about 0.5 msec.</li>
+          <li>Most chemical synapses transfer information in <strong>one direction only</strong>: presynaptic neuron &rarr; postsynaptic neuron, effector, muscle, or gland.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Chemical Messengers</p>
+      <h3 class="card-title">Neurotransmitter Classes</h3>
+      <div class="card-body">
+        <p>About 100 substances are known or suspected to be neurotransmitters. Many are also hormones released into the bloodstream by endocrine cells. Two broad classes by size:</p>
+
+        <h4>1. Small Molecule Neurotransmitters</h4>
+        <ul>
+          <li><strong>Acetylcholine (ACh):</strong> PNS and some CNS neurons. Excitatory or inhibitory depending on the receptor.</li>
+          <li><strong>Amino acids:</strong>
+            <ul>
+              <li>Excitatory: glutamate, aspartate</li>
+              <li>Inhibitory: GABA (about 1/3 of all brain synapses), glycine (about 1/2 of spinal cord synapses)</li>
+            </ul>
+          </li>
+          <li><strong>Biogenic amines (catecholamines):</strong>
+            <ul>
+              <li><strong>Norepinephrine (NE):</strong> arousal, mood regulation, dreaming. Also produced by adrenal medulla as a hormone.</li>
+              <li><strong>Epinephrine:</strong> hormone produced by adrenal medulla.</li>
+              <li><strong>Dopamine:</strong> emotional response, addictive behaviors, pleasurable experiences, regulation of skeletal muscle contraction.</li>
+              <li><strong>Serotonin:</strong> sensory perception, temperature regulation, mood, appetite, induction of sleep.</li>
+            </ul>
+          </li>
+          <li><strong>ATP and other purines:</strong> excitatory in CNS and PNS.</li>
+          <li><strong>Nitric oxide (NO):</strong> excitatory free radical. Vasodilation of blood vessels.</li>
+          <li><strong>Carbon monoxide (CO):</strong> excitatory NT produced in the brain.</li>
+        </ul>
+
+        <h4>2. Neuropeptides</h4>
+        <ul>
+          <li>3 to 40 amino acids linked by peptide bonds.</li>
+          <li>Found in CNS and PNS. Excitatory and inhibitory.</li>
+          <li><strong>Enkephalins and endorphins:</strong> potent natural analgesics that bind to opiate receptors. Linked to memory, learning, feelings of pleasure, body temperature regulation, hormonal control of puberty, sex drive, and reproduction.</li>
+          <li><strong>Substance P:</strong> released by neurons that transmit pain. Enhances perception of pain. Suppressed by enkephalin and endorphin.</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<div class="footer-note">Dr. Sharilyn Rennie</div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+
+  function sendHeight() {
+    var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) { try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {} }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+</body>
+</html>
