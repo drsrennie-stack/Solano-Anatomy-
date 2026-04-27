@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CNS: Spinal Cord Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: #fff;
+  padding: 28px 28px 32px;
+}
+.breadcrumb {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tan-soft);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.page-header h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.page-header p.subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  max-width: 720px;
+  font-weight: 400;
+}
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(27, 40, 69, 0.04);
+}
+[role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+[role="tab"] {
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+  letter-spacing: 0.01em;
+}
+[role="tab"]:hover { color: var(--navy); }
+[role="tab"][aria-selected="true"] {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--tan);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+.panels {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+[role="tabpanel"] { outline: none; }
+[role="tabpanel"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--tan);
+  border-radius: 6px;
+}
+.section-intro {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin: 4px 0 20px;
+}
+.section-intro p {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+.card.span-2 { grid-column: 1 / -1; }
+.card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--navy);
+  margin: 0 0 12px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 14px 0 6px;
+}
+.card h4:first-of-type { margin-top: 4px; }
+.card p { margin: 0 0 10px; color: var(--text-soft); font-size: 15px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 20px; color: var(--text-soft); font-size: 15px; }
+.card li { margin-bottom: 5px; }
+.card strong { color: var(--navy); font-weight: 700; }
+.card em { font-family: 'Lora', Georgia, serif; }
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 4px;
+  font-size: 14px;
+}
+.compact-table th, .compact-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+.compact-table th {
+  background: var(--cream-pale);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.compact-table tr:last-child td { border-bottom: none; }
+.flow {
+  background: var(--cream-pale);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.9;
+}
+.arrow {
+  color: var(--tan-deep);
+  margin: 0 6px;
+  font-weight: 700;
+}
+.callout-clinical {
+  background: var(--clinical-bg);
+  border-left: 4px solid var(--clinical);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.callout-clinical .callout-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clinical);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.callout-clinical p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text);
+}
+.callout-clinical p:last-child { margin-bottom: 0; }
+.callout-clinical strong { color: var(--clinical); }
+.callout-tip {
+  background: var(--cream-pale);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-tip strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  color: var(--navy);
+}
+.signature-footer {
+  text-align: center;
+  padding: 28px 18px 36px;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.signature-footer .name {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 22px 18px 24px; }
+  .page-header h1 { font-size: 24px; }
+  [role="tab"] { padding: 12px 12px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="breadcrumb">BIO 431 &middot; Nervous System &middot; Anatomy Notes</div>
+  <h1>CNS: Spinal Cord</h1>
+  <p class="subtitle">Protective coverings, external and internal architecture, and the major ascending and descending tracts that link the cord to the brain.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Spinal cord notes sections">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" tabindex="0">Overview</button>
+    <button role="tab" id="tab-protect" aria-selected="false" aria-controls="panel-protect" tabindex="-1">Protective Structures</button>
+    <button role="tab" id="tab-internal" aria-selected="false" aria-controls="panel-internal" tabindex="-1">Internal Anatomy</button>
+    <button role="tab" id="tab-sensory" aria-selected="false" aria-controls="panel-sensory" tabindex="-1">Sensory Tracts</button>
+    <button role="tab" id="tab-motor" aria-selected="false" aria-controls="panel-motor" tabindex="-1">Motor Tracts</button>
+    <button role="tab" id="tab-clinical" aria-selected="false" aria-controls="panel-clinical" tabindex="-1">Clinical &amp; Pathology</button>
+  </div>
+</div>
+
+<main class="panels">
+
+<!-- ============== TAB 1: OVERVIEW ============== -->
+<section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <p>The spinal cord is the bridge between brain and body. Before we trace tracts and dissect cross sections, anchor the gross picture: where it sits, where it ends, and how it widens to serve the limbs.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Gross Anatomy</div>
+      <h3>Spinal Cord Basics</h3>
+      <ul>
+        <li><strong>Shape:</strong> oval, slightly flattened anteriorly and posteriorly</li>
+        <li><strong>Superior limit:</strong> continuous with the medulla oblongata at the foramen magnum</li>
+        <li><strong>Inferior limit (adult):</strong> superior border of the second lumbar vertebra (L2)</li>
+        <li><strong>Length:</strong> 16 to 18 inches</li>
+        <li><strong>Maximum diameter:</strong> cervical region; smaller in thoracic segments and at the inferior tip</li>
+      </ul>
+      <h4>Developmental Note</h4>
+      <ul>
+        <li><strong>Newborn:</strong> cord extends to L3 or L4</li>
+        <li><strong>Early childhood:</strong> cord and column grow together as part of overall body growth</li>
+        <li><strong>Cord elongation stops</strong> at age 4 to 5; the column continues to lengthen, leaving the cord progressively higher relative to the vertebrae</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Two Enlargements</div>
+      <h3>Cervical &amp; Lumbar Enlargements</h3>
+      <p>Where the cord widens, it is supplying a limb. Both enlargements reflect the extra neuronal traffic needed for the upper or lower extremities.</p>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Enlargement</th><th>Levels</th><th>Supplies</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cervical</strong></td><td>C4 to T1</td><td>Upper limbs</td></tr>
+          <tr><td><strong>Lumbar</strong></td><td>T9 to T12</td><td>Lower limbs</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Memory cue for enlargements">
+        <strong>Memory cue:</strong> wider cord, wider job. The cervical enlargement powers the brachial plexus; the lumbar enlargement powers the lumbar and sacral plexuses.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Distal Anatomy</div>
+      <h3>Conus Medullaris &amp; Filum Terminale</h3>
+      <h4>Conus Medullaris</h4>
+      <ul>
+        <li>Tapered, conical termination of the spinal cord</li>
+        <li>Ends at the intervertebral disc between L1 and L2 in adults</li>
+      </ul>
+      <h4>Filum Terminale</h4>
+      <ul>
+        <li>Arises from the conus medullaris</li>
+        <li>Inferior extension of <strong>pia mater</strong></li>
+        <li>Fuses with arachnoid and dura mater</li>
+        <li>Anchors the spinal cord inferiorly</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Nerve Roots Below the Cord</div>
+      <h3>Cauda Equina</h3>
+      <p>Because the cord ends at L2 but nerves still need to exit at lumbar, sacral, and coccygeal levels, the lower roots travel inferiorly inside the vertebral canal before leaving through their respective intervertebral foramina.</p>
+      <ul>
+        <li>Roots descend alongside the filum terminale, like wisps of hair</li>
+        <li>Named <em>cauda equina</em> because the bundle resembles a horse's tail</li>
+        <li>Clinical relevance: this is the safe zone for lumbar puncture</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Spinal Nerves at a Glance</div>
+      <h3>31 Pairs of Spinal Nerves</h3>
+      <p>Spinal nerves are the paths of communication between the cord and the body. Each pair is a <strong>mixed nerve</strong>: the posterior root carries sensory axons; the anterior root carries motor axons.</p>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Region</th><th>Pairs</th><th>Range</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cervical</strong></td><td>8</td><td>C1 to C8</td></tr>
+          <tr><td><strong>Thoracic</strong></td><td>12</td><td>T1 to T12</td></tr>
+          <tr><td><strong>Lumbar</strong></td><td>5</td><td>L1 to L5</td></tr>
+          <tr><td><strong>Sacral</strong></td><td>5</td><td>S1 to S5</td></tr>
+          <tr><td><strong>Coccygeal</strong></td><td>1</td><td>Co1</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Note on cervical numbering">
+        <strong>Note:</strong> there are only 7 cervical vertebrae but 8 cervical spinal nerves. C1 through C7 exit above their corresponding vertebra; C8 exits below C7 and above T1. From T1 down, every nerve exits below its corresponding vertebra.
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 2: PROTECTIVE STRUCTURES ============== -->
+<section role="tabpanel" id="panel-protect" aria-labelledby="tab-protect" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>The cord sits inside three layers of protection: bone, connective tissue, and fluid. Each layer contributes a distinct kind of safety, and the spaces between the layers carry clinical weight.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Bony Shell</div>
+      <h3>Vertebral Column</h3>
+      <ul>
+        <li>The cord sits within the <strong>vertebral canal</strong>, formed by stacked vertebral foramina</li>
+        <li>The surrounding vertebrae provide a sturdy shelter</li>
+        <li><strong>Vertebral ligaments</strong> add reinforcement</li>
+        <li>Spinal nerves exit laterally through <strong>intervertebral foramina</strong></li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Connective Tissue Coverings</div>
+      <h3>Meninges Overview</h3>
+      <p>Three layers, continuous with the cranial meninges. They cover the cord and continue along spinal nerves until those nerves exit the column.</p>
+      <div class="flow" aria-label="Meninges from superficial to deep">
+        Dura mater <span class="arrow">&rarr;</span> Arachnoid mater <span class="arrow">&rarr;</span> Pia mater
+      </div>
+      <div class="callout-tip" role="note" aria-label="Mnemonic for meninges order">
+        <strong>Mnemonic:</strong> <em>D</em>ura, <em>A</em>rachnoid, <em>P</em>ia. Outside to inside: tough shell, spider web, tender skin.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Outer Layer</div>
+      <h3>Dura Mater</h3>
+      <ul>
+        <li>Most superficial; thick and strong</li>
+        <li>Composed of <strong>dense irregular connective tissue</strong></li>
+        <li>Continuous with the <strong>epineurium</strong>, the outer covering of spinal and cranial nerves</li>
+      </ul>
+      <h4>Spaces Around the Dura</h4>
+      <ul>
+        <li><strong>Epidural space:</strong> between dura and the wall of the vertebral canal; contains a cushion of fat and connective tissue (target for epidural anesthesia)</li>
+        <li><strong>Subdural space:</strong> between dura and arachnoid; contains interstitial fluid</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Middle Layer</div>
+      <h3>Arachnoid Mater</h3>
+      <ul>
+        <li>Thin and <strong>avascular</strong></li>
+        <li>Loosely arranged collagen and elastic fibers in a spider-web pattern</li>
+        <li>Continuous with the cranial arachnoid</li>
+      </ul>
+      <h4>Subarachnoid Space</h4>
+      <ul>
+        <li>Between arachnoid and pia mater</li>
+        <li>Contains <strong>cerebrospinal fluid (CSF)</strong></li>
+        <li>Target for lumbar puncture</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Innermost Layer</div>
+      <h3>Pia Mater</h3>
+      <ul>
+        <li>Thin, transparent connective tissue layer</li>
+        <li>Adheres directly to the cord and brain surface</li>
+        <li>Composed of squamous to cuboidal cells with interlacing collagen and fine elastic fibers</li>
+        <li>Carries the blood vessels that supply oxygen and nutrients to the cord</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Hydraulic Cushion</div>
+      <h3>Cerebrospinal Fluid (CSF)</h3>
+      <ul>
+        <li>Buoyant liquid that suspends CNS tissue in a near-weightless environment</li>
+        <li>Acts as a shock-absorbing hydraulic cushion</li>
+        <li>Fills the <strong>subarachnoid space</strong> and the <strong>central canal</strong> of the cord</li>
+        <li>The central canal is continuous superiorly with the fourth ventricle of the brain</li>
+      </ul>
+    </article>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Clinical correlation: lumbar puncture">
+      <p class="callout-label">Clinical Correlation: Lumbar Puncture</p>
+      <p><strong>Definition:</strong> withdrawal of CSF from the spinal canal for laboratory testing.</p>
+      <p><strong>Why it is safe at lumbar levels:</strong> the cord ends at L2 but the spinal meninges and CSF extend to S2. A needle placed below L2 enters CSF without risking the cord itself. The roots of the cauda equina float aside.</p>
+      <p><strong>Ideal location:</strong> between <strong>L3 and L4</strong> or <strong>L4 and L5</strong> in adults.</p>
+      <p><strong>Target space:</strong> the needle enters the <strong>subarachnoid space</strong>.</p>
+      <p><strong>Surface landmark:</strong> a line drawn between the highest points of the iliac crests (the supracristal plane) crosses the spinous process of L4.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== TAB 3: INTERNAL ANATOMY ============== -->
+<section role="tabpanel" id="panel-internal" aria-labelledby="tab-internal" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Cut the cord across and you see a butterfly inside a circle. The butterfly is gray matter, organized by horn. The surrounding circle is white matter, organized by column. Function follows that geometry exactly.</p>
+  </div>
+
+  <div class="callout-clinical" role="note" aria-label="Exam Scope: Anatomy versus physiology">
+    <p class="callout-label">Exam Scope: Anatomy vs. Physiology</p>
+    <p>For anatomy purposes, focus on <strong>structure, location, and the type of axon</strong> running through each region (sensory, motor, autonomic). Conduction mechanisms and pathway physiology are covered separately in the physiology unit.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Surface Landmarks</div>
+      <h3>Two Grooves Divide the Cord</h3>
+      <p>Two midline grooves split the white matter into left and right halves and serve as the principal surface landmarks on a cross section.</p>
+      <ul>
+        <li><strong>Anterior median fissure:</strong> deeper, ventral midline groove</li>
+        <li><strong>Posterior median sulcus:</strong> shallower, dorsal midline groove</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Inside the Butterfly</div>
+      <h3>Gray Matter Overview</h3>
+      <p>Gray matter forms the H-shaped or butterfly-shaped core. It contains <strong>dendrites, neuronal cell bodies, unmyelinated axons, and neuroglia</strong>.</p>
+      <h4>Components</h4>
+      <ul>
+        <li><strong>Gray commissure:</strong> the crossbar of the H; contains the central canal</li>
+        <li><strong>Central canal:</strong> small CSF-filled space; continuous superiorly with the fourth ventricle</li>
+        <li><strong>Anterior white commissure:</strong> connects white matter of the right and left sides</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Three Horns</div>
+      <h3>Gray Matter Horns</h3>
+      <p>The projections of gray matter toward the cord surface are called <strong>horns</strong>. Each horn has a defined functional role.</p>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Horn</th><th>Contains</th><th>Function</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Posterior (dorsal)</strong></td>
+            <td>Cell bodies and axons of interneurons; axons of incoming sensory neurons</td>
+            <td>Sensory input</td>
+          </tr>
+          <tr>
+            <td><strong>Anterior (ventral)</strong></td>
+            <td>Somatic motor nuclei: cell bodies of motor neurons</td>
+            <td>Skeletal muscle contraction</td>
+          </tr>
+          <tr>
+            <td><strong>Lateral</strong></td>
+            <td>Autonomic motor nuclei</td>
+            <td>Regulation of cardiac muscle, smooth muscle, glands. Present <strong>only in thoracic and upper lumbar segments.</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Functional Clusters</div>
+      <h3>Nuclei Within Gray Matter</h3>
+      <p><strong>Nuclei</strong> are clusters of neuronal cell bodies that share a function.</p>
+      <ul>
+        <li><strong>Sensory nuclei:</strong> receive input from receptors via sensory neurons</li>
+        <li><strong>Motor nuclei:</strong> provide output to effector tissues via motor neurons</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Tip on horns and nuclei">
+        <strong>Tip:</strong> a horn is a region of gray matter; a nucleus is a functional cluster of cell bodies inside that region. Several nuclei can live in one horn.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Outside the Butterfly</div>
+      <h3>White Matter Overview</h3>
+      <p>White matter surrounds the gray. It is composed of <strong>bundles of myelinated axons</strong> traveling up and down the cord.</p>
+      <h4>Two Levels of Organization</h4>
+      <ul>
+        <li><strong>Columns:</strong> three large regions of white matter on each side, defined by the anterior and posterior horns</li>
+        <li><strong>Tracts:</strong> bundles of axons within columns that share a common origin or destination and carry similar information (the CNS equivalent of nerves in the PNS)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Three Columns</div>
+      <h3>White Columns (Funiculi)</h3>
+      <p>On each side of the cord, white matter is divided into three columns:</p>
+      <ul>
+        <li><strong>Posterior (dorsal) white column:</strong> between posterior median sulcus and posterior horn</li>
+        <li><strong>Lateral white column:</strong> between posterior and anterior horns on the side</li>
+        <li><strong>Anterior (ventral) white column:</strong> between anterior median fissure and anterior horn</li>
+      </ul>
+      <h4>Tract Direction</h4>
+      <ul>
+        <li><strong>Sensory (ascending) tracts:</strong> conduct nerve impulses <em>toward</em> the brain</li>
+        <li><strong>Motor (descending) tracts:</strong> conduct nerve impulses <em>away</em> from the brain</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Region by Region</div>
+      <h3>Distinguishing Features by Spinal Region</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Region</th><th>Cross Section</th><th>Gray Matter</th><th>White Matter</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Cervical</strong></td>
+            <td>Oval, relatively large diameter</td>
+            <td>C1 to C4: large posterior horn, small anterior horn. C5 and below: enlarged posterior horn, well-developed anterior horn (limb innervation).</td>
+            <td>Relatively large amount</td>
+          </tr>
+          <tr>
+            <td><strong>Thoracic</strong></td>
+            <td>Small diameter</td>
+            <td>Relatively small amount of gray. <strong>Lateral horn present</strong> (autonomic). Exception: T1 anterior and posterior horns are small.</td>
+            <td>Substantial</td>
+          </tr>
+          <tr>
+            <td><strong>Lumbar</strong></td>
+            <td>Nearly circular</td>
+            <td>Very large anterior and posterior horns. Small lateral horn present in upper segments.</td>
+            <td>Less than cervical</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 4: SENSORY TRACTS ============== -->
+<section role="tabpanel" id="panel-sensory" aria-labelledby="tab-sensory" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Sensory tracts ascend. They carry input from receptors in skin, muscle, joints, and viscera up to processing centers in the brain. The two big ones to know are the spinothalamic tract and the posterior columns.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Naming Convention</div>
+      <h3>How to Read a Tract Name</h3>
+      <p>The name of a tract typically tells you <strong>where it starts and where it ends</strong>. For sensory tracts, the cord (spino-) is the start and the destination is named second.</p>
+      <div class="flow" aria-label="Sensory tract naming example">
+        <strong>Spino</strong> (origin: cord) <span class="arrow">&rarr;</span> <strong>thalamic</strong> (destination: thalamus)
+      </div>
+      <p>This naming logic works for almost every ascending tract: spinocerebellar (cord to cerebellum), spinotectal (cord to tectum of midbrain), spinoreticular (cord to reticular formation), spinohypothalamic (cord to hypothalamus).</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Pain, Pressure, Temperature</div>
+      <h3>Spinothalamic Tract</h3>
+      <ul>
+        <li><strong>Sensations carried:</strong> pain, pressure, temperature, crude touch</li>
+        <li><strong>Origin:</strong> spinal cord</li>
+        <li><strong>Destination:</strong> thalamus, then onward to somatosensory cortex</li>
+        <li>Located in the lateral and anterior white columns</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Tip on spinothalamic">
+        <strong>Tip:</strong> if you cannot feel a hot stove or a pinprick on one side of the body after a cord injury, suspect spinothalamic involvement on the opposite side of the cord (this tract crosses near its level of entry).
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Discriminative Touch &amp; Position</div>
+      <h3>Posterior Columns</h3>
+      <ul>
+        <li><strong>Sensations carried:</strong> discriminative touch, light pressure, vibration, joint position sense (proprioception)</li>
+        <li><strong>Two components:</strong>
+          <ul>
+            <li><strong>Fasciculus gracilis:</strong> medial; carries information from the lower limbs and trunk below T6</li>
+            <li><strong>Fasciculus cuneatus:</strong> lateral; carries information from the upper limbs and trunk above T6</li>
+          </ul>
+        </li>
+        <li>Located in the posterior white column</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Tip on posterior columns">
+        <strong>Memory cue:</strong> <em>gracilis</em> sounds like <em>grace</em>, used for the legs. <em>Cuneatus</em> is the upper one.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Unconscious Proprioception</div>
+      <h3>Spinocerebellar Tracts</h3>
+      <ul>
+        <li><strong>Anterior (ventral) spinocerebellar tract</strong></li>
+        <li><strong>Posterior (dorsal) spinocerebellar tract</strong></li>
+      </ul>
+      <h4>Function</h4>
+      <ul>
+        <li>Carry information about muscle and joint position to the cerebellum</li>
+        <li>This input is processed <strong>below conscious awareness</strong> and is used for coordination and balance</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Other Ascending Tracts</div>
+      <h3>Less-Emphasized Pathways</h3>
+      <ul>
+        <li><strong>Spinoreticular tract:</strong> influences arousal and consciousness</li>
+        <li><strong>Spinotectal (spinomesencephalic) tract:</strong> contributes to reflexive head and eye movements</li>
+        <li><strong>Spinohypothalamic tract:</strong> conveys information that influences autonomic and emotional responses</li>
+        <li><strong>Spinoolivary tract:</strong> indirect input to the cerebellum</li>
+        <li><strong>Tract of Lissauer (dorsolateral fasciculus):</strong> short ascending and descending pain and temperature fibers near the dorsal horn entry zone</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Quick Reference</div>
+      <h3>Sensory Tract Summary Table</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Tract</th><th>Modality</th><th>White Column Location</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Spinothalamic</strong></td><td>Pain, temperature, pressure, crude touch</td><td>Lateral and anterior</td></tr>
+          <tr><td><strong>Fasciculus gracilis</strong></td><td>Touch, vibration, position from lower body</td><td>Posterior (medial)</td></tr>
+          <tr><td><strong>Fasciculus cuneatus</strong></td><td>Touch, vibration, position from upper body</td><td>Posterior (lateral)</td></tr>
+          <tr><td><strong>Posterior spinocerebellar</strong></td><td>Unconscious proprioception</td><td>Lateral</td></tr>
+          <tr><td><strong>Anterior spinocerebellar</strong></td><td>Unconscious proprioception</td><td>Lateral</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 5: MOTOR TRACTS ============== -->
+<section role="tabpanel" id="panel-motor" aria-labelledby="tab-motor" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Motor tracts descend. They divide into two families: direct pathways from the cerebral cortex (voluntary movement) and indirect pathways from the brain stem (postural and reflexive movement). The name almost always tells you the origin and destination.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Two Families</div>
+      <h3>Direct vs. Indirect Pathways</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th></th><th>Direct (Pyramidal)</th><th>Indirect (Extrapyramidal)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Origin</strong></td><td>Cerebral cortex</td><td>Brain stem nuclei</td></tr>
+          <tr><td><strong>Function</strong></td><td>Voluntary skeletal movement (especially fine, skilled movements)</td><td>Automatic movements: posture, balance, muscle tone, coordination of body movement with visual stimuli</td></tr>
+          <tr><td><strong>Members</strong></td><td>Lateral corticospinal, anterior corticospinal, corticobulbar</td><td>Rubrospinal, tectospinal, vestibulospinal, lateral reticulospinal, medial reticulospinal</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Direct Pathway</div>
+      <h3>Lateral Corticospinal Tract</h3>
+      <ul>
+        <li><strong>Origin:</strong> cerebral cortex</li>
+        <li><strong>Destination:</strong> spinal cord (anterior horn motor neurons)</li>
+        <li><strong>Location in cord:</strong> lateral white column</li>
+        <li><strong>Function:</strong> precise, voluntary movements of the limbs (especially distal: hands, feet, fingers, toes)</li>
+        <li>Crosses (decussates) in the medulla</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Direct Pathway</div>
+      <h3>Anterior Corticospinal Tract</h3>
+      <ul>
+        <li><strong>Origin:</strong> cerebral cortex</li>
+        <li><strong>Destination:</strong> spinal cord (anterior horn motor neurons)</li>
+        <li><strong>Location in cord:</strong> anterior white column</li>
+        <li><strong>Function:</strong> voluntary movements of the trunk and proximal limb muscles (postural control during voluntary action)</li>
+        <li>Does <em>not</em> cross in the medulla; crosses at the level of innervation</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Direct Pathway</div>
+      <h3>Corticobulbar Tract</h3>
+      <ul>
+        <li><strong>Origin:</strong> cerebral cortex</li>
+        <li><strong>Destination:</strong> motor nuclei of cranial nerves in the brain stem (the "bulb" refers to brain stem)</li>
+        <li><strong>Function:</strong> voluntary control of skeletal muscles in the head and neck (face, jaw, tongue, larynx, pharynx)</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Tip on corticobulbar">
+        <strong>Why it matters:</strong> this is the cortical link to the cranial nerves you studied separately. It connects voluntary movement intent in the cortex to the cranial nerve nuclei that drive the face and head.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Indirect Pathway</div>
+      <h3>Rubrospinal Tract</h3>
+      <ul>
+        <li><strong>Origin:</strong> red nucleus (Latin <em>ruber</em>, red) of the midbrain</li>
+        <li><strong>Function:</strong> contributes to control of distal limb muscles, especially flexor activity</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Indirect Pathway</div>
+      <h3>Tectospinal Tract</h3>
+      <ul>
+        <li><strong>Origin:</strong> superior colliculus of the tectum (midbrain)</li>
+        <li><strong>Function:</strong> coordinates head, neck, and eye movements in response to visual and auditory stimuli</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Indirect Pathway</div>
+      <h3>Vestibulospinal Tract</h3>
+      <ul>
+        <li><strong>Origin:</strong> vestibular nuclei in the medulla and pons</li>
+        <li><strong>Function:</strong> maintains balance and posture by adjusting muscle tone in response to head movements detected by the inner ear</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Indirect Pathways</div>
+      <h3>Reticulospinal Tracts</h3>
+      <ul>
+        <li><strong>Lateral reticulospinal tract:</strong> originates in the medullary reticular formation; generally <em>inhibits</em> extensor motor neurons</li>
+        <li><strong>Medial reticulospinal tract:</strong> originates in the pontine reticular formation; generally <em>excites</em> extensor motor neurons</li>
+        <li><strong>Function:</strong> regulate skeletal muscle tone, sustain contraction of postural muscles, and contribute to autonomic and reflexive movements</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Quick Reference</div>
+      <h3>Motor Tract Summary Table</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Tract</th><th>Family</th><th>Origin</th><th>Function</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Lateral corticospinal</strong></td><td>Direct</td><td>Cerebral cortex</td><td>Voluntary distal limb movement</td></tr>
+          <tr><td><strong>Anterior corticospinal</strong></td><td>Direct</td><td>Cerebral cortex</td><td>Voluntary trunk and proximal limb movement</td></tr>
+          <tr><td><strong>Corticobulbar</strong></td><td>Direct</td><td>Cerebral cortex</td><td>Voluntary head and neck (cranial nerve targets)</td></tr>
+          <tr><td><strong>Rubrospinal</strong></td><td>Indirect</td><td>Red nucleus (midbrain)</td><td>Distal flexor activity</td></tr>
+          <tr><td><strong>Tectospinal</strong></td><td>Indirect</td><td>Superior colliculus (midbrain)</td><td>Head and eye reflexes to vision and sound</td></tr>
+          <tr><td><strong>Vestibulospinal</strong></td><td>Indirect</td><td>Vestibular nuclei (medulla/pons)</td><td>Balance, postural muscle tone</td></tr>
+          <tr><td><strong>Lateral reticulospinal</strong></td><td>Indirect</td><td>Medullary reticular formation</td><td>Inhibits extensors</td></tr>
+          <tr><td><strong>Medial reticulospinal</strong></td><td>Indirect</td><td>Pontine reticular formation</td><td>Excites extensors; maintains posture</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 6: CLINICAL & PATHOLOGY ============== -->
+<section role="tabpanel" id="panel-clinical" aria-labelledby="tab-clinical" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Three clinical themes recur on cord questions: where to safely access CSF, why phrenic origin matters for breathing, and how cord level mismatch with vertebral level shapes injury patterns. Anchor these and the rest follows.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Lumbar puncture clinical detail">
+      <p class="callout-label">Lumbar Puncture in Detail</p>
+      <p><strong>Indication:</strong> withdrawal of cerebrospinal fluid for laboratory analysis (suspected meningitis, subarachnoid hemorrhage, demyelinating disease, intracranial pressure measurement).</p>
+      <p><strong>Safe zone rationale:</strong> the spinal cord ends at L2 in adults. The dural sac and CSF continue to S2. Below L2, only the cauda equina is present, and these mobile roots can drift away from the needle.</p>
+      <p><strong>Adult target:</strong> intervertebral space at <strong>L3 to L4</strong> or <strong>L4 to L5</strong>.</p>
+      <p><strong>Pediatric note:</strong> in newborns, the cord may extend to L3 or L4, so the puncture site is moved more inferiorly.</p>
+      <p><strong>Layers traversed by the needle (superficial to deep):</strong> skin, subcutaneous tissue, supraspinous ligament, interspinous ligament, ligamentum flavum, epidural space, dura mater, arachnoid mater, then into the <strong>subarachnoid space</strong>.</p>
+      <p><strong>Surface landmark:</strong> the supracristal line, drawn between the highest points of the iliac crests, typically crosses the L4 spinous process.</p>
+    </div>
+
+    <article class="card">
+      <div class="card-eyebrow">Cord vs. Column Levels</div>
+      <h3>Why Levels Mismatch</h3>
+      <p>Because the cord stops growing around age 4 to 5 while the column continues to lengthen, the cord level and the vertebral level are not the same below the cervical region. By adulthood:</p>
+      <ul>
+        <li>Cord ends at the L1 to L2 disc</li>
+        <li>L1 through coccygeal nerve roots travel inferiorly inside the canal as the <strong>cauda equina</strong> before exiting their respective intervertebral foramina</li>
+      </ul>
+      <p><strong>Clinical implication:</strong> a vertebral injury at, for example, the T12 vertebra often damages cord segments below T12 (lumbar and sacral cord), producing lower-extremity deficits.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Phrenic Origin</div>
+      <h3>Cervical Cord and Breathing</h3>
+      <p>The phrenic nerve, which drives the diaphragm, originates from cervical roots <strong>C3, C4, and C5</strong>.</p>
+      <h4>Clinical Significance</h4>
+      <ul>
+        <li><strong>Complete cord transection above C3:</strong> respiratory arrest. The phrenic nerves no longer receive descending input and the diaphragm stops working.</li>
+        <li><strong>Injury at or below C5:</strong> diaphragm typically spared; intercostal weakness possible</li>
+        <li><strong>External pressure on the phrenic nerve</strong> from mediastinal tumors (tracheal, esophageal) can also impair diaphragmatic function</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Phrenic mnemonic">
+        <strong>Classic mnemonic:</strong> "C3, 4, 5 keeps the diaphragm alive."
+      </div>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Cord Injury Pattern Logic</div>
+      <h3>How to Predict a Deficit from a Cord Lesion</h3>
+      <p>Three quick questions reveal what is lost when a cord lesion is described:</p>
+      <ol>
+        <li><strong>What level?</strong> Everything served at and below that level is at risk.</li>
+        <li><strong>Which side of the cord?</strong> Most descending motor pathways have already crossed by the time they enter the cord, so a cord lesion produces motor loss on the <em>same side</em> as the lesion. Spinothalamic input crosses near its level of entry, so pain and temperature loss appears on the <em>opposite</em> side of the body below the lesion.</li>
+        <li><strong>Which column?</strong> Posterior column injury wipes out vibration and proprioception on the same side. Lateral column injury affects the lateral corticospinal tract (motor) and the spinothalamic tract on the opposite side.</li>
+      </ol>
+      <p>This three-step logic explains classic cord syndromes (Brown-Sequard, anterior cord, central cord). The full syndromes are reserved for the physiology and pathology unit.</p>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Study Anchors</div>
+      <h3>If You Remember Nothing Else</h3>
+      <ul>
+        <li>Cord ends at <strong>L1 to L2</strong>; CSF reaches <strong>S2</strong>; safe LP at <strong>L3 to L4</strong> or <strong>L4 to L5</strong>.</li>
+        <li>Cervical and lumbar enlargements widen because they serve the limbs.</li>
+        <li>Posterior root: <strong>sensory only</strong>. Anterior root: <strong>motor only</strong>. Spinal nerve: <strong>mixed</strong>.</li>
+        <li>Lateral horns are present <strong>only in the thoracic and upper lumbar cord</strong> and house autonomic motor neurons.</li>
+        <li>Direct motor pathways start in the <strong>cortex</strong>; indirect pathways start in the <strong>brain stem</strong>.</li>
+        <li>Spinothalamic tract carries pain, temperature, pressure. Posterior columns carry vibration, position, fine touch.</li>
+        <li>C3, 4, 5 keeps the diaphragm alive.</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="signature-footer">
+  <div class="name">Dr. Sharilyn Rennie</div>
+  <div>BIO 431 &middot; Anatomy &amp; Physiology &middot; Spinal Cord Notes</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+})();
+</script>
+
+<script>
+function sendHeight() {
+  var height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight
+  );
+  var id = '';
+  try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+  try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+}
+if ('ResizeObserver' in window) {
+  try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+setTimeout(sendHeight, 100);
+setTimeout(sendHeight, 500);
+</script>
+
+</body>
+</html>
