@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reproductive Anatomy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #2E2E2E;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --pri-rec: var(--navy);
+  --pri-lab: #8B4A3A;
+  --pri-add: var(--tan-deep);
+  --shadow: 0 4px 18px rgba(27, 40, 69, 0.08);
+  --shadow-lg: 0 8px 28px rgba(27, 40, 69, 0.12);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.5;
+  padding: 28px 16px 48px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--navy); color: white; padding: 8px 16px; text-decoration: none; font-size: 0.85rem; z-index: 9999; border-radius: 0 0 6px 0; }
+.skip-link:focus { top: 0; }
+
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 36px 36px 32px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
+}
+.breadcrumb { font-size: 0.78rem; letter-spacing: 0.08em; color: var(--tan-soft); font-weight: 700; text-transform: uppercase; margin-bottom: 12px; position: relative; }
+.page-header h1 { font-size: 2.4rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 10px; position: relative; line-height: 1.1; }
+.page-header .subtitle { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1.05rem; color: rgba(255,255,255,0.85); max-width: 720px; position: relative; line-height: 1.55; }
+
+.priority-legend {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px 22px;
+  margin-bottom: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 22px;
+  font-size: 0.85rem;
+}
+.priority-legend .label { color: var(--tan-deep); font-weight: 800; letter-spacing: 0.08em; font-size: 0.74rem; text-transform: uppercase; }
+.priority-legend .item { display: inline-flex; align-items: center; gap: 8px; color: var(--text); font-size: 0.85rem; }
+.tag { display: inline-block; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.08em; padding: 4px 11px; border-radius: 999px; color: white; text-transform: uppercase; white-space: nowrap; }
+.tag-rec { background: var(--pri-rec); }
+.tag-lab { background: var(--pri-lab); }
+.tag-add { background: var(--pri-add); }
+
+.section-label { display: flex; align-items: center; gap: 14px; margin: 28px 0 16px; }
+.section-label .pill { display: inline-block; font-size: 0.74rem; font-weight: 800; letter-spacing: 0.1em; padding: 7px 16px; border-radius: 999px; color: white; text-transform: uppercase; }
+.section-label .line { flex: 1; height: 1px; background: var(--border); }
+
+.resource-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 18px; align-items: start; }
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: var(--shadow);
+}
+.card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.card.priority-rec { border-top: 4px solid var(--pri-rec); }
+.card.priority-lab { border-top: 4px solid var(--pri-lab); }
+.card.priority-add { border-top: 4px solid var(--pri-add); }
+
+.card-header { padding: 20px 22px 14px; display: flex; align-items: flex-start; gap: 14px; }
+.card-num {
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; color: white; font-weight: 800; font-size: 1.05rem;
+}
+.priority-rec .card-num { background: var(--pri-rec); }
+.priority-lab .card-num { background: var(--pri-lab); }
+.priority-add .card-num { background: var(--pri-add); }
+
+.card-title-block { flex: 1; padding-top: 2px; }
+.card-eyebrow { font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 700; margin-bottom: 3px; }
+.priority-rec .card-eyebrow { color: var(--pri-rec); }
+.priority-lab .card-eyebrow { color: var(--pri-lab); }
+.priority-add .card-eyebrow { color: var(--pri-add); }
+.card-title { font-size: 1.12rem; font-weight: 700; color: var(--navy); line-height: 1.3; }
+
+.card-body { padding: 0 22px 4px; font-size: 0.9rem; color: var(--text); line-height: 1.6; }
+.card-body p { margin-bottom: 12px; }
+.card-body strong { color: var(--navy); font-weight: 700; }
+
+.tip-box { background: var(--cream-pale); border-left: 3px solid var(--tan); border-radius: 6px; padding: 10px 14px; font-size: 0.82rem; color: var(--text); font-family: 'Lora', Georgia, serif; font-style: italic; line-height: 1.55; margin: 6px 0 14px; }
+
+.resource-list { list-style: none; margin: 0; padding: 4px 22px 18px; }
+.resource-list .group-label {
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 800;
+  color: var(--tan-deep); padding: 14px 0 4px;
+  border-top: 1px solid var(--border-soft); margin-top: 2px;
+}
+.resource-list li.group-label:first-child { border-top: none; padding-top: 4px; margin-top: 0; }
+.resource-list .item { border-top: 1px solid var(--border-soft); padding: 10px 0; }
+.resource-list a, .resource-list .static-item {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 0.88rem; color: var(--navy); text-decoration: none; line-height: 1.45;
+}
+.resource-list a:hover { color: var(--tan-deep); }
+.resource-list .arrow { flex-shrink: 0; color: var(--tan); font-weight: 800; font-size: 0.95rem; line-height: 1.4; }
+.priority-lab .resource-list .arrow { color: var(--pri-lab); }
+.priority-add .resource-list .arrow { color: var(--pri-add); }
+.resource-list .item-note { margin: 5px 0 0 19px; font-size: 0.78rem; color: var(--text-muted); font-style: italic; line-height: 1.5; }
+.coming-pill {
+  display: inline-block; background: var(--cream); color: var(--tan-deep);
+  font-size: 0.66rem; font-weight: 800; letter-spacing: 0.08em;
+  padding: 2px 8px; border-radius: 999px; margin-left: 6px;
+  vertical-align: middle; text-transform: uppercase;
+}
+
+.footer-note { margin-top: 26px; text-align: center; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+@media (max-width: 700px) {
+  body { padding: 18px 12px 40px; }
+  .page-header { padding: 28px 22px 26px; }
+  .page-header h1 { font-size: 1.7rem; }
+  .resource-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container" id="main-content">
+
+<header class="page-header">
+  <div class="breadcrumb">Anatomy &middot; Reproductive Unit Resources</div>
+  <h1>Reproductive Anatomy</h1>
+  <p class="subtitle">Complete learning resources for reproductive anatomy, including female and male reproductive structures, lab work, and assessment preparation.</p>
+</header>
+
+<div class="priority-legend">
+  <span class="label">Priority Guide:</span>
+  <span class="item"><span class="tag tag-rec">Highly Recommended</span> Core materials, do these first</span>
+  <span class="item"><span class="tag tag-lab">Lab</span> Anatomy lab work</span>
+  <span class="item"><span class="tag tag-add">Additional</span> Enrichment &amp; assessment prep</span>
+</div>
+
+<!-- HIGHLY RECOMMENDED -->
+<section>
+  <div class="section-label">
+    <span class="pill tag-rec">Highly Recommended &middot; Start Here</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="resource-grid">
+
+    <!-- Card 1: Lecture Videos -->
+    <article class="card priority-rec">
+      <div class="card-header">
+        <div class="card-num">1</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Video Lectures</div>
+          <div class="card-title">Lecture Videos</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Work through each video <strong>before</strong> attempting the cognitive trainers. Use the notes alongside each video.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="group-label">Female Anatomy</li>
+        <li class="item"><a href="https://drive.google.com/file/d/1gDzfQayWmDzEQelOInjUcM3GWQvvMaa0/view?usp=drive_link" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Female Reproductive Anatomy</span></a></li>
+
+        <li class="group-label">Male Anatomy</li>
+        <li class="item"><a href="https://drive.google.com/file/d/1QV0HPyQqudBWF0KBPi1WxRnM2JU04QOA/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">▶</span><span>Male Reproductive Anatomy</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 2: Cognitive Trainers -->
+    <article class="card priority-rec">
+      <div class="card-header">
+        <div class="card-num">2</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Active Recall</div>
+          <div class="card-title">Cognitive Trainers</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Retrieval, drawing, and predict-and-apply questions. <strong>Handwrite your answers</strong>, don't type. Complete after watching the corresponding videos.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://drive.google.com/file/d/1qGRoq3IUh4kjWi2fhqMum4g5cR0Lu8MQ/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">›</span><span>Cognitive Trainer: Reproductive Anatomy (Female &amp; Male)</span></a></li>
+        <li class="item"><a href="https://drive.google.com/file/d/1ZKDyu5S99vJFybvQqCwoYgeyFnsT8V-g/view?usp=sharing" target="_blank" rel="noopener"><span class="arrow">›</span><span>How to Use the Cognitive Trainer</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 3: Notes -->
+    <article class="card priority-rec">
+      <div class="card-header">
+        <div class="card-num">3</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Reference Materials</div>
+          <div class="card-title">Notes</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Study notes for each subsystem. Use alongside the videos and cognitive trainers to reinforce key concepts.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><div class="static-item"><span class="arrow">›</span><span>Notes: Female Anatomy <span class="coming-pill">Link Coming</span></span></div></li>
+        <li class="item"><div class="static-item"><span class="arrow">›</span><span>Notes: Male Anatomy <span class="coming-pill">Link Coming</span></span></div></li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- LAB RESOURCES -->
+<section>
+  <div class="section-label">
+    <span class="pill tag-lab">Lab Resources</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="resource-grid">
+
+    <!-- Card 4: Reproductive Lab -->
+    <article class="card priority-lab">
+      <div class="card-header">
+        <div class="card-num">4</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Lab: Anatomy</div>
+          <div class="card-title">Reproductive Anatomy Lab</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Lab exercises and identification activities for reproductive structures.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item">
+          <a href="https://drsrennie-stack.github.io/Solano-Anatomy-/module-5-Structurelist.html" target="_blank" rel="noopener"><span class="arrow">›</span><span>Module 5 Structure List</span></a>
+          <p class="item-note">Use the structure list to identify reproductive structures for the lab practical.</p>
+        </li>
+      </ul>
+    </article>
+
+    <!-- Card 5: Digital Atlas -->
+    <article class="card priority-lab">
+      <div class="card-header">
+        <div class="card-num">5</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Lab: Visual Reference</div>
+          <div class="card-title">Digital Atlas</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>Labeled images and 3D models of reproductive anatomy structures.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02" target="_blank" rel="noopener"><span class="arrow">›</span><span>Digital Atlas: Reproductive Anatomy</span></a></li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- ADDITIONAL RESOURCES -->
+<section>
+  <div class="section-label">
+    <span class="pill tag-add">Additional Resources</span>
+    <div class="line"></div>
+  </div>
+
+  <div class="resource-grid">
+
+    <!-- Card 6: Kahoot -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">6</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Interactive Quiz Games</div>
+          <div class="card-title">Kahoot Review</div>
+        </div>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://create.kahoot.it/share/female-reproduction-anatomy-cycle-2-advanced/be1d97ed-85ba-4b8f-9c9e-2cd3c53c5288" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Female Reproductive Anatomy</span></a></li>
+        <li class="item"><a href="https://create.kahoot.it/share/male-reproductive-system-lecture/00e2ee3d-0ea4-4ff4-b96f-98251c2fccb9" target="_blank" rel="noopener"><span class="arrow">›</span><span>Kahoot: Male Reproductive Anatomy</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 7: DOK -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">7</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Depth of Knowledge Practice</div>
+          <div class="card-title">DOK Questions</div>
+        </div>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://drive.google.com/file/d/1jl5ki6maMnZrTfO34XAPeuMjuCMnXMb8/view?usp=drive_link" target="_blank" rel="noopener"><span class="arrow">›</span><span>DOK: Female Reproductive Anatomy</span></a></li>
+        <li class="item"><a href="https://drive.google.com/file/d/1bR4Ay_D5DEGruzNkHYqLpK4RLg5EGiWh/view?usp=drive_link" target="_blank" rel="noopener"><span class="arrow">›</span><span>DOK: Male Reproductive Anatomy</span></a></li>
+        <li class="item"><a href="https://www.medmasterscollaborative.com/student-dok-question-generator" target="_blank" rel="noopener"><span class="arrow">›</span><span>DOK AI Question Generator</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 8: Practice Exam -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">8</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Exam-Style Practice</div>
+          <div class="card-title">Practice Exam Generator</div>
+        </div>
+      </div>
+      <div class="card-body">
+        <p>AI-generated exam-style practice questions calibrated to course content.</p>
+      </div>
+      <ul class="resource-list">
+        <li class="item"><a href="https://drive.google.com/file/d/1o02LSPqmYomIPt9-Zh6eNNrATPQHaen_/view?usp=drive_link" target="_blank" rel="noopener"><span class="arrow">›</span><span>Practice Exam: Male Reproductive Anatomy</span></a></li>
+        <li class="item"><a href="https://www.medmasterscollaborative.com/student-interactive-ai-exam-generator" target="_blank" rel="noopener"><span class="arrow">›</span><span>Interactive Practice Exam Generator</span></a></li>
+      </ul>
+    </article>
+
+    <!-- Card 9: Textbook -->
+    <article class="card priority-add">
+      <div class="card-header">
+        <div class="card-num">9</div>
+        <div class="card-title-block">
+          <div class="card-eyebrow">Free Open-Access Reading</div>
+          <div class="card-title">Textbook</div>
+        </div>
+      </div>
+      <ul class="resource-list">
+        <li class="item">
+          <a href="https://openstax.org/details/books/anatomy-and-physiology-2e" target="_blank" rel="noopener"><span class="arrow">›</span><span>OpenStax A&amp;P 2e (Free)</span></a>
+          <p class="item-note">Chapter 27 covers the reproductive system.</p>
+        </li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<div class="footer-note">Dr. Sharilyn Rennie</div>
+
+</div>
+
+<script>
+(function() {
+  function sendHeight() {
+    var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) {
+    try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+  }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+
+</body>
+</html>
