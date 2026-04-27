@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Male Reproductive System Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  padding: 24px 14px 56px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+a { color: var(--tan-deep); }
+strong { color: var(--navy); font-weight: 700; }
+em { font-style: italic; }
+
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--navy); color: white; padding: 8px 16px; text-decoration: none; font-size: 0.85rem; z-index: 9999; }
+.skip-link:focus { top: 0; }
+
+/* Header */
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 30px 34px 28px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
+}
+.breadcrumb { font-size: 0.74rem; letter-spacing: 0.1em; color: var(--tan-soft); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; position: relative; }
+.page-header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.15; position: relative; font-family: Georgia, serif; }
+.page-header .subtitle { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.86); max-width: 700px; line-height: 1.55; position: relative; }
+
+/* Tabs */
+.tabs-wrap {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+[role="tab"] {
+  flex: 1 1 auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+[role="tab"]:hover { background: white; color: var(--navy); }
+[role="tab"][aria-selected="true"] { background: var(--navy); color: white; box-shadow: var(--shadow); }
+[role="tab"]:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+[role="tabpanel"] { padding: 8px 0 0; }
+[role="tabpanel"]:focus { outline: none; }
+[role="tabpanel"]:focus-visible { outline: 3px solid var(--tan); outline-offset: 4px; border-radius: 8px; }
+[role="tabpanel"][hidden] { display: none; }
+
+/* Section intro */
+.section-intro {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--tan);
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+}
+.section-intro h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.section-intro p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.96rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* Card grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.note-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.note-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.note-card.span-2 { grid-column: span 2; }
+@media (max-width: 800px) {
+  .note-card.span-2 { grid-column: span 1; }
+}
+
+.card-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--tan-deep);
+  margin-bottom: 4px;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+}
+.card-body { font-size: 0.94rem; color: var(--text-soft); line-height: 1.6; }
+.card-body p { margin-bottom: 10px; }
+.card-body p:last-child { margin-bottom: 0; }
+.card-body ul, .card-body ol { margin: 6px 0 12px 22px; padding: 0; }
+.card-body li { margin-bottom: 5px; line-height: 1.55; }
+.card-body strong { color: var(--navy); }
+.card-body h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 800;
+  margin: 14px 0 6px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 10px;
+}
+.card-body h4:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+.callout {
+  background: var(--clinical-bg);
+  border-left: 3px solid var(--clinical);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+}
+.callout .callout-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--clinical);
+  margin-bottom: 4px;
+}
+.callout p { color: var(--text); font-size: 0.9rem; line-height: 1.55; }
+.callout p:last-child { margin-bottom: 0; }
+
+.tip-callout {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.term { color: var(--navy); font-weight: 700; font-style: normal; }
+.alt-name { color: var(--text-muted); font-style: italic; font-size: 0.88rem; }
+
+.flow {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.flow .arrow { color: var(--tan-deep); font-weight: 800; padding: 0 4px; }
+
+.footer-note { margin-top: 30px; text-align: center; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body { padding: 18px 10px 40px; }
+  .page-header { padding: 24px 22px 22px; }
+  .page-header h1 { font-size: 1.55rem; }
+  [role="tab"] { font-size: 0.78rem; padding: 8px 10px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .note-card { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container" id="main-content">
+
+<header class="page-header">
+  <div class="breadcrumb">Anatomy &amp; Physiology Notes</div>
+  <h1>Male Reproductive System</h1>
+  <p class="subtitle">Comprehensive teaching notes covering structure, function, and clinical relevance, organized for active studying.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Male reproductive system topics">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview">Overview</button>
+    <button role="tab" id="tab-testes" aria-selected="false" aria-controls="panel-testes" tabindex="-1">Scrotum &amp; Testes</button>
+    <button role="tab" id="tab-sperm" aria-selected="false" aria-controls="panel-sperm" tabindex="-1">Spermatogenesis &amp; Hormones</button>
+    <button role="tab" id="tab-ducts" aria-selected="false" aria-controls="panel-ducts" tabindex="-1">Ducts</button>
+    <button role="tab" id="tab-glands" aria-selected="false" aria-controls="panel-glands" tabindex="-1">Glands &amp; Semen</button>
+    <button role="tab" id="tab-penis" aria-selected="false" aria-controls="panel-penis" tabindex="-1">Penis</button>
+  </div>
+</div>
+
+<!-- ============== OVERVIEW ============== -->
+<div role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <h2>Big Picture</h2>
+    <p>The male reproductive system has one job: produce sperm, deliver it to the female reproductive tract, and secrete the hormones that make all of that possible. Every structure on the next pages does some part of that work.</p>
+  </div>
+
+  <div class="card-grid">
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Foundation</p>
+      <h3 class="card-title">The Four Components of the Male Reproductive System</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Testes</strong> (gonads). Produce sperm and secrete hormones.</li>
+          <li><strong>System of ducts</strong>: epididymis, ductus deferens, ejaculatory ducts, urethra. Transport and store sperm. Assist in sperm maturation. Convey sperm to the exterior.</li>
+          <li><strong>Accessory glands</strong>: seminal vesicles, prostate, bulbourethral glands. Produce the fluid portion of semen.</li>
+          <li><strong>Supporting structures</strong>: scrotum and penis. Protect the testes and deliver sperm into the female reproductive tract.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Anchor point: when you're learning a new structure, ask yourself which of these four jobs it serves. That's how the parts connect.</div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ============== SCROTUM & TESTES ============== -->
+<div role="tabpanel" id="panel-testes" aria-labelledby="tab-testes" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Scrotum &amp; Testes</h2>
+    <p>Sperm production needs a temperature 2 to 3 degrees Celsius below core body temp. Everything about the scrotum's design serves that single requirement.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">External Anatomy</p>
+      <h3 class="card-title">Scrotum</h3>
+      <div class="card-body">
+        <p>The supporting structure for the testes. Loose skin and subcutaneous layer hanging from the root of the penis.</p>
+        <h4>Externally</h4>
+        <p>A single pouch separated into lateral portions by a median ridge called the <strong>raphe</strong>.</p>
+        <h4>Internally</h4>
+        <p>The <strong>scrotal septum</strong> divides the scrotum into two sacs, each containing one testis. The septum is made of subcutaneous layer plus the dartos muscle.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Temperature Regulation</p>
+      <h3 class="card-title">Cremaster &amp; Dartos Muscles</h3>
+      <div class="card-body">
+        <p>These two muscles work together to keep testicular temperature 2 to 3 degrees C below core body temp.</p>
+        <h4>Cremaster Muscle</h4>
+        <p>Series of small skeletal muscle bands that descend as an extension of the internal oblique through the spermatic cord and surround the testes.</p>
+        <h4>Dartos Muscle</h4>
+        <p>Bundles of smooth muscle within the subcutaneous layer of the scrotal skin.</p>
+        <h4>How They Work Together</h4>
+        <p><strong>Cold:</strong> Both contract. Cremaster pulls testes toward the abdominal cavity to conserve heat by bringing them closer to core body temperature. Dartos tightens scrotal skin to reduce heat loss.</p>
+        <p><strong>Warm:</strong> Both relax. Testes drop away from the body. Scrotal skin loosens and dissipates heat.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Gonad</p>
+      <h3 class="card-title">Testes</h3>
+      <div class="card-body">
+        <p>Paired oval glands in the scrotum. Also called <em>testicles</em>.</p>
+        <h4>Development</h4>
+        <p>Develop near the kidneys in the posterior abdomen. Begin descent in the last half of the 7th month of gestation, passing through the inguinal canals into the scrotum.</p>
+        <h4>Function</h4>
+        <ul>
+          <li>Produce sperm via spermatogenesis</li>
+          <li>Secrete testosterone (the primary male sex hormone)</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Histology</p>
+      <h3 class="card-title">Tissue Layers Covering the Testes</h3>
+      <div class="card-body">
+        <p>From superficial to deep:</p>
+        <ol>
+          <li><strong>Tunica vaginalis.</strong> Serous membrane derived from the peritoneum. Forms during testicular descent. Provides a partial cover.</li>
+          <li><strong>Tunica albuginea.</strong> White fibrous capsule of dense irregular CT. Extends inward to form septa, dividing each testis into 200 to 300 lobules.</li>
+          <li><strong>Seminiferous tubules.</strong> Tightly coiled tubes (1 to 3 per lobule). The actual site of spermatogenesis.</li>
+        </ol>
+        <h4>Two Cell Types in the Seminiferous Tubules</h4>
+        <ul>
+          <li><strong>Spermatogenic cells:</strong> sperm-forming cells</li>
+          <li><strong>Sertoli (sustentacular) cells:</strong> support spermatogenesis</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Support Cell</p>
+      <h3 class="card-title">Sertoli (Sustentacular) Cells</h3>
+      <div class="card-body">
+        <p>Large cells embedded among the spermatogenic cells, extending from the basement membrane to the lumen of the seminiferous tubule.</p>
+        <p>Joined to each other by tight junctions, which form the <strong>blood-testis barrier</strong>.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>Nourish spermatocytes, spermatids, and sperm</li>
+          <li>Phagocytize excess spermatid cytoplasm as development proceeds</li>
+          <li>Control movement of spermatogenic cells through the tubule</li>
+          <li>Control the release of sperm into the lumen</li>
+          <li>Produce fluid for sperm transport</li>
+          <li>Secrete the hormone <strong>inhibin</strong></li>
+          <li>Regulate the effects of testosterone and FSH</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Hormone-Producing Cell</p>
+      <h3 class="card-title">Leydig (Interstitial) Cells</h3>
+      <div class="card-body">
+        <p>Clusters of cells found in the spaces <em>between</em> adjacent seminiferous tubules.</p>
+        <h4>Function</h4>
+        <p>Secrete <strong>testosterone</strong>, the most prevalent androgen.</p>
+        <h4>What Testosterone Does in Males</h4>
+        <ul>
+          <li>Promotes masculine characteristics</li>
+          <li>Promotes libido (sex drive)</li>
+        </ul>
+        <p class="alt-name">Androgen: a hormone that promotes masculine characteristics.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Immune Protection</p>
+      <h3 class="card-title">The Blood-Testis Barrier</h3>
+      <div class="card-body">
+        <p>Tight junctions between Sertoli cells form a barrier internal to the basement membrane and spermatogonia.</p>
+        <h4>Why It Matters</h4>
+        <ol>
+          <li>Substances must first pass through Sertoli cells before they can reach developing sperm.</li>
+          <li>It isolates developing gametes from the blood, preventing the immune system from mounting an attack against sperm cell surface antigens (which it would otherwise recognize as foreign).</li>
+          <li>Spermatogonia are <em>not</em> behind the barrier. Only the more mature stages are protected.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Sperm have unique surface antigens that the immune system would attack as foreign. The barrier is the only thing standing between your sperm and your immune cells.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Hydrocele">
+        <p class="callout-label">Clinical Correlation: Hydrocele</p>
+        <p><strong>Definition:</strong> Collection of serous fluid in the tunica vaginalis.</p>
+        <p><strong>Cause:</strong> Injury to the testes or inflammation of the epididymis.</p>
+        <p><strong>Treatment:</strong> Usually none required.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Cryptorchidism">
+        <p class="callout-label">Clinical Correlation: Cryptorchidism</p>
+        <p><strong>Definition:</strong> Testes fail to descend into the scrotum.</p>
+        <p><strong>Prevalence:</strong> 3% of full-term infants, 30% of premature infants.</p>
+        <p><strong>Treatment:</strong> 80% resolve spontaneously in the first year. Surgical correction if not descended by 18 months.</p>
+        <p><strong>If untreated:</strong></p>
+        <ul>
+          <li>Bilateral cryptorchidism leads to sterility because the higher temperature destroys cells in the early stages of spermatogenesis.</li>
+          <li>30 to 50 times greater risk of testicular cancer.</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== SPERMATOGENESIS & HORMONES ============== -->
+<div role="tabpanel" id="panel-sperm" aria-labelledby="tab-sperm" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Spermatogenesis &amp; Hormonal Control</h2>
+    <p>Spermatogenesis takes about two months from start to finish, and 300 million sperm complete the journey every day. None of this happens without a tight hormonal feedback loop running between the hypothalamus, anterior pituitary, and testes.</p>
+  </div>
+
+  <div class="callout" role="note" aria-label="Exam scope: what to focus on for anatomy">
+    <p class="callout-label">Exam Scope: Anatomy vs. Physiology</p>
+    <p>For this anatomy exam, focus on the <strong>structure of the spermatozoon</strong> (head, acrosome, neck, middle piece, principal piece, end piece). The spermatogenesis process itself is physiology and will not be tested here.</p>
+    <p>For hormones, you only need to know <strong>what cell or gland produces each hormone and what each hormone does</strong>. Specific feedback mechanisms (negative feedback loops, full hormonal axis details) are physiology content and will be covered there.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Sperm Formation</p>
+      <h3 class="card-title">Spermatogenesis: Step by Step</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> The sequence of events by which spermatogonia transform into mature sperm.</p>
+        <ol>
+          <li><strong>Dormancy.</strong> Spermatogonia have been dormant in the seminiferous tubules since fetal development. At puberty, they begin to increase in number.</li>
+          <li><strong>Mitotic divisions.</strong> Spermatogonia undergo several mitotic divisions to form <em>primary spermatocytes</em>, the largest germ cells in the seminiferous tubules.</li>
+          <li><strong>Meiosis I (reduction division).</strong> Each primary spermatocyte divides into <em>two haploid secondary spermatocytes</em>, half the size of primary spermatocytes.</li>
+          <li><strong>Meiosis II.</strong> Each secondary spermatocyte divides into two haploid <em>spermatids</em> (so 4 spermatids per primary spermatocyte).</li>
+          <li><strong>Spermiogenesis.</strong> Spermatids gradually transform into mature sperm.</li>
+          <li><strong>Release.</strong> Mature sperm enter the lumen of the seminiferous tubule.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">The most mature sperm cells are found progressively nearest the lumen. The progression is: primary spermatocytes &rarr; secondary spermatocytes &rarr; spermatids &rarr; spermatozoa &rarr; lumen.</div>
+        <h4>Two Important Numbers</h4>
+        <ul>
+          <li>Total time: about <strong>two months</strong></li>
+          <li>Daily production: about <strong>300 million sperm</strong></li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Sperm Anatomy</p>
+      <h3 class="card-title">Structure of a Spermatozoon</h3>
+      <div class="card-body">
+        <p>Highly adapted for reaching and penetrating an oocyte.</p>
+        <h4>Head</h4>
+        <p>Flattened and pointed. Contains a nucleus with 23 highly condensed chromosomes.</p>
+        <p><strong>Acrosome:</strong> cap-like vesicle covering the anterior 2/3 of the nucleus. Filled with enzymes that help the sperm penetrate a secondary oocyte for fertilization.</p>
+        <h4>Tail (4 Subdivisions)</h4>
+        <ol>
+          <li><strong>Neck.</strong> Constricted region just behind the head. Contains centrioles that form the microtubules of the rest of the tail.</li>
+          <li><strong>Middle piece.</strong> Mitochondria arranged in a spiral. Provide ATP for locomotion and metabolism.</li>
+          <li><strong>Principal piece.</strong> The longest part of the tail.</li>
+          <li><strong>End piece.</strong> Terminal tapering portion.</li>
+        </ol>
+        <h4>Survival</h4>
+        <p>Within the female reproductive tract: no more than 48 hours.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Hypothalamic-Pituitary-Gonadal Axis</p>
+      <h3 class="card-title">Hormonal Control of Testicular Function</h3>
+      <div class="card-body">
+        <p>At puberty, hypothalamic neurosecretory cells increase secretion of <strong>GnRH</strong> (gonadotropin-releasing hormone). GnRH stimulates gonadotrophs in the anterior pituitary to release two gonadotropins: LH and FSH.</p>
+
+        <h4>Luteinizing Hormone (LH)</h4>
+        <ol>
+          <li>Stimulates Leydig (interstitial) cells to secrete testosterone.</li>
+          <li>When testosterone levels are high enough, testosterone inhibits both LH and GnRH (negative feedback).</li>
+          <li>In some target cells (external genitalia, prostate), 5-alpha reductase converts testosterone into <strong>dihydrotestosterone (DHT)</strong>, another androgen.</li>
+        </ol>
+
+        <h4>Follicle-Stimulating Hormone (FSH)</h4>
+        <ol>
+          <li>Indirectly stimulates spermatogenesis.</li>
+          <li>FSH plus testosterone stimulate Sertoli cells to secrete <strong>androgen binding protein (ABP)</strong> into the lumen of the seminiferous tubules. ABP binds testosterone and keeps the local concentration high.</li>
+          <li>Testosterone stimulates the final steps of spermatogenesis.</li>
+          <li>When spermatogenesis reaches sufficient levels, Sertoli cells release <strong>inhibin</strong>, a protein hormone that inhibits FSH secretion by the anterior pituitary.</li>
+        </ol>
+
+        <h4>Negative Feedback Loop (Testosterone)</h4>
+        <p>Testosterone high &rarr; inhibits GnRH from hypothalamus &rarr; less LH from anterior pituitary &rarr; Leydig cells secrete less testosterone &rarr; testosterone falls &rarr; GnRH released again &rarr; cycle restarts.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Hormone Effects</p>
+      <h3 class="card-title">Effects of Testosterone &amp; DHT Across the Lifespan</h3>
+      <div class="card-body">
+        <p>Both testosterone (T) and DHT bind to the same androgen receptors at target cells throughout the body. The hormone-receptor complex regulates gene expression.</p>
+
+        <h4>1. Prenatal Development</h4>
+        <ul>
+          <li>T stimulates male pattern of reproductive system ducts and descent of testes.</li>
+          <li>DHT stimulates development of external genitals.</li>
+          <li>T converts in the brain to estrogen, which may play a role in development of certain brain regions.</li>
+        </ul>
+
+        <h4>2. Puberty (Sexual Characteristics)</h4>
+        <ul>
+          <li>Development and enlargement of male sex organs.</li>
+          <li>Secondary sex characteristics: muscular and skeletal growth, wide shoulders, narrow hips, facial and chest hair, thickening of skin, increased sebaceous secretion, enlargement of larynx (deeper voice).</li>
+        </ul>
+
+        <h4>3. Sexual Function</h4>
+        <ul>
+          <li>Male sex behavior, spermatogenesis, libido in both sexes.</li>
+          <li>Note: in females, the adrenal cortex is the main source of androgens.</li>
+        </ul>
+
+        <h4>4. Anabolic Effects</h4>
+        <ul>
+          <li>Stimulate protein synthesis. Heavier muscle and bone mass.</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== DUCTS ============== -->
+<div role="tabpanel" id="panel-ducts" aria-labelledby="tab-ducts" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>The Duct System: Path of Sperm</h2>
+    <p>Every duct exists to do one of three things: transport sperm, store sperm, or mature sperm. Trace the path from the seminiferous tubules to the external urethral orifice and you have the entire male duct system.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">The Pathway</p>
+      <h3 class="card-title">Sperm Path Through the Male Duct System</h3>
+      <div class="card-body">
+        <p>Sertoli cells produce fluid. The fluid pressure pushes sperm and fluid along the path:</p>
+        <div class="flow" role="figure" aria-label="Sperm pathway through the male duct system">
+          Seminiferous tubules <span class="arrow" aria-hidden="true">&rarr;</span> Straight tubules <span class="arrow" aria-hidden="true">&rarr;</span> Rete testis <span class="arrow" aria-hidden="true">&rarr;</span> Efferent ducts <span class="arrow" aria-hidden="true">&rarr;</span> <strong>Epididymis</strong> (ductus epididymis) <span class="arrow" aria-hidden="true">&rarr;</span> <strong>Ductus (vas) deferens</strong> <span class="arrow" aria-hidden="true">&rarr;</span> Ejaculatory duct <span class="arrow" aria-hidden="true">&rarr;</span> <strong>Prostatic urethra</strong> <span class="arrow" aria-hidden="true">&rarr;</span> Membranous urethra <span class="arrow" aria-hidden="true">&rarr;</span> Spongy urethra <span class="arrow" aria-hidden="true">&rarr;</span> External urethral orifice
+        </div>
+        <div class="tip-callout" role="note" aria-label="Tip">Memorize this flow. Every other detail in this section attaches to one stop on this path.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Sperm Maturation</p>
+      <h3 class="card-title">Epididymis</h3>
+      <div class="card-body">
+        <p>Comma-shaped organ along the posterior border of each testis.</p>
+        <h4>Function</h4>
+        <ul>
+          <li>Sperm <strong>maturation</strong>: sperm acquire motility and ability to fertilize over about 14 days.</li>
+          <li>Propels sperm by peristaltic contraction of smooth muscle.</li>
+          <li>Stores sperm. Viable up to several months.</li>
+        </ul>
+        <h4>Three Parts</h4>
+        <ol>
+          <li><strong>Head:</strong> superior part. Tightly coiled ductus epididymis joined by efferent ducts from the testis.</li>
+          <li><strong>Body:</strong> narrow mid-portion.</li>
+          <li><strong>Tail:</strong> smaller inferior portion. Continues as the ductus (vas) deferens.</li>
+        </ol>
+        <h4>Histology</h4>
+        <ul>
+          <li>Lined with pseudostratified columnar epithelium.</li>
+          <li>Encircled with smooth muscle.</li>
+          <li>Stereocilia line the columnar cells. Long branching microvilli that increase surface area for reabsorption of degenerated sperm.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Sperm Transport</p>
+      <h3 class="card-title">Ductus (Vas) Deferens</h3>
+      <div class="card-body">
+        <p>Continuation of the tail of the epididymis with increased diameter and less coiling.</p>
+        <h4>Path</h4>
+        <p>Ascends along the posterior border of the epididymis through the spermatic cord, enters the pelvic cavity, loops over the ureter, passes down the posterior surface of the bladder.</p>
+        <h4>Function</h4>
+        <ul>
+          <li>Conveys sperm from epididymis toward urethra by peristaltic contractions during sexual arousal.</li>
+          <li>Can store sperm for several months.</li>
+        </ul>
+        <h4>Special Features</h4>
+        <ul>
+          <li><strong>Ampulla:</strong> dilated terminal portion.</li>
+          <li><strong>Mucosa:</strong> pseudostratified columnar epithelium and lamina propria.</li>
+          <li><strong>Muscularis:</strong> three layers of smooth muscle. Inner and outer longitudinal, middle circular.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Supporting Structure</p>
+      <h3 class="card-title">Spermatic Cord</h3>
+      <div class="card-body">
+        <p>Supporting structure that ascends out of the scrotum.</p>
+        <h4>Contents</h4>
+        <ol>
+          <li>Ductus deferens</li>
+          <li>Pampiniform plexus (testicular artery and veins drain the testes and carry testosterone into circulation)</li>
+          <li>Autonomic nerves</li>
+          <li>Lymphatic vessels</li>
+          <li>Cremaster muscle</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Anatomical Passageway</p>
+      <h3 class="card-title">Inguinal Canal</h3>
+      <div class="card-body">
+        <p>Passageway in the anterior abdominal wall, superior and parallel to the inguinal ligament.</p>
+        <h4>Structures Through the Inguinal Canal (Male)</h4>
+        <ol>
+          <li>Spermatic cord</li>
+          <li>Ilioinguinal nerve</li>
+        </ol>
+        <h4>Two Parts</h4>
+        <ol>
+          <li><strong>Origin (deep ring):</strong> slit-like opening in the aponeurosis of the transversus abdominis.</li>
+          <li><strong>Termination (superficial ring):</strong> triangular opening in the aponeurosis of the external oblique.</li>
+        </ol>
+        <p class="alt-name">In females, the round ligament of the uterus and the ilioinguinal nerve pass through the inguinal canal.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Convergence Point</p>
+      <h3 class="card-title">Ejaculatory Ducts</h3>
+      <div class="card-body">
+        <p>Formed by the duct from the seminal vesicle joining the ampulla of the ductus deferens.</p>
+        <h4>Location</h4>
+        <p>Just superior to the base of the prostate. Pass inferiorly and anteriorly through the prostate. Terminate in the prostatic urethra.</p>
+        <h4>Function</h4>
+        <p>Eject sperm and seminal vesicle secretions into the prostatic urethra just before semen is released through the urethra.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Shared Pathway</p>
+      <h3 class="card-title">Urethra (3 Subdivisions)</h3>
+      <div class="card-body">
+        <p>Shared terminal duct of the reproductive and urinary systems. Passes through the prostate, deep muscles of the perineum, and the penis.</p>
+        <h4>Function</h4>
+        <p>Passageway for both <strong>semen</strong> and <strong>urine</strong>.</p>
+        <h4>Three Subdivisions</h4>
+        <ol>
+          <li><strong>Prostatic urethra:</strong> passes through the prostate.</li>
+          <li><strong>Intermediate (membranous) urethra:</strong> passes through the deep muscles of the perineum.</li>
+          <li><strong>Spongy urethra:</strong> passes through the corpus spongiosum of the penis.</li>
+        </ol>
+        <p>The <strong>external urethral orifice</strong> is where the spongy urethra meets the external surface.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Varicocele">
+        <p class="callout-label">Clinical Correlation: Varicocele ("bag of worms")</p>
+        <p><strong>Definition:</strong> Swelling in the scrotum due to dilation of the veins draining the testes (pampiniform plexus).</p>
+        <p><strong>Symptoms:</strong> More obvious when standing.</p>
+        <p><strong>Treatment:</strong> No treatment required unless it impairs sperm production or contributes to infertility.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== ACCESSORY GLANDS & SEMEN ============== -->
+<div role="tabpanel" id="panel-glands" aria-labelledby="tab-glands" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Accessory Glands &amp; Semen</h2>
+    <p>The accessory glands (seminal vesicles, prostate, bulbourethral glands) make up the bulk of the volume of semen. Sperm are only a tiny fraction of the final fluid. Each gland contributes something specific.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">Largest Volume Contributor (60%)</p>
+      <h3 class="card-title">Seminal Vesicles</h3>
+      <div class="card-body">
+        <p>Paired pouch-like glands.</p>
+        <h4>Location</h4>
+        <p>Posterior to the base of the urinary bladder, anterior to the rectum.</p>
+        <h4>Secretes</h4>
+        <p>An <strong>alkaline, viscous fluid</strong> containing:</p>
+        <ul>
+          <li><strong>Fructose:</strong> used by sperm for ATP production.</li>
+          <li><strong>Prostaglandins:</strong> support motility and viability. May stimulate smooth muscle contraction in the female reproductive tract.</li>
+          <li><strong>Clotting proteins:</strong> help semen coagulate after ejaculation.</li>
+        </ul>
+        <h4>Why Alkaline Matters</h4>
+        <p>Neutralizes the acidic environment of the male and female reproductive tracts. Acid kills sperm.</p>
+        <h4>Volume</h4>
+        <p>About <strong>60% of total semen volume</strong>.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Donut-Shaped Gland (25%)</p>
+      <h3 class="card-title">Prostate</h3>
+      <div class="card-body">
+        <p>One donut-shaped gland the size of a golf ball.</p>
+        <h4>Location</h4>
+        <p>Inferior to the urinary bladder. Surrounds the prostatic urethra.</p>
+        <h4>Secretes</h4>
+        <p>A <strong>milky, slightly acidic fluid (pH 6.5)</strong> entering the prostatic urethra through many prostatic ducts.</p>
+        <h4>Contents</h4>
+        <ul>
+          <li><strong>Citric acid:</strong> used by sperm for ATP production via Krebs cycle.</li>
+          <li><strong>Proteolytic enzymes</strong> (break down clotting proteins from seminal vesicles): PSA (prostate-specific antigen), pepsinogen, lysozyme, amylase, hyaluronidase.</li>
+          <li><strong>Acid phosphatase:</strong> unknown function.</li>
+          <li><strong>Seminalplasmin:</strong> antibiotic that destroys bacteria.</li>
+        </ul>
+        <h4>Lifespan Changes</h4>
+        <p>Slow growth from birth to puberty. Rapid expansion until age 30. Stable until 45. May enlarge after 45.</p>
+        <h4>Volume</h4>
+        <p>About <strong>25% of total semen volume</strong>.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Pre-Ejaculate Glands</p>
+      <h3 class="card-title">Bulbourethral Glands (Cowper's Glands)</h3>
+      <div class="card-body">
+        <p>Pea-sized paired glands.</p>
+        <h4>Location</h4>
+        <p>Inferior to the prostate, on either side of the membranous urethra within the deep muscles of the perineum. Ducts open into the spongy urethra.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>During sexual arousal, secrete an alkaline fluid that protects sperm by neutralizing acids from urine remaining in the urethra.</li>
+          <li>Secrete mucus for lubrication of the end of the penis. Decreases the number of sperm damaged during ejaculation.</li>
+          <li>Provide sperm with transport medium, nutrients, and protection from the hostile acidic environment.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">The Final Product</p>
+      <h3 class="card-title">Semen</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> "Seed." A mixture of sperm and seminal fluid (combined secretions of seminiferous tubules, seminal vesicles, prostate, and bulbourethral glands).</p>
+        <h4>Volume &amp; Sperm Count</h4>
+        <ul>
+          <li>2.5 to 5 mL per ejaculation</li>
+          <li>50 to 150 million sperm per mL</li>
+          <li>Fewer than 20 million per mL is likely <strong>infertile</strong></li>
+        </ul>
+        <h4>pH</h4>
+        <p>Slightly alkaline (7.2 to 7.7). Necessary because sperm move through both an acidic male urethra and an acidic female reproductive tract.</p>
+        <h4>What Each Component Looks Like</h4>
+        <ul>
+          <li>Prostatic secretion: milky appearance.</li>
+          <li>Seminal vesicle and bulbourethral fluid: sticky.</li>
+        </ul>
+        <h4>Coagulation &amp; Liquefaction</h4>
+        <ul>
+          <li>Liquid semen coagulates within 5 minutes (clotting proteins from seminal vesicles).</li>
+          <li>After 10 to 15 minutes, semen reliquifies (PSA and other enzymes from the prostate).</li>
+          <li>Failure or delay of liquefaction immobilizes sperm and inhibits movement through the cervix.</li>
+        </ul>
+        <h4>Capacitation</h4>
+        <p>Sperm pass through the uterus and uterine tubes, where secretions trigger functional changes that prepare sperm to fertilize an oocyte. Capacitation cannot occur until sperm are inside the female reproductive tract.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Hemospermia">
+        <p class="callout-label">Clinical Correlation: Hemospermia</p>
+        <p><strong>Definition:</strong> Presence of blood in semen.</p>
+        <p><strong>Most common cause:</strong> Inflammation of the blood vessels lining the seminal vesicles.</p>
+        <p><strong>Treatment:</strong> Antibiotics.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== PENIS ============== -->
+<div role="tabpanel" id="panel-penis" aria-labelledby="tab-penis" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Penis</h2>
+    <p>The penis serves two functions: ejaculation of semen and excretion of urine. Its structure is built around erectile tissue that fills with blood under the right conditions.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">External Anatomy</p>
+      <h3 class="card-title">Penis: Three Components</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> Passageway for ejaculation of semen and excretion of urine. Cylindrical shape.</p>
+        <h4>1. Body</h4>
+        <p>Three cylindrical masses of tissue, each surrounded by fibrous tissue (tunica albuginea), all enclosed by skin and subcutaneous tissue:</p>
+        <ul>
+          <li><strong>Two dorsolateral masses (corpora cavernosa penis)</strong></li>
+          <li><strong>One smaller mid-central mass (corpus spongiosum penis):</strong> contains the spongy urethra. Keeps it open during ejaculation.</li>
+        </ul>
+        <p><strong>Erectile tissue:</strong> numerous blood sinuses (vascular spaces) lined by epithelial cells, surrounded by smooth muscle and elastic CT.</p>
+
+        <h4>2. Glans Penis</h4>
+        <p>The distal end of the corpus spongiosum. Slightly enlarged acorn-shaped region.</p>
+        <ul>
+          <li><strong>Corona:</strong> margin of the glans.</li>
+          <li><strong>Prepuce (foreskin):</strong> loose-fitting cover over the glans in an uncircumcised penis.</li>
+        </ul>
+
+        <h4>3. Root</h4>
+        <p>Attached, proximal portion.</p>
+        <ul>
+          <li><strong>Bulb of the penis:</strong> expanded posterior continuation of the base of the corpus spongiosum. Attaches to the inferior surface of deep perineal muscles. Enclosed by the bulbospongiosus muscle (aids ejaculation).</li>
+          <li><strong>Crura of the penis:</strong> two tapered portions of the corpora cavernosa that bend laterally and attach to the ischial and inferior pubic rami. Surrounded by the ischiocavernosus muscle.</li>
+        </ul>
+
+        <h4>Supporting Ligaments</h4>
+        <ul>
+          <li><strong>Fundiform ligament:</strong> arises from the inferior part of the linea alba.</li>
+          <li><strong>Suspensory ligament:</strong> arises from the pubic symphysis.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Physiologic Process</p>
+      <h3 class="card-title">Erection &amp; Emission</h3>
+      <div class="card-body">
+        <h4>Erection</h4>
+        <p>Enlargement of the penis. Caused by blood filling the erectile tissue (vascular sinuses) of the corpora cavernosa.</p>
+        <h4>Emission</h4>
+        <p>The discharge of a small volume of semen <em>before</em> ejaculation.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Priapism">
+        <p class="callout-label">Clinical Correlation: Priapism</p>
+        <p><strong>Definition:</strong> Persistent and painful erection that does not involve sexual desire or excitement.</p>
+        <p><strong>Cause:</strong> Often due to blood disorders, medications, or trauma.</p>
+        <p><strong>Treatment:</strong> Medical emergency requiring treatment to prevent permanent tissue damage.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<div class="footer-note">Dr. Sharilyn Rennie</div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    requestAnimationFrame(sendHeight);
+    if (focusPanel && activePanel) {
+      // Move focus into the new panel so screen readers announce the new section
+      activePanel.focus({ preventScroll: false });
+    }
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+
+  function sendHeight() {
+    var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) { try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {} }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+</body>
+</html>

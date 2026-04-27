@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Female Reproductive System Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  padding: 24px 14px 56px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+a { color: var(--tan-deep); }
+strong { color: var(--navy); font-weight: 700; }
+em { font-style: italic; }
+
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--navy); color: white; padding: 8px 16px; text-decoration: none; font-size: 0.85rem; z-index: 9999; }
+.skip-link:focus { top: 0; }
+
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 30px 34px 28px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
+}
+.breadcrumb { font-size: 0.74rem; letter-spacing: 0.1em; color: var(--tan-soft); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; position: relative; }
+.page-header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.15; position: relative; font-family: Georgia, serif; }
+.page-header .subtitle { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.86); max-width: 700px; line-height: 1.55; position: relative; }
+
+.tabs-wrap {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+[role="tab"] {
+  flex: 1 1 auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+[role="tab"]:hover { background: white; color: var(--navy); }
+[role="tab"][aria-selected="true"] { background: var(--navy); color: white; box-shadow: var(--shadow); }
+[role="tab"]:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+[role="tabpanel"] { padding: 8px 0 0; }
+[role="tabpanel"]:focus { outline: none; }
+[role="tabpanel"]:focus-visible { outline: 3px solid var(--tan); outline-offset: 4px; border-radius: 8px; }
+[role="tabpanel"][hidden] { display: none; }
+
+.section-intro {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--tan);
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+}
+.section-intro h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.section-intro p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.96rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.note-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.note-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.note-card.span-2 { grid-column: span 2; }
+@media (max-width: 800px) {
+  .note-card.span-2 { grid-column: span 1; }
+}
+
+.card-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--tan-deep);
+  margin-bottom: 4px;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+}
+.card-body { font-size: 0.94rem; color: var(--text-soft); line-height: 1.6; }
+.card-body p { margin-bottom: 10px; }
+.card-body p:last-child { margin-bottom: 0; }
+.card-body ul, .card-body ol { margin: 6px 0 12px 22px; padding: 0; }
+.card-body li { margin-bottom: 5px; line-height: 1.55; }
+.card-body strong { color: var(--navy); }
+.card-body h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 800;
+  margin: 14px 0 6px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 10px;
+}
+.card-body h4:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+.callout {
+  background: var(--clinical-bg);
+  border-left: 3px solid var(--clinical);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+}
+.callout .callout-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--clinical);
+  margin-bottom: 4px;
+}
+.callout p { color: var(--text); font-size: 0.9rem; line-height: 1.55; }
+.callout p:last-child { margin-bottom: 0; }
+
+.tip-callout {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.term { color: var(--navy); font-weight: 700; font-style: normal; }
+.alt-name { color: var(--text-muted); font-style: italic; font-size: 0.88rem; }
+
+.flow {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.flow .arrow { color: var(--tan-deep); font-weight: 800; padding: 0 4px; }
+
+.footer-note { margin-top: 30px; text-align: center; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body { padding: 18px 10px 40px; }
+  .page-header { padding: 24px 22px 22px; }
+  .page-header h1 { font-size: 1.55rem; }
+  [role="tab"] { font-size: 0.78rem; padding: 8px 10px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .note-card { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container" id="main-content">
+
+<header class="page-header">
+  <div class="breadcrumb">Anatomy &amp; Physiology Notes</div>
+  <h1>Female Reproductive System</h1>
+  <p class="subtitle">Comprehensive teaching notes covering structure, function, and clinical relevance, organized for active studying.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Female reproductive system topics">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview">Overview</button>
+    <button role="tab" id="tab-ovaries" aria-selected="false" aria-controls="panel-ovaries" tabindex="-1">Ovaries &amp; Oogenesis</button>
+    <button role="tab" id="tab-tubes" aria-selected="false" aria-controls="panel-tubes" tabindex="-1">Ovulation &amp; Tubes</button>
+    <button role="tab" id="tab-uterus" aria-selected="false" aria-controls="panel-uterus" tabindex="-1">Uterus</button>
+    <button role="tab" id="tab-cervix" aria-selected="false" aria-controls="panel-cervix" tabindex="-1">Cervix &amp; Vagina</button>
+    <button role="tab" id="tab-vulva" aria-selected="false" aria-controls="panel-vulva" tabindex="-1">Vulva &amp; Mammary</button>
+  </div>
+</div>
+
+<!-- ============== OVERVIEW ============== -->
+<div role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <h2>Big Picture</h2>
+    <p>The female reproductive system has six major organs working together to produce gametes, host fertilization and pregnancy, and nourish a newborn. Each structure has a defined job. Learn the role first, then the anatomy makes sense.</p>
+  </div>
+
+  <div class="card-grid">
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Foundation</p>
+      <h3 class="card-title">The Six Organs of the Female Reproductive System</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Ovaries</strong> (gonads). Produce gametes (secondary oocytes) and hormones (estrogens, progesterone, inhibin, relaxin).</li>
+          <li><strong>Uterine (fallopian) tubes</strong>. Transport secondary oocytes from ovaries to uterus. Site of fertilization.</li>
+          <li><strong>Uterus</strong>. Site of implantation, fetal development, and labor.</li>
+          <li><strong>Vagina</strong>. Receptacle for the penis during intercourse, outlet for menstrual flow, and passageway for childbirth.</li>
+          <li><strong>External organs (vulva or pudendum)</strong>. Protective structures and sensory organs for sexual response.</li>
+          <li><strong>Mammary glands</strong>. Synthesize, secrete, and eject milk for nourishment of the newborn.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Note: mammary glands belong to both the reproductive and integumentary systems. Keep that in mind when studying skin too.</div>
+      </div>
+    </article>
+  </div>
+</div>
+
+<!-- ============== OVARIES & OOGENESIS ============== -->
+<div role="tabpanel" id="panel-ovaries" aria-labelledby="tab-ovaries" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Ovaries &amp; Oogenesis</h2>
+    <p>Unlike sperm production which begins at puberty, oogenesis begins before birth. A baby girl is born with all the primary oocytes she will ever have. Only about 400 of those 1 to 2 million primary oocytes will mature and ovulate during her reproductive lifetime.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">Female Gonad</p>
+      <h3 class="card-title">Ovaries</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> Female gonads (homologous to testes). Almond sized and shaped. Paired.</p>
+        <h4>Location</h4>
+        <p>One on each side of the uterus. Descend into the brim of the superior pelvic cavity during the third month of development.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>Production of gametes (secondary oocytes that develop into mature ova after fertilization).</li>
+          <li>Production of hormones: progesterone, estrogens, inhibin, and relaxin.</li>
+        </ol>
+        <p class="alt-name">Hilum: each ovary has a hilum (point of entry/exit for blood vessels and nerves), where the mesovarium attaches.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Anchor &amp; Suspension</p>
+      <h3 class="card-title">Supporting Ligaments of the Ovaries</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Broad ligament of the uterus.</strong> Fold of parietal peritoneum. Attaches to the ovaries by a double-layered fold of peritoneum called the <em>mesovarium</em>.</li>
+          <li><strong>Ovarian ligament.</strong> Anchors the ovaries to the uterus.</li>
+          <li><strong>Suspensory ligament.</strong> Attaches ovaries to the pelvic wall. Contains ovarian blood vessels and nerves.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Histology</p>
+      <h3 class="card-title">Histology of the Ovary</h3>
+      <div class="card-body">
+        <p>From superficial to deep:</p>
+        <ol>
+          <li><strong>Germinal epithelium.</strong> Single layer of simple cuboidal or squamous epithelium. <em>Important:</em> despite the name, this layer does NOT give rise to ova. The cells that produce ova arise from the yolk sac and migrate to the ovaries during embryonic development.</li>
+          <li><strong>Tunica albuginea.</strong> Whitish capsule of dense irregular CT immediately deep to the germinal epithelium.</li>
+          <li><strong>Ovarian cortex.</strong> Just deep to the tunica albuginea. Contains ovarian follicles surrounded by dense irregular CT with collagen fibers and fibroblast-like stromal cells.</li>
+          <li><strong>Ovarian medulla.</strong> Deep to the cortex (indistinct border between them). More loose CT. Contains blood vessels, lymphatic vessels, and nerves.</li>
+          <li><strong>Ovarian follicles.</strong> Found in the cortex. Contain oocytes in various stages of development. Surrounding cells start as a single layer of <em>follicular cells</em>; later development produces several layers of <em>granulosa cells</em>. These cells nourish the developing oocyte and begin to secrete estrogens as the follicle grows.</li>
+          <li><strong>Mature follicle.</strong> Large fluid-filled follicle ready to rupture and expel its secondary oocyte (ovulation).</li>
+          <li><strong>Corpus luteum (yellow body).</strong> Remnants of a mature follicle after ovulation. Produces progesterone, estrogens, relaxin, and inhibin until it degenerates into the <strong>corpus albicans (white body)</strong>, a fibrous scar.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Key Comparison</p>
+      <h3 class="card-title">Oogenesis vs. Spermatogenesis</h3>
+      <div class="card-body">
+        <h4>Timing</h4>
+        <ul>
+          <li><strong>Males:</strong> begin at puberty.</li>
+          <li><strong>Females:</strong> begin <em>before birth</em>, during embryonic development.</li>
+        </ul>
+        <h4>Final Output Per Primary Cell</h4>
+        <ul>
+          <li><strong>Spermatogenesis:</strong> 1 primary spermatocyte &rarr; <strong>4 sperm</strong>.</li>
+          <li><strong>Oogenesis:</strong> 1 primary oocyte &rarr; <strong>1 ovum + 3 polar bodies</strong> (which all degenerate).</li>
+        </ul>
+        <h4>Cell Type</h4>
+        <p>Both involve meiosis with subsequent maturation. The female version distributes most of the cytoplasm into one cell (the ovum) so that cell carries enough resources to support early embryonic development.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Before Birth</p>
+      <h3 class="card-title">Oogenesis: Early Fetal Development</h3>
+      <div class="card-body">
+        <ol>
+          <li>Primordial germ cells migrate from the yolk sac to the ovaries.</li>
+          <li>Within the ovaries, they differentiate into <strong>oogonia</strong>: diploid (2n) stem cells. These divide via mitosis to produce millions of germ cells.</li>
+          <li>Before birth, most degenerate (<em>atresia</em>).</li>
+          <li>A few develop into larger cells called <strong>primary oocytes</strong>.</li>
+          <li>Primary oocytes enter <strong>Meiosis I</strong> during fetal development but do not complete it until after puberty (arrested stage).</li>
+          <li>Each primary oocyte is surrounded by a flat layer of follicular cells. The whole structure is a <strong>primordial follicle</strong>.</li>
+        </ol>
+        <h4>By the Numbers</h4>
+        <ul>
+          <li>At birth: 200,000 to 2,000,000 primary oocytes per ovary</li>
+          <li>At puberty: about 40,000 still present</li>
+          <li>Across the lifetime: only about <strong>400 will mature and ovulate</strong>. The rest undergo atresia.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">After Puberty</p>
+      <h3 class="card-title">Oogenesis: Follicular Development</h3>
+      <div class="card-body">
+        <p>Each month, FSH and LH from the anterior pituitary stimulate development of several primordial follicles. Typically only one reaches maturity needed for ovulation.</p>
+        <h4>Stage 1: Primordial Follicle</h4>
+        <p>Primary oocyte arrested in prophase I, surrounded by a single layer of flattened follicular cells.</p>
+        <h4>Stage 2: Primary Follicle</h4>
+        <ul>
+          <li>Primary oocyte at a later stage of development.</li>
+          <li>Surrounded by several layers of cuboidal and low-columnar cells called <strong>granulosa cells</strong>.</li>
+          <li>Outermost granulosa cells rest on a basement membrane.</li>
+          <li>Forms a clear glycoprotein layer called the <strong>zona pellucida</strong> between the primary oocyte and granulosa cells.</li>
+          <li>Stromal cells around the basement membrane organize into the <strong>theca folliculi</strong>.</li>
+        </ul>
+        <h4>Stage 3: Secondary Follicle</h4>
+        <ul>
+          <li>Theca differentiates into two layers:
+            <ul>
+              <li><strong>Theca interna:</strong> highly vascular, cuboidal secretory cells. Secrete estrogens.</li>
+              <li><strong>Theca externa:</strong> outer layer of stromal cells and collagen fibers.</li>
+            </ul>
+          </li>
+          <li>Granulosa cells secrete follicular fluid that builds up in a cavity called the <strong>antrum</strong>.</li>
+          <li>The innermost layer of granulosa cells firmly attaches to the zona pellucida and is now called the <strong>corona radiata</strong>.</li>
+        </ul>
+        <h4>Stage 4: Mature (Graafian) Follicle</h4>
+        <ul>
+          <li>Large fluid-filled follicle just prior to ovulation.</li>
+          <li>The primary oocyte completes Meiosis I, producing two haploid (n) cells of unequal size:
+            <ul>
+              <li><strong>First polar body:</strong> the smaller cell, a packet of disorganized material.</li>
+              <li><strong>Secondary oocyte:</strong> larger cell, receives most of the cytoplasm. Begins Meiosis II and stops in metaphase.</li>
+            </ul>
+          </li>
+          <li>The mature follicle ruptures and releases the secondary oocyte. <strong>This is ovulation.</strong></li>
+        </ul>
+        <div class="tip-callout" role="note" aria-label="Tip">Important: Meiosis II is only completed if fertilization occurs. The secondary oocyte sits paused in metaphase II until a sperm arrives.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">After Ovulation</p>
+      <h3 class="card-title">Corpus Luteum &amp; Corpus Albicans</h3>
+      <div class="card-body">
+        <h4>Corpus Luteum (Yellow Body)</h4>
+        <p>What's left of the mature follicle after ovulation. It is a hormone factory.</p>
+        <p><strong>Hormones produced:</strong> progesterone, estrogens, relaxin, inhibin.</p>
+        <h4>Corpus Albicans (White Body)</h4>
+        <p>If fertilization does not occur, the corpus luteum degenerates into a fibrous scar called the corpus albicans. This is the end of the road for that follicle.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== OVULATION & UTERINE TUBES ============== -->
+<div role="tabpanel" id="panel-tubes" aria-labelledby="tab-tubes" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Ovulation, Fertilization &amp; Uterine Tubes</h2>
+    <p>Fertilization typically happens in the ampulla of the uterine tube, not in the ovary or uterus. The uterine tubes are designed to capture an ovulated oocyte and shuttle it (and any zygote) toward the uterus.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Two Outcomes</p>
+      <h3 class="card-title">Ovulation &amp; Fertilization: Step by Step</h3>
+      <div class="card-body">
+        <h4>What Comes Out of the Mature Follicle</h4>
+        <p>The secondary oocyte is expelled into the pelvic cavity along with the first polar body and the corona radiata. Fimbriae sweep it into the uterine tube.</p>
+
+        <h4>If Fertilization Does NOT Occur</h4>
+        <p>The cells degenerate. The cycle ends. Menstruation will follow.</p>
+
+        <h4>If Sperm Are Present</h4>
+        <ol>
+          <li>One sperm penetrates the secondary oocyte.</li>
+          <li>This <strong>resumes meiosis II</strong> in the secondary oocyte.</li>
+          <li>The secondary oocyte splits into two haploid cells of unequal size:
+            <ul>
+              <li><strong>Larger cell = ovum</strong> (mature egg).</li>
+              <li><strong>Smaller cell = second polar body.</strong></li>
+            </ul>
+          </li>
+          <li>The nuclei of sperm and ovum unite to form a diploid <strong>zygote</strong>.</li>
+          <li>The first polar body undergoes another division into two polar bodies.</li>
+        </ol>
+
+        <h4>Final Tally</h4>
+        <p>One primary oocyte yields <strong>1 ovum + 3 polar bodies</strong> (all of which degenerate). Compare to males: 1 primary spermatocyte yields 4 functional sperm.</p>
+
+        <div class="tip-callout" role="note" aria-label="Tip">The asymmetric division is intentional. The ovum needs all the cytoplasm to support a developing embryo. The polar bodies just take the extra chromosomes.</div>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Fertilization Timeline</p>
+      <h3 class="card-title">From Ovulation to Implantation</h3>
+      <div class="card-body">
+        <ol>
+          <li>After ovulation, currents from the fimbriae surround the mature follicle.</li>
+          <li>Currents sweep the ovulated secondary oocyte from the peritoneal cavity into the uterine tube.</li>
+          <li>A sperm cell typically encounters and fertilizes the secondary oocyte in the <strong>ampulla of the uterine tube</strong>. (Fertilization in the peritoneal cavity is not uncommon.)</li>
+          <li>Fertilization can occur up to <strong>24 hours after ovulation</strong>.</li>
+          <li>Hours after fertilization, the haploid nuclei unite.</li>
+          <li>The diploid fertilized ovum is now a <strong>zygote</strong>. It begins cell divisions while moving toward the uterus.</li>
+          <li>Arrives in the uterus <strong>6 to 7 days after ovulation</strong>.</li>
+          <li>Unfertilized secondary oocytes disintegrate.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Egg Highway</p>
+      <h3 class="card-title">Uterine Tubes (Fallopian Tubes)</h3>
+      <div class="card-body">
+        <p>Funnel-shaped, long tubes that extend laterally from the uterus.</p>
+        <h4>Location</h4>
+        <p>Lie within the folds of the broad ligament of the uterus. From the infundibulum, extend medially and eventually inferiorly. Attach to the superior lateral angle of the uterus.</p>
+        <h4>Functions</h4>
+        <ol>
+          <li>Provide a route for sperm to reach an ovum.</li>
+          <li>Transport secondary oocytes and fertilized ova from ovaries to uterus.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Anatomy</p>
+      <h3 class="card-title">Parts of the Uterine Tube</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Infundibulum.</strong> Funnel-shaped portion close to the ovary, open to the pelvic cavity.</li>
+          <li><strong>Fimbriae.</strong> Fringe of finger-like projections at the end of the infundibulum. Attached to the lateral end of the ovary.</li>
+          <li><strong>Ampulla.</strong> Widest and longest part of the uterine tube. Makes up the lateral 2/3 of its length. <em>Site of fertilization.</em></li>
+          <li><strong>Isthmus.</strong> The medial, short, narrow, thick-walled portion that joins the uterus.</li>
+        </ol>
+        <p class="alt-name">Mesosalpinx: a part of the broad ligament that supports the uterine tubes.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Histology</p>
+      <h3 class="card-title">Three Layers of the Uterine Tubes</h3>
+      <div class="card-body">
+        <h4>1. Mucosa</h4>
+        <ul>
+          <li><strong>Ciliated simple columnar cells.</strong> Form a "ciliary conveyor belt" that helps move the fertilized ovum or secondary oocyte toward the uterus.</li>
+          <li><strong>Non-ciliated cells (peg cells).</strong> Have microvilli. Secrete fluid that nourishes the ovum and supports sperm.</li>
+          <li><strong>Lamina propria.</strong> Areolar CT.</li>
+        </ul>
+        <h4>2. Muscularis</h4>
+        <p>Function: peristalsis (wave-like contractions) that move the ovum or secondary oocyte toward the uterus.</p>
+        <ul>
+          <li><strong>Inner layer:</strong> thick circular ring of smooth muscle.</li>
+          <li><strong>Outer layer:</strong> thin region of longitudinal smooth muscle.</li>
+        </ul>
+        <h4>3. Serosa</h4>
+        <p>Outer layer of serous membrane.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== UTERUS ============== -->
+<div role="tabpanel" id="panel-uterus" aria-labelledby="tab-uterus" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Uterus</h2>
+    <p>The uterus is an inverted pear-shaped organ that does several jobs: it's part of the sperm pathway, it's the implantation site, it supports fetal development, it assists in labor, and it's the source of menstrual flow when implantation does not occur.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Five Jobs</p>
+      <h3 class="card-title">Uterus Overview</h3>
+      <div class="card-body">
+        <h4>Functions</h4>
+        <ol>
+          <li>Part of the pathway for sperm deposited in the vagina (to reach the uterine tubes).</li>
+          <li>Site of implantation of a fertilized ovum.</li>
+          <li>Development of the fetus during pregnancy.</li>
+          <li>Assists in labor.</li>
+          <li>Source of menstrual flow during cycles when implantation has not occurred.</li>
+        </ol>
+        <h4>Characteristics</h4>
+        <p>Inverted pear shape. Variable size depending on pregnancy (much larger). Smaller (atrophied) without hormone influence (menopause).</p>
+        <h4>Location</h4>
+        <p>Between the urinary bladder (anterior) and the rectum (posterior).</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Position &amp; Divisions</p>
+      <h3 class="card-title">Position &amp; Anatomical Divisions</h3>
+      <div class="card-body">
+        <h4>Normal Position</h4>
+        <ul>
+          <li><strong>Uterus:</strong> anteflexion. Projects anteriorly and superiorly.</li>
+          <li><strong>Cervix:</strong> projects inferiorly and posteriorly. Enters the anterior wall of the vagina at a right angle.</li>
+        </ul>
+        <h4>Anatomical Divisions</h4>
+        <ol>
+          <li><strong>Fundus.</strong> Dome-shaped superior portion (above the openings of the uterine tubes).</li>
+          <li><strong>Body.</strong> Tapered central portion.</li>
+          <li><strong>Cervix.</strong> Inferior narrow portion that opens into the vagina.</li>
+        </ol>
+        <p><strong>Isthmus:</strong> constricted region between the body and the cervix.</p>
+        <p><strong>Uterine cavity:</strong> interior of the body of the uterus.</p>
+        <p><strong>Cervical canal:</strong> interior of the cervix. Opens into the uterine cavity at the <em>internal os</em> and into the vagina at the <em>external os</em>.</p>
+        <h4>Retroflexion</h4>
+        <p>Posterior tilting of the uterus. Harmless, no identifiable cause, may occur after childbirth.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Anchor System</p>
+      <h3 class="card-title">Supporting Ligaments of the Uterus</h3>
+      <div class="card-body">
+        <p>These keep the uterus in its anteflexed position while still allowing some movement.</p>
+        <ol>
+          <li><strong>Broad ligaments</strong> (paired). Double folds of peritoneum attaching to the uterus on either side of the pelvic cavity.</li>
+          <li><strong>Uterosacral ligaments</strong> (paired). Peritoneal extensions that lie on either side of the rectum and connect the uterus to the sacrum.</li>
+          <li><strong>Cardinal (lateral cervical) ligaments.</strong> Inferior to the bases of the broad ligaments. Extend from the pelvic wall to the cervix and vagina.</li>
+          <li><strong>Round ligaments.</strong> Bands of fibrous CT between the layers of the broad ligament. Extend from a point on the uterus, through the inguinal canal, to the labia majora of the external genitalia.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Histology</p>
+      <h3 class="card-title">The Three Layers of the Uterus</h3>
+      <div class="card-body">
+
+        <h4>1. Perimetrium (Outer Layer / Serosa)</h4>
+        <p>Part of the visceral peritoneum. Made of simple squamous epithelium and areolar CT.</p>
+        <ul>
+          <li><strong>Laterally:</strong> becomes the broad ligament.</li>
+          <li><strong>Anteriorly:</strong> covers the urinary bladder, forms a shallow pouch.</li>
+          <li><strong>Posteriorly:</strong> covers the rectum and forms a deep pouch (the <em>rectouterine pouch</em> or <em>pouch of Douglas</em>). This is the most inferior point in the pelvic cavity.</li>
+        </ul>
+
+        <h4>2. Myometrium (Middle Layer)</h4>
+        <p>Three layers of smooth muscle. Thickest in the fundus, thinnest in the cervix.</p>
+        <ul>
+          <li>Inner and outer layers: longitudinal.</li>
+          <li>Middle layer: oblique.</li>
+        </ul>
+        <p><strong>Function:</strong> coordinated contractions during childbirth. Responds to oxytocin from the posterior pituitary to expel the fetus from the uterus.</p>
+
+        <h4>3. Endometrium (Inner Layer)</h4>
+        <p>Highly vascular. Three components:</p>
+        <ol>
+          <li>Innermost layer: simple columnar epithelium with cilia and secretory cells.</li>
+          <li>Underlying stroma: very thick region of lamina propria (areolar CT).</li>
+          <li>Uterine (endometrial) glands: invaginations of the luminal epithelium that extend almost into the myometrium.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Two Sub-Layers</p>
+      <h3 class="card-title">Endometrium: Functionalis vs. Basalis</h3>
+      <div class="card-body">
+        <h4>Stratum Functionalis</h4>
+        <p>The functional layer that lines the uterine cavity. <strong>Sloughs off during menstruation.</strong> Thickens in response to hormones each cycle.</p>
+        <h4>Stratum Basalis</h4>
+        <p>The basal (permanent) layer. <strong>Gives rise to a new stratum functionalis after each menstruation.</strong> The regenerative engine of the endometrium.</p>
+        <div class="tip-callout" role="note" aria-label="Tip">Memory cue: <em>functional</em> = function for that cycle, then leaves. <em>Basal</em> = base, stays put.</div>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Vascular Anatomy</p>
+      <h3 class="card-title">Blood Supply to the Uterus</h3>
+      <div class="card-body">
+        <div class="flow" role="figure" aria-label="Blood supply to the uterus, from internal iliac artery through arcuate, radial, then straight and spiral arterioles">
+          Internal iliac artery <span class="arrow" aria-hidden="true">&rarr;</span> Uterine arteries <span class="arrow" aria-hidden="true">&rarr;</span> Arcuate arteries (in myometrium) <span class="arrow" aria-hidden="true">&rarr;</span> Radial arteries (deeper in myometrium) <span class="arrow" aria-hidden="true">&rarr;</span> Two arterioles before the endometrium
+        </div>
+        <h4>Two Arterioles into the Endometrium</h4>
+        <ul>
+          <li><strong>Straight arterioles.</strong> Supply the <em>stratum basalis</em>. They survive each menstrual cycle and enable regeneration of the functionalis.</li>
+          <li><strong>Spiral arterioles.</strong> Supply the <em>stratum functionalis</em>. They change during the menstrual cycle and constrict to drive sloughing.</li>
+        </ul>
+        <h4>Drainage</h4>
+        <p>Uterine veins drain into the internal iliac veins.</p>
+        <h4>Why Such an Extensive Blood Supply</h4>
+        <ol>
+          <li>Support the growth of a new stratum functionalis after menstruation.</li>
+          <li>Implantation of a fertilized ovum.</li>
+          <li>Development of the placenta.</li>
+        </ol>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== CERVIX & VAGINA ============== -->
+<div role="tabpanel" id="panel-cervix" aria-labelledby="tab-cervix" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Cervix &amp; Vagina</h2>
+    <p>Two structures, two distinct environments. The cervix produces a hormone-responsive mucus that changes the rules of sperm transit. The vagina is acidic by design, hostile to microbes but also to sperm.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">Gateway</p>
+      <h3 class="card-title">Cervix</h3>
+      <div class="card-body">
+        <p>The narrow, lower portion of the uterus that connects to the vagina.</p>
+        <h4>Cervical Canal</h4>
+        <p>The passage through the cervix that connects the uterus to the vagina. Opens into the uterine cavity at the <strong>internal os</strong> and into the vagina at the <strong>external os</strong>.</p>
+        <h4>Mucosa</h4>
+        <p>Cervical lining composed of simple columnar epithelium and mucus-secreting glands.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Hormone-Responsive Secretion</p>
+      <h3 class="card-title">Cervical Mucus</h3>
+      <div class="card-body">
+        <p><strong>Produced by:</strong> secretory cells of the mucosa of the cervix.</p>
+        <p><strong>Composition:</strong> water, glycoproteins, lipids, enzymes, inorganic salts.</p>
+        <p><strong>Volume:</strong> 20 to 60 mL/day during reproductive age.</p>
+        <h4>Consistency Changes Across the Cycle</h4>
+        <ul>
+          <li><strong>Near ovulation:</strong> less viscous, more alkaline, hospitable to sperm.</li>
+          <li><strong>Other times:</strong> can impede sperm penetration.</li>
+        </ul>
+        <h4>Functions</h4>
+        <ol>
+          <li>Supplements sperm with energy.</li>
+          <li>Protects sperm from phagocytes and the hostile environment of the vagina/uterus.</li>
+          <li>Supports <strong>capacitation</strong>: a series of functional changes sperm undergo in the female reproductive tract prior to fertilization.
+            <ul>
+              <li>Sperm tail beats more vigorously.</li>
+              <li>Plasma membrane is prepared to fuse with the oocyte.</li>
+            </ul>
+          </li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Capacitation cannot occur in the male body. Sperm can only become fully fertilization-ready inside the female reproductive tract.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Three Functions</p>
+      <h3 class="card-title">Vagina</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> Tubular, long fibromuscular canal lined with mucous membrane.</p>
+        <h4>Functions</h4>
+        <ul>
+          <li>Receptacle for the penis during intercourse.</li>
+          <li>Outlet for menstrual flow.</li>
+          <li>Passageway for childbirth.</li>
+        </ul>
+        <h4>Location</h4>
+        <p>Between the urinary bladder and the rectum. Sits superiorly and posteriorly. Attaches to the uterus.</p>
+        <h4>Fornix</h4>
+        <p>The arch or vault that surrounds the vaginal attachment to the cervix. (This is where a contraceptive diaphragm sits.) It covers the cervix.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Histology</p>
+      <h3 class="card-title">Layers of the Vagina</h3>
+      <div class="card-body">
+
+        <h4>Mucosa</h4>
+        <p>Continuous with the uterus.</p>
+        <ul>
+          <li>Tissue: non-keratinized stratified squamous epithelium and areolar CT. Creates transverse folds called <strong>rugae</strong>.</li>
+          <li>Antigen-presenting (dendritic) cells found here participate in transmission of viruses (HIV).</li>
+          <li>Large stores of glycogen, which can be decomposed into organic acids.</li>
+          <li>Acidic environment inhibits microbial growth. This is protective, but the same acidity is hostile to sperm. (Hence the alkaline buffering provided by semen.)</li>
+        </ul>
+
+        <h4>Muscularis</h4>
+        <ul>
+          <li>Composed of an outer circular layer and an inner longitudinal layer of smooth muscle.</li>
+          <li>Function: stretches to accommodate the penis during intercourse and a baby during childbirth.</li>
+        </ul>
+
+        <h4>Adventitia</h4>
+        <ul>
+          <li>Superficial layer.</li>
+          <li>Made of areolar CT.</li>
+          <li>Anchors the vagina to adjacent organs: urethra and urinary bladder anteriorly, rectum posteriorly.</li>
+        </ul>
+
+        <h4>Hymen</h4>
+        <p>Thin fold of vascularized mucous membrane that forms a border or partially closes the inferior end of the vaginal opening (vaginal orifice).</p>
+        <p>Ruptures following first sexual intercourse.</p>
+        <div class="callout" role="note" aria-label="Clinical correlation: Imperforate Hymen">
+          <p class="callout-label">Clinical Correlation: Imperforate Hymen</p>
+          <p>When the hymen completely covers the orifice and blocks the discharge of menstrual flow. May need to be surgically opened.</p>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== VULVA & MAMMARY ============== -->
+<div role="tabpanel" id="panel-vulva" aria-labelledby="tab-vulva" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>External Genitalia, Perineum &amp; Mammary Glands</h2>
+    <p>Many structures of the vulva are <em>homologous</em> to male structures. Same embryonic origin, different final form. Knowing the homologies makes the anatomy easier to remember.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">External Genitalia</p>
+      <h3 class="card-title">Components of the Vulva (Pudendum)</h3>
+      <div class="card-body">
+
+        <h4>1. Mons Pubis</h4>
+        <p>Elevation of adipose tissue covered by skin and coarse pubic hair. <strong>Function:</strong> cushions the pubic symphysis.</p>
+
+        <h4>2. Labia Majora</h4>
+        <p>Two large longitudinal folds of skin covered by pubic hair. Contain adipose tissue, sebaceous (oil) glands, and apocrine (sweat) glands.</p>
+        <p class="alt-name">Homologous to the scrotum.</p>
+
+        <h4>3. Labia Minora</h4>
+        <p>Smaller folds. No hair, no fat. Few sudoriferous glands but many sebaceous glands.</p>
+        <p class="alt-name">Homologous to the spongy urethra.</p>
+
+        <h4>4. Clitoris</h4>
+        <p>Small cylindrical mass containing two erectile bodies (corpora cavernosa), numerous nerves, and blood vessels.</p>
+        <ul>
+          <li><strong>Location:</strong> anterior junction of the labia minora.</li>
+          <li><strong>Prepuce of the clitoris:</strong> point where the labia minora unite and cover the clitoris with skin.</li>
+          <li><strong>Glans clitoris:</strong> the exposed part.</li>
+          <li><strong>Function:</strong> responds to tactile stimulation. Plays a role in sexual excitement.</li>
+        </ul>
+        <p class="alt-name">Homologous to the penis.</p>
+
+        <h4>5. Vestibule</h4>
+        <p>Region between the labia minora.</p>
+        <p>Contains: hymen, vaginal orifice, external urethral orifice, and several duct/gland openings.</p>
+        <p class="alt-name">Homologous to the male intermediate (membranous) urethra.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">More Vulva Structures</p>
+      <h3 class="card-title">Orifices, Glands &amp; Erectile Tissue</h3>
+      <div class="card-body">
+
+        <h4>Vaginal Orifice</h4>
+        <p>Opening of the vagina to the exterior.</p>
+
+        <h4>External Urethral Orifice</h4>
+        <p>Opening of the urethra to the exterior.</p>
+
+        <h4>Paraurethral Glands (Skene's Glands)</h4>
+        <p>On either side of the external urethral orifice. Secrete mucus. Embedded in the wall of the urethra.</p>
+        <p class="alt-name">Homologous to the prostate.</p>
+
+        <h4>Greater Vestibular Glands (Bartholin's Glands)</h4>
+        <p>On either side of the vaginal orifice. Produce a small amount of mucus during sexual arousal to aid lubrication.</p>
+        <p class="alt-name">Homologous to the bulbourethral (Cowper's) glands in males.</p>
+
+        <h4>Bulb of the Vestibule</h4>
+        <p>Two elongated masses of erectile tissue deep to the vaginal orifice. Becomes engorged with blood during sexual arousal. Narrows and puts pressure on the penis during intercourse.</p>
+        <p class="alt-name">Homologous to the corpus spongiosum and bulb of the penis in males.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Regional Anatomy</p>
+      <h3 class="card-title">Perineum</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> The diamond-shaped area medial to the thighs and buttocks, in both males and females.</p>
+        <h4>Contents</h4>
+        <p>External genitals and anus.</p>
+        <h4>Boundaries</h4>
+        <ul>
+          <li><strong>Anteriorly:</strong> pubic symphysis</li>
+          <li><strong>Laterally:</strong> ischial tuberosities</li>
+          <li><strong>Posteriorly:</strong> coccyx</li>
+        </ul>
+        <h4>Two Triangles</h4>
+        <p>Draw a transverse line between the ischial tuberosities:</p>
+        <ul>
+          <li><strong>Urogenital triangle</strong> (anterior): contains the external genitalia.</li>
+          <li><strong>Anal triangle</strong> (posterior): contains the anus.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Lactation Apparatus</p>
+      <h3 class="card-title">Mammary Glands: Structure</h3>
+      <div class="card-body">
+        <p>Project anteriorly from two muscles: <strong>pectoralis major</strong> and <strong>serratus anterior</strong>. A layer of fascia (dense irregular CT) attaches the breast to these muscles.</p>
+
+        <h4>Specialized Structures</h4>
+        <ol>
+          <li><strong>Nipple.</strong> Pigmented projection containing a series of openings of <strong>lactiferous ducts</strong> where milk emerges.
+            <ul>
+              <li><strong>Areola:</strong> circular pigmented area surrounding the nipple. Contains modified sebaceous (oil) glands.</li>
+            </ul>
+          </li>
+          <li><strong>Suspensory ligaments of the breast (Cooper's ligaments).</strong> Between skin and fascia. Support the breast. Become looser with age or excessive strain (jogging, high impact aerobics, sports).</li>
+          <li><strong>Mammary gland.</strong> A modified sudoriferous (sweat) gland that produces milk.</li>
+          <li><strong>Lobes:</strong> 25 to 50 lobes or compartments. Lobes divide into <strong>lobules</strong> containing <strong>alveoli</strong> (milk-producing structures).</li>
+          <li><strong>Lactiferous ducts.</strong> Drain milk from the alveoli and transport it to the nipple.</li>
+          <li><strong>Myoepithelial cells.</strong> Contracting cells that propel milk toward the nipple.</li>
+        </ol>
+
+        <h4>Function: Lactation</h4>
+        <p>Milk production and ejection. <strong>Stimulus:</strong> baby suckling on the nipple stimulates the release of <strong>oxytocin</strong> from the posterior pituitary, which triggers milk ejection.</p>
+
+        <h4>Blood Supply</h4>
+        <p>Internal thoracic artery, lateral thoracic artery, and intercostal arteries.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<div class="footer-note">Dr. Sharilyn Rennie</div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    requestAnimationFrame(sendHeight);
+    if (focusPanel && activePanel) {
+      // Move focus into the new panel so screen readers announce the new section
+      activePanel.focus({ preventScroll: false });
+    }
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+
+  function sendHeight() {
+    var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) { try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {} }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+</body>
+</html>
