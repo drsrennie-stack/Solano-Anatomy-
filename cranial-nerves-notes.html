@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Cranial Nerves Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: #fff;
+  padding: 28px 28px 32px;
+}
+.breadcrumb {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tan-soft);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.page-header h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.page-header p.subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  max-width: 720px;
+  font-weight: 400;
+}
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(27, 40, 69, 0.04);
+}
+[role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+[role="tab"] {
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+  letter-spacing: 0.01em;
+}
+[role="tab"]:hover { color: var(--navy); }
+[role="tab"][aria-selected="true"] {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--tan);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+.panels {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+[role="tabpanel"] { outline: none; }
+[role="tabpanel"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--tan);
+  border-radius: 6px;
+}
+.section-intro {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin: 4px 0 20px;
+}
+.section-intro p {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+.card.span-2 { grid-column: 1 / -1; }
+.card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--navy);
+  margin: 0 0 12px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 14px 0 6px;
+}
+.card h4:first-of-type { margin-top: 4px; }
+.card p { margin: 0 0 10px; color: var(--text-soft); font-size: 15px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 20px; color: var(--text-soft); font-size: 15px; }
+.card li { margin-bottom: 5px; }
+.card strong { color: var(--navy); font-weight: 700; }
+.card em { font-family: 'Lora', Georgia, serif; }
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 4px;
+  font-size: 14px;
+}
+.compact-table th, .compact-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+.compact-table th {
+  background: var(--cream-pale);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.compact-table tr:last-child td { border-bottom: none; }
+.flow {
+  background: var(--cream-pale);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.9;
+}
+.arrow {
+  color: var(--tan-deep);
+  margin: 0 6px;
+  font-weight: 700;
+}
+.callout-clinical {
+  background: var(--clinical-bg);
+  border-left: 4px solid var(--clinical);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.callout-clinical .callout-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clinical);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.callout-clinical p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text);
+}
+.callout-clinical p:last-child { margin-bottom: 0; }
+.callout-clinical strong { color: var(--clinical); }
+.callout-tip {
+  background: var(--cream-pale);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-tip strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  color: var(--navy);
+}
+.signature-footer {
+  text-align: center;
+  padding: 28px 18px 36px;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.signature-footer .name {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 22px 18px 24px; }
+  .page-header h1 { font-size: 24px; }
+  [role="tab"] { padding: 12px 12px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="breadcrumb">BIO 431 &middot; Nervous System &middot; Anatomy Notes</div>
+  <h1>Cranial Nerves</h1>
+  <p class="subtitle">Twelve paired nerves emerging from the brain and brain stem. Their functional categories, foramina of exit, individual roles, bedside testing, and the classic pathology patterns for each.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="Cranial nerves notes sections">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" tabindex="0">Overview &amp; Foramina</button>
+    <button role="tab" id="tab-sensory" aria-selected="false" aria-controls="panel-sensory" tabindex="-1">Sensory (I, II, VIII)</button>
+    <button role="tab" id="tab-eye" aria-selected="false" aria-controls="panel-eye" tabindex="-1">Eye Movement (III, IV, VI)</button>
+    <button role="tab" id="tab-face" aria-selected="false" aria-controls="panel-face" tabindex="-1">Face &amp; Mouth (V, VII)</button>
+    <button role="tab" id="tab-throat" aria-selected="false" aria-controls="panel-throat" tabindex="-1">Throat &amp; Neck (IX, X, XI)</button>
+    <button role="tab" id="tab-tongue" aria-selected="false" aria-controls="panel-tongue" tabindex="-1">Tongue (XII) &amp; Reference</button>
+  </div>
+</div>
+
+<main class="panels">
+
+<!-- ============== TAB 1: OVERVIEW & FORAMINA ============== -->
+<section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <p>Twelve pairs of cranial nerves leave the brain and brain stem, exit the skull through specific foramina, and reach targets in the head, neck, and beyond. Before learning each nerve, anchor three frameworks: the brain stem map, the seven functional information categories, and the foramina table.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Where the CNs Come From</div>
+      <h3>Brain Stem in Three Parts</h3>
+      <p>Most cranial nerves emerge from or pass through the brain stem.</p>
+      <h4>The Three Major Parts</h4>
+      <ul>
+        <li><strong>Midbrain:</strong> origin of CN III and CN IV</li>
+        <li><strong>Pons (basilar pons):</strong> origin of CN V, VI, VII, and parts of VIII</li>
+        <li><strong>Medulla:</strong> origin of CN IX, X, XI, XII, and parts of VIII</li>
+      </ul>
+      <p>CN I (olfactory) attaches directly to the cerebrum. CN II (optic) attaches to the diencephalon. The other ten emerge from the brain stem.</p>
+      <div class="callout-tip" role="note" aria-label="Nuclei vs nerves reminder">
+        <strong>Reminder:</strong> in the CNS, clusters of cell bodies are called <em>nuclei</em> and bundles of axons are called <em>tracts</em>. The cranial nerve nuclei live inside the brain stem; the nerves themselves are PNS structures.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Naming &amp; Type Mnemonics</div>
+      <h3>Two Classic Mnemonics</h3>
+      <h4>Names of the 12 CNs</h4>
+      <p><em>"On Old Olympus' Towering Tops, A Finn And German Viewed Some Hops."</em></p>
+      <ol>
+        <li>Olfactory</li>
+        <li>Optic</li>
+        <li>Oculomotor</li>
+        <li>Trochlear</li>
+        <li>Trigeminal</li>
+        <li>Abducens</li>
+        <li>Facial</li>
+        <li>Vestibulocochlear</li>
+        <li>Glossopharyngeal</li>
+        <li>Vagus</li>
+        <li>Accessory (spinal)</li>
+        <li>Hypoglossal</li>
+      </ol>
+      <h4>Function Type (S = Sensory, M = Motor, B = Both)</h4>
+      <p><em>"Some Say Marry Money, But My Brother Says Big Brains Matter More."</em></p>
+      <p>I-S, II-S, III-M, IV-M, V-B, VI-M, VII-B, VIII-S, IX-B, X-B, XI-M, XII-M</p>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Functional Information Categories</div>
+      <h3>Seven Categories the CNs Carry</h3>
+      <p>Cranial nerves convey one or more types of information. The categories use four-letter shorthand: G (general) or S (special), then S (somatic) or V (visceral), then A (afferent/sensory) or E (efferent/motor).</p>
+      <h4>Motor (Efferent) Categories</h4>
+      <table class="compact-table">
+        <thead><tr><th>Category</th><th>Carries</th><th>CNs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GSE</strong> (General Somatic Efferent)</td><td>Motor to skeletal muscles of somite origin (extraocular, intrinsic tongue)</td><td>III, IV, VI, XII</td></tr>
+          <tr><td><strong>GVE</strong> (General Visceral Efferent)</td><td>Parasympathetic to head and thoracoabdominal viscera (above splenic flexure)</td><td>III, VII, IX, X</td></tr>
+          <tr><td><strong>SVE</strong> (Special Visceral Efferent)</td><td>Motor to muscles of branchial arch origin (mastication, facial expression, middle ear, pharynx, larynx, SCM, upper trapezius)</td><td>V, VII, IX, X, XI</td></tr>
+        </tbody>
+      </table>
+      <h4>Sensory (Afferent) Categories</h4>
+      <table class="compact-table">
+        <thead><tr><th>Category</th><th>Carries</th><th>CNs</th></tr></thead>
+        <tbody>
+          <tr><td><strong>GSA</strong> (General Somatic Afferent)</td><td>Touch, pain, temperature, joint position, vibration from face, sinuses, meninges</td><td>V, VII, IX, X</td></tr>
+          <tr><td><strong>GVA</strong> (General Visceral Afferent)</td><td>Input controlling cardiorespiratory and digestive function</td><td>IX, X</td></tr>
+          <tr><td><strong>SSA</strong> (Special Somatic Afferent)</td><td>Olfaction, vision, hearing, vestibular sensation</td><td>I, II, VIII</td></tr>
+          <tr><td><strong>SVA</strong> (Special Visceral Afferent)</td><td>Taste</td><td>VII, IX, X</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Master Foramina Table</div>
+      <h3>Where Each CN Exits the Skull</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>CN</th><th>Name</th><th>Foramen / Exit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>I</strong></td><td>Olfactory</td><td>Cribriform plate of the ethmoid (olfactory foramina)</td></tr>
+          <tr><td><strong>II</strong></td><td>Optic</td><td>Optic canal</td></tr>
+          <tr><td><strong>III</strong></td><td>Oculomotor</td><td>Superior orbital fissure</td></tr>
+          <tr><td><strong>IV</strong></td><td>Trochlear</td><td>Superior orbital fissure</td></tr>
+          <tr><td><strong>V<sub>1</sub></strong></td><td>Trigeminal: Ophthalmic</td><td><strong>S</strong>uperior orbital fissure</td></tr>
+          <tr><td><strong>V<sub>2</sub></strong></td><td>Trigeminal: Maxillary</td><td>Foramen <strong>R</strong>otundum</td></tr>
+          <tr><td><strong>V<sub>3</sub></strong></td><td>Trigeminal: Mandibular</td><td>Foramen <strong>O</strong>vale</td></tr>
+          <tr><td><strong>VI</strong></td><td>Abducens</td><td>Superior orbital fissure</td></tr>
+          <tr><td><strong>VII</strong></td><td>Facial</td><td>Internal auditory canal, exits at stylomastoid foramen</td></tr>
+          <tr><td><strong>VIII</strong></td><td>Vestibulocochlear</td><td>Internal auditory canal</td></tr>
+          <tr><td><strong>IX</strong></td><td>Glossopharyngeal</td><td>Jugular foramen</td></tr>
+          <tr><td><strong>X</strong></td><td>Vagus</td><td>Jugular foramen</td></tr>
+          <tr><td><strong>XI</strong></td><td>Accessory</td><td>Jugular foramen (enters cranium via foramen magnum)</td></tr>
+          <tr><td><strong>XII</strong></td><td>Hypoglossal</td><td>Hypoglossal canal</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Trigeminal foramen mnemonic">
+        <strong>Trigeminal mnemonic:</strong> "<em>Single Room Occupancy</em>" gives the foramen for V<sub>1</sub>, V<sub>2</sub>, V<sub>3</sub> in order: <strong>S</strong>uperior orbital fissure, <strong>R</strong>otundum, <strong>O</strong>vale.
+      </div>
+      <div class="callout-tip" role="note" aria-label="Three CNs through jugular foramen">
+        <strong>Jugular foramen carries three CNs:</strong> IX, X, and XI. Damage at this foramen produces a recognizable cluster of throat, voice, and shoulder findings.
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 2: SENSORY (I, II, VIII) ============== -->
+<section role="tabpanel" id="panel-sensory" aria-labelledby="tab-sensory" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Three cranial nerves are purely sensory: olfactory (smell), optic (vision), and vestibulocochlear (hearing and balance). All three carry Special Somatic Afferent information and each has a defining bedside test.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">CN I</div>
+      <h3>Olfactory Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> olfaction (smell)</li>
+        <li><strong>Exits the skull:</strong> cribriform plate of the ethmoid bone, via the olfactory foramina</li>
+        <li><strong>Information:</strong> Special Somatic Afferent (olfaction)</li>
+      </ul>
+      <h4>Course</h4>
+      <p>Olfactory stimuli are picked up by specialized chemoreceptors on bipolar primary sensory neurons in the olfactory neuroepithelium of the upper nasal cavity. Their axons pass through the cribriform plate to synapse in the olfactory bulb.</p>
+      <h4>Testing CN I</h4>
+      <ul>
+        <li>Patient closes their eyes and occludes one nostril</li>
+        <li>Present a familiar non-irritating odor (coffee, cinnamon, soap)</li>
+        <li>Test each side separately</li>
+      </ul>
+    </article>
+
+    <div class="card callout-clinical" role="note" aria-label="Olfactory pathology">
+      <p class="callout-label">Pathology: Anosmia</p>
+      <p><strong>Definition:</strong> loss of olfactory function.</p>
+      <p><strong>Unilateral anosmia:</strong> usually not detected by the patient because the contralateral side compensates.</p>
+      <p><strong>Bilateral anosmia:</strong> noticeable; presents with decreased taste because smell contributes heavily to flavor perception.</p>
+      <p><strong>Causes:</strong></p>
+      <ul>
+        <li>Head trauma (tearing of bipolar neurons at the cribriform plate)</li>
+        <li>Viral infections (damage to olfactory neuroepithelium)</li>
+        <li>Obstruction of nasal passages</li>
+        <li>Intracranial lesions: tumors, granulomas, abscesses</li>
+      </ul>
+    </div>
+
+    <article class="card">
+      <div class="card-eyebrow">CN II</div>
+      <h3>Optic Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> vision</li>
+        <li><strong>Exits the skull:</strong> optic canal (in the orbit)</li>
+        <li><strong>Information:</strong> Special Somatic Afferent (vision)</li>
+      </ul>
+      <h4>Course</h4>
+      <p>Retinal ganglion cell axons (technically CNS, so really tracts rather than peripheral nerves) form the optic nerve.</p>
+      <div class="flow" aria-label="Optic pathway">
+        Retina <span class="arrow">&rarr;</span> Optic nerve <span class="arrow">&rarr;</span> Optic chiasm <span class="arrow">&rarr;</span> Optic tract
+      </div>
+      <h4>Testing CN II</h4>
+      <ul>
+        <li>Visual acuity (Snellen chart)</li>
+        <li>Ophthalmoscopic exam: visualize the retina, retinal blood vessels, and optic disc; look for <strong>papilledema</strong></li>
+        <li>Visual fields (confrontation testing)</li>
+      </ul>
+    </article>
+
+    <div class="card callout-clinical" role="note" aria-label="Optic nerve pathology">
+      <p class="callout-label">Pathology: Anopia &amp; Papilledema</p>
+      <p><strong>Anopia:</strong> visual field defect. <em>Hemianopia</em> means partial loss of the visual field.</p>
+      <p><strong>Lesion location maps to defect:</strong></p>
+      <ul>
+        <li><strong>Optic nerve</strong> (in front of the chiasm): defect in <em>one</em> eye only</li>
+        <li><strong>Optic tract</strong> (behind the chiasm): similar deficits in <em>both</em> eyes</li>
+        <li><strong>Optic chiasm</strong>: loss of peripheral visual fields in <em>both</em> eyes (bitemporal hemianopia, classic for pituitary tumor)</li>
+      </ul>
+      <p><strong>Papilledema:</strong> swelling of the optic disc. Cause: increased intracranial pressure (meningitis, tumor, hydrocephalus).</p>
+    </div>
+
+    <article class="card">
+      <div class="card-eyebrow">CN VIII</div>
+      <h3>Vestibulocochlear Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> hearing and equilibrium</li>
+        <li><strong>Exits the skull:</strong> internal auditory canal</li>
+        <li><strong>Information:</strong> Special Somatic Afferent (hearing and vestibular sensation)</li>
+      </ul>
+      <h4>Two Components</h4>
+      <ul>
+        <li><strong>Cochlear branch:</strong> hearing</li>
+        <li><strong>Vestibular branch:</strong> balance and head position</li>
+      </ul>
+      <h4>Testing CN VIII</h4>
+      <ul>
+        <li>Tuning fork tests (Rinne, Weber) to detect hearing loss and distinguish its type</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Hearing Loss Types</div>
+      <h3>Three Patterns</h3>
+      <ul>
+        <li><strong>Conductive hearing loss:</strong> a problem with the transmission of sound through the outer or middle ear (cerumen, otitis media, ossicle dysfunction)</li>
+        <li><strong>Sensorineural hearing loss:</strong> a problem with the cochlea or the cochlear nerve itself (presbycusis, noise damage, acoustic neuroma)</li>
+        <li><strong>Mixed:</strong> features of both</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Hearing test logic">
+        <strong>Clinical logic:</strong> tuning fork tests separate "where is the problem?" If sound conducts better through bone than air on the affected side, the issue is conductive. If air conduction is preserved but sound is faint everywhere on that side, the issue is sensorineural.
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 3: EYE MOVEMENT (III, IV, VI) ============== -->
+<section role="tabpanel" id="panel-eye" aria-labelledby="tab-eye" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Three nerves move the eyeball: oculomotor, trochlear, and abducens. Oculomotor does most of the work; trochlear and abducens each control a single muscle. They are tested together using the H-pattern, which stresses each muscle in isolation.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">CN III</div>
+      <h3>Oculomotor Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> movement of the eye; constriction of the pupil</li>
+        <li><strong>Exits the skull:</strong> superior orbital fissure</li>
+        <li><strong>Information:</strong> GSE to extraocular muscles; GVE (parasympathetic) to pupillary constrictor and ciliary muscles</li>
+      </ul>
+      <h4>GSE: Skeletal Muscles of the Eye</h4>
+      <ul>
+        <li>Levator palpebrae superioris (eyelid elevation)</li>
+        <li>Superior rectus</li>
+        <li>Inferior rectus</li>
+        <li>Medial rectus</li>
+        <li>Inferior oblique</li>
+      </ul>
+      <h4>GVE: Parasympathetic</h4>
+      <ul>
+        <li><strong>Pupillary constrictor</strong> muscle (pupil constriction)</li>
+        <li><strong>Ciliary</strong> muscle (lens accommodation for near vision)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN IV</div>
+      <h3>Trochlear Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> movement of the eye</li>
+        <li><strong>Exits the skull:</strong> superior orbital fissure</li>
+        <li><strong>Information:</strong> GSE to a single muscle</li>
+      </ul>
+      <h4>The One Muscle</h4>
+      <ul>
+        <li><strong>Superior oblique:</strong> causes depression and intorsion (medial rotation) of the eye, especially when the eye is adducted</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Trochlear distinction">
+        <strong>Two distinctions of CN IV:</strong> it is the <em>only</em> cranial nerve that exits from the dorsal aspect of the brain stem, and the <em>only</em> cranial nerve whose axons cross before innervating their target.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN VI</div>
+      <h3>Abducens Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> movement of the eye</li>
+        <li><strong>Exits the skull:</strong> superior orbital fissure</li>
+        <li><strong>Information:</strong> GSE to a single muscle</li>
+      </ul>
+      <h4>The One Muscle</h4>
+      <ul>
+        <li><strong>Lateral rectus:</strong> abduction of the eye (turns the eye outward, away from the nose)</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Abducens function memory cue">
+        <strong>Memory cue:</strong> the name <em>abducens</em> is the function. The nerve abducts the eye.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Combined Testing</div>
+      <h3>The H-Pattern Exam</h3>
+      <p>All extraocular skeletal muscles are tested together. The patient follows a moving target (finger or pen) traced in an H pattern, stopping at each cardinal direction.</p>
+      <h4>What the H-Pattern Reveals</h4>
+      <ul>
+        <li>Failure to move the eye in a specific direction points to dysfunction in the muscle responsible for that direction, and therefore the nerve supplying it</li>
+        <li><strong>Cannot abduct (eye drifts medially):</strong> CN VI (lateral rectus) lesion</li>
+        <li><strong>Cannot look down and in:</strong> CN IV (superior oblique) lesion</li>
+        <li><strong>Most other directions impaired, plus ptosis and dilated pupil:</strong> CN III (oculomotor) lesion</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Eye Movement Pathology</div>
+      <h3>Nystagmus</h3>
+      <p><strong>Definition:</strong> repetitive, uncontrolled eye movements that impact vision and depth perception. Can lead to problems with balance and coordination.</p>
+      <h4>Types</h4>
+      <ul>
+        <li><strong>Horizontal nystagmus:</strong> side-to-side movement</li>
+        <li><strong>Vertical nystagmus:</strong> up-and-down movement</li>
+        <li><strong>Rotary (torsional) nystagmus:</strong> circular movement</li>
+      </ul>
+      <h4>Origin</h4>
+      <ul>
+        <li>Can be congenital or acquired</li>
+        <li>Acquired forms can result from lesions in the brain or in the inner ear</li>
+        <li>Drugs and toxins (including alcohol) commonly cause horizontal nystagmus</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Pupillary Light Reflex</div>
+      <h3>The Two-Nerve Reflex</h3>
+      <p>Shining light in one eye causes both pupils to constrict. The reflex tests two cranial nerves at once.</p>
+      <ul>
+        <li><strong>Sensory (afferent) limb:</strong> CN II (optic nerve) carries the light signal in</li>
+        <li><strong>Motor (efferent) limb:</strong> CN III (oculomotor) carries the parasympathetic constriction signal out</li>
+      </ul>
+      <h4>Interpreting Findings</h4>
+      <ul>
+        <li><strong>No constriction in either eye when light shines in the affected eye:</strong> afferent (CN II) problem in that eye</li>
+        <li><strong>Constriction of the contralateral eye but not the affected eye when light shines in either eye:</strong> efferent (CN III) problem in the affected eye</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 4: FACE & MOUTH (V, VII) ============== -->
+<section role="tabpanel" id="panel-face" aria-labelledby="tab-face" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>The trigeminal and facial nerves between them serve almost everything you do with your face. Trigeminal handles sensation across the entire face plus the muscles that chew. Facial handles the muscles that emote, plus taste from the front of the tongue and three of the four salivary glands.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">CN V</div>
+      <h3>Trigeminal Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> sensation to face, mouth, sinuses, meninges; motor to muscles of mastication and tensor tympani</li>
+        <li><strong>Exits the skull:</strong> three divisions, three foramina (Single Room Occupancy)
+          <ul>
+            <li>V<sub>1</sub> Ophthalmic: <strong>S</strong>uperior orbital fissure</li>
+            <li>V<sub>2</sub> Maxillary: Foramen <strong>R</strong>otundum</li>
+            <li>V<sub>3</sub> Mandibular: Foramen <strong>O</strong>vale</li>
+          </ul>
+        </li>
+        <li><strong>Information:</strong> GSA (sensory) and SVE (motor)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN V Sensory</div>
+      <h3>GSA: Sensation to the Face</h3>
+      <p>Each of the three divisions covers a horizontal band of the face.</p>
+      <h4>Territory</h4>
+      <ul>
+        <li><strong>V<sub>1</sub> Ophthalmic:</strong> forehead, upper eyelid, cornea, dorsal nose</li>
+        <li><strong>V<sub>2</sub> Maxillary:</strong> mid-face, upper lip, upper teeth, lower eyelid</li>
+        <li><strong>V<sub>3</sub> Mandibular:</strong> lower jaw, lower lip, lower teeth, anterior two-thirds of the tongue (general sensation only)</li>
+      </ul>
+      <h4>Modalities Carried</h4>
+      <ul>
+        <li>Touch, pain, temperature</li>
+        <li>Joint position sense, vibration</li>
+        <li>From: face, mouth, anterior two-thirds of tongue, nasal sinuses, meninges</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN V Motor</div>
+      <h3>SVE: Muscles of Mastication</h3>
+      <p>The motor root travels with V<sub>3</sub> (mandibular division).</p>
+      <h4>Targets</h4>
+      <ul>
+        <li><strong>Muscles of mastication:</strong> masseter, temporalis, medial and lateral pterygoids, mylohyoid, anterior belly of digastric</li>
+        <li><strong>Tensor tympani</strong> (middle ear): dampens loud sounds</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN V Testing</div>
+      <h3>Examination</h3>
+      <ul>
+        <li>Sensory exam of the face (light touch and pain) in each of the three divisions, bilaterally</li>
+        <li>Compare sharp vs soft stimuli, looking for symmetry side to side</li>
+        <li><strong>Corneal reflex:</strong> touching the cornea elicits a blink (sensory limb is V<sub>1</sub>; motor limb is CN VII)</li>
+        <li>Have patient bite down; palpate the masseter and temporalis for symmetric contraction</li>
+      </ul>
+    </article>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Trigeminal neuralgia">
+      <p class="callout-label">Pathology: Trigeminal Neuralgia (Tic Douloureux)</p>
+      <p><strong>Definition:</strong> recurrent episodes of brief, severe pain lasting from seconds to a few minutes.</p>
+      <p><strong>Location:</strong> most often in V<sub>2</sub> or V<sub>3</sub> distribution.</p>
+      <p><strong>Demographics:</strong> typically appears after age 35.</p>
+      <p><strong>Triggers:</strong> chewing, shaving, brushing teeth, or even lightly touching a specific area of the face.</p>
+      <p><strong>Causes:</strong> mostly unknown. Occasionally caused by compression of the trigeminal nerve by an aberrant blood vessel. Tumor must be ruled out. Also occurs in multiple sclerosis (demyelination).</p>
+    </div>
+
+    <article class="card">
+      <div class="card-eyebrow">CN VII</div>
+      <h3>Facial Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> muscles of facial expression; taste; lacrimation; salivation</li>
+        <li><strong>Exits the skull:</strong> internal auditory canal; exits the skull at the stylomastoid foramen</li>
+        <li><strong>Information:</strong> SVE (motor); GVE (parasympathetic); SVA (taste); GSA (small region near external auditory meatus)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN VII Functions in Detail</div>
+      <h3>Four Roles</h3>
+      <h4>SVE: Motor</h4>
+      <ul>
+        <li>Muscles of facial expression</li>
+        <li>Stapedius (middle ear): dampens loud sounds</li>
+      </ul>
+      <h4>GVE: Parasympathetic</h4>
+      <ul>
+        <li>Lacrimal gland (tear production)</li>
+        <li>Submandibular and sublingual salivary glands</li>
+        <li>Nasal and palatine glands</li>
+      </ul>
+      <h4>SVA: Taste</h4>
+      <ul>
+        <li>Anterior two-thirds of the tongue</li>
+      </ul>
+      <h4>GSA: Sensation</h4>
+      <ul>
+        <li>Small region near the external auditory meatus</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN VII Testing</div>
+      <h3>Examination</h3>
+      <ul>
+        <li>Have the patient make faces: smile, frown, pucker, blink, puff cheeks, wrinkle forehead, raise eyebrows</li>
+        <li>Look for symmetry on both sides</li>
+        <li>Apply taste stimulus to both sides of the anterior tongue</li>
+      </ul>
+    </article>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Bell's palsy versus stroke">
+      <p class="callout-label">Pathology: Bell's Palsy vs Stroke</p>
+      <p>The classic teaching question with CN VII is how to distinguish a peripheral lesion (Bell's palsy) from a central lesion (stroke). The answer comes from the cortical wiring: the upper face receives motor input from <em>both</em> motor cortices, while the lower face receives input from only the <em>contralateral</em> cortex.</p>
+      <p><strong>Bell's palsy (peripheral CN VII lesion):</strong> entire side of the face is affected. The patient cannot wrinkle the forehead or close the eye on the affected side.</p>
+      <p><strong>Stroke (central upper motor neuron lesion):</strong> only the lower face is affected on the contralateral side. The patient can still wrinkle the forehead and close both eyes because the upper face receives bilateral cortical input.</p>
+      <p><strong>Bell's palsy specifics:</strong> idiopathic in most cases, often viral. Usually unilateral. Most patients recover fully within weeks to months.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============== TAB 5: THROAT & NECK (IX, X, XI) ============== -->
+<section role="tabpanel" id="panel-throat" aria-labelledby="tab-throat" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Three cranial nerves share the jugular foramen: glossopharyngeal, vagus, and accessory. Together they handle swallowing, voice, gag reflex, parasympathetic supply to most of the body, and the sternocleidomastoid and trapezius muscles. The gag reflex elegantly tests two of them at once.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">CN IX</div>
+      <h3>Glossopharyngeal Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> pharyngeal muscles; carotid body reflexes; salivation</li>
+        <li><strong>Exits the skull:</strong> jugular foramen</li>
+      </ul>
+      <h4>Information Carried</h4>
+      <ul>
+        <li><strong>SVE:</strong> stylopharyngeus muscle</li>
+        <li><strong>GVE (parasympathetic):</strong> parotid gland (salivation)</li>
+        <li><strong>SVA (taste):</strong> posterior one-third of the tongue</li>
+        <li><strong>GVA:</strong> chemoreceptors and baroreceptors of the carotid body</li>
+        <li><strong>GSA:</strong> middle ear, region near the external auditory meatus, pharynx, posterior one-third of the tongue (general sensation)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN X</div>
+      <h3>Vagus Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> parasympathetic to most thoracoabdominal organs; laryngeal muscles (voice); pharyngeal muscles; aortic arch reflexes</li>
+        <li><strong>Exits the skull:</strong> jugular foramen</li>
+      </ul>
+      <h4>Information Carried</h4>
+      <ul>
+        <li><strong>SVE:</strong> pharyngeal muscles (swallowing) and laryngeal muscles (voice)</li>
+        <li><strong>GVE (parasympathetic):</strong> heart, lungs, digestive tract (down to the splenic flexure of the colon)</li>
+        <li><strong>SVA (taste):</strong> epiglottis and pharynx</li>
+        <li><strong>GVA:</strong> chemoreceptors and baroreceptors of the aortic arch</li>
+        <li><strong>GSA:</strong> pharynx, meninges, small region near the external auditory meatus</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Vagus name origin">
+        <strong>About the name:</strong> "vagus" means "wandering" in Latin. CN X earns the name by traveling far from the head down through the thorax and into the abdomen, supplying parasympathetic input to most internal organs along the way.
+      </div>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Combined Testing</div>
+      <h3>Why CN IX and CN X Are Tested Together</h3>
+      <p>Glossopharyngeal and vagus share the pharynx as a target. Many bedside tests can therefore evaluate both at once.</p>
+      <h4>Examination</h4>
+      <ul>
+        <li><strong>Voice quality:</strong> ask the patient to speak; listen for hoarseness (CN X laryngeal muscles)</li>
+        <li><strong>Soft palate elevation:</strong> have patient say "Ahhhh"; the soft palate should rise symmetrically and the uvula should remain midline</li>
+        <li><strong>Gag reflex:</strong> tested bilaterally</li>
+        <li><strong>Swallowing:</strong> ask the patient to swallow; observe smoothness and listen for cough</li>
+        <li><strong>Bitter taste:</strong> applied to the posterior one-third of the tongue (CN IX taste)</li>
+      </ul>
+    </article>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Gag reflex localization">
+      <p class="callout-label">The Gag Reflex: A Two-Nerve Test</p>
+      <p><strong>Method:</strong> use a long-handled swab to touch the pharyngeal wall on each side.</p>
+      <p><strong>Reflex arc:</strong></p>
+      <ul>
+        <li><strong>Sensory (afferent) limb:</strong> CN IX (glossopharyngeal)</li>
+        <li><strong>Motor (efferent) limb:</strong> CN X (vagus)</li>
+      </ul>
+      <p><strong>Findings and what they mean:</strong></p>
+      <ul>
+        <li><strong>Normal:</strong> symmetrical elevation of the uvula, fauces, and tonsillar arches</li>
+        <li><strong>Non-symmetrical elevation</strong> when one side is touched: problem with the <em>sensory</em> arc (CN IX) on that side</li>
+        <li><strong>No movement of the uvula at all</strong> with the gag reflex: problem with the <em>motor</em> arc (CN X), i.e. muscle paralysis</li>
+      </ul>
+    </div>
+
+    <article class="card">
+      <div class="card-eyebrow">CN XI</div>
+      <h3>Accessory Nerve (Spinal Accessory)</h3>
+      <ul>
+        <li><strong>General function:</strong> head turning and shoulder shrugging</li>
+        <li><strong>Exits the skull:</strong> jugular foramen (enters the cranium through the foramen magnum)</li>
+        <li><strong>Information:</strong> SVE to sternocleidomastoid and upper trapezius</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Accessory pathway oddity">
+        <strong>The unusual journey:</strong> CN XI is the only cranial nerve whose fibers originate from the cervical spinal cord (C1 to C5/C6), travel <em>up</em> through the foramen magnum into the cranium, then exit again through the jugular foramen to reach their muscle targets in the neck.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN XI Testing</div>
+      <h3>Examination</h3>
+      <ul>
+        <li><strong>SCM test:</strong> turn the patient's head to one side, then the other, against resistance. The contralateral SCM contracts to turn the head.</li>
+        <li><strong>Trapezius test:</strong> have the patient shrug shoulders upward against resistance</li>
+        <li>Observe the SCM and trapezius for atrophy or fasciculations</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="SCM testing logic">
+        <strong>Quick logic:</strong> turning the head to the <em>left</em> requires contraction of the <em>right</em> SCM (which pulls the mastoid process toward the sternum). So weak head-turning to the left points to right CN XI dysfunction.
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 6: HYPOGLOSSAL & REFERENCE ============== -->
+<section role="tabpanel" id="panel-tongue" aria-labelledby="tab-tongue" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>The hypoglossal nerve does one job: move the tongue. The classic clinical pearl is which way the tongue deviates with a lesion. Use this final tab to lock in CN XII and to consolidate the entire 12-nerve set with a master reference table and the canonical study anchors.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">CN XII</div>
+      <h3>Hypoglossal Nerve</h3>
+      <ul>
+        <li><strong>General function:</strong> tongue movement</li>
+        <li><strong>Exits the skull:</strong> hypoglossal canal</li>
+        <li><strong>Information:</strong> GSE (somatic motor) to the intrinsic muscles of the tongue</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CN XII Testing</div>
+      <h3>Examination</h3>
+      <ul>
+        <li>Observe the tongue at rest for fasciculations or wasting</li>
+        <li>Have the patient protrude the tongue; look for deviation</li>
+        <li>Test strength on both sides (push tongue against the cheek; examiner resists from the outside)</li>
+      </ul>
+    </article>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Hypoglossal lesion deviation">
+      <p class="callout-label">Pathology: The Tongue Deviates Toward the Lesion</p>
+      <p><strong>Rule:</strong> with a hypoglossal nerve lesion, the tongue deviates <em>toward</em> the side of the lesion when protruded.</p>
+      <p><strong>Why:</strong> the genioglossus muscle on each side pulls the tongue forward and toward the opposite side. When the right hypoglossal nerve is intact, the right genioglossus pulls the tongue tip forward and to the left. When the right hypoglossal nerve is intact and the left is damaged, only the right genioglossus works, pulling the tongue forward and to the left (away from the working nerve, which means toward the lesion).</p>
+      <p><strong>Example:</strong> if the left hypoglossal nerve is lesioned, the tongue deviates toward the left on protrusion (because the working right genioglossus pulls the tongue forward and to the left).</p>
+    </div>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Master Reference</div>
+      <h3>All 12 Cranial Nerves at a Glance</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>CN</th><th>Name</th><th>Type</th><th>Foramen</th><th>Core Function</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>I</strong></td><td>Olfactory</td><td>S</td><td>Cribriform plate</td><td>Smell</td></tr>
+          <tr><td><strong>II</strong></td><td>Optic</td><td>S</td><td>Optic canal</td><td>Vision</td></tr>
+          <tr><td><strong>III</strong></td><td>Oculomotor</td><td>M</td><td>Superior orbital fissure</td><td>Eye movement, pupil constriction, accommodation</td></tr>
+          <tr><td><strong>IV</strong></td><td>Trochlear</td><td>M</td><td>Superior orbital fissure</td><td>Eye movement (superior oblique)</td></tr>
+          <tr><td><strong>V</strong></td><td>Trigeminal</td><td>B</td><td>SOF / Rotundum / Ovale</td><td>Face sensation; muscles of mastication</td></tr>
+          <tr><td><strong>VI</strong></td><td>Abducens</td><td>M</td><td>Superior orbital fissure</td><td>Eye abduction (lateral rectus)</td></tr>
+          <tr><td><strong>VII</strong></td><td>Facial</td><td>B</td><td>Stylomastoid foramen</td><td>Facial expression, taste (anterior 2/3), salivation, tearing</td></tr>
+          <tr><td><strong>VIII</strong></td><td>Vestibulocochlear</td><td>S</td><td>Internal auditory canal</td><td>Hearing and balance</td></tr>
+          <tr><td><strong>IX</strong></td><td>Glossopharyngeal</td><td>B</td><td>Jugular foramen</td><td>Pharynx, taste (posterior 1/3), parotid, carotid body</td></tr>
+          <tr><td><strong>X</strong></td><td>Vagus</td><td>B</td><td>Jugular foramen</td><td>Voice, swallowing, parasympathetic to thoracoabdominal viscera</td></tr>
+          <tr><td><strong>XI</strong></td><td>Accessory</td><td>M</td><td>Jugular foramen</td><td>SCM and upper trapezius</td></tr>
+          <tr><td><strong>XII</strong></td><td>Hypoglossal</td><td>M</td><td>Hypoglossal canal</td><td>Tongue movement</td></tr>
+        </tbody>
+      </table>
+      <p style="font-size: 12px; color: var(--text-muted); margin-top: 6px;">Type key: S = Sensory only, M = Motor only, B = Both.</p>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Study Anchors</div>
+      <h3>If You Remember Nothing Else</h3>
+      <ul>
+        <li><strong>Names mnemonic:</strong> "On Old Olympus' Towering Tops, A Finn And German Viewed Some Hops."</li>
+        <li><strong>Type mnemonic:</strong> "Some Say Marry Money, But My Brother Says Big Brains Matter More" (S-S-M-M-B-M-B-S-B-B-M-M).</li>
+        <li><strong>Trigeminal foramina:</strong> Single Room Occupancy (V<sub>1</sub> SOF, V<sub>2</sub> Rotundum, V<sub>3</sub> Ovale).</li>
+        <li><strong>Jugular foramen carries three:</strong> CN IX, X, XI.</li>
+        <li><strong>Pure sensory (S):</strong> I, II, VIII. <strong>Pure motor (M):</strong> III, IV, VI, XI, XII. <strong>Both (B):</strong> V, VII, IX, X.</li>
+        <li><strong>Parasympathetic CNs:</strong> III (eye), VII (lacrimation, salivation), IX (parotid), X (most viscera).</li>
+        <li><strong>CN III lesion:</strong> ptosis, dilated pupil, "down and out" eye position.</li>
+        <li><strong>CN VI lesion:</strong> eye fails to abduct.</li>
+        <li><strong>Bell's palsy</strong> affects entire half of the face. <strong>Stroke</strong> spares the forehead.</li>
+        <li><strong>Gag reflex:</strong> CN IX in (sensory), CN X out (motor).</li>
+        <li><strong>Hypoglossal lesion:</strong> tongue deviates <em>toward</em> the side of the lesion.</li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="signature-footer">
+  <div class="name">Dr. Sharilyn Rennie</div>
+  <div>BIO 431 &middot; Anatomy &amp; Physiology &middot; Cranial Nerves Notes</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+})();
+</script>
+
+<script>
+function sendHeight() {
+  var height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight
+  );
+  var id = '';
+  try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+  try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+}
+if ('ResizeObserver' in window) {
+  try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+setTimeout(sendHeight, 100);
+setTimeout(sendHeight, 500);
+</script>
+
+</body>
+</html>
