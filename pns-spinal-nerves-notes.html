@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PNS: Spinal Nerves & Peripheral Nervous System Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Lora:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+}
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: #fff;
+  padding: 28px 28px 32px;
+}
+.breadcrumb {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tan-soft);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.page-header h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  margin: 0 0 8px;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.page-header p.subtitle {
+  margin: 0;
+  font-size: 15px;
+  color: rgba(255,255,255,0.78);
+  max-width: 720px;
+  font-weight: 400;
+}
+.tabs-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 8px rgba(27, 40, 69, 0.04);
+}
+[role="tablist"] {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  padding: 0 18px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+[role="tab"] {
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-soft);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.18s ease, border-color 0.18s ease;
+  letter-spacing: 0.01em;
+}
+[role="tab"]:hover { color: var(--navy); }
+[role="tab"][aria-selected="true"] {
+  color: var(--navy);
+  border-bottom-color: var(--navy);
+}
+[role="tab"]:focus-visible {
+  outline: 2px solid var(--tan);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+.panels {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 18px 40px;
+}
+[role="tabpanel"] { outline: none; }
+[role="tabpanel"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--tan);
+  border-radius: 6px;
+}
+.section-intro {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  padding: 14px 18px;
+  border-radius: 4px;
+  margin: 4px 0 20px;
+}
+.section-intro p {
+  margin: 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 15px;
+  line-height: 1.6;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 22px;
+  box-shadow: var(--shadow);
+  transition: box-shadow 0.18s ease, transform 0.18s ease;
+}
+.card:hover {
+  box-shadow: var(--shadow-lg);
+}
+.card.span-2 { grid-column: 1 / -1; }
+.card-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+.card h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  color: var(--navy);
+  margin: 0 0 12px;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+.card h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--navy);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 14px 0 6px;
+}
+.card h4:first-of-type { margin-top: 4px; }
+.card p { margin: 0 0 10px; color: var(--text-soft); font-size: 15px; }
+.card ul, .card ol { margin: 0 0 10px; padding-left: 20px; color: var(--text-soft); font-size: 15px; }
+.card li { margin-bottom: 5px; }
+.card strong { color: var(--navy); font-weight: 700; }
+.card em { font-family: 'Lora', Georgia, serif; }
+.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 4px;
+  font-size: 14px;
+}
+.compact-table th, .compact-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+.compact-table th {
+  background: var(--cream-pale);
+  color: var(--navy);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.compact-table tr:last-child td { border-bottom: none; }
+.flow {
+  background: var(--cream-pale);
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin: 8px 0 4px;
+  font-size: 14px;
+  color: var(--navy);
+  font-weight: 600;
+  line-height: 1.9;
+}
+.arrow {
+  color: var(--tan-deep);
+  margin: 0 6px;
+  font-weight: 700;
+}
+.callout-clinical {
+  background: var(--clinical-bg);
+  border-left: 4px solid var(--clinical);
+  border-radius: 6px;
+  padding: 14px 18px;
+  margin: 10px 0;
+}
+.callout-clinical .callout-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--clinical);
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+.callout-clinical p {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--text);
+}
+.callout-clinical p:last-child { margin-bottom: 0; }
+.callout-clinical strong { color: var(--clinical); }
+.callout-tip {
+  background: var(--cream-pale);
+  border: 1px solid var(--border-soft);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 10px 0;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  color: var(--text-soft);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.callout-tip strong {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-style: normal;
+  color: var(--navy);
+}
+.signature-footer {
+  text-align: center;
+  padding: 28px 18px 36px;
+  border-top: 1px solid var(--border-soft);
+  margin-top: 20px;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+.signature-footer .name {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: var(--navy);
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .page-header { padding: 22px 18px 24px; }
+  .page-header h1 { font-size: 24px; }
+  [role="tab"] { padding: 12px 12px; font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="breadcrumb">BIO 431 &middot; Nervous System &middot; Anatomy Notes</div>
+  <h1>PNS: Spinal Nerves &amp; Peripheral Nervous System</h1>
+  <p class="subtitle">Spinal nerve architecture, the four major plexuses and the nerves they spin off, intercostal nerves, dermatomes, and the classic peripheral nerve injury patterns.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="PNS and spinal nerves notes sections">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview" tabindex="0">PNS Overview</button>
+    <button role="tab" id="tab-anatomy" aria-selected="false" aria-controls="panel-anatomy" tabindex="-1">Spinal Nerve Anatomy</button>
+    <button role="tab" id="tab-upper" aria-selected="false" aria-controls="panel-upper" tabindex="-1">Cervical &amp; Brachial</button>
+    <button role="tab" id="tab-brachial-clinical" aria-selected="false" aria-controls="panel-brachial-clinical" tabindex="-1">Brachial Injuries</button>
+    <button role="tab" id="tab-lower" aria-selected="false" aria-controls="panel-lower" tabindex="-1">Lumbar, Sacral, Coccygeal</button>
+    <button role="tab" id="tab-dermatomes" aria-selected="false" aria-controls="panel-dermatomes" tabindex="-1">Dermatomes &amp; Reference</button>
+  </div>
+</div>
+
+<main class="panels">
+
+<!-- ============== TAB 1: PNS OVERVIEW ============== -->
+<section role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <p>The peripheral nervous system is everything outside the brain and cord: the receptors that pick up the world, the nerves that carry signals, the ganglia where cell bodies cluster, and the motor endings that move us. Before tracing individual nerves, get the framework.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Definition</div>
+      <h3>What the PNS Is</h3>
+      <p>The PNS includes <strong>all neural structures outside the brain and spinal cord</strong>.</p>
+      <h4>Components</h4>
+      <ul>
+        <li>Sensory (afferent) receptors</li>
+        <li>Peripheral nerves and their associated structures</li>
+        <li>Ganglia (clusters of cell bodies in the PNS)</li>
+        <li>Motor (efferent) endings</li>
+      </ul>
+      <h4>Function</h4>
+      <ul>
+        <li>Carries input from sensory receptors to the CNS</li>
+        <li>Carries motor output from the CNS to effectors</li>
+        <li>Allows movement, response, and self-care</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">CNS vs. PNS Vocabulary</div>
+      <h3>Terminology Crosswalk</h3>
+      <p>The same structures use different names depending on whether they live in the CNS or PNS.</p>
+      <table class="compact-table">
+        <thead>
+          <tr><th></th><th>Cell Bodies</th><th>Axons</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>CNS</strong></td><td>Nuclei</td><td>Tracts</td></tr>
+          <tr><td><strong>PNS</strong></td><td>Ganglia</td><td>Nerves</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Vocabulary memory cue">
+        <strong>Memory cue:</strong> in the CNS, cells form <em>nuclei</em> and axons form <em>tracts</em>. In the PNS, cells form <em>ganglia</em> and axons form <em>nerves</em>. Same biology, different addresses.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Sensory Side</div>
+      <h3>Sensory Receptors: Function</h3>
+      <p>Receptors respond to changes (stimuli) in the internal or external environment.</p>
+      <h4>General Sequence</h4>
+      <ol>
+        <li>Stimulus activates a sensory receptor</li>
+        <li>Receptor triggers a nerve impulse along an afferent (sensory) PNS axon</li>
+        <li>Information travels to the brain</li>
+        <li>Brain produces <strong>sensation</strong> (awareness) and <strong>perception</strong> (interpretation)</li>
+      </ol>
+      <div class="callout-tip" role="note" aria-label="Sensation versus perception example">
+        <strong>Example:</strong> a pebble in your shoe. The <em>sensation</em> is localized deep pressure. The <em>perception</em> is "there is a pebble in my shoe."
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Receptor Classification</div>
+      <h3>How Receptors Are Sorted</h3>
+      <p>Receptors are classified three ways: by location, by stimulus type, and by structure.</p>
+      <h4>By Location</h4>
+      <ul>
+        <li><strong>Exteroceptors:</strong> respond to stimuli at body surface</li>
+        <li><strong>Interoceptors (visceroceptors):</strong> respond to stimuli inside body, in viscera</li>
+        <li><strong>Proprioceptors:</strong> respond to position and movement of body parts</li>
+      </ul>
+      <h4>By Stimulus Type</h4>
+      <ul>
+        <li><strong>Mechanoreceptors:</strong> mechanical force, including touch, pressure (baroreceptors), vibration, stretch</li>
+        <li><strong>Thermoreceptors:</strong> temperature</li>
+        <li><strong>Chemoreceptors:</strong> chemicals, taste, smell</li>
+        <li><strong>Photoreceptors:</strong> light</li>
+        <li><strong>Nociceptors:</strong> pain (tissue damage)</li>
+      </ul>
+      <h4>By Structure</h4>
+      <ul>
+        <li><strong>Encapsulated:</strong> wrapped in connective tissue capsule</li>
+        <li><strong>Nonencapsulated (free nerve endings):</strong> bare dendrites</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Nerve Structure</div>
+      <h3>What a Nerve Is</h3>
+      <p>A <strong>nerve</strong> is a cordlike organ of the PNS, made of parallel bundles of peripheral axons (some myelinated, some not), supported by connective tissue.</p>
+      <h4>Two Classifications</h4>
+      <ul>
+        <li><strong>Cranial nerves:</strong> arise from the brain or brain stem (12 pairs, covered separately)</li>
+        <li><strong>Spinal nerves:</strong> arise from the spinal cord (31 pairs)</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">PNS Functional Divisions</div>
+      <h3>Big Picture Map</h3>
+      <p>The PNS is functionally divided into the somatic system (voluntary, skeletal muscle) and the autonomic system (involuntary, viscera). The autonomic system splits further into sympathetic, parasympathetic, and enteric divisions.</p>
+      <div class="flow" aria-label="PNS functional divisions">
+        PNS <span class="arrow">&rarr;</span> Somatic <em>(voluntary)</em>
+        <br />
+        PNS <span class="arrow">&rarr;</span> Autonomic <span class="arrow">&rarr;</span> Sympathetic, Parasympathetic, Enteric
+      </div>
+      <p>The autonomic divisions get their own dedicated note set. This file focuses on the somatic side: spinal nerves and the named peripheral nerves they form.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 2: SPINAL NERVE ANATOMY ============== -->
+<section role="tabpanel" id="panel-anatomy" aria-labelledby="tab-anatomy" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Every spinal nerve is a mixed nerve. Sensory axons enter through the back, motor axons leave through the front, and they merge just outside the cord into a single nerve trunk. The connective tissue wrapping is the same idea as muscle wrapping, just with different names.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Counting Nerves</div>
+      <h3>31 Pairs of Spinal Nerves</h3>
+      <p>Spinal nerves are paths of communication between the cord and specific regions of the body.</p>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Region</th><th>Pairs</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cervical</strong></td><td>8 (C1 to C8)</td></tr>
+          <tr><td><strong>Thoracic</strong></td><td>12 (T1 to T12)</td></tr>
+          <tr><td><strong>Lumbar</strong></td><td>5 (L1 to L5)</td></tr>
+          <tr><td><strong>Sacral</strong></td><td>5 (S1 to S5)</td></tr>
+          <tr><td><strong>Coccygeal</strong></td><td>1 (Co1)</td></tr>
+        </tbody>
+      </table>
+      <p>All 31 are <strong>mixed nerves</strong>: they carry both sensory and motor axons.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Roots and Rootlets</div>
+      <h3>How a Spinal Nerve Connects to the Cord</h3>
+      <p><strong>Roots</strong> are bundles of axons that connect each spinal nerve to a segment of the cord. <strong>Rootlets</strong> are the even smaller bundles that converge to form a root.</p>
+      <h4>Posterior (Dorsal) Root and Rootlets</h4>
+      <ul>
+        <li>Contain <strong>only sensory axons</strong></li>
+        <li>Carry impulses from receptors (skin, muscles, internal organs) toward the CNS</li>
+        <li>Each posterior root has a <strong>posterior (dorsal) root ganglion</strong>, a swelling that contains the <strong>cell bodies of sensory neurons</strong></li>
+      </ul>
+      <h4>Anterior (Ventral) Root and Rootlets</h4>
+      <ul>
+        <li>Contain <strong>only motor axons</strong></li>
+        <li>Carry impulses from the CNS to effectors (skeletal muscles and glands)</li>
+      </ul>
+      <div class="callout-tip" role="note" aria-label="Sensory motor mnemonic">
+        <strong>Quick rule:</strong> sensory in the back (dorsal), motor in the front (ventral). Sensory and motor merge just before exiting the intervertebral foramen, which is why every spinal nerve is mixed.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Connective Tissue Wrappings</div>
+      <h3>Coverings of a Spinal Nerve</h3>
+      <p>Three layers of connective tissue organize the axons of a peripheral nerve, parallel to the wrapping pattern in skeletal muscle.</p>
+      <h4>Layers (innermost to outermost)</h4>
+      <ul>
+        <li><strong>Endoneurium:</strong> innermost layer, surrounds individual axons (myelinated and unmyelinated)</li>
+        <li><strong>Fascicle:</strong> a group of axons bundled together with their endoneurium</li>
+        <li><strong>Perineurium:</strong> middle layer, thicker, wraps each fascicle</li>
+        <li><strong>Epineurium:</strong> outermost layer, covers the entire nerve and is continuous with the dura mater</li>
+      </ul>
+      <div class="flow" aria-label="Wrapping order from inside out">
+        Axon <span class="arrow">&rarr;</span> Endoneurium <span class="arrow">&rarr;</span> Fascicle <span class="arrow">&rarr;</span> Perineurium <span class="arrow">&rarr;</span> Epineurium <span class="arrow">&rarr;</span> Whole Nerve
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Branching After Exit</div>
+      <h3>Distribution: The Rami</h3>
+      <p>After passing through the intervertebral foramen, a spinal nerve divides into branches called <strong>rami</strong>. Each ramus carries both sensory and motor fibers to its target territory.</p>
+      <h4>Posterior (Dorsal) Ramus</h4>
+      <ul>
+        <li>Serves <strong>deep muscles and skin of the posterior trunk</strong></li>
+      </ul>
+      <h4>Anterior (Ventral) Ramus</h4>
+      <ul>
+        <li>Serves muscles and structures of the <strong>upper and lower limbs</strong></li>
+        <li>Serves the skin of the <strong>lateral and anterior trunk</strong></li>
+        <li>Most anterior rami contribute to <strong>plexuses</strong> (network arrangements)</li>
+      </ul>
+      <h4>Meningeal Branch</h4>
+      <ul>
+        <li>Re-enters the vertebral cavity through the intervertebral foramen</li>
+        <li>Supplies vertebrae, vertebral ligaments, blood vessels of the spinal cord, and meninges</li>
+      </ul>
+      <h4>Rami Communicantes</h4>
+      <ul>
+        <li>Branch off the spinal nerve to communicate with the autonomic nervous system</li>
+        <li>Connect to sympathetic trunk ganglia</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Path of a Spinal Nerve</div>
+      <h3>From Cord to Periphery</h3>
+      <div class="flow" aria-label="Spinal nerve path from cord to periphery">
+        Cord segment <span class="arrow">&rarr;</span> Rootlets <span class="arrow">&rarr;</span> Roots (dorsal sensory + ventral motor) <span class="arrow">&rarr;</span> Spinal nerve (mixed) <span class="arrow">&rarr;</span> Intervertebral foramen <span class="arrow">&rarr;</span> Posterior &amp; anterior rami <span class="arrow">&rarr;</span> Plexus or direct branches <span class="arrow">&rarr;</span> Target
+      </div>
+      <p>Recall from the cord notes: because the cord ends at L1 to L2 but the column continues, lumbar, sacral, and coccygeal roots travel inferiorly inside the canal as the <strong>cauda equina</strong> before reaching their respective intervertebral foramina.</p>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 3: CERVICAL & BRACHIAL PLEXUSES ============== -->
+<section role="tabpanel" id="panel-upper" aria-labelledby="tab-upper" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Anterior rami above and below the thoracic region do not run straight to a target. They form networks called plexuses, then send out named nerves. The cervical plexus drives the diaphragm; the brachial plexus drives the entire upper limb.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card span-2">
+      <div class="card-eyebrow">The Plexus Concept</div>
+      <h3>What a Plexus Is</h3>
+      <p>A <strong>plexus</strong> is a network of axons from the anterior rami of multiple spinal nerves. Axons from adjacent levels intermingle, then emerge as named nerves that supply specific regions.</p>
+      <h4>Five Principal Plexuses</h4>
+      <ol>
+        <li>Cervical plexus</li>
+        <li>Brachial plexus</li>
+        <li>Lumbar plexus</li>
+        <li>Sacral plexus</li>
+        <li>Coccygeal plexus</li>
+      </ol>
+      <p>The named nerves emerging from a plexus are typically named for the region they serve.</p>
+      <div class="callout-tip" role="note" aria-label="Why nerves form plexuses">
+        <strong>Why bother with networks?</strong> Plexuses provide redundancy. If one spinal nerve root is damaged, the named peripheral nerves it contributes to often still function (with deficits) because they receive input from multiple roots. This is why complete sensory loss from a single root injury is rare.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">T2 to T12 Are Different</div>
+      <h3>Intercostal (Thoracic) Nerves</h3>
+      <p>The anterior rami of T2 through T12 do <strong>not</strong> form plexuses. They run directly to their targets and are called <strong>intercostal nerves</strong> (or thoracic nerves).</p>
+      <h4>Distribution</h4>
+      <ul>
+        <li><strong>T2:</strong> innervates the second intercostal space muscles</li>
+        <li><strong>T3 to T6:</strong> run along the costal grooves of the ribs; supply intercostal muscles and skin of the anterior chest wall</li>
+        <li><strong>T7 to T12:</strong> supply intercostal muscles, abdominal muscles, and overlying skin</li>
+      </ul>
+      <p>T1 contributes to the brachial plexus instead.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Cervical Plexus</div>
+      <h3>Cervical Plexus (C1 to C5)</h3>
+      <p>Formed by the anterior rami of <strong>C1 through C4</strong>, with some contributions from C5. One plexus on each side of the neck, alongside the first four cervical vertebrae.</p>
+      <h4>Supplies</h4>
+      <ul>
+        <li>Skin and muscles of the head, neck, superior shoulders, and chest</li>
+      </ul>
+      <h4>Special Nerve: Phrenic</h4>
+      <ul>
+        <li><strong>Origin:</strong> C3, C4, C5</li>
+        <li><strong>Target:</strong> diaphragm</li>
+        <li><strong>Significance:</strong> the only motor supply to the diaphragm; injury halts breathing</li>
+      </ul>
+      <div class="callout-clinical" role="note" aria-label="Clinical: phrenic nerve and respiratory arrest">
+        <p class="callout-label">Clinical Significance</p>
+        <p>Complete cord transection above the origin of the phrenic nerves (above C3) causes <strong>respiratory arrest</strong>. The phrenic nerves can no longer send impulses to the diaphragm. Pressure from malignant tracheal or esophageal tumors in the mediastinum can also damage the phrenic nerves.</p>
+      </div>
+      <div class="callout-tip" role="note" aria-label="Phrenic mnemonic">
+        <strong>Mnemonic:</strong> "C3, 4, 5 keeps the diaphragm alive."
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Brachial Plexus</div>
+      <h3>Brachial Plexus (C5 to T1)</h3>
+      <p>Formed by the anterior rami of <strong>C5, C6, C7, C8, and T1</strong>. Passes above the first rib, posterior to the clavicle, and enters the axilla.</p>
+      <h4>Five Levels of Organization</h4>
+      <ol>
+        <li><strong>Roots:</strong> the five anterior rami themselves</li>
+        <li><strong>Trunks:</strong> superior, middle, inferior</li>
+        <li><strong>Divisions:</strong> anterior and posterior</li>
+        <li><strong>Cords:</strong> lateral, medial, posterior</li>
+        <li><strong>Branches:</strong> the five terminal nerves</li>
+      </ol>
+      <div class="callout-tip" role="note" aria-label="Brachial plexus mnemonic">
+        <strong>Mnemonic for the levels:</strong> <em>R</em>obert <em>T</em>aylor <em>D</em>rinks <em>C</em>old <em>B</em>eer (Roots, Trunks, Divisions, Cords, Branches).
+      </div>
+      <p>The branches of the brachial plexus provide almost the entire nerve supply of the shoulders and upper limbs.</p>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Five Terminal Branches</div>
+      <h3>Brachial Plexus: Named Nerves</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Nerve</th><th>Cord of Origin</th><th>Supplies</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Axillary</strong></td>
+            <td>Posterior</td>
+            <td>Deltoid and teres minor muscles</td>
+          </tr>
+          <tr>
+            <td><strong>Musculocutaneous</strong></td>
+            <td>Lateral</td>
+            <td>Anterior muscles of the arm (biceps brachii, brachialis, coracobrachialis)</td>
+          </tr>
+          <tr>
+            <td><strong>Radial</strong></td>
+            <td>Posterior</td>
+            <td>Posterior aspect of the arm and forearm (extensors)</td>
+          </tr>
+          <tr>
+            <td><strong>Median</strong></td>
+            <td>Lateral and Medial</td>
+            <td>Most muscles of the anterior forearm and some hand muscles</td>
+          </tr>
+          <tr>
+            <td><strong>Ulnar</strong></td>
+            <td>Medial</td>
+            <td>Anteromedial muscles of the forearm and most hand muscles</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Brachial branch mnemonic">
+        <strong>Mnemonic for the five branches:</strong> "<em>A</em>ll <em>M</em>others <em>R</em>aise <em>M</em>arvelous <em>U</em>nicorns" (Axillary, Musculocutaneous, Radial, Median, Ulnar).
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 4: BRACHIAL PLEXUS CLINICAL ============== -->
+<section role="tabpanel" id="panel-brachial-clinical" aria-labelledby="tab-brachial-clinical" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Six classic brachial plexus injury patterns appear repeatedly on exams and in clinic. Each one has a signature posture, a signature mechanism, and a single nerve or root to blame. Learn the picture, learn the cause, learn the nerve.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Erb-Duchenne Palsy">
+      <p class="callout-label">Erb-Duchenne Palsy ("Waiter's Tip" Posture)</p>
+      <p><strong>Injury location:</strong> superior roots of the brachial plexus (<strong>C5 to C6</strong>).</p>
+      <p><strong>Mechanism:</strong> forceful pulling away of the head from the shoulder. Common scenarios include a heavy fall on the shoulder, an object falling onto the shoulder, or excessive stretching of an infant's neck during childbirth.</p>
+      <p><strong>Presentation:</strong> the affected upper limb hangs in a characteristic posture. Shoulder is adducted, arm is medially rotated, elbow is extended, forearm is pronated, and wrist is flexed. The hand looks as if it is reaching back for a tip.</p>
+      <p><strong>Sensory loss:</strong> along the lateral side of the arm.</p>
+    </div>
+
+    <article class="card">
+      <div class="card-eyebrow">Radial Nerve Injury</div>
+      <h3>Radial Nerve Palsy ("Wrist Drop")</h3>
+      <h4>Mechanism</h4>
+      <ul>
+        <li>Improperly administered IM injection into the deltoid</li>
+        <li>Improperly applied or overly tight cast around the mid humerus</li>
+        <li>"Saturday night palsy" from prolonged compression of the arm</li>
+      </ul>
+      <h4>Presentation</h4>
+      <ul>
+        <li>Inability to extend the wrist and fingers</li>
+        <li>Wrist hangs in flexion (the "drop")</li>
+        <li>Sensory loss is minimal because adjacent nerves overlap in their cutaneous distribution</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Median Nerve Injury</div>
+      <h3>Median Nerve Palsy ("Ape Hand" / Hand of Benediction)</h3>
+      <h4>Mechanism</h4>
+      <ul>
+        <li>Injury to the median nerve, often at the wrist or in the forearm</li>
+        <li>Carpal tunnel syndrome is a chronic compressive form</li>
+      </ul>
+      <h4>Presentation</h4>
+      <ul>
+        <li>Numbness, tingling, and pain in the palm and fingers (lateral palm and digits 1 to 3)</li>
+        <li>Inability to pronate the forearm</li>
+        <li>Inability to flex the PIP joints of all digits and the DIP joints of the second and third digits</li>
+        <li>Weak wrist flexion and weak thumb movement</li>
+        <li>Thumb cannot oppose the other fingers ("ape hand")</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Ulnar Nerve Injury</div>
+      <h3>Ulnar Nerve Palsy ("Claw Hand")</h3>
+      <h4>Mechanism</h4>
+      <ul>
+        <li>Trauma at the medial epicondyle of the humerus (the "funny bone" area)</li>
+        <li>Compression at the elbow or wrist</li>
+      </ul>
+      <h4>Presentation</h4>
+      <ul>
+        <li>Inability to abduct or adduct the fingers</li>
+        <li>Atrophy of the interosseous muscles of the hand</li>
+        <li>Hyperextension of the metacarpophalangeal joints with flexion of the interphalangeal joints, especially in digits 4 and 5</li>
+        <li>Sensory loss in the medial palm and digits 4 and 5</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Long Thoracic Nerve Injury</div>
+      <h3>Winged Scapula</h3>
+      <h4>Mechanism</h4>
+      <ul>
+        <li>Injury to the <strong>long thoracic nerve</strong></li>
+        <li>Causes paralysis of the serratus anterior muscle</li>
+        <li>Common with axillary surgery, chest tube placement, blunt trauma, or repetitive overhead activity</li>
+      </ul>
+      <h4>Presentation</h4>
+      <ul>
+        <li>The medial border of the scapula protrudes posteriorly, giving the appearance of a wing</li>
+        <li>Most obvious when the patient pushes against a wall with outstretched arms</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Brachial Plexus Compression</div>
+      <h3>Thoracic Outlet Syndrome</h3>
+      <h4>Mechanism</h4>
+      <ul>
+        <li>Compression of the brachial plexus and the subclavian artery or vein at the thoracic outlet</li>
+        <li>Sources include cervical rib, anterior scalene compression or spasm, clavicle fracture callus, or postural changes</li>
+      </ul>
+      <h4>Presentation</h4>
+      <ul>
+        <li>Pain, numbness, weakness, and tingling in the upper limb</li>
+        <li>Symptoms may radiate across the thorax and over the scapula on the affected side</li>
+        <li>May include vascular symptoms (color or temperature change in the limb)</li>
+      </ul>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Pattern Recognition Reference</div>
+      <h3>Brachial Plexus Injury Summary</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Syndrome</th><th>Nerve / Root</th><th>Hallmark</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Erb-Duchenne palsy</strong></td><td>C5, C6 roots</td><td>Waiter's tip posture</td></tr>
+          <tr><td><strong>Wrist drop</strong></td><td>Radial nerve</td><td>Cannot extend wrist or fingers</td></tr>
+          <tr><td><strong>Ape hand / Benediction</strong></td><td>Median nerve</td><td>Cannot oppose thumb; cannot make a fist</td></tr>
+          <tr><td><strong>Claw hand</strong></td><td>Ulnar nerve</td><td>Hyperextended MCPs, flexed IPs in digits 4 and 5</td></tr>
+          <tr><td><strong>Winged scapula</strong></td><td>Long thoracic nerve</td><td>Medial scapular border protrudes</td></tr>
+          <tr><td><strong>Thoracic outlet syndrome</strong></td><td>Brachial plexus compression</td><td>Diffuse upper limb pain and numbness</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 5: LUMBAR, SACRAL, COCCYGEAL ============== -->
+<section role="tabpanel" id="panel-lower" aria-labelledby="tab-lower" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>The lower-body plexuses follow the same logic as the upper. Anterior rami merge, then send named nerves to specific regions. Two stand out: the femoral nerve (powerhouse of the anterior thigh) and the sciatic nerve (the largest nerve in the body).</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card">
+      <div class="card-eyebrow">Lumbar Plexus</div>
+      <h3>Lumbar Plexus (L1 to L4)</h3>
+      <p>Formed by the anterior rami of <strong>L1 through L4</strong>. Located alongside the four lumbar vertebrae, between the two heads of the psoas major muscle. Minimal intermingling of fibers compared with the brachial plexus.</p>
+      <h4>Supplies</h4>
+      <ul>
+        <li>Anterolateral abdominal wall</li>
+        <li>External genitals</li>
+        <li>Part of the lower limbs</li>
+      </ul>
+      <h4>Major Nerves</h4>
+      <ul>
+        <li><strong>Femoral nerve:</strong> anterior thigh muscles (quadriceps), skin of the anteromedial thigh and medial leg</li>
+        <li><strong>Obturator nerve:</strong> medial thigh adductor muscles, skin of the medial thigh</li>
+        <li><strong>Iliohypogastric, ilioinguinal, genitofemoral:</strong> abdominal wall and genital region</li>
+        <li><strong>Lateral femoral cutaneous:</strong> skin of the lateral thigh</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Sacral Plexus</div>
+      <h3>Sacral Plexus (L4 to S4)</h3>
+      <p>Formed by the anterior rami of <strong>L4 and L5</strong> together with <strong>S1 through S4</strong>. Located just anterior to the sacrum.</p>
+      <h4>Supplies</h4>
+      <ul>
+        <li>Buttocks</li>
+        <li>Perineum</li>
+        <li>Lower limbs</li>
+      </ul>
+      <h4>Special Structure: Sciatic Nerve</h4>
+      <ul>
+        <li>The <strong>largest nerve in the body</strong></li>
+        <li>Actually two nerves bundled together by a common connective tissue sheath:
+          <ul>
+            <li><strong>Tibial nerve</strong></li>
+            <li><strong>Common fibular (peroneal) nerve</strong></li>
+          </ul>
+        </li>
+        <li>The two components separate as the sciatic descends, typically near the popliteal fossa behind the knee</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Coccygeal Plexus</div>
+      <h3>Coccygeal Plexus (S4 to Co1)</h3>
+      <p>The smallest plexus. Formed by the anterior rami of <strong>S4 and S5</strong> and the <strong>coccygeal nerves</strong>.</p>
+      <h4>Special Structure: Anococcygeal Nerves</h4>
+      <ul>
+        <li>Supply the skin over the coccyx</li>
+      </ul>
+    </article>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Clinical: femoral nerve injury">
+      <p class="callout-label">Clinical: Femoral Nerve Injury</p>
+      <p><strong>Mechanism:</strong> most commonly stab or gunshot wounds. Pelvic fractures, hip surgery, and prolonged retraction during abdominal surgery are also causes.</p>
+      <p><strong>Presentation:</strong></p>
+      <ul>
+        <li><strong>Motor:</strong> inability to extend the leg at the knee (loss of quadriceps function)</li>
+        <li><strong>Sensory:</strong> loss of sensation over the anteromedial aspect of the thigh</li>
+      </ul>
+    </div>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Clinical: obturator nerve injury">
+      <p class="callout-label">Clinical: Obturator Nerve Injury</p>
+      <p><strong>Mechanism:</strong> often pressure on the nerve from the fetal head during pregnancy. Pelvic surgery and pelvic tumors can also injure the obturator.</p>
+      <p><strong>Presentation:</strong></p>
+      <ul>
+        <li><strong>Motor:</strong> paralysis of the adductor muscles of the thigh</li>
+        <li><strong>Sensory:</strong> loss of sensation over the medial aspect of the thigh</li>
+      </ul>
+    </div>
+
+    <div class="card span-2 callout-clinical" role="note" aria-label="Clinical: sciatica">
+      <p class="callout-label">Clinical: Sciatica</p>
+      <p><strong>Definition:</strong> pain along the distribution of the sciatic nerve, typically extending from the buttock down the posterior and lateral aspect of the leg and foot.</p>
+      <p><strong>Causes:</strong></p>
+      <ol>
+        <li>Disc herniation (most common)</li>
+        <li>Hip dislocation</li>
+        <li>Osteoarthritis of the lumbosacral spine</li>
+        <li>Pathological shortening of the lateral rotator muscles of the thigh, especially the <strong>piriformis</strong> (piriformis syndrome)</li>
+        <li>Pressure from the uterus during pregnancy</li>
+        <li>Local inflammation or irritation</li>
+        <li>Improperly administered gluteal IM injection</li>
+      </ol>
+      <p><strong>Why gluteal IM injections must avoid the medial buttock:</strong> the sciatic nerve runs through the gluteal region, and a misplaced injection can damage it directly. Injections are placed in the upper outer quadrant of the buttock to stay clear of the nerve.</p>
+    </div>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Lower Plexus Quick Reference</div>
+      <h3>Lumbar, Sacral, Coccygeal Summary</h3>
+      <table class="compact-table">
+        <thead>
+          <tr><th>Plexus</th><th>Roots</th><th>Major Nerves</th><th>Classic Injury</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Lumbar</strong></td><td>L1 to L4</td><td>Femoral, obturator, lateral femoral cutaneous</td><td>Femoral (cannot extend leg); obturator (cannot adduct thigh)</td></tr>
+          <tr><td><strong>Sacral</strong></td><td>L4 to S4</td><td>Sciatic (tibial + common fibular), gluteal nerves, pudendal</td><td>Sciatica (radiating posterior leg pain)</td></tr>
+          <tr><td><strong>Coccygeal</strong></td><td>S4 to Co1</td><td>Anococcygeal nerves</td><td>Coccydynia (rare)</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============== TAB 6: DERMATOMES & REFERENCE ============== -->
+<section role="tabpanel" id="panel-dermatomes" aria-labelledby="tab-dermatomes" tabindex="0" hidden>
+  <div class="section-intro">
+    <p>Each spinal nerve carries sensory information from a specific patch of skin. Map those patches across the body and you have a dermatome map. A few landmark dermatomes are worth knowing cold; they let you localize a cord or root injury at the bedside.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Definition</div>
+      <h3>What a Dermatome Is</h3>
+      <p>The skin over the entire body is supplied by somatic sensory neurons that carry impulses from the skin to the cord. <strong>Each spinal nerve contains sensory neurons that serve a specific region of skin.</strong> That region is called a <strong>dermatome</strong>.</p>
+      <p>Adjacent dermatomes overlap, which is why injury to a single spinal nerve rarely produces complete sensory loss in any one area. The exception is the trigeminal nerve territory of the face, which is served by cranial nerve V rather than spinal nerves.</p>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Cervical Landmarks</div>
+      <h3>Upper Body Dermatomes</h3>
+      <table class="compact-table">
+        <thead><tr><th>Level</th><th>Skin Region</th></tr></thead>
+        <tbody>
+          <tr><td><strong>C2</strong></td><td>Posterior scalp and angle of jaw</td></tr>
+          <tr><td><strong>C3</strong></td><td>Neck and posterior cheek</td></tr>
+          <tr><td><strong>C4</strong></td><td>Top of shoulder, clavicle area</td></tr>
+          <tr><td><strong>C5</strong></td><td>Lateral arm (deltoid area)</td></tr>
+          <tr><td><strong>C6</strong></td><td>Lateral forearm and thumb</td></tr>
+          <tr><td><strong>C7</strong></td><td>Middle finger</td></tr>
+          <tr><td><strong>C8</strong></td><td>Medial hand and little finger</td></tr>
+          <tr><td><strong>T1</strong></td><td>Medial forearm</td></tr>
+        </tbody>
+      </table>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Trunk Landmarks</div>
+      <h3>Thoracic Dermatomes (Bedside Anchors)</h3>
+      <table class="compact-table">
+        <thead><tr><th>Level</th><th>Skin Region</th></tr></thead>
+        <tbody>
+          <tr><td><strong>T2</strong></td><td>Axilla</td></tr>
+          <tr><td><strong>T4</strong></td><td>Nipple line</td></tr>
+          <tr><td><strong>T7</strong></td><td>Inferior to the costal margin</td></tr>
+          <tr><td><strong>T10</strong></td><td>Umbilicus</td></tr>
+          <tr><td><strong>L1</strong></td><td>Inguinal region</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Trunk dermatome anchors">
+        <strong>Three to memorize:</strong> T4 nipples, T10 umbilicus, L1 inguinal. With those three you can estimate the level of any thoracolumbar lesion within one segment.
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-eyebrow">Lower Body Landmarks</div>
+      <h3>Lower Limb Dermatomes</h3>
+      <table class="compact-table">
+        <thead><tr><th>Level</th><th>Skin Region</th></tr></thead>
+        <tbody>
+          <tr><td><strong>L2</strong></td><td>Anterior mid-thigh</td></tr>
+          <tr><td><strong>L3</strong></td><td>Medial thigh and knee</td></tr>
+          <tr><td><strong>L4</strong></td><td>Medial leg and medial foot (big toe)</td></tr>
+          <tr><td><strong>L5</strong></td><td>Lateral leg and dorsum of foot</td></tr>
+          <tr><td><strong>S1</strong></td><td>Lateral foot and posterior leg</td></tr>
+          <tr><td><strong>S2</strong> to <strong>S5</strong></td><td>Posterior thigh and perineum (concentric "saddle" pattern around the anus at S4 to S5)</td></tr>
+        </tbody>
+      </table>
+      <div class="callout-tip" role="note" aria-label="Saddle anesthesia">
+        <strong>Clinical anchor:</strong> loss of sensation in the perineum and inner thighs ("saddle anesthesia") suggests injury to the sacral roots or cauda equina syndrome and is a surgical emergency.
+      </div>
+    </article>
+
+    <article class="card span-2">
+      <div class="card-eyebrow">Study Anchors</div>
+      <h3>If You Remember Nothing Else</h3>
+      <ul>
+        <li><strong>31 pairs of spinal nerves</strong>, all <strong>mixed</strong> (sensory and motor).</li>
+        <li>Posterior root: sensory. Anterior root: motor. Cell bodies of sensory neurons live in the <strong>dorsal root ganglion</strong>.</li>
+        <li>Connective tissue wrapping, inside out: <strong>endoneurium &rarr; perineurium &rarr; epineurium</strong>.</li>
+        <li>Anterior rami of <strong>T2 to T12</strong> become <strong>intercostal nerves</strong>; everywhere else they form plexuses.</li>
+        <li>Cervical plexus C1 to C5: <strong>phrenic nerve</strong> from C3, C4, C5.</li>
+        <li>Brachial plexus C5 to T1: <strong>5 terminal branches</strong> (axillary, musculocutaneous, radial, median, ulnar).</li>
+        <li>Lumbar plexus L1 to L4: <strong>femoral and obturator</strong> nerves.</li>
+        <li>Sacral plexus L4 to S4: <strong>sciatic nerve</strong> = tibial + common fibular wrapped together.</li>
+        <li>Coccygeal plexus S4 to Co1: anococcygeal nerves.</li>
+        <li>Three trunk dermatome anchors: <strong>T4 nipple, T10 umbilicus, L1 inguinal.</strong></li>
+      </ul>
+    </article>
+
+  </div>
+</section>
+
+</main>
+
+<footer class="signature-footer">
+  <div class="name">Dr. Sharilyn Rennie</div>
+  <div>BIO 431 &middot; Anatomy &amp; Physiology &middot; Spinal Nerves &amp; PNS Notes</div>
+</footer>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+})();
+</script>
+
+<script>
+function sendHeight() {
+  var height = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight,
+    document.body.offsetHeight,
+    document.documentElement.offsetHeight
+  );
+  var id = '';
+  try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+  try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+}
+if ('ResizeObserver' in window) {
+  try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {}
+}
+window.addEventListener('load', sendHeight);
+window.addEventListener('resize', sendHeight);
+setTimeout(sendHeight, 100);
+setTimeout(sendHeight, 500);
+</script>
+
+</body>
+</html>
