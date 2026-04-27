@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CNS Brain, Meninges &amp; CSF Notes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2845;
+  --navy-soft: #2A3A5C;
+  --tan: #B8946B;
+  --tan-soft: #D4B594;
+  --tan-deep: #8C6E4A;
+  --cream: #F4EDDC;
+  --cream-pale: #FAF6EC;
+  --bg: #FFFFFF;
+  --text: #1B2845;
+  --text-soft: #3D4D6F;
+  --text-muted: #6B6B6B;
+  --border: #E5E0D5;
+  --border-soft: #EFEBE0;
+  --clinical: #8B4A3A;
+  --clinical-bg: #FBF4F2;
+  --shadow: 0 4px 14px rgba(27, 40, 69, 0.06);
+  --shadow-lg: 0 8px 22px rgba(27, 40, 69, 0.10);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; }
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  padding: 24px 14px 56px;
+}
+.container { max-width: 1200px; margin: 0 auto; }
+
+a { color: var(--tan-deep); }
+strong { color: var(--navy); font-weight: 700; }
+em { font-style: italic; }
+
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--navy); color: white; padding: 8px 16px; text-decoration: none; font-size: 0.85rem; z-index: 9999; }
+.skip-link:focus { top: 0; }
+
+.page-header {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-soft) 100%);
+  color: white;
+  border-radius: 14px;
+  padding: 30px 34px 28px;
+  margin-bottom: 16px;
+  position: relative;
+  overflow: hidden;
+}
+.page-header::before {
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 260px; height: 260px;
+  background: radial-gradient(circle at 100% 0%, rgba(184,148,107,0.22), transparent 65%);
+  pointer-events: none;
+}
+.breadcrumb { font-size: 0.74rem; letter-spacing: 0.1em; color: var(--tan-soft); font-weight: 700; text-transform: uppercase; margin-bottom: 8px; position: relative; }
+.page-header h1 { font-size: 2rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 8px; line-height: 1.15; position: relative; font-family: Georgia, serif; }
+.page-header .subtitle { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1rem; color: rgba(255,255,255,0.86); max-width: 700px; line-height: 1.55; position: relative; }
+
+.tabs-wrap {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 6px;
+  margin-bottom: 18px;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+[role="tablist"] { display: flex; flex-wrap: wrap; gap: 4px; }
+[role="tab"] {
+  flex: 1 1 auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 0.86rem;
+  font-weight: 700;
+  padding: 9px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+[role="tab"]:hover { background: white; color: var(--navy); }
+[role="tab"][aria-selected="true"] { background: var(--navy); color: white; box-shadow: var(--shadow); }
+[role="tab"]:focus-visible { outline: 2px solid var(--tan); outline-offset: 2px; }
+[role="tabpanel"] { padding: 8px 0 0; }
+[role="tabpanel"]:focus { outline: none; }
+[role="tabpanel"]:focus-visible { outline: 3px solid var(--tan); outline-offset: 4px; border-radius: 8px; }
+[role="tabpanel"][hidden] { display: none; }
+
+.section-intro {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--tan);
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+}
+.section-intro h2 {
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.section-intro p {
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.96rem;
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.note-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.note-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.note-card.span-2 { grid-column: span 2; }
+@media (max-width: 800px) {
+  .note-card.span-2 { grid-column: span 1; }
+}
+
+.card-eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--tan-deep);
+  margin-bottom: 4px;
+}
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 12px;
+  font-family: Georgia, serif;
+}
+.card-body { font-size: 0.94rem; color: var(--text-soft); line-height: 1.6; }
+.card-body p { margin-bottom: 10px; }
+.card-body p:last-child { margin-bottom: 0; }
+.card-body ul, .card-body ol { margin: 6px 0 12px 22px; padding: 0; }
+.card-body li { margin-bottom: 5px; line-height: 1.55; }
+.card-body strong { color: var(--navy); }
+.card-body h4 {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--tan-deep);
+  font-weight: 800;
+  margin: 14px 0 6px;
+  border-top: 1px solid var(--border-soft);
+  padding-top: 10px;
+}
+.card-body h4:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+
+.callout {
+  background: var(--clinical-bg);
+  border-left: 3px solid var(--clinical);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+}
+.callout .callout-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 800;
+  color: var(--clinical);
+  margin-bottom: 4px;
+}
+.callout p { color: var(--text); font-size: 0.9rem; line-height: 1.55; }
+.callout p:last-child { margin-bottom: 0; }
+
+.tip-callout {
+  background: var(--cream-pale);
+  border-left: 3px solid var(--tan);
+  border-radius: 6px;
+  padding: 12px 16px;
+  margin: 12px 0 4px;
+  font-family: 'Lora', Georgia, serif;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+
+.term { color: var(--navy); font-weight: 700; font-style: normal; }
+.alt-name { color: var(--text-muted); font-style: italic; font-size: 0.88rem; }
+
+.flow {
+  background: var(--cream-pale);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin: 8px 0;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+.flow .arrow { color: var(--tan-deep); font-weight: 800; padding: 0 4px; }
+
+table.compact-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0 12px;
+  font-size: 0.88rem;
+}
+table.compact-table th {
+  background: var(--cream-pale);
+  color: var(--navy);
+  text-align: left;
+  padding: 8px 10px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--border);
+}
+table.compact-table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: top;
+}
+table.compact-table tr:last-child td { border-bottom: none; }
+
+.footer-note { margin-top: 30px; text-align: center; font-size: 0.82rem; color: var(--text-muted); font-style: italic; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 700px) {
+  body { padding: 18px 10px 40px; }
+  .page-header { padding: 24px 22px 22px; }
+  .page-header h1 { font-size: 1.55rem; }
+  [role="tab"] { font-size: 0.78rem; padding: 8px 10px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .note-card { padding: 18px 20px; }
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="container" id="main-content">
+
+<header class="page-header">
+  <div class="breadcrumb">Anatomy &amp; Physiology Notes</div>
+  <h1>CNS: Brain, Meninges &amp; CSF</h1>
+  <p class="subtitle">Comprehensive teaching notes on brain anatomy, protective coverings, ventricular system, and cerebrospinal fluid, organized for active studying.</p>
+</header>
+
+<div class="tabs-wrap">
+  <div role="tablist" aria-label="CNS brain topics">
+    <button role="tab" id="tab-overview" aria-selected="true" aria-controls="panel-overview">Overview</button>
+    <button role="tab" id="tab-meninges" aria-selected="false" aria-controls="panel-meninges" tabindex="-1">Meninges &amp; BBB</button>
+    <button role="tab" id="tab-csf" aria-selected="false" aria-controls="panel-csf" tabindex="-1">Ventricles &amp; CSF</button>
+    <button role="tab" id="tab-cerebrum" aria-selected="false" aria-controls="panel-cerebrum" tabindex="-1">Cerebrum</button>
+    <button role="tab" id="tab-cerebellum" aria-selected="false" aria-controls="panel-cerebellum" tabindex="-1">Cerebellum &amp; Diencephalon</button>
+    <button role="tab" id="tab-brainstem" aria-selected="false" aria-controls="panel-brainstem" tabindex="-1">Brainstem</button>
+  </div>
+</div>
+
+<!-- ============== OVERVIEW ============== -->
+<div role="tabpanel" id="panel-overview" aria-labelledby="tab-overview" tabindex="0">
+  <div class="section-intro">
+    <h2>Big Picture</h2>
+    <p>The brain develops from a simple ectodermal neural tube into the most complex organ in the body. Knowing the embryologic origin of each region helps you remember what's connected to what in the adult brain.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Embryology</p>
+      <h3 class="card-title">Brain Development: From Neural Tube to Adult Structures</h3>
+      <div class="card-body">
+        <p>The brain and spinal cord both develop from the <strong>ectodermal neural tube</strong>. The anterior end of the tube expands and differentiates first into 3 primary brain vesicles, then into 5 secondary vesicles, then into the adult brain regions.</p>
+
+        <h4>Primary Brain Vesicles (3)</h4>
+        <ol>
+          <li><strong>Prosencephalon</strong> (forebrain)</li>
+          <li><strong>Mesencephalon</strong> (midbrain)</li>
+          <li><strong>Rhombencephalon</strong> (hindbrain)</li>
+        </ol>
+
+        <h4>Secondary Brain Vesicles (5)</h4>
+        <p>Prosencephalon splits into <strong>Telencephalon</strong> + <strong>Diencephalon</strong>. Rhombencephalon splits into <strong>Metencephalon</strong> + <strong>Myelencephalon</strong>. Mesencephalon stays as itself.</p>
+
+        <h4>Adult Structures from Each Secondary Vesicle</h4>
+        <table class="compact-table" aria-label="Mapping of secondary brain vesicles to adult structures">
+          <thead>
+            <tr><th>Secondary Vesicle</th><th>Adult Structure(s)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>Telencephalon</strong></td><td>Cerebrum, lateral ventricles</td></tr>
+            <tr><td><strong>Diencephalon</strong></td><td>Thalamus, hypothalamus, epithalamus, third ventricle</td></tr>
+            <tr><td><strong>Mesencephalon</strong></td><td>Midbrain, cerebral aqueduct</td></tr>
+            <tr><td><strong>Metencephalon</strong></td><td>Pons, cerebellum, upper part of fourth ventricle</td></tr>
+            <tr><td><strong>Myelencephalon</strong></td><td>Medulla oblongata, lower part of fourth ventricle</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Foundation</p>
+      <h3 class="card-title">The Four Major Parts of the Brain</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Brainstem</strong>. Connects the rest of the brain to the spinal cord. Made of midbrain, pons, and medulla oblongata.</li>
+          <li><strong>Cerebellum</strong>. Coordinates skilled movements, regulates posture and balance.</li>
+          <li><strong>Diencephalon</strong>. Links the cerebral hemispheres to the brainstem. Contains thalamus, hypothalamus, and epithalamus.</li>
+          <li><strong>Cerebrum</strong>. The largest part. Where you see, hear, smell, taste, feel, think, and decide.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">As you learn each structure, ask which of these four major parts it lives in. The geography keeps the details organized.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Speed vs. Adaptability</p>
+      <h3 class="card-title">Spinal Cord vs. Brain</h3>
+      <div class="card-body">
+        <ul>
+          <li><strong>Spinal cord:</strong> reflex. Immediate response.</li>
+          <li><strong>Brain:</strong> thinking. Adaptable response, slower.</li>
+        </ul>
+        <p>The spinal cord handles fast, automatic responses (reflexes). The brain takes longer because it's evaluating, weighing, and choosing among options.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== MENINGES & BBB ============== -->
+<div role="tabpanel" id="panel-meninges" aria-labelledby="tab-meninges" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Meninges &amp; Blood-Brain Barrier</h2>
+    <p>The brain is too important to leave unprotected. Three layers of meninges, dural folds that compartmentalize the brain regions, and a tightly controlled blood-brain barrier all work together to keep the CNS safe.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Three Protective Layers</p>
+      <h3 class="card-title">Cranial Meninges</h3>
+      <div class="card-body">
+        <p>From outermost to innermost:</p>
+
+        <h4>1. Dura Mater (Outermost)</h4>
+        <ul>
+          <li><strong>Two layers:</strong> the periosteal layer (attached to inner skull) and the meningeal layer (internal). The two layers are fused together <em>except</em> at dural venous sinuses, which drain venous blood into the internal jugular veins.</li>
+          <li><strong>No epidural space</strong> in the cranial cavity. The dura is fused to the periosteum.</li>
+        </ul>
+
+        <h4>2. Arachnoid Mater (Middle)</h4>
+        <ul>
+          <li>Lace-like membrane.</li>
+          <li>Arachnoid trabeculae span the <em>subarachnoid space</em>, which contains CSF.</li>
+        </ul>
+
+        <h4>3. Pia Mater (Innermost)</h4>
+        <ul>
+          <li>Adheres directly to brain surface (held by astrocytes).</li>
+          <li>Follows the topology of gyri and sulci into every fold.</li>
+          <li>Contains blood vessels.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Dural Compartmentalization</p>
+      <h3 class="card-title">Dural Reflections (Folds)</h3>
+      <div class="card-body">
+        <p>Three extensions of dura mater divide the cranial cavity and stabilize the brain regions:</p>
+        <ol>
+          <li><strong>Falx Cerebri.</strong> Separates the left and right cerebral hemispheres. Sits in the longitudinal fissure.</li>
+          <li><strong>Falx Cerebelli.</strong> Separates the left and right cerebellar hemispheres.</li>
+          <li><strong>Tentorium Cerebelli.</strong> Separates the cerebrum (above) from the cerebellum (below).</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Memory cue: <em>falx</em> means sickle (the shape). <em>Tentorium</em> means tent (it tents over the cerebellum).</div>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Selective Permeability Barrier</p>
+      <h3 class="card-title">Blood-Brain Barrier (BBB)</h3>
+      <div class="card-body">
+        <p>The BBB is a selective permeability barrier that protects the brain's extracellular environment from fluctuations in plasma composition, toxins, and pathogens, while still allowing essential substances to pass.</p>
+
+        <h4>Structural Components</h4>
+        <ol>
+          <li><strong>Capillary endothelial cells</strong> joined by tight junctions. No fenestrations (unlike typical capillaries).</li>
+          <li><strong>Basement membrane</strong> surrounding the endothelium. Adds filtration and structural support.</li>
+          <li><strong>Astrocyte end-feet</strong> envelop the capillaries. Regulate and support endothelial function.</li>
+        </ol>
+
+        <h4>How Things Cross the BBB</h4>
+        <ul>
+          <li><strong>Passive diffusion:</strong> gases (O&#8322;, CO&#8322;), lipid-soluble substances (alcohol, nicotine, some anesthetics).</li>
+          <li><strong>Facilitated diffusion:</strong> glucose (via GLUT1), amino acids.</li>
+          <li><strong>Active transport:</strong> ions, vitamins, some drugs.</li>
+          <li><strong>Receptor-mediated transcytosis:</strong> insulin, transferrin.</li>
+        </ul>
+
+        <h4>Functions</h4>
+        <ul>
+          <li>Maintains CNS homeostasis (ion composition, pH).</li>
+          <li>Protects neural tissue from pathogens and toxins.</li>
+          <li>Prevents neurotransmitter leakage into systemic circulation.</li>
+          <li>Regulates nutrient and waste exchange.</li>
+        </ul>
+
+        <div class="tip-callout" role="note" aria-label="Tip">When the BBB breaks down (infection, cancer, immune disorders), the brain becomes vulnerable. Many drugs that <em>should</em> reach the brain can't cross the BBB, which is part of why some neurologic diseases are so hard to treat.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Special Exceptions</p>
+      <h3 class="card-title">Areas Without a Typical BBB</h3>
+      <div class="card-body">
+        <p>Some regions need to either sense plasma composition or release hormones into the blood, so they have a leaky barrier. These are the <strong>circumventricular organs</strong>:</p>
+        <ul>
+          <li><strong>Median eminence</strong> (hypothalamic hormone release)</li>
+          <li><strong>Posterior pituitary</strong></li>
+          <li><strong>Pineal gland</strong></li>
+          <li><strong>Area postrema</strong> (the vomiting center, detects toxins in the blood)</li>
+        </ul>
+        <p>The area postrema is why ingesting a toxin can trigger vomiting. The brain literally tastes the blood there.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== VENTRICLES & CSF ============== -->
+<div role="tabpanel" id="panel-csf" aria-labelledby="tab-csf" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Ventricles &amp; Cerebrospinal Fluid</h2>
+    <p>CSF is the brain's bath. It cushions, transports, and removes waste. The ventricular system makes it, circulates it, and returns it to venous blood. Knowing the flow path is essential for understanding hydrocephalus and lumbar puncture.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">CSF-Filled Cavities</p>
+      <h3 class="card-title">The Four Ventricles</h3>
+      <div class="card-body">
+        <p>Interconnected CSF-filled chambers lined by ependymal cells.</p>
+        <ol>
+          <li><strong>Two Lateral Ventricles.</strong> One in each cerebral hemisphere. Separated by the septum pellucidum.</li>
+          <li><strong>Third Ventricle.</strong> Midline, in the diencephalon. Just above the hypothalamus, between the right and left halves of the thalamus.</li>
+          <li><strong>Fourth Ventricle.</strong> Between the brainstem (pons) and the cerebellum. Continuous with the central canal of the spinal cord below.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">CSF Production</p>
+      <h3 class="card-title">Choroid Plexus &amp; CSF Formation</h3>
+      <div class="card-body">
+        <p>The <strong>choroid plexus</strong> makes the majority of CSF (about 500 mL per day).</p>
+        <h4>Structure</h4>
+        <p>Networks of blood capillaries covered by ependymal cells with tight junctions. The ependymal cells secrete the filtered CSF.</p>
+        <h4>Composition</h4>
+        <p>Clear, colorless fluid composed mostly of water. Carries glucose, oxygen, electrolytes (cations and anions), proteins, and urea.</p>
+        <h4>Turnover</h4>
+        <p>The total volume of CSF in brain and cord is replaced every 8 hours.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">CSF Pathway</p>
+      <h3 class="card-title">Flow of CSF Through the CNS</h3>
+      <div class="card-body">
+        <div class="flow" role="figure" aria-label="CSF flow pathway: from lateral ventricles through interventricular foramina to third ventricle, through cerebral aqueduct to fourth ventricle, then through lateral and median apertures to subarachnoid space, then reabsorbed via arachnoid granulations into superior sagittal sinus">
+          <strong>Lateral Ventricles</strong> (CSF made here by choroid plexus)<br>
+          <span class="arrow" aria-hidden="true">&darr;</span> via Interventricular Foramina (of Monro)<br>
+          <strong>Third Ventricle</strong><br>
+          <span class="arrow" aria-hidden="true">&darr;</span> via Cerebral Aqueduct (of Sylvius), in the midbrain<br>
+          <strong>Fourth Ventricle</strong> (between pons and cerebellum)<br>
+          <span class="arrow" aria-hidden="true">&darr;</span> exits via 3 apertures (2 lateral Foramina of Luschka, 1 median Foramen of Magendie)<br>
+          <strong>Subarachnoid Space</strong> (around brain and spinal cord) and central canal of spinal cord<br>
+          <span class="arrow" aria-hidden="true">&darr;</span> reabsorbed at arachnoid granulations<br>
+          <strong>Superior Sagittal Sinus</strong> (returns to venous blood)
+        </div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">What CSF Does</p>
+      <h3 class="card-title">Functions of CSF</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Mechanical protection.</strong> Shock-absorbing medium. Reduces effective brain weight by buoyancy.</li>
+          <li><strong>Homeostasis.</strong> pH affects pulmonary ventilation and blood flow. Maintains ionic balance.</li>
+          <li><strong>Circulation.</strong> Medium for exchange of nutrients and waste products.</li>
+        </ol>
+        <div class="tip-callout" role="note" aria-label="Tip">Buoyancy is real. The brain weighs about 1400 g in air but only about 50 g floating in CSF. Without CSF, the brain would crush itself under its own weight.</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Hydrocephalus">
+        <p class="callout-label">Clinical Correlation: Hydrocephalus</p>
+        <p><strong>Definition:</strong> Abnormal accumulation of CSF in the ventricles, leading to ventricular enlargement and increased intracranial pressure.</p>
+        <p><strong>Cause:</strong> Failure to reabsorb CSF, or obstruction of flow.</p>
+        <p><strong>In infants:</strong> The cranium expands because the sutures haven't fused. The fluid expands the cranium and crushes the brain.</p>
+        <p><strong>In adults:</strong> Brain compression. Possible herniation if untreated.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== CEREBRUM ============== -->
+<div role="tabpanel" id="panel-cerebrum" aria-labelledby="tab-cerebrum" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Cerebrum</h2>
+    <p>The cerebrum is the largest and most complex part of the brain, the seat of intelligence, perception, voluntary movement, memory, and emotion. Its surface folds (gyri and sulci) increase the surface area available for the 6 billion neurons of the cortex.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Foundation</p>
+      <h3 class="card-title">Cerebrum Overview</h3>
+      <div class="card-body">
+        <h4>General Features</h4>
+        <ul>
+          <li>Largest region of the brain.</li>
+          <li>Two cerebral hemispheres connected by the <strong>corpus callosum</strong>.</li>
+          <li>Each hemisphere has 5 lobes: frontal, parietal, temporal, occipital, and insula.</li>
+          <li>Sits on the diencephalon and brainstem, filling most of the cranial vault.</li>
+        </ul>
+
+        <h4>Cerebral Cortex (Outer Layer)</h4>
+        <ul>
+          <li>2 to 4 mm thick layer of <strong>gray matter</strong>.</li>
+          <li>Contains about 6 billion neuronal cell bodies and dendrites.</li>
+          <li>Where intelligence, perception, voluntary movement, and sensation happen.</li>
+        </ul>
+
+        <h4>Cerebral White Matter (Beneath Cortex)</h4>
+        <ul>
+          <li>Made up of myelinated axons traveling to and from the cortex.</li>
+          <li>Sometimes called the <strong>internal capsule</strong>.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Surface Anatomy</p>
+      <h3 class="card-title">Gyri, Sulci &amp; Fissures</h3>
+      <div class="card-body">
+        <p>The cortex is highly folded to maximize surface area for neurons.</p>
+        <ul>
+          <li><strong>Gyri</strong>: elevated ridges of cortex.</li>
+          <li><strong>Sulci</strong>: shallow grooves between gyri.</li>
+          <li><strong>Fissures</strong>: deeper grooves dividing major regions.</li>
+        </ul>
+
+        <h4>Key Sulci &amp; Fissures</h4>
+        <ul>
+          <li><strong>Central sulcus</strong>: separates frontal from parietal lobes. Divides the primary motor cortex (anterior) from the primary somatosensory cortex (posterior).</li>
+          <li><strong>Lateral sulcus</strong>: separates frontal and temporal lobes.</li>
+          <li><strong>Parieto-occipital sulcus</strong>: separates parietal and occipital lobes.</li>
+          <li><strong>Longitudinal fissure</strong>: divides left and right cerebral hemispheres.</li>
+          <li><strong>Transverse fissure</strong>: separates cerebrum from cerebellum.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Five Lobes</p>
+      <h3 class="card-title">Cerebral Lobes</h3>
+      <div class="card-body">
+        <p>Each lobe is named for the cranial bone covering it (except the insula, which is hidden).</p>
+        <table class="compact-table" aria-label="Cerebral lobes and their functions">
+          <thead><tr><th>Lobe</th><th>Primary Functions</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Frontal</strong></td><td>Motor planning, voluntary movement (precentral gyrus), speech production (Broca's), personality, judgment</td></tr>
+            <tr><td><strong>Parietal</strong></td><td>Somatic sensation (postcentral gyrus), spatial orientation</td></tr>
+            <tr><td><strong>Temporal</strong></td><td>Hearing, language comprehension (Wernicke's), memory</td></tr>
+            <tr><td><strong>Occipital</strong></td><td>Visual processing</td></tr>
+            <tr><td><strong>Insula</strong></td><td>Taste, visceral sensation, emotion, autonomic integration. Hidden deep within the lateral fissure, beneath frontal, parietal, and temporal lobes.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">White Matter Tracts</p>
+      <h3 class="card-title">Three Types of Cerebral White Matter Fibers</h3>
+      <div class="card-body">
+        <ol>
+          <li><strong>Association fibers.</strong> Connect gyri within the <em>same</em> hemisphere. Allow intra-hemispheric communication. Example: arcuate fasciculus connects Broca's and Wernicke's areas.</li>
+          <li><strong>Commissural fibers.</strong> Connect matching gyri <em>between</em> hemispheres. The <strong>corpus callosum</strong> is the largest. Others: anterior commissure, posterior commissure.</li>
+          <li><strong>Projection fibers.</strong> Connect cortex to lower brain regions or spinal cord. Ascending (sensory) or descending (motor) tracts. The internal capsule is the major projection pathway near the basal ganglia.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Gray Matter Nuclei</p>
+      <h3 class="card-title">Basal Ganglia (Cerebral Nuclei)</h3>
+      <div class="card-body">
+        <p>Several groups of paired nuclei found <em>within</em> the white matter of the cerebrum. Interconnected with each other and receiving inputs from the cerebral cortex, thalamus, and hypothalamus.</p>
+
+        <h4>Components</h4>
+        <ul>
+          <li>Caudate nucleus</li>
+          <li>Putamen</li>
+          <li>Globus pallidus</li>
+          <li>Functionally also includes substantia nigra and subthalamic nucleus</li>
+        </ul>
+
+        <h4>Functions</h4>
+        <ul>
+          <li>Control of large, learned, semi-voluntary skeletal muscle movements (arm swinging while walking, laughing).</li>
+          <li>Initiation and regulation of motor activity.</li>
+          <li>Suppression of unwanted movement.</li>
+          <li>Modulation of muscle tone.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Specialized Cortex</p>
+      <h3 class="card-title">Functional Areas of the Cerebral Cortex</h3>
+      <div class="card-body">
+        <p>Specific signals are processed in specific regions, divided into three types: sensory, motor, and association.</p>
+        <table class="compact-table" aria-label="Functional areas of the cerebral cortex with locations and functions">
+          <thead><tr><th>Area</th><th>Location</th><th>Function</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Primary Motor Cortex</strong></td><td>Precentral gyrus (frontal)</td><td>Initiates voluntary movement</td></tr>
+            <tr><td><strong>Premotor Cortex</strong></td><td>Anterior to primary motor</td><td>Motor planning, learned movements</td></tr>
+            <tr><td><strong>Supplementary Motor Area</strong></td><td>Medial frontal lobe</td><td>Complex bilateral movements</td></tr>
+            <tr><td><strong>Frontal Eye Field</strong></td><td>Middle frontal gyrus</td><td>Voluntary eye movements</td></tr>
+            <tr><td><strong>Broca's Area</strong></td><td>Inferior frontal gyrus (usually L)</td><td>Speech production (motor)</td></tr>
+            <tr><td><strong>Prefrontal Cortex</strong></td><td>Anterior frontal lobe</td><td>Judgment, planning, personality</td></tr>
+            <tr><td><strong>Primary Somatosensory</strong></td><td>Postcentral gyrus (parietal)</td><td>Touch, pressure, proprioception</td></tr>
+            <tr><td><strong>Primary Visual</strong></td><td>Occipital (calcarine sulcus)</td><td>Vision (raw input)</td></tr>
+            <tr><td><strong>Visual Association</strong></td><td>Around primary visual</td><td>Recognition of faces, objects</td></tr>
+            <tr><td><strong>Primary Auditory</strong></td><td>Superior temporal gyrus</td><td>Receives auditory input</td></tr>
+            <tr><td><strong>Wernicke's Area</strong></td><td>Temporal/parietal junction (L)</td><td>Language comprehension</td></tr>
+            <tr><td><strong>Primary Olfactory</strong></td><td>Medial temporal (uncus)</td><td>Smell perception</td></tr>
+            <tr><td><strong>Primary Gustatory</strong></td><td>Insula + inferior postcentral</td><td>Taste perception</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Three Famous Areas</p>
+      <h3 class="card-title">Integrative Centers</h3>
+      <div class="card-body">
+        <h4>Wernicke's Area</h4>
+        <p><strong>Location:</strong> Left hemisphere, near auditory and visual cortices.</p>
+        <p><strong>Function:</strong> Language comprehension. Gives meaning to auditory and visual cues.</p>
+        <p><strong>Damage:</strong> Receptive aphasia (can speak fluently but with nonsensical meaning).</p>
+
+        <h4>Broca's Area</h4>
+        <p><strong>Location:</strong> Left frontal lobe, superior to lateral sulcus.</p>
+        <p><strong>Function:</strong> Coordinates motor control of speech.</p>
+        <p><strong>Damage:</strong> Expressive aphasia (difficulty forming speech, comprehension intact).</p>
+
+        <h4>Prefrontal Cortex</h4>
+        <p><strong>Location:</strong> Anterior frontal lobe.</p>
+        <p><strong>Function:</strong> Judgment, prediction, planning, decision-making, emotional regulation, personality, social behavior.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Right Brain, Left Brain</p>
+      <h3 class="card-title">Hemispheric Specialization</h3>
+      <div class="card-body">
+        <h4>Left Hemisphere</h4>
+        <p>Language, logic, math, reasoning.</p>
+
+        <h4>Right Hemisphere</h4>
+        <p>Emotion, visual-spatial skills, music, face recognition.</p>
+
+        <h4>Contralateral Control</h4>
+        <p>Each hemisphere processes and controls the <em>opposite</em> side of the body.</p>
+
+        <h4>Corpus Callosum</h4>
+        <p>The major commissural fiber that connects the two hemispheres. If severed (sometimes done as an epilepsy treatment), each hemisphere functions independently.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Functional System</p>
+      <h3 class="card-title">Limbic System</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> A <em>functional</em> region (not anatomical) spanning parts of the cerebrum and diencephalon.</p>
+
+        <h4>Main Functions</h4>
+        <ol>
+          <li>Establishes emotional states and motivational drives.</li>
+          <li>Links conscious cerebral functions to unconscious brainstem responses.</li>
+          <li>Facilitates long-term memory storage and retrieval.</li>
+        </ol>
+
+        <h4>Key Structures</h4>
+        <ul>
+          <li><strong>Amygdala:</strong> fear and aggression. Initiates "fight or flight." Links emotion to memory.</li>
+          <li><strong>Hippocampus:</strong> memory and learning.</li>
+          <li><strong>Cingulate gyrus:</strong> expresses emotion through gestures, conflict resolution.</li>
+        </ul>
+        <div class="tip-callout" role="note" aria-label="Tip">"Limbic" comes from <em>limbus</em>, meaning border or edge. The system forms a border around the brainstem, linking thinking (cortex) and feeling (deeper structures).</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Cerebrovascular Accident (Stroke)">
+        <p class="callout-label">Clinical Correlation: Stroke (CVA)</p>
+        <p><strong>Definition:</strong> Sudden loss of blood flow to a portion of the brain.</p>
+        <p><strong>Cause:</strong> Thrombus, embolus, or hemorrhage.</p>
+        <p><strong>Effect:</strong> Neuronal death within minutes due to oxygen deprivation. Consequences depend on the affected area: paralysis, aphasia, vision loss, etc.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Epileptic seizures">
+        <p class="callout-label">Clinical Correlation: Epileptic Seizures</p>
+        <p><strong>Definition:</strong> Abnormal, excessive electrical activity in the cortex causing loss of normal function.</p>
+        <p><strong>Symptoms:</strong> Vary widely. Motor convulsions, sensory disturbances, loss of consciousness.</p>
+        <p>Often associated with disruptions in functional area regulation.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlation: Anencephaly">
+        <p class="callout-label">Clinical Correlation: Anencephaly</p>
+        <p><strong>Definition:</strong> Neural tube defect in which the brain fails to develop above the midbrain. Major portions of the cerebrum and skull are absent.</p>
+        <p><strong>Outcome:</strong> Always fatal. Often diagnosed prenatally.</p>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== CEREBELLUM & DIENCEPHALON ============== -->
+<div role="tabpanel" id="panel-cerebellum" aria-labelledby="tab-cerebellum" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Cerebellum &amp; Diencephalon</h2>
+    <p>The cerebellum is the brain's coordinator, comparing what you intended to do with what your body actually did. The diencephalon is the relay and homeostatic command center, sitting between the cerebrum and the brainstem.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Movement Coordinator</p>
+      <h3 class="card-title">Cerebellum: Structure</h3>
+      <div class="card-body">
+        <p>Second largest brain region. Located in the posterior cranial fossa, inferior to the occipital lobes and posterior to the brainstem. Separated from the cerebrum by the <strong>tentorium cerebelli</strong>.</p>
+
+        <h4>Structural Features</h4>
+        <ul>
+          <li>Two cerebellar hemispheres connected by the <strong>vermis</strong>.</li>
+          <li>Three lobes per hemisphere: anterior, posterior, and flocculonodular.</li>
+          <li>Surface features: <strong>folia</strong> (fine, leaf-like folds), cerebellar cortex (gray matter), <strong>arbor vitae</strong> (white matter tracts in a tree-like pattern), and deep cerebellar nuclei (such as the dentate).</li>
+        </ul>
+
+        <h4>Cerebellar Peduncles (Connect to Brainstem)</h4>
+        <ul>
+          <li><strong>Superior cerebellar peduncle:</strong> connects to midbrain. Mostly efferent.</li>
+          <li><strong>Middle cerebellar peduncle:</strong> connects to pons. Afferent from pontine nuclei.</li>
+          <li><strong>Inferior cerebellar peduncle:</strong> connects to medulla. Afferent from spinal cord and vestibular system.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Cerebellar Functions</p>
+      <h3 class="card-title">What the Cerebellum Does</h3>
+      <div class="card-body">
+        <ul>
+          <li><strong>Coordination of voluntary movements.</strong> Compares intended motor output (from motor cortex) with actual movement (from proprioceptive input).</li>
+          <li><strong>Balance and posture.</strong> Integrates vestibular, visual, and proprioceptive input.</li>
+          <li><strong>Motor learning.</strong> Learning sequences of skilled movements (playing piano, riding a bike).</li>
+          <li><strong>Regulation of muscle tone.</strong></li>
+        </ul>
+        <div class="tip-callout" role="note" aria-label="Tip">The cerebellum doesn't <em>generate</em> movement, it <em>refines</em> it. The motor cortex says "move arm." The cerebellum says "smoothly, with the right speed and force, while keeping balance."</div>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <div class="callout" role="note" aria-label="Clinical correlations: Cerebellar dysfunction">
+        <p class="callout-label">Clinical Correlations: Cerebellar Dysfunction</p>
+        <p><strong>Ataxia:</strong> uncoordinated movements due to cerebellar dysfunction.</p>
+        <p><strong>Intention tremor:</strong> oscillations during voluntary movement (worse as the hand approaches a target).</p>
+        <p><strong>Nystagmus:</strong> abnormal eye movements from flocculonodular lobe lesions.</p>
+        <p><strong>Hypotonia:</strong> decreased muscle tone from deep nuclei damage.</p>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Three-Part Region</p>
+      <h3 class="card-title">Diencephalon Overview</h3>
+      <div class="card-body">
+        <p>Links the cerebral hemispheres to the brainstem. Surrounds the third ventricle. Three components:</p>
+        <ol>
+          <li><strong>Thalamus</strong> (about 80% of the diencephalon)</li>
+          <li><strong>Hypothalamus</strong> (about 20%)</li>
+          <li><strong>Epithalamus</strong> (small, posterior)</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Sensory Relay</p>
+      <h3 class="card-title">Thalamus</h3>
+      <div class="card-body">
+        <p>"Inner chamber." Oval structure above the midbrain. Forms about 4/5 of the diencephalon.</p>
+
+        <h4>Structure</h4>
+        <p>Paired masses of gray matter organized into nuclei, forming the lateral walls of the third ventricle. The two halves are joined by the <strong>massa intermedia</strong> (interthalamic adhesion).</p>
+
+        <h4>Function</h4>
+        <p>The principal <strong>relay station</strong> for sensory impulses (except smell) reaching the cerebral cortex from the spinal cord, brainstem, and other parts of the cerebrum.</p>
+
+        <h4>Other Roles</h4>
+        <ul>
+          <li>Crude appreciation of some sensations (pain, temperature, pressure).</li>
+          <li>Some role in emotions and memory.</li>
+          <li>Each thalamic nucleus is specific for a particular modality.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Master Homeostatic Regulator</p>
+      <h3 class="card-title">Hypothalamus</h3>
+      <div class="card-body">
+        <p>Lies inferior to the thalamus. About 1/5 of the diencephalon. Composed of paired nuclei (mostly gray matter).</p>
+
+        <h4>Why It Matters</h4>
+        <p>Each nucleus pair controls a specific homeostatic function. The hypothalamus is the major controller of homeostasis and the primary integration point between the nervous and endocrine systems.</p>
+
+        <h4>Eight Major Functions</h4>
+        <ol>
+          <li>Integration between nervous and endocrine systems (via pituitary).</li>
+          <li>Control of the autonomic nervous system.</li>
+          <li>Regulation of rage and aggression.</li>
+          <li>Regulation of body temperature.</li>
+          <li>Regulation of food intake.</li>
+          <li>Regulation of thirst.</li>
+          <li>Regulation of sleep-wake patterns (circadian rhythms).</li>
+          <li>Regulation of sex drive.</li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card">
+      <p class="card-eyebrow">Smallest Component</p>
+      <h3 class="card-title">Epithalamus</h3>
+      <div class="card-body">
+        <ul>
+          <li>Contains the <strong>pineal gland</strong>, which secretes <strong>melatonin</strong> for circadian rhythm regulation.</li>
+          <li>Includes the <strong>habenular nuclei</strong>, involved in emotional responses to odors.</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<!-- ============== BRAINSTEM ============== -->
+<div role="tabpanel" id="panel-brainstem" aria-labelledby="tab-brainstem" tabindex="0" hidden>
+  <div class="section-intro">
+    <h2>Brainstem</h2>
+    <p>The brainstem is small but does enormous work. It connects the cerebrum, diencephalon, and cerebellum to the spinal cord. It controls the reflexes that keep you alive (breathing, heart rate, swallowing). It houses 10 of the 12 cranial nerve nuclei. And it's the throughway for everything ascending and descending between brain and body.</p>
+  </div>
+
+  <div class="card-grid">
+
+    <article class="note-card">
+      <p class="card-eyebrow">Three-Part Connector</p>
+      <h3 class="card-title">Brainstem Overview</h3>
+      <div class="card-body">
+        <p><strong>Location:</strong> Between the brain and the spinal cord. Continuous with the inferior spinal cord and the superior pons. Lies just inside the cranial vault, superior to the foramen magnum.</p>
+
+        <h4>Three Parts (top to bottom)</h4>
+        <ol>
+          <li><strong>Midbrain</strong> (mesencephalon)</li>
+          <li><strong>Pons</strong></li>
+          <li><strong>Medulla oblongata</strong></li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Top of Brainstem</p>
+      <h3 class="card-title">Midbrain (Mesencephalon)</h3>
+      <div class="card-body">
+        <p>Extends from the superior portion of the pons to the inferior border of the diencephalon.</p>
+
+        <h4>Cerebral Aqueduct</h4>
+        <p>Passes through the midbrain. Connects the third and fourth ventricles.</p>
+
+        <h4>Dorsal Portion: Tectum (Roof)</h4>
+        <p>Divided into four rounded eminences of gray matter called the <strong>corpus quadrigemina</strong>:</p>
+        <ul>
+          <li><strong>Superior colliculi</strong> (2): reflex movements of eyes, head, and neck in response to <em>visual</em> and other stimuli (startle reflex).</li>
+          <li><strong>Inferior colliculi</strong> (2): reflex movements of head and trunk in response to <em>auditory</em> stimuli.</li>
+        </ul>
+
+        <h4>Ventral Portion</h4>
+        <p>All white matter. Two groups of fiber tracts:</p>
+        <ul>
+          <li><strong>Cerebral peduncles:</strong> pass motor fibers from cerebrum through the brainstem. Also carry some sensory information.</li>
+          <li><strong>Medial lemniscus:</strong> band of sensory tracts passing from lower CNS to thalamus. Carries discriminative touch, proprioception, pressure, and vibration.</li>
+        </ul>
+
+        <h4>Substantia Nigra</h4>
+        <p>Dopamine-releasing neurons that control muscle activities. (Degeneration here causes Parkinson's disease.)</p>
+
+        <h4>Cranial Nerve Nuclei</h4>
+        <p>CN III (Oculomotor), CN IV (Trochlear).</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Middle Brainstem</p>
+      <h3 class="card-title">Pons</h3>
+      <div class="card-body">
+        <p>Bridge between medulla, midbrain, and cerebellum. Lies directly superior to the medulla, anterior to the cerebellum, inferior to the midbrain.</p>
+
+        <h4>Two Functional Components</h4>
+        <ul>
+          <li><strong>Dorsal:</strong> ascending and descending tracts (similar to the rest of the brainstem).</li>
+          <li><strong>Ventral:</strong> relay station with pontine nuclei. Contains the pontine respiratory group that helps control breathing.</li>
+        </ul>
+
+        <h4>Histology</h4>
+        <ul>
+          <li><strong>White matter (dorsal):</strong> tracts passing between lower and higher CNS structures. Communicates cerebellum with the rest of the CNS.</li>
+          <li><strong>Gray matter (ventral):</strong> two nuclei involved in altering the basic respiratory pattern.</li>
+        </ul>
+
+        <h4>Cranial Nerve Nuclei</h4>
+        <p>CN V (Trigeminal), CN VI (Abducens), CN VII (Facial), and part of CN VIII (Vestibulocochlear).</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Bottom of Brainstem</p>
+      <h3 class="card-title">Medulla Oblongata</h3>
+      <div class="card-body">
+        <p>The most inferior part of the brainstem. Continuous with the spinal cord at the foramen magnum.</p>
+
+        <h4>Tracts &amp; Decussation</h4>
+        <ul>
+          <li>Carries ascending (sensory) and descending (motor) tracts.</li>
+          <li>Tracts cross at the <strong>decussation of pyramids</strong>. <em>This is why each side of the brain controls voluntary movements on the opposite side of the body.</em></li>
+        </ul>
+
+        <h4>Vital Reflex Centers (in Gray Matter)</h4>
+        <p>Nuclei that control processes necessary for immediate survival:</p>
+        <ul>
+          <li>Cardiovascular center (blood pressure, heart rate)</li>
+          <li>Respiratory center</li>
+          <li>Vomiting center</li>
+          <li>Swallowing, coughing</li>
+        </ul>
+
+        <h4>White Matter</h4>
+        <p>All ascending and descending tracts that communicate between brain and spinal cord pass through the medulla.</p>
+
+        <h4>Cranial Nerve Nuclei</h4>
+        <p>CN VIII (Vestibulocochlear, part), CN IX (Glossopharyngeal), CN X (Vagus), CN XI (Accessory, cranial portion), CN XII (Hypoglossal).</p>
+        <p class="alt-name">Sensory neuron cell bodies for these cranial nerves are located <em>outside</em> the medulla in various ganglia.</p>
+      </div>
+    </article>
+
+    <article class="note-card span-2">
+      <p class="card-eyebrow">Throughout the Brainstem</p>
+      <h3 class="card-title">Reticular Formation &amp; the RAS</h3>
+      <div class="card-body">
+        <p><strong>Definition:</strong> A network of gray matter cell bodies interspersed within white matter tracts, extending throughout the brainstem.</p>
+
+        <h4>Ascending Reticular Activating System (ARAS or RAS)</h4>
+        <ul>
+          <li>Sensory axons that ascend through the thalamus to the cerebral cortex.</li>
+          <li>Stimuli integrated: visual, auditory, touch, pain, pressure.</li>
+          <li><strong>Most important function: maintains consciousness and alertness.</strong></li>
+          <li>Active during arousal and wakefulness.</li>
+          <li>Maintains attention.</li>
+          <li>Filters incoming stimuli to prevent sensory overload.</li>
+          <li>Inactivation leads to sleep or coma.</li>
+        </ul>
+
+        <h4>Descending Component</h4>
+        <ul>
+          <li>Modulates muscle tone of resting skeletal muscles.</li>
+          <li>Coordinates somatic motor functions with autonomic reflexes.</li>
+        </ul>
+
+        <div class="tip-callout" role="note" aria-label="Tip">When you're trying to fall asleep with the TV on, your RAS is what's keeping you awake. When the RAS quiets down, you sleep. When it shuts off entirely, you're in a coma.</div>
+      </div>
+    </article>
+
+  </div>
+</div>
+
+<div class="footer-note">Dr. Sharilyn Rennie</div>
+
+</div>
+
+<script>
+(function() {
+  'use strict';
+  var tabs = document.querySelectorAll('[role="tab"]');
+  var panels = document.querySelectorAll('[role="tabpanel"]');
+  function selectTab(tab, focusPanel) {
+    tabs.forEach(function(t) {
+      var selected = (t === tab);
+      t.setAttribute('aria-selected', selected ? 'true' : 'false');
+      t.tabIndex = selected ? 0 : -1;
+    });
+    var activePanel = null;
+    panels.forEach(function(p) {
+      if (p.getAttribute('aria-labelledby') === tab.id) {
+        p.removeAttribute('hidden');
+        activePanel = p;
+      } else {
+        p.setAttribute('hidden', '');
+      }
+    });
+    if (focusPanel && activePanel) { activePanel.focus({ preventScroll: false }); }
+    setTimeout(function() { window.dispatchEvent(new Event('resize')); }, 50);
+  }
+  tabs.forEach(function(tab, idx) {
+    tab.addEventListener('click', function() { selectTab(tab, true); });
+    tab.addEventListener('keydown', function(e) {
+      var k = e.key;
+      var next = null;
+      if (k === 'ArrowRight') next = tabs[(idx + 1) % tabs.length];
+      else if (k === 'ArrowLeft') next = tabs[(idx - 1 + tabs.length) % tabs.length];
+      else if (k === 'Home') next = tabs[0];
+      else if (k === 'End') next = tabs[tabs.length - 1];
+      if (next) { e.preventDefault(); next.focus(); selectTab(next, false); }
+    });
+  });
+
+  function sendHeight() {
+    var height = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight, document.body.offsetHeight, document.documentElement.offsetHeight);
+    var id = '';
+    try { id = window.frameElement && window.frameElement.id ? window.frameElement.id : ''; } catch(e) {}
+    try { window.parent.postMessage({ type: 'iframeHeight', id: id, height: height }, '*'); } catch(e) {}
+  }
+  if ('ResizeObserver' in window) { try { var ro = new ResizeObserver(sendHeight); ro.observe(document.body); } catch(e) {} }
+  window.addEventListener('load', sendHeight);
+  window.addEventListener('resize', sendHeight);
+  setTimeout(sendHeight, 100);
+  setTimeout(sendHeight, 500);
+})();
+</script>
+</body>
+</html>
